@@ -200,9 +200,16 @@ class TaskProcessor:
             self.logger.info(f"Processing radio generation for artist: {artist_name}")
             self.logger.info(f"DJ transitions enabled: {enable_dj_transitions}")
             
-            # Step 1: Generate script
-            self.update_task_progress(task_id, 'script_generation', 10, 'Generating radio script...')
-            script_data = self.ai_radio_generator.generate_script_and_segments(artist_name)
+            # Step 1: Get songs data with transcripts
+            self.update_task_progress(task_id, 'fetching_songs', 10, 'Fetching songs data with transcripts...')
+            songs_data = self.ai_radio_generator.get_songs_data(artist_name)
+            if not songs_data:
+                raise Exception(f"No songs found for artist: {artist_name}")
+            self.logger.info(f"Found {len(songs_data)} songs for {artist_name}")
+            
+            # Step 2: Generate clean script
+            self.update_task_progress(task_id, 'script_generation', 20, 'Generating radio script...')
+            script_data = self.ai_radio_generator.generate_enhanced_script(artist_name, songs_data)
             self.logger.info("Script generation completed successfully")
             
             # Store script data in task result
@@ -210,113 +217,39 @@ class TaskProcessor:
                 'script': script_data
             }
             
-            # Step 2: Segment the script
-            self.update_task_progress(task_id, 'script_segmentation', 30, 'Segmenting script...')
-            segments = self.ai_radio_generator.segment_radio_intro_for_voice(script_data['ai_radio_intro'])
-            task['result']['segments'] = segments
-            self.logger.info(f"Script segmented into {len(segments)} parts")
+            # Step 3: Enhance script with SSML
+            self.update_task_progress(task_id, 'script_enhancement', 40, 'Enhancing script with SSML...')
+            enhanced_script = self.ai_radio_generator.enhance_script_with_emphasis(script_data)
+            task['result']['enhanced_script'] = enhanced_script
+            self.logger.info("Script enhancement completed successfully")
             
-            # Step 3: Generate audio for each segment
-            self.update_task_progress(task_id, 'audio_generation', 40, 'Generating audio segments...')
-            audio_files = []
-            total_segments = len(segments)
-            
-            for idx, segment in enumerate(segments, 1):
-                progress = 40 + (30 * (idx / total_segments))
-                self.update_task_progress(
-                    task_id,
-                    'audio_generation',
-                    int(progress),
-                    f'Generating audio for segment {idx}/{total_segments}...'
-                )
-                
-                # Add random delay between API calls (5-10 seconds)
-                if idx > 1:
-                    delay = random.uniform(5, 10)
-                    self.logger.info(f"Waiting {delay:.2f} seconds before generating next segment...")
-                    time.sleep(delay)
-                
-                segment_audio = self.ai_radio_generator.generate_segment_audio_files(
-                    artist_name,
-                    [{"text": segment["audio"], "type": "intro"}],
-                    prefix=f'intro_{idx}'  # Add prefix to help identify intro segments
-                )
-                if segment_audio:
-                    audio_files.extend(segment_audio)
-                    self.logger.info(f"Successfully generated audio for segment {idx}/{total_segments}")
-            
-            task['result']['audio_files'] = audio_files
-            
-            # Step 4: Generate DJ transitions if enabled
-            if enable_dj_transitions:
-                self.update_task_progress(task_id, 'transitions', 70, 'Creating DJ transitions...')
-                self.logger.info("Starting DJ transition generation...")
-                
-                # Get all songs for this artist
-                songs = self.ai_radio_generator.music_manager.get_artist_songs(artist_name)
-                transition_files = []
-                
-                # Generate transitions between songs
-                for i in range(len(songs) - 1):  # -1 because we don't need transition after last song
-                    current_song = songs[i]
-                    next_song = songs[i + 1]
-                    
-                    # Generate transition script
-                    transition_text = self.ai_radio_generator.generate_dj_transition(
-                        current_song,
-                        next_song,
-                        style=dj_options.get('style', 'smooth'),
-                        length=dj_options.get('length', 'medium')
-                    )
-                    
-                    # Generate audio for transition
-                    transition_audio = self.ai_radio_generator.generate_segment_audio_files(
-                        artist_name,
-                        [{'text': transition_text, 'type': 'transition'}],
-                        prefix=f'transition_{i}'
-                    )
-                    
-                    if transition_audio:
-                        transition_files.extend(transition_audio)
-                        self.logger.info(f"Generated transition {i+1}/{len(songs)-1}")
-                
-                # Add transition files to the result and audio_files
-                task['result']['transition_files'] = transition_files
-                audio_files.extend(transition_files)
-            
-            # Step 5: Combine all audio
-            self.update_task_progress(task_id, 'combining', 90, 'Combining all audio segments...')
-            output_filename = f"{artist_name}_radio_show_{task_id}.mp3"
-            output_path = os.path.join(self.config['OUTPUT_DIR'], output_filename)
-            
-            # Log what we're combining
-            self.logger.info(f"Combining {len(audio_files)} audio files:")
-            for af in audio_files:
-                self.logger.info(f"- {os.path.basename(af)}")
-            
-            # Combine all audio files in the correct order
-            combined_audio = self.ai_radio_generator.combine_audio_files(
-                audio_files,
-                output_path,
-                enable_dj_transitions,
-                artist_name=artist_name
+            # Step 4: Generate audio from enhanced script
+            self.update_task_progress(task_id, 'audio_generation', 60, 'Generating audio...')
+            audio_result = self.ai_radio_generator.generate_audio(
+                artist_name,
+                enhanced_script,
+                dj_options={
+                    'enable_dj_transitions': enable_dj_transitions,
+                    'style': dj_options.get('style', 'smooth'),
+                    'length': dj_options.get('length', 'medium')
+                }
             )
             
-            if combined_audio:
-                task['result']['output_file'] = output_filename
-                self.logger.info(f"Generated output file: {output_filename}")
-                
-                # Update final status
-                task['status'] = 'completed'
-                self.update_task_progress(
-                    task_id,
-                    'completed',
-                    100,
-                    f'Radio generation completed. Output file: {output_filename}'
-                )
-                self.logger.info(f"Task {task_id} completed successfully")
-            else:
-                raise Exception("Failed to combine audio files")
+            if not audio_result:
+                raise Exception("Failed to generate audio")
+            
+            # Store audio paths in task result
+            task['result'].update(audio_result)
+            
+            # Update final status
+            task['status'] = 'completed'
+            self.update_task_progress(
+                task_id,
+                'completed',
+                100,
+                f'Radio generation completed. Output file: {audio_result.get("full_show_audio", "N/A")}'
+            )
+            self.logger.info(f"Task {task_id} completed successfully")
             
         except Exception as e:
             self.logger.error(f"Error in radio generation task {task_id}: {str(e)}")

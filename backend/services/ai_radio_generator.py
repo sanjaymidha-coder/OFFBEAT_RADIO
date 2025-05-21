@@ -13,11 +13,17 @@ import re
 import random
 
 class AIRadioGenerator:
-    def __init__(self):
+    def __init__(self, use_openai: bool = True):
+        """
+        Initialize AIRadioGenerator with option to use OpenAI or local processing.
+        
+        Args:
+            use_openai (bool): Whether to use OpenAI (True) or local processing (False)
+        """
         self.music_manager = MusicManager()
         self.transcriber = WhisperTranscriber()
         self.templates = self._load_templates()
-        self.ai_processor = AIProcessor()
+        self.ai_processor = AIProcessor(use_openai=use_openai)
 
     def _load_templates(self) -> Dict:
         """
@@ -29,164 +35,62 @@ class AIRadioGenerator:
 
     def generate_radio_intro_prompt(self, songs_data: List[Dict]) -> str:
         """
-        Generate a single radio intro prompt for all songs.
+        Generate an energetic, poetic, and engaging radio intro prompt for multiple songs.
+
+        Args:
+            songs_data (List[Dict]): List containing song information (name and transcript).
+
+        Returns:
+            str: Refined AI-generated energetic radio intro prompt.
         """
-        # Prepare song transcripts
+        # Prepare and truncate song transcripts
         song_transcripts = []
         for song in songs_data:
-            # Truncate each transcript to keep it manageable
-            truncated_transcript = song['transcript'][:200] + "..." if len(song['transcript']) > 200 else song['transcript']
-            song_transcripts.append(f"Song: {song['song_name']}\nTranscript:\n{truncated_transcript}\n")
-        
-        # Combine all transcripts
+            truncated_transcript = (
+                song['transcript'][:200].rstrip() + "..." if len(song['transcript']) > 200 else song['transcript']
+            )
+            song_transcripts.append(
+                f"Song: {song['song_name']}\nTranscript Excerpt: \"{truncated_transcript}\"\n"
+            )
+
         all_transcripts = "\n".join(song_transcripts)
-        
-        # Prepare example templates
-        example_templates = "\n".join([
-            f"Script: {template['script']}"
-            for template in self.templates['intro_templates']
-        ])
-        
-        prompt = f"""You are a professional radio DJ host with a natural, poetic, and conversational voice — inspired by BBC Radio 1 and NPR.
 
-            Your task is to write a radio intro script (under 50 words) that sounds like a real DJ welcoming the listener and setting the mood for the track.
+        # Format example templates for clarity
+        example_templates = "\n".join(
+            f"Example Script: {template['script']}" for template in self.templates['intro_templates']
+        )
 
-            🎙️ Tone: Warm, reflective, poetic, and HUMAN — do not sound like an AI.
-            🎵 Style: Natural speech with emotional connection. Use metaphors, mood setting, or short storytelling.
+# EXAMPLES (replace placeholders with actual artist and song names):
+# {example_templates}
 
-            Song Transcripts:
-            {all_transcripts}
+        # Craft a clear and vibrant prompt for AI
+        prompt = f"""You're an enthusiastic, vibrant radio DJ known for your energetic, poetic intros, inspired by the dynamic styles of BBC Radio 1 and NPR.
 
-            Here are some example scripts to inspire your style (replace {{artist}} and {{song_name}} with actual values):
-            {example_templates}
+TASK:
+Craft an energetic, poetic, and captivating radio intro script (max 80 words).
 
-            Write a spoken-style intro that:
-            * Feels natural and unscripted
-            * Has a soft welcome
-            * Sets a mood that matches the songs
-            * Ends by naturally introducing the artist + track
+TONE & STYLE:
+- Uplifting, lively, and passionate
+- Expressive and poetic, using vivid imagery or dynamic storytelling
+- Naturally conversational, spontaneous, and engaging
 
-            Only write the final radio script — no extra explanations or markdown."""
-        
+SONG TRANSCRIPTS:
+{all_transcripts}
+
+
+
+INSTRUCTIONS:
+- Enthusiastically greet listeners
+- Immediately establish an exciting and vibrant mood aligned with song lyrics
+- Seamlessly introduce the upcoming artist and track at the end
+- Keep it punchy, lively, and memorable
+- Use authentic language, avoiding clichés
+- Ensure the script is a complete, finished piece without abrupt endings.
+
+Provide ONLY the final energetic radio script—no explanations or additional formatting."""
+
         return prompt
 
-    def segment_radio_intro_for_voice(self, radio_intro: str) -> list:
-        """
-        Segment the radio intro for voice synthesis using the AI endpoint.
-        Retry up to 2 times if no segments are returned.
-        
-        Args:
-            radio_intro (str): The radio intro script to segment
-            
-        Returns:
-            list: List of segmented script parts
-        """
-        import time
-        start_time = time.time()
-        print(f"Starting script segmentation for text: {radio_intro[:100]}...")
-
-        segmentation_prompt = (
-            "You are a voice production assistant preparing a radio DJ intro for high-quality voice synthesis.\n\n"
-            "Your task is to:\n\n"
-            "1. Split the following DJ script into natural-sounding audio segments (each 1-2 spoken phrases).\n"
-            "2. Assign a realistic speech speed for each segment (between 0.7 and 1.2).\n"
-            "3. Add a pause duration in milliseconds after each segment (between 300 and 1500ms).\n\n"
-            "Format each segment as a JSON object with:\n"
-            "- \"audio\": the text to speak\n"
-            "- \"speed\": speech rate (0.7-1.2)\n"
-            "- \"break_after\": pause in milliseconds\n\n"
-            "Return an array of these objects.\n\n"
-            "Example format:\n"
-            "[\n"
-            "  {\n"
-            "    \"audio\": \"Good evening, music lovers...\",\n"
-            "    \"speed\": 0.95,\n"
-            "    \"break_after\": 800\n"
-            "  }\n"
-            "]\n\n"
-            f"Script to segment:\n{radio_intro}"
-        )
-
-        for attempt in range(2):
-            try:
-                print(f"Attempt {attempt + 1} to segment script...")
-                response = self.ai_processor.process_song({
-                    "artist": "voice_production",
-                    "name": "segment_radio_intro",
-                    "transcript": segmentation_prompt
-                })
-                
-                # Try to parse the JSON array in the response
-                import re, json
-                match = re.search(r'\[.*?\]', response, re.DOTALL)
-                if match:
-                    try:
-                        segments = json.loads(match.group(0))
-                        if segments and isinstance(segments, list):
-                            # Validate each segment
-                            valid_segments = []
-                            for segment in segments:
-                                if isinstance(segment, dict) and 'audio' in segment:
-                                    # Ensure required fields with defaults if missing
-                                    valid_segment = {
-                                        'audio': segment['audio'],
-                                        'speed': float(segment.get('speed', 1.0)),
-                                        'break_after': int(segment.get('break_after', 500))
-                                    }
-                                    valid_segments.append(valid_segment)
-                            
-                            if valid_segments:
-                                end_time = time.time()
-                                print(f"Successfully segmented script in {end_time - start_time:.2f} seconds")
-                                print(f"Generated {len(valid_segments)} segments")
-                                return valid_segments
-                    except json.JSONDecodeError:
-                        print(f"Warning: Invalid JSON in AI response (attempt {attempt+1})")
-                        continue
-                
-                print(f"Warning: No valid segments found in AI response (attempt {attempt+1})")
-                
-            except Exception as e:
-                print(f"Warning: Exception while segmenting script (attempt {attempt+1}): {str(e)}")
-                continue
-
-        # If we get here, we failed to segment properly
-        # Fall back to basic sentence segmentation
-        print("Falling back to basic sentence segmentation...")
-        segments = []
-        sentences = re.split(r'([.!?][\s\n]+)', radio_intro)
-        
-        for i in range(0, len(sentences), 2):
-            if i < len(sentences):
-                text = sentences[i].strip()
-                if text:
-                    segments.append({
-                        "audio": text,
-                        "speed": 1.0,
-                        "break_after": 500
-                    })
-        
-        end_time = time.time()
-        print(f"Completed basic segmentation in {end_time - start_time:.2f} seconds")
-        print(f"Generated {len(segments)} segments")
-        return segments
-    
-    def generate_stretchy_opening_phrase(self, artist_name: str) -> str:
-        """
-        Ask AI to generate a stretchy attention-grabbing 5-word phrase for radio opening.
-        """
-        prompt = (
-            "You are a creative radio DJ voice assistant.\n\n"
-            "Write a dramatic, catchy opening phrase (maximum 5 words) that stretches naturally when spoken aloud.\n\n"
-            "It should be perfect for starting a radio show and pulling listeners in. Example: 'Gooood Mooorrrnnninnnggggg Everyone!'\n\n"
-            "Return ONLY the phrase, no extra explanation or formatting."
-        )
-        response = self.ai_processor.process_song({
-            "artist": artist_name,
-            "name": f"{artist_name} stretchy opening phrase",
-            "transcript": prompt
-        })
-        return response.strip().replace('"','')
 
     def get_songs_data(self, artist_name: str) -> List[Dict]:
         """
@@ -233,42 +137,12 @@ class AIRadioGenerator:
             str: Generated radio intro script
         """
         radio_intro_prompt = self.generate_radio_intro_prompt(songs_data)
-        ai_radio_intro = self.ai_processor.process_song({
+        # Increased max_tokens for the initial script generation
+        return self.ai_processor.process_song({
             "artist": artist_name,
             "name": f"{artist_name} radio intro",
             "transcript": radio_intro_prompt
-        })
-        return ai_radio_intro
-
-    def segment_script(self, script: str) -> List[Dict]:
-        """
-        Segment a script into natural speaking chunks.
-        
-        Args:
-            script (str): The script to segment
-            
-        Returns:
-            List[Dict]: List of segments with audio text and parameters
-        """
-        # Split by sentence endings and commas
-        segments = []
-        sentences = re.split(r'([.!?][\s\n]+|\.\.\.\s*|,\s+)', script)
-        current_segment = ""
-        
-        for i in range(0, len(sentences), 2):
-            if i < len(sentences):
-                text = sentences[i]
-                delimiter = sentences[i + 1] if i + 1 < len(sentences) else ""
-                
-                if text.strip():
-                    segment = {
-                        "audio": text.strip() + (delimiter.strip() if delimiter else ""),
-                        "speed": random.uniform(0.95, 1.05),  # Slight speed variation for natural feel
-                        "break_after": random.randint(400, 1200)  # Variable pauses between segments
-                    }
-                    segments.append(segment)
-        
-        return segments
+        }, max_tokens=500)
 
     def generate_script_and_segments(self, artist_name: str) -> Dict:
         """
@@ -294,72 +168,9 @@ class AIRadioGenerator:
             "ai_radio_intro": radio_intro
         }
 
-    def generate_segments(self, script: str) -> List[Dict]:
-        """
-        Generate segments from a radio script.
-        This is called separately after script generation.
-        
-        Args:
-            script (str): The radio script to segment
-            
-        Returns:
-            List[Dict]: List of segmented script parts
-        """
-        return self.segment_script(script)
-
-    def generate_segment_audio_files(self, artist_name: str, segments: List[Dict], prefix: str = '') -> List[str]:
-        """
-        Generate audio files for a list of segments
-        
-        Args:
-            artist_name (str): Name of the artist
-            segments (List[Dict]): List of segments to generate audio for
-            prefix (str): Optional prefix for the generated files
-            
-        Returns:
-            List[str]: List of generated audio file paths
-        """
-        audio_files = []
-        cache_dir = os.path.join("cache", "audio")
-        os.makedirs(cache_dir, exist_ok=True)
-        
-        audio_gen = AudioGenerator()
-        
-        for i, segment in enumerate(segments):
-            segment_text = segment.get('text', '')
-            if not segment_text:
-                continue
-                
-            filename = f"{artist_name}_{prefix}_{i}_{uuid.uuid4().hex[:8]}.mp3"
-            output_path = os.path.join(cache_dir, filename)
-            
-            try:
-                audio_gen.generate_radio_intro_audio(
-                    segment_text,
-                    output_path=output_path
-                )
-                
-                if os.path.exists(output_path) and os.path.getsize(output_path) > 0:
-                    audio_files.append(output_path)
-                    
-            except Exception as e:
-                print(f"Error generating audio for segment {i}: {str(e)}")
-                continue
-                
-        return audio_files
-
     def combine_audio_files(self, audio_files: List[str], output_path: str, enable_dj_transitions: bool = False, artist_name: str = None) -> bool:
         """
         Combine multiple audio files into a single output file, properly handling transitions.
-        
-        Args:
-            audio_files (List[str]): List of audio file paths to combine
-            output_path (str): Path where the combined audio should be saved
-            enable_dj_transitions (bool): Whether DJ transitions are enabled
-            artist_name (str, optional): Name of the artist
-            
-        Returns:
-            bool: True if combination was successful, False otherwise
         """
         try:
             from pydub import AudioSegment
@@ -367,25 +178,36 @@ class AIRadioGenerator:
             # Initialize the combined audio
             combined = AudioSegment.empty()
             
-            print(f"Processing audio combination for artist: {artist_name}")
+            print(f"\n=== Starting Audio Combination ===")
+            print(f"Output path: {output_path}")
+            print(f"Number of audio files to combine: {len(audio_files)}")
+            print(f"Files to combine: {audio_files}")
+            
             songs = self.music_manager.get_artist_songs(artist_name)
             if not songs:
                 print(f"No songs found for artist '{artist_name}'")
                 return False
 
-            # Group files by type and sort them
-            intro_files = sorted([f for f in audio_files if 'intro_' in f.lower()],
-                               key=lambda x: int(x.split('intro_')[1].split('_')[0]))
+            # Group files by type
+            intro_files = [f for f in audio_files if 'intro_' in f.lower()]
             transition_files = [f for f in audio_files if 'transition_' in f.lower()]
             
-            print(f"Found {len(intro_files)} intro segments and {len(transition_files)} transitions")
+            print(f"\nFound {len(intro_files)} intro segments and {len(transition_files)} transitions")
+            print(f"Intro files: {intro_files}")
+            print(f"Transition files: {transition_files}")
             
-            # Add intro segments first in order
+            # Add intro segments first
             for intro in intro_files:
                 try:
+                    print(f"\nProcessing intro: {intro}")
+                    if not os.path.exists(intro):
+                        print(f"Warning: Intro file not found: {intro}")
+                        continue
+                        
                     audio = AudioSegment.from_file(intro)
+                    print(f"Intro duration: {len(audio)/1000:.2f} seconds")
                     combined += audio
-                    print(f"Added intro segment: {os.path.basename(intro)}")
+                    print(f"Successfully added intro segment: {os.path.basename(intro)}")
                 except Exception as e:
                     print(f"Error adding intro {intro}: {str(e)}")
                     continue
@@ -393,56 +215,84 @@ class AIRadioGenerator:
             # Add songs and transitions alternately
             for i, song in enumerate(songs):
                 try:
+                    print(f"\nProcessing song {i+1}: {song['name']}")
+                    if not os.path.exists(song['path']):
+                        print(f"Warning: Song file not found: {song['path']}")
+                        continue
+                        
                     # Add the song
                     song_audio = AudioSegment.from_file(song['path'])
+                    print(f"Song duration: {len(song_audio)/1000:.2f} seconds")
                     combined += song_audio
-                    print(f"Added song: {song['name']}")
+                    print(f"Successfully added song: {song['name']}")
                     
                     # Add transition if available and not the last song
                     if enable_dj_transitions and i < len(songs) - 1:
                         matching_transitions = [t for t in transition_files if f'transition_{i}' in t]
                         if matching_transitions:
-                            transition_audio = AudioSegment.from_file(matching_transitions[0])
+                            transition_path = matching_transitions[0]
+                            print(f"\nProcessing transition: {transition_path}")
+                            if not os.path.exists(transition_path):
+                                print(f"Warning: Transition file not found: {transition_path}")
+                                continue
+                                
+                            transition_audio = AudioSegment.from_file(transition_path)
+                            print(f"Transition duration: {len(transition_audio)/1000:.2f} seconds")
                             combined += transition_audio
-                            print(f"Added transition after song {i+1}")
+                            print(f"Successfully added transition after song {i+1}")
                 except Exception as e:
-                    print(f"Error adding song {song['name']}: {str(e)}")
+                    print(f"Error processing song {song['name']}: {str(e)}")
                     continue
+            
+            print(f"\nFinal combined duration: {len(combined)/1000:.2f} seconds")
+            print(f"Exporting to: {output_path}")
+            
+            # Create output directory if it doesn't exist
+            os.makedirs(os.path.dirname(output_path), exist_ok=True)
             
             # Export the final combined audio
             combined.export(output_path, format="mp3")
             print(f"Successfully exported combined audio to {output_path}")
+            
+            # Verify the file was created and has content
+            if not os.path.exists(output_path):
+                raise Exception(f"Output file was not created: {output_path}")
+            if os.path.getsize(output_path) == 0:
+                raise Exception(f"Output file is empty: {output_path}")
+                
             return True
             
         except Exception as e:
-            print(f"Error combining audio files: {str(e)}")
+            print(f"\nError combining audio files: {str(e)}")
             return False
 
-    def generate_audio(self, artist_name: str, segmented_radio_intro: List[Dict], dj_options: Dict = None) -> Dict:
+    def generate_audio(self, artist_name: str, script: str, dj_options: Dict = None) -> Dict:
         """
-        Generate and combine audio segments based on the script.
+        Generate audio from an SSML-enhanced script.
         This is the second step in the radio generation process.
-        
-        Args:
-            artist_name (str): Name of the artist
-            segmented_radio_intro (List[Dict]): List of segmented radio intro data
-            dj_options (Dict): Options for DJ transitions
-            
-        Returns:
-            Dict: Contains paths to generated audio files
         """
+        # Initialize all_audio_paths at the start
+        all_audio_paths = []
+        generated_files = []  # Track only the files we generate
+        
         try:
             # Create cache directory if it doesn't exist
             cache_dir = os.path.join("cache", "audio")
             os.makedirs(cache_dir, exist_ok=True)
             
-            # Generate intro audio first
-            final_audio_path = os.path.join(cache_dir, f"{artist_name}_radio_intro.mp3")
+            # Generate intro audio with SSML
+            final_audio_path = os.path.join(cache_dir, f"{artist_name}_radio_intro_combined.mp3")
             audio_gen = AudioGenerator()
+            
+            print("\n=== Script being sent to ElevenLabs ===")
+            print(f"Length: {len(script)} characters")
+            print(f"Content: {script}\n")
+            
+            # Generate audio with SSML support
             audio_gen.generate_radio_intro_audio(
-                segmented_radio_intro,
+                script,
                 output_path=final_audio_path,
-                speed=float(dj_options.get('speed', 1.1)) if dj_options else 1.1
+                use_ssml=True  # New parameter to indicate SSML support
             )
             
             if not os.path.exists(final_audio_path) or os.path.getsize(final_audio_path) == 0:
@@ -453,8 +303,9 @@ class AIRadioGenerator:
             if not songs:
                 return {"intro_audio": os.path.basename(final_audio_path)}
             
-            # Track all audio paths for final combination and cleanup
-            all_audio_paths = [final_audio_path]
+            # Add the intro audio path
+            all_audio_paths.append(final_audio_path)
+            generated_files.append(final_audio_path)  # Track this as a generated file
 
             # Process each song and add transitions
             for i in range(len(songs)):
@@ -477,8 +328,8 @@ class AIRadioGenerator:
                         length=dj_options.get('length', 'medium')
                     )
                     
-                    # Segment the transition for more natural speech
-                    transition_segments = self.segment_script(transition_text)
+                    # Enhance transition with SSML
+                    enhanced_transition = self.enhance_script_with_emphasis(transition_text)
                     
                     # Generate audio for transition
                     transition_filename = f"{artist_name}_transition_{i}_{uuid.uuid4().hex[:8]}.mp3"
@@ -486,13 +337,14 @@ class AIRadioGenerator:
                     print(f"Generating transition: {transition_path}")
                     
                     audio_gen.generate_radio_intro_audio(
-                        transition_segments,
+                        enhanced_transition,
                         output_path=transition_path,
-                        speed=float(dj_options.get('speed', 1.1))
+                        use_ssml=True  # New parameter to indicate SSML support
                     )
                     
                     if os.path.exists(transition_path) and os.path.getsize(transition_path) > 0:
                         all_audio_paths.append(transition_path)
+                        generated_files.append(transition_path)  # Track this as a generated file
                     else:
                         raise ValueError(f"Failed to create transition audio file: {transition_path}")
 
@@ -512,9 +364,10 @@ class AIRadioGenerator:
 
         except Exception as e:
             print(f"Error generating radio intro audio: {str(e)}")
-            # Clean up any partial files
-            for path in all_audio_paths:
+            # Clean up only the generated files, not the original songs
+            for path in generated_files:
                 if os.path.exists(path):
+                    print(f"Cleaning up generated file: {path}")
                     os.remove(path)
             raise ValueError(f"Audio generation failed: {str(e)}")
 
@@ -525,7 +378,7 @@ class AIRadioGenerator:
         """
         script_data = self.generate_script_and_segments(artist_name)
         try:
-            audio_data = self.generate_audio(artist_name, script_data["segmented_radio_intro"])
+            audio_data = self.generate_audio(artist_name, script_data["ai_radio_intro"])
             script_data.update(audio_data)
         except Exception as e:
             print(f"Error in audio generation: {e}")
@@ -533,56 +386,185 @@ class AIRadioGenerator:
 
     def generate_dj_transition(self, current_song: Dict, next_song: Dict, style: str = "energetic", length: str = "medium") -> str:
         """
-        Generate a DJ transition between two songs using AI.
+        Generate a vibrant, engaging AI DJ transition between two songs.
+
+        Args:
+            current_song (Dict): Information about the current song.
+            next_song (Dict): Information about the next song.
+            style (str): Desired speaking style ("energetic", "smooth", "storytelling", "technical", "poetic").
+            length (str): Length of transition ("short", "medium", "long").
+
+        Returns:
+            str: AI-generated DJ transition script.
+        """
+        # Extract excerpts from transcripts (first 2-3 lines)
+        current_excerpt = ' '.join(current_song.get('transcript', '').split('\n')[:3])
+        next_excerpt = ' '.join(next_song.get('transcript', '').split('\n')[:3])
+
+        # Define length ranges (words)
+        length_ranges = {
+            "short": (15, 30),
+            "medium": (30, 50),  # Target 30-50 words for medium length
+            "long": (50, 80)
+        }
+        min_words, max_words = length_ranges.get(length, length_ranges["medium"]) # Default to medium
+
+        # Construct the AI prompt with vibrant language
+        prompt = f"""You are a high-energy, charismatic radio DJ renowned for crafting vibrant, captivating transitions between songs.
+
+        CURRENT SONG:
+        Title: {current_song.get('name', 'Unknown Title')}
+        Artist: {current_song.get('artist', 'Unknown Artist')}
+        Lyric Excerpt: "{current_excerpt}"
+
+        NEXT SONG:
+        Title: {next_song.get('name', 'Unknown Title')}
+        Artist: {next_song.get('artist', 'Unknown Artist')}
+        Lyric Excerpt: "{next_excerpt}"
+
+        INSTRUCTIONS:
+        - Highlight the high-energy mood or standout theme from the current song
+        - Generate enthusiasm and build anticipation for the next track
+        - Use vibrant, engaging, and conversational language
+        - Connect thematic elements seamlessly
+        - Length: between {min_words} and {max_words} words
+        - Style: {style}
+        - Ensure the transition script is a complete, finished piece without abrupt endings.
+
+        STYLE GUIDELINES:
+        {self._get_style_instructions(style)}
+
+        Return ONLY the energetic transition script without additional notes or explanations."""
+
+        # Generate the transition script with increased max_tokens
+        transition_script = self.ai_processor.process_song({
+            "artist": "AI DJ",
+            "name": "song_transition",
+            "transcript": prompt
+        }, max_tokens=300).strip().strip('"\'') # Increased max_tokens to 300
+
+        # Fallback if transition is still too brief (adjust threshold if needed)
+        if len(transition_script.split()) < min_words * 0.8: # Fallback if significantly shorter than min words
+             print(f"Warning: Generated transition is too short ({len(transition_script.split())} words). Using fallback.")
+             transition_script = self._generate_fallback_transition(current_song, next_song, current_excerpt, next_excerpt)
+
+        return transition_script
+
+    def _get_style_instructions(self, style: str) -> str:
+        """
+        Get style-specific instructions for transitions.
+
+        Args:
+            style (str): The desired style
+
+        Returns:
+            str: Style instructions
+        """
+        style_instructions = {
+            "energetic": "Bring high energy, excitement, and lively language to energize your listeners!",
+            "smooth": "Use a soothing, relaxed tone, perfect for mellow or late-night sets.",
+            "storytelling": "Connect songs through a brief, engaging story.",
+            "technical": "Discuss intriguing musical aspects or production details of the songs.",
+            "poetic": "Use poetic, metaphor-rich language to create an emotional connection."
+        }
+        return style_instructions.get(style, style_instructions["smooth"])
+
+
+    def _generate_fallback_transition(self, current_song: Dict, next_song: Dict, current_excerpt: str, next_excerpt: str) -> str:
+        """
+        Generate a fallback transition when the AI-generated one is too brief.
         
         Args:
-            current_song (Dict): Current song data
-            next_song (Dict): Next song data
-            style (str): Style of the transition
-            length (str): Length of the transition
+            current_song (Dict): Current song information
+            next_song (Dict): Next song information
+            current_excerpt (str): Current song excerpt
+            next_excerpt (str): Next song excerpt
             
         Returns:
-            str: Generated transition script
+            str: Fallback transition script
         """
-        # Define length parameters (in words)
-        length_params = {
-            "short": (15, 25),
-            "medium": (25, 40),
-            "long": (40, 60)
-        }
-        min_words, max_words = length_params.get(length, length_params["medium"])
-        
-        # Create base transition prompt
-        base_prompt = f"""You are a professional radio DJ creating a smooth transition between songs.
-        Current Song: {current_song.get('name', '')} by {current_song.get('artist', '')}
-        Next Song: {next_song.get('name', '')} by {next_song.get('artist', '')}
-        
-        Create a natural, engaging transition that:
-        1. References elements or mood from the current song
-        2. Creates anticipation for the next song
-        3. Maintains the energy and flow
-        4. Sounds human and conversational
-        
-        Keep it between {min_words} and {max_words} words.
-        Make it feel like a real radio DJ speaking naturally."""
+        return (
+            f"That was '{current_song.get('name', '')}' by {current_song.get('artist', '')}, "
+            f"bringing you {current_excerpt[:100]}... "
+            f"Next up is '{next_song.get('name', '')}' by {next_song.get('artist', '')}, "
+            f"which {next_excerpt[:100]}..."
+        )
 
-        # Define style-specific additions
-        style_additions = {
-            "energetic": "\nUse high-energy language and create excitement!",
-            "smooth": "\nKeep it mellow and flowing, perfect for late-night radio.",
-            "storytelling": "\nWeave a brief narrative that connects these songs together.",
-            "technical": "\nInclude interesting musical or production details about the songs.",
-            "poetic": "\nUse metaphors and poetic language to paint a mood."
-        }
+    def generate_enhanced_script(self, artist_name: str, songs_data: List[Dict]) -> str:
+        """
+        Generate a clean, natural radio script using the existing prompt structure.
+        The script will be enhanced with SSML in a separate step.
+        """
+        # Use the existing prompt generation logic
+        radio_intro_prompt = self.generate_radio_intro_prompt(songs_data)
         
-        # Combine prompts
-        full_prompt = base_prompt + style_additions.get(style, style_additions["smooth"])
-        
-        # Generate transition using AI
-        transition = self.ai_processor.process_song({
-            "artist": "DJ",
-            "name": "song_transition",
-            "transcript": full_prompt
+        # Generate the script using the existing prompt
+        return self.ai_processor.process_song({
+            "artist": artist_name,
+            "name": f"{artist_name} radio intro",
+            "transcript": radio_intro_prompt
         })
 
-        return transition.strip()
+    def enhance_script_with_emphasis(self, script: str) -> str:
+        """
+        Enhance a clean script with SSML markers for dynamic speech using OpenAI.
+        """
+        prompt = f"""You are a voice production expert. Enhance this radio script with SSML markers for dynamic speech.
+
+        Original script:
+        {script}
+
+        Return ONLY the SSML-enhanced script with no explanations or notes. Use this format:
+        <speak>
+            <prosody rate="fast" pitch="+25%">
+                <emphasis level="strong">[HIGH ENERGY OPENING]</emphasis>
+            </prosody>
+            <break time="800ms"/>
+            [REST OF SCRIPT WITH APPROPRIATE EMPHASIS AND PACING]
+        </speak>
+
+        Guidelines:
+        - Add natural pauses between sentences (300ms to 1500ms)
+        - Vary the pitch throughout, using higher pitches sometimes for emphasis or excitement (+5% to +40%)
+        - Add emphasis on key words and phrases
+        - Adjust speaking rates for different parts
+        - Keep the original meaning and flow
+        - Make the opening attention-grabbing
+        - Create smooth transitions
+        - DO NOT include any explanations or reasoning
+        - DO NOT include any sound effects or music cues
+        - DO NOT include any DJ annotations or voice descriptions
+        - ONLY include the actual script with SSML tags
+        - Ensure the SSML is well-formed and complete, ending with a closing </speak> tag.
+
+        Return ONLY the SSML-enhanced script, nothing else."""
+
+        # Increased max_tokens to ensure the full SSML is generated
+        enhanced_script = self.ai_processor.process_song({
+            "artist": "voice_enhancement",
+            "name": "enhance_script",
+            "transcript": prompt
+        }, max_tokens=700)
+
+        # Extract only the SSML content and clean it
+        import re
+
+        # First, try to find the SSML content
+        ssml_match = re.search(r'<speak>.*?</speak>', enhanced_script, re.DOTALL)
+        if ssml_match:
+            ssml_content = ssml_match.group(0)
+
+            # Remove any explanatory text or annotations
+            ssml_content = re.sub(r'\([^)]*\)', '', ssml_content)  # Remove parenthetical notes
+            ssml_content = re.sub(r'\*\*[^*]*\*\*', '', ssml_content)  # Remove bold text
+            ssml_content = re.sub(r'\[[^\]]*\]', '', ssml_content)  # Remove bracketed text
+            ssml_content = re.sub(r'Reasoning:.*?(?=<|$)', '', ssml_content, flags=re.DOTALL)  # Remove reasoning
+            ssml_content = re.sub(r'DJ:.*?(?=<|$)', '', ssml_content, flags=re.DOTALL)  # Remove DJ annotations
+
+            # Clean up any extra whitespace
+            ssml_content = re.sub(r'\s+', ' ', ssml_content)
+            ssml_content = re.sub(r'>\s+<', '><', ssml_content)
+
+            return ssml_content.strip()
+
+        return enhanced_script

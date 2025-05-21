@@ -38,6 +38,11 @@ class MusicManager:
         if not artist_path.exists():
             raise ValueError(f"Artist directory '{artist_name}' does not exist")
 
+        print(f"\n=== Scanning for songs in {artist_path} ===")
+        print("Found files:")
+        for file in artist_path.iterdir():
+            print(f"- {file.name} ({file.suffix})")
+
         songs = []
         for song_file in artist_path.glob("*"):
             if song_file.is_file() and song_file.suffix.lower() in ['.mp3', '.wav', '.m4a']:
@@ -47,6 +52,10 @@ class MusicManager:
                     'format': song_file.suffix[1:],
                     'size': song_file.stat().st_size
                 })
+        
+        print(f"\nFound {len(songs)} audio files:")
+        for song in songs:
+            print(f"- {song['name']} ({song['format']})")
         
         return songs
 
