@@ -6,9 +6,9 @@ import './globals.css';
 import ProviderWrapper from 'store/ProviderWrapper';
 
 export const metadata: Metadata = {
-  title: 'Berry - React Material Admin Dashboard Template by CodedThemes',
+  title: 'Office Radio – AI-Powered Radio Management',
   description:
-    'Start your next React project with Berry admin template. It build with Reactjs, Material-UI, Redux, and Hook for faster web development.'
+    'Manage AI-driven radio channels, upload music, and control DJ settings with the Office Radio admin panel. Built for artists and admins to automate and streamline 24/7 broadcasting using intelligent voice and music transitions.',
 };
 
 // ==============================|| ROOT LAYOUT ||============================== //

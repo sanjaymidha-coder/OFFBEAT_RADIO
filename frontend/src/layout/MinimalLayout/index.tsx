@@ -12,7 +12,6 @@ interface Props {
 const MinimalLayout: FC<Props> = ({ children }) => (
   <>
     {children}
-    <Customization />
   </>
 );
 

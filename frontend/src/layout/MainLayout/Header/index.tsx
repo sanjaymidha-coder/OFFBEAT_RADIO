@@ -7,13 +7,12 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 // project imports
 import useConfig from 'hooks/useConfig';
 import LogoSection from '../LogoSection';
-import SearchSection from './SearchSection';
 import MobileSection from './MobileSection';
 import ProfileSection from './ProfileSection';
 import FullScreenSection from './FullScreenSection';
-import LocalizationSection from './LocalizationSection';
 import MegaMenuSection from './MegaMenuSection';
 import NotificationSection from './NotificationSection';
+import ThemeToggle from './ThemeToggle';
 
 import { handlerDrawerOpen, useGetMenuMaster } from 'api/menu';
 
@@ -65,8 +64,6 @@ const Header = () => {
         )}
       </Box>
 
-      {/* header search */}
-      <SearchSection />
       <Box sx={{ flexGrow: 1 }} />
       <Box sx={{ flexGrow: 1 }} />
 
@@ -75,9 +72,9 @@ const Header = () => {
         <MegaMenuSection />
       </Box>
 
-      {/* live customization & localization */}
+      {/* theme toggle */}
       <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
-        <LocalizationSection />
+        <ThemeToggle />
       </Box>
 
       {/* notification */}

@@ -20,10 +20,10 @@ const config: ConfigProps = {
   borderRadius: 8,
   outlinedFilled: true,
   mode: ThemeMode.LIGHT,
-  presetColor: 'default',
+  presetColor: 'theme2',
   i18n: 'en',
   themeDirection: ThemeDirection.LTR,
-  container: false
+  container: true
 };
 
 export default config;
