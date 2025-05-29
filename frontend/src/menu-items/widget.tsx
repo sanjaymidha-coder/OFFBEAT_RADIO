@@ -14,7 +14,8 @@ const icons = {
   widget: IconChartArcs,
   statistics: IconChartArcs,
   data: IconClipboardList,
-  chart: IconChartInfographic
+  chart: IconChartInfographic,
+  analytics: IconChartInfographic
 };
 
 const loadingMenu: NavItemType = {
@@ -44,6 +45,14 @@ const loadingMenu: NavItemType = {
       type: 'item',
       icon: IconLoader,
       url: '/widget/chart',
+      breadcrumbs: false
+    },
+    {
+      id: 'analytics',
+      title: 'analytics',
+      type: 'item',
+      icon: IconChartInfographic,
+      url: '/dashboard/analytics',
       breadcrumbs: false
     }
   ]

@@ -14,7 +14,6 @@ import NavGroup from './NavGroup';
 import useConfig from 'hooks/useConfig';
 
 import menuItem from 'menu-items';
-import { Menu } from 'menu-items/widget';
 import { HORIZONTAL_MAX_ITEM } from 'config';
 import { useGetMenuMaster, useGetMenu } from 'api/menu';
 
@@ -37,24 +36,8 @@ const MenuList = () => {
   const [selectedID, setSelectedID] = useState<string | undefined>('');
   const [menuItems, setMenuItems] = useState<{ items: NavItemType[] }>({ items: [] });
 
-  let widgetMenu = Menu();
-
   useLayoutEffect(() => {
-    const isFound = menuItem.items.some((element) => {
-      if (element.id === 'group-widget') {
-        return true;
-      }
-      return false;
-    });
-    if (menuLoading) {
-      menuItem.items.splice(1, 0, widgetMenu);
-      setMenuItems({ items: [...menuItem.items] });
-    } else if (!menuLoading && widgetMenu?.id !== undefined && !isFound) {
-      menuItem.items.splice(1, 1, widgetMenu);
-      setMenuItems({ items: [...menuItem.items] });
-    } else {
-      setMenuItems({ items: [...menuItem.items] });
-    }
+    setMenuItems({ items: [...menuItem.items] });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [menuLoading]);
 
