@@ -34,14 +34,6 @@ const djsVoices: NavItemType = {
       breadcrumbs: false
     },
     {
-      id: 'voice-management',
-      title: <FormattedMessage id="voice-management" defaultMessage="Voice Management" />,
-      type: 'item',
-      url: '/djs-voices/voice-management',
-      icon: icons.IconMicrophone,
-      breadcrumbs: false
-    },
-    {
       id: 'prompt-templates',
       title: <FormattedMessage id="prompt-templates" defaultMessage="Prompt Templates" />,
       type: 'item',

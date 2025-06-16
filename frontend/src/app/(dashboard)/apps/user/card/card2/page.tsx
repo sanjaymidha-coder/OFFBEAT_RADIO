@@ -1,7 +1,7 @@
-import Card2 from 'views/apps/user/card/card2';
+import ArtistCard from 'views/apps/user/card/ArtistCard';
 
 // ==============================|| PAGE ||============================== //
 
-export default function Card2Page() {
-  return <Card2 />;
+export default function ArtistCardPage() {
+  return <ArtistCard />;
 }
