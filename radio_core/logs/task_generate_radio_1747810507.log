@@ -1,0 +1,8 @@
+2025-05-21 12:25:07,312 - INFO - === Starting new task: generate_radio_1747810507 ===
+2025-05-21 12:25:07,312 - INFO - Log file: C:\Users\risha\OneDrive\Documents\GitHub\OFFBEAT_RADIO\backend\logs\task_generate_radio_1747810507.log
+2025-05-21 12:25:07,312 - INFO - Starting task generate_radio_1747810507
+2025-05-21 12:25:07,312 - INFO - Processing radio generation for artist: mark_ronson
+2025-05-21 12:25:07,312 - INFO - DJ transitions enabled: True
+2025-05-21 12:25:07,312 - INFO - Task generate_radio_1747810507 - fetching_songs: Fetching songs data...
+2025-05-21 12:25:07,344 - ERROR - Error in radio generation task generate_radio_1747810507: 'AIRadioGenerator' object has no attribute 'get_songs_for_artist'
+2025-05-21 12:25:07,344 - ERROR - Task generate_radio_1747810507 failed: 'AIRadioGenerator' object has no attribute 'get_songs_for_artist'

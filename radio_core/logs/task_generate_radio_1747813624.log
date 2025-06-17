@@ -1,0 +1,14 @@
+2025-05-21 13:17:04,216 - INFO - === Starting new task: generate_radio_1747813624 ===
+2025-05-21 13:17:04,216 - INFO - Log file: C:\Users\risha\OneDrive\Documents\GitHub\OFFBEAT_RADIO\backend\logs\task_generate_radio_1747813624.log
+2025-05-21 13:17:04,217 - INFO - Starting task generate_radio_1747813624
+2025-05-21 13:17:04,217 - INFO - Processing radio generation for artist: mark_ronson
+2025-05-21 13:17:04,217 - INFO - DJ transitions enabled: True
+2025-05-21 13:17:04,217 - INFO - Task generate_radio_1747813624 - fetching_songs: Fetching songs data with transcripts...
+2025-05-21 13:17:04,240 - INFO - Found 1 songs for mark_ronson
+2025-05-21 13:17:04,240 - INFO - Task generate_radio_1747813624 - script_generation: Generating radio script...
+2025-05-21 13:17:11,035 - INFO - Script generation completed successfully
+2025-05-21 13:17:11,035 - INFO - Task generate_radio_1747813624 - script_enhancement: Enhancing script with SSML...
+2025-05-21 13:18:51,399 - INFO - Script enhancement completed successfully
+2025-05-21 13:18:51,399 - INFO - Task generate_radio_1747813624 - audio_generation: Generating audio...
+2025-05-21 13:18:52,110 - ERROR - Error in radio generation task generate_radio_1747813624: Audio generation failed: ElevenLabs API error: 401 {"detail":{"status":"quota_exceeded","message":"This request exceeds your quota of 10000. You have 2386 credits remaining, while 3718 credits are required for this request."}}
+2025-05-21 13:18:52,110 - ERROR - Task generate_radio_1747813624 failed: Audio generation failed: ElevenLabs API error: 401 {"detail":{"status":"quota_exceeded","message":"This request exceeds your quota of 10000. You have 2386 credits remaining, while 3718 credits are required for this request."}}

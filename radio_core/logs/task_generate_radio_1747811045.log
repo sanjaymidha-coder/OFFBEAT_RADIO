@@ -1,0 +1,10 @@
+2025-05-21 12:34:05,922 - INFO - === Starting new task: generate_radio_1747811045 ===
+2025-05-21 12:34:05,922 - INFO - Log file: C:\Users\risha\OneDrive\Documents\GitHub\OFFBEAT_RADIO\backend\logs\task_generate_radio_1747811045.log
+2025-05-21 12:34:05,922 - INFO - Starting task generate_radio_1747811045
+2025-05-21 12:34:05,922 - INFO - Processing radio generation for artist: mark_ronson
+2025-05-21 12:34:05,922 - INFO - DJ transitions enabled: True
+2025-05-21 12:34:05,922 - INFO - Task generate_radio_1747811045 - fetching_songs: Fetching songs data with transcripts...
+2025-05-21 12:34:05,922 - INFO - Found 2 songs for mark_ronson
+2025-05-21 12:34:05,936 - INFO - Task generate_radio_1747811045 - script_generation: Generating radio script...
+2025-05-21 12:34:05,950 - ERROR - Error in radio generation task generate_radio_1747811045: Error processing song: API request failed with status 404
+2025-05-21 12:34:05,950 - ERROR - Task generate_radio_1747811045 failed: Error processing song: API request failed with status 404

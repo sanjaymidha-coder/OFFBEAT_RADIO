@@ -1,0 +1,114 @@
+{
+  "id": "f495edc0-ad4c-4959-8187-a8e9ef95e451",
+  "artist_name": "adele",
+  "enable_dj_transitions": true,
+  "dj_options": {
+    "style": "energetic",
+    "length": "medium",
+    "speed": 1.1
+  },
+  "created_at": "2025-05-16T12:07:29.988296",
+  "status": "created",
+  "current_step": "script_segmentation",
+  "steps": {
+    "script_generation": {
+      "status": "completed",
+      "data": {
+        "radio_intro_prompt": "You are a professional radio DJ host with a natural, poetic, and conversational voice — inspired by BBC Radio 1 and NPR.\n\n            Your task is to write a radio intro script (under 50 words) that sounds like a real DJ welcoming the listener and setting the mood for the track.\n\n            🎙️ Tone: Warm, reflective, poetic, and HUMAN — do not sound like an AI.\n            🎵 Style: Natural speech with emotional connection. Use metaphors, mood setting, or short storytelling.\n\n            Song Transcripts:\n            Song: Adele - Hello\nTranscript:\n I just got here and I think I'm losing signal already. Hello? Can you hear me now? Sorry. Sorry. Sorry. Sorry. Sorry. Sorry. Hello? Hello, it's me. I was wondering if after all these years you'd like...\n\nSong: Adele - Someone Like You\nTranscript:\n I That's all settle down that you found a girl and you're married That's your dreams came true Guess she gave you things I didn't give to you Old friend Why are you so shy and like you to hold back O...\n\n\n            Here are some example scripts to inspire your style (replace {artist} and {song_name} with actual values):\n            Script: Tonight, I need your company. We’re diving into the lineup for Saturday at Radio 1’s Big Weekend in Liverpool. No frills, just music. First up, Sam Fender—let’s go.\nScript: Welcome to Piano Room Chill with Joe Wiley. For the next two hours, relax with handpicked performances from legends and rising stars. Let’s begin with the beautiful 'Stay With Me' by Sam Smith and the BBC Concert Orchestra.\nScript: What’s up? What are you up to this weekend? Text me on 03700 100 100—I’ll give you a shoutout! Until then, it’s an hour of back-to-back anthems from Rudimental, DJ Fresh, and Red Light. Let’s get into it!\nScript: Big salute to the MOBOs! Best Video? Skepta – 'That’s Not Me.' From streets to the spotlight, this one's for the real ones. Only cost £80, and still changed the game. Salute to Stormzy and all the young MCs coming up!\nScript: You’re locked into Asian Network Certified Mixes with Meenakies Kanda. Kicking it off this morning with DJ Harps’ Anthem Mix. Get your shoutouts in—03459 440445. Let’s turn up the vibes and light up your morning.\n\n            Write a spoken-style intro that:\n            * Feels natural and unscripted\n            * Has a soft welcome\n            * Sets a mood that matches the songs\n            * Ends by naturally introducing the artist + track\n\n            Only write the final radio script — no extra explanations or markdown.",
+        "ai_radio_intro": "(Sound of gentle vinyl crackle fades in, then fades slightly under voice)\n\nSometimes, you just need to hear a familiar hello, don't you? A whisper across the years. A feeling of…recognition. Like coming home. This next one... it's a moment, really. A quiet, beautiful ache. Here’s Adele with ‘Hello.’"
+      }
+    },
+    "script_segmentation": {
+      "status": "completed",
+      "data": {
+        "segments": [
+          {
+            "audio": "Sometimes, you just need to hear a familiar hello.",
+            "speed": 0.98,
+            "break_after": 1500
+          },
+          {
+            "audio": "Don't you?",
+            "speed": 0.95,
+            "break_after": 800
+          },
+          {
+            "audio": "A whisper across the years.",
+            "speed": 1.0,
+            "break_after": 1200
+          },
+          {
+            "audio": "A feeling of… recognition.",
+            "speed": 0.97,
+            "break_after": 1800
+          },
+          {
+            "audio": "Like coming home.",
+            "speed": 0.99,
+            "break_after": 1000
+          },
+          {
+            "audio": "This next one... it's a moment, really.",
+            "speed": 0.96,
+            "break_after": 1600
+          },
+          {
+            "audio": "A quiet, beautiful ache.",
+            "speed": 1.0,
+            "break_after": 1400
+          },
+          {
+            "audio": "Here’s Adele with 'Hello'.",
+            "speed": 1.05,
+            "break_after": 1000
+          }
+        ]
+      }
+    },
+    "audio_generation": {
+      "status": "pending",
+      "segments": [
+        {
+          "status": "completed",
+          "file_path": "adele_segment_b3d6c69b.mp3"
+        },
+        {
+          "status": "completed",
+          "file_path": "adele_segment_ae6fb0d0.mp3"
+        },
+        {
+          "status": "completed",
+          "file_path": "adele_segment_2ef22807.mp3"
+        },
+        {
+          "status": "completed",
+          "file_path": "adele_segment_7c17d0cc.mp3"
+        },
+        {
+          "status": "completed",
+          "file_path": "adele_segment_0b5eabae.mp3"
+        },
+        {
+          "status": "completed",
+          "file_path": "adele_segment_338abbfb.mp3"
+        },
+        {
+          "status": "completed",
+          "file_path": "adele_segment_70e06c26.mp3"
+        },
+        {
+          "status": "completed",
+          "file_path": "adele_segment_dd602dd7.mp3"
+        }
+      ]
+    },
+    "dj_transitions": {
+      "status": "pending",
+      "transitions": []
+    },
+    "final_combination": {
+      "status": "pending",
+      "output_files": null
+    }
+  }
+}

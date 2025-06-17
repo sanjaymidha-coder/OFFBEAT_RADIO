@@ -1,0 +1,14 @@
+2025-05-21 12:51:36,252 - INFO - === Starting new task: generate_radio_1747812096 ===
+2025-05-21 12:51:36,253 - INFO - Log file: C:\Users\risha\OneDrive\Documents\GitHub\OFFBEAT_RADIO\backend\logs\task_generate_radio_1747812096.log
+2025-05-21 12:51:36,253 - INFO - Starting task generate_radio_1747812096
+2025-05-21 12:51:36,253 - INFO - Processing radio generation for artist: mark_ronson
+2025-05-21 12:51:36,253 - INFO - DJ transitions enabled: True
+2025-05-21 12:51:36,253 - INFO - Task generate_radio_1747812096 - fetching_songs: Fetching songs data with transcripts...
+2025-05-21 12:51:36,255 - INFO - Found 2 songs for mark_ronson
+2025-05-21 12:51:36,255 - INFO - Task generate_radio_1747812096 - script_generation: Generating radio script...
+2025-05-21 12:51:51,327 - INFO - Script generation completed successfully
+2025-05-21 12:51:51,327 - INFO - Task generate_radio_1747812096 - script_enhancement: Enhancing script with SSML...
+2025-05-21 12:52:59,166 - INFO - Script enhancement completed successfully
+2025-05-21 12:52:59,167 - INFO - Task generate_radio_1747812096 - audio_generation: Generating audio...
+2025-05-21 12:53:00,154 - ERROR - Error in radio generation task generate_radio_1747812096: cannot access local variable 'all_audio_paths' where it is not associated with a value
+2025-05-21 12:53:00,154 - ERROR - Task generate_radio_1747812096 failed: cannot access local variable 'all_audio_paths' where it is not associated with a value
