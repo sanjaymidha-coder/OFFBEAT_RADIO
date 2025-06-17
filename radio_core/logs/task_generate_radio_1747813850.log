@@ -1,0 +1,14 @@
+2025-05-21 13:20:50,024 - INFO - === Starting new task: generate_radio_1747813850 ===
+2025-05-21 13:20:50,024 - INFO - Log file: C:\Users\risha\OneDrive\Documents\GitHub\OFFBEAT_RADIO\backend\logs\task_generate_radio_1747813850.log
+2025-05-21 13:20:50,024 - INFO - Starting task generate_radio_1747813850
+2025-05-21 13:20:50,024 - INFO - Processing radio generation for artist: mark_ronson
+2025-05-21 13:20:50,024 - INFO - DJ transitions enabled: True
+2025-05-21 13:20:50,024 - INFO - Task generate_radio_1747813850 - fetching_songs: Fetching songs data with transcripts...
+2025-05-21 13:20:50,024 - INFO - Found 1 songs for mark_ronson
+2025-05-21 13:20:50,024 - INFO - Task generate_radio_1747813850 - script_generation: Generating radio script...
+2025-05-21 13:20:58,199 - INFO - Script generation completed successfully
+2025-05-21 13:20:58,199 - INFO - Task generate_radio_1747813850 - script_enhancement: Enhancing script with SSML...
+2025-05-21 13:21:32,189 - INFO - Script enhancement completed successfully
+2025-05-21 13:21:32,189 - INFO - Task generate_radio_1747813850 - audio_generation: Generating audio...
+2025-05-21 13:21:35,792 - ERROR - Error in radio generation task generate_radio_1747813850: Audio generation failed: Failed to create final show audio file: cache\audio\mark_ronson_full_show.mp3
+2025-05-21 13:21:35,792 - ERROR - Task generate_radio_1747813850 failed: Audio generation failed: Failed to create final show audio file: cache\audio\mark_ronson_full_show.mp3

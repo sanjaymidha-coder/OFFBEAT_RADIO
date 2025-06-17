@@ -1,0 +1,12 @@
+2025-05-21 12:27:53,417 - INFO - === Starting new task: generate_radio_1747810673 ===
+2025-05-21 12:27:53,417 - INFO - Log file: C:\Users\risha\OneDrive\Documents\GitHub\OFFBEAT_RADIO\backend\logs\task_generate_radio_1747810673.log
+2025-05-21 12:27:53,417 - INFO - Starting task generate_radio_1747810673
+2025-05-21 12:27:53,417 - INFO - Processing radio generation for artist: mark_ronson
+2025-05-21 12:27:53,417 - INFO - DJ transitions enabled: True
+2025-05-21 12:27:53,417 - INFO - Task generate_radio_1747810673 - fetching_songs: Fetching songs data with transcripts...
+2025-05-21 12:27:53,449 - INFO - Found 2 songs for mark_ronson
+2025-05-21 12:27:53,449 - INFO - Task generate_radio_1747810673 - script_generation: Generating radio script...
+2025-05-21 12:28:17,364 - INFO - Script generation completed successfully
+2025-05-21 12:28:17,364 - INFO - Task generate_radio_1747810673 - script_enhancement: Enhancing script with SSML...
+2025-05-21 12:29:40,083 - ERROR - Error in radio generation task generate_radio_1747810673: Error processing song: API request failed with status 502
+2025-05-21 12:29:40,084 - ERROR - Task generate_radio_1747810673 failed: Error processing song: API request failed with status 502

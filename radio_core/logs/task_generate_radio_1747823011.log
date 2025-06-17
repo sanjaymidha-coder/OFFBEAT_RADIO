@@ -1,0 +1,15 @@
+2025-05-21 15:53:31,822 - INFO - === Starting new task: generate_radio_1747823011 ===
+2025-05-21 15:53:31,822 - INFO - Log file: C:\Users\risha\OneDrive\Documents\GitHub\OFFBEAT_RADIO\backend\logs\task_generate_radio_1747823011.log
+2025-05-21 15:53:31,822 - INFO - Starting task generate_radio_1747823011
+2025-05-21 15:53:31,823 - INFO - Processing radio generation for artist: billie_eilish
+2025-05-21 15:53:31,823 - INFO - DJ transitions enabled: True
+2025-05-21 15:53:31,823 - INFO - Task generate_radio_1747823011 - fetching_songs: Fetching songs data with transcripts...
+2025-05-21 15:53:31,847 - INFO - Found 2 songs for billie_eilish
+2025-05-21 15:53:31,848 - INFO - Task generate_radio_1747823011 - script_generation: Generating radio script...
+2025-05-21 15:53:34,684 - INFO - Script generation completed successfully
+2025-05-21 15:53:34,684 - INFO - Task generate_radio_1747823011 - script_enhancement: Enhancing script with SSML...
+2025-05-21 15:53:41,400 - INFO - Script enhancement completed successfully
+2025-05-21 15:53:41,400 - INFO - Task generate_radio_1747823011 - audio_generation: Generating audio...
+2025-05-21 15:54:05,569 - INFO - Task generate_radio_1747823011 - completed: Radio generation completed. Output file: billie_eilish_full_show.mp3
+2025-05-21 15:54:05,569 - INFO - Task generate_radio_1747823011 completed successfully
+2025-05-21 15:54:05,569 - INFO - Task generate_radio_1747823011 completed successfully

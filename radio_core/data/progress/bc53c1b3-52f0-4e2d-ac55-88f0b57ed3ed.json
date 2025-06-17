@@ -1,0 +1,162 @@
+{
+  "id": "bc53c1b3-52f0-4e2d-ac55-88f0b57ed3ed",
+  "artist_name": "billie_eilish",
+  "enable_dj_transitions": false,
+  "dj_options": {
+    "style": "energetic",
+    "length": "medium",
+    "speed": 1.1
+  },
+  "created_at": "2025-05-15T16:08:36.220717",
+  "status": "created",
+  "current_step": "final_combination",
+  "steps": {
+    "script_generation": {
+      "status": "completed",
+      "data": {
+        "radio_intro_prompt": "You are a professional radio DJ host with a natural, poetic, and conversational voice — inspired by BBC Radio 1 and NPR.\n\n            Your task is to write a radio intro script (under 50 words) that sounds like a real DJ welcoming the listener and setting the mood for the track.\n\n            🎙️ Tone: Warm, reflective, poetic, and HUMAN — do not sound like an AI.\n            🎵 Style: Natural speech with emotional connection. Use metaphors, mood setting, or short storytelling.\n\n            Song Transcripts:\n            Song: Billie Eilish - bad guy\nTranscript:\n My invisible line has been I have taken out my invisible line and this is the album My blood is still sleeping, you're on your tip, be toes creeping Up around the black, no one knows, think you're so...\n\nSong: Billie Eilish - Ocean Eyes\nTranscript:\n I've been watching you for some time Can't stop staring at those ocean eyes Burning my cities and nape arms guys Fifteen flares inside those ocean eyes Your ocean eyes all fall You're the night that ...\n\n\n            Here are some example scripts to inspire your style (replace {artist} and {song_name} with actual values):\n            Script: Tonight, I need your company. We’re diving into the lineup for Saturday at Radio 1’s Big Weekend in Liverpool. No frills, just music. First up, Sam Fender—let’s go.\nScript: Welcome to Piano Room Chill with Joe Wiley. For the next two hours, relax with handpicked performances from legends and rising stars. Let’s begin with the beautiful 'Stay With Me' by Sam Smith and the BBC Concert Orchestra.\nScript: What’s up? What are you up to this weekend? Text me on 03700 100 100—I’ll give you a shoutout! Until then, it’s an hour of back-to-back anthems from Rudimental, DJ Fresh, and Red Light. Let’s get into it!\nScript: Big salute to the MOBOs! Best Video? Skepta – 'That’s Not Me.' From streets to the spotlight, this one's for the real ones. Only cost £80, and still changed the game. Salute to Stormzy and all the young MCs coming up!\nScript: You’re locked into Asian Network Certified Mixes with Meenakies Kanda. Kicking it off this morning with DJ Harps’ Anthem Mix. Get your shoutouts in—03459 440445. Let’s turn up the vibes and light up your morning.\n\n            Write a spoken-style intro that:\n            * Feels natural and unscripted\n            * Has a soft welcome\n            * Sets a mood that matches the songs\n            * Ends by naturally introducing the artist + track\n\n            Only write the final radio script — no extra explanations or markdown.",
+        "ai_radio_intro": "(Sound of gentle vinyl crackle fading in, then out)\n\nHello, friend. Just…hello. Sometimes, you know, the quiet moments are the loudest. Like watching the tide pull away, revealing all that’s been hidden beneath. That feeling…that’s where we’re starting tonight. Let’s fall into it together. This is Billie Eilish, and we’re diving into \"bad guy.\""
+      }
+    },
+    "script_segmentation": {
+      "status": "completed",
+      "data": {
+        "segments": [
+          {
+            "audio": "Hello, friend.",
+            "speed": 0.98,
+            "break_after": 500
+          },
+          {
+            "audio": "Just…hello.",
+            "speed": 0.95,
+            "break_after": 400
+          },
+          {
+            "audio": "Sometimes, you know,",
+            "speed": 0.97,
+            "break_after": 300
+          },
+          {
+            "audio": "the quiet moments are the loudest.",
+            "speed": 0.99,
+            "break_after": 450
+          },
+          {
+            "audio": "Like watching the tide",
+            "speed": 0.96,
+            "break_after": 250
+          },
+          {
+            "audio": "pull away,",
+            "speed": 1.0,
+            "break_after": 150
+          },
+          {
+            "audio": "revealing all that’s been hidden",
+            "speed": 0.98,
+            "break_after": 350
+          },
+          {
+            "audio": "beneath.",
+            "speed": 0.95,
+            "break_after": 200
+          },
+          {
+            "audio": "That feeling…",
+            "speed": 0.97,
+            "break_after": 300
+          },
+          {
+            "audio": "that’s where we’re starting tonight.",
+            "speed": 0.99,
+            "break_after": 250
+          },
+          {
+            "audio": "Let’s fall into it together.",
+            "speed": 0.96,
+            "break_after": 400
+          },
+          {
+            "audio": "This is Billie Eilish,",
+            "speed": 1.0,
+            "break_after": 150
+          },
+          {
+            "audio": "and we’re diving into \"bad guy.\"",
+            "speed": 0.98,
+            "break_after": 750
+          }
+        ]
+      }
+    },
+    "audio_generation": {
+      "status": "pending",
+      "segments": [
+        {
+          "status": "completed",
+          "file_path": "billie_eilish_segment_fa82a526.mp3"
+        },
+        {
+          "status": "completed",
+          "file_path": "billie_eilish_segment_bf8172de.mp3"
+        },
+        {
+          "status": "completed",
+          "file_path": "billie_eilish_segment_06e4740e.mp3"
+        },
+        {
+          "status": "completed",
+          "file_path": "billie_eilish_segment_4444e79b.mp3"
+        },
+        {
+          "status": "completed",
+          "file_path": "billie_eilish_segment_fe2a6cfb.mp3"
+        },
+        {
+          "status": "completed",
+          "file_path": "billie_eilish_segment_ed33950f.mp3"
+        },
+        {
+          "status": "completed",
+          "file_path": "billie_eilish_segment_c687c526.mp3"
+        },
+        {
+          "status": "completed",
+          "file_path": "billie_eilish_segment_ee91a20a.mp3"
+        },
+        {
+          "status": "completed",
+          "file_path": "billie_eilish_segment_b120498d.mp3"
+        },
+        {
+          "status": "completed",
+          "file_path": "billie_eilish_segment_16735ef8.mp3"
+        },
+        {
+          "status": "completed",
+          "file_path": "billie_eilish_segment_0a35d766.mp3"
+        },
+        {
+          "status": "completed",
+          "file_path": "billie_eilish_segment_359dc331.mp3"
+        },
+        {
+          "status": "completed",
+          "file_path": "billie_eilish_segment_acc2e981.mp3"
+        }
+      ]
+    },
+    "dj_transitions": {
+      "status": "pending",
+      "transitions": []
+    },
+    "final_combination": {
+      "status": "completed",
+      "output_files": null,
+      "data": {
+        "output_file": "billie_eilish_full_show.mp3"
+      }
+    }
+  }
+}

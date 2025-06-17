@@ -1,0 +1,15 @@
+2025-05-21 15:47:21,789 - INFO - === Starting new task: generate_radio_1747822641 ===
+2025-05-21 15:47:21,790 - INFO - Log file: C:\Users\risha\OneDrive\Documents\GitHub\OFFBEAT_RADIO\backend\logs\task_generate_radio_1747822641.log
+2025-05-21 15:47:21,790 - INFO - Starting task generate_radio_1747822641
+2025-05-21 15:47:21,790 - INFO - Processing radio generation for artist: adele
+2025-05-21 15:47:21,790 - INFO - DJ transitions enabled: True
+2025-05-21 15:47:21,791 - INFO - Task generate_radio_1747822641 - fetching_songs: Fetching songs data with transcripts...
+2025-05-21 15:47:21,813 - INFO - Found 2 songs for adele
+2025-05-21 15:47:21,813 - INFO - Task generate_radio_1747822641 - script_generation: Generating radio script...
+2025-05-21 15:47:24,694 - INFO - Script generation completed successfully
+2025-05-21 15:47:24,694 - INFO - Task generate_radio_1747822641 - script_enhancement: Enhancing script with SSML...
+2025-05-21 15:47:30,347 - INFO - Script enhancement completed successfully
+2025-05-21 15:47:30,362 - INFO - Task generate_radio_1747822641 - audio_generation: Generating audio...
+2025-05-21 15:47:55,481 - INFO - Task generate_radio_1747822641 - completed: Radio generation completed. Output file: adele_full_show.mp3
+2025-05-21 15:47:55,481 - INFO - Task generate_radio_1747822641 completed successfully
+2025-05-21 15:47:55,481 - INFO - Task generate_radio_1747822641 completed successfully

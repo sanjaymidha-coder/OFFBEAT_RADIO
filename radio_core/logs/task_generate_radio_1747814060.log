@@ -1,0 +1,8 @@
+2025-05-21 13:24:20,916 - INFO - === Starting new task: generate_radio_1747814060 ===
+2025-05-21 13:24:20,917 - INFO - Log file: C:\Users\risha\OneDrive\Documents\GitHub\OFFBEAT_RADIO\backend\logs\task_generate_radio_1747814060.log
+2025-05-21 13:24:20,917 - INFO - Starting task generate_radio_1747814060
+2025-05-21 13:24:20,917 - INFO - Processing radio generation for artist: mark_ronson
+2025-05-21 13:24:20,917 - INFO - DJ transitions enabled: True
+2025-05-21 13:24:20,917 - INFO - Task generate_radio_1747814060 - fetching_songs: Fetching songs data with transcripts...
+2025-05-21 13:24:20,939 - ERROR - Error in radio generation task generate_radio_1747814060: No songs found for artist 'mark_ronson'
+2025-05-21 13:24:20,940 - ERROR - Task generate_radio_1747814060 failed: No songs found for artist 'mark_ronson'

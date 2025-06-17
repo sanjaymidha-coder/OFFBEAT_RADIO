@@ -1,0 +1,15 @@
+2025-05-21 13:48:41,603 - INFO - === Starting new task: generate_radio_1747815521 ===
+2025-05-21 13:48:41,603 - INFO - Log file: C:\Users\risha\OneDrive\Documents\GitHub\OFFBEAT_RADIO\backend\logs\task_generate_radio_1747815521.log
+2025-05-21 13:48:41,604 - INFO - Starting task generate_radio_1747815521
+2025-05-21 13:48:41,604 - INFO - Processing radio generation for artist: ed_sheeran
+2025-05-21 13:48:41,604 - INFO - DJ transitions enabled: True
+2025-05-21 13:48:41,604 - INFO - Task generate_radio_1747815521 - fetching_songs: Fetching songs data with transcripts...
+2025-05-21 13:48:41,614 - INFO - Found 2 songs for ed_sheeran
+2025-05-21 13:48:41,614 - INFO - Task generate_radio_1747815521 - script_generation: Generating radio script...
+2025-05-21 13:48:55,731 - INFO - Script generation completed successfully
+2025-05-21 13:48:55,731 - INFO - Task generate_radio_1747815521 - script_enhancement: Enhancing script with SSML...
+2025-05-21 13:49:23,116 - INFO - Script enhancement completed successfully
+2025-05-21 13:49:23,117 - INFO - Task generate_radio_1747815521 - audio_generation: Generating audio...
+2025-05-21 13:52:14,925 - INFO - Task generate_radio_1747815521 - completed: Radio generation completed. Output file: ed_sheeran_full_show.mp3
+2025-05-21 13:52:14,926 - INFO - Task generate_radio_1747815521 completed successfully
+2025-05-21 13:52:14,926 - INFO - Task generate_radio_1747815521 completed successfully

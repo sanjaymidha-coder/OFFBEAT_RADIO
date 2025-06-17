@@ -1,0 +1,8 @@
+2025-05-21 12:23:30,938 - INFO - === Starting new task: generate_radio_1747810410 ===
+2025-05-21 12:23:30,953 - INFO - Log file: C:\Users\risha\OneDrive\Documents\GitHub\OFFBEAT_RADIO\backend\logs\task_generate_radio_1747810410.log
+2025-05-21 12:23:30,953 - INFO - Starting task generate_radio_1747810410
+2025-05-21 12:23:30,953 - INFO - Processing radio generation for artist: mark_ronson
+2025-05-21 12:23:30,953 - INFO - DJ transitions enabled: True
+2025-05-21 12:23:30,953 - INFO - Task generate_radio_1747810410 - script_generation: Generating radio script...
+2025-05-21 12:23:30,970 - ERROR - Error in radio generation task generate_radio_1747810410: 'NoneType' object is not iterable
+2025-05-21 12:23:30,970 - ERROR - Task generate_radio_1747810410 failed: 'NoneType' object is not iterable

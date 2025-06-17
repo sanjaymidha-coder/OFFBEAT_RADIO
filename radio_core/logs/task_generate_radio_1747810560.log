@@ -1,0 +1,8 @@
+2025-05-21 12:26:00,092 - INFO - === Starting new task: generate_radio_1747810560 ===
+2025-05-21 12:26:00,092 - INFO - Log file: C:\Users\risha\OneDrive\Documents\GitHub\OFFBEAT_RADIO\backend\logs\task_generate_radio_1747810560.log
+2025-05-21 12:26:00,092 - INFO - Starting task generate_radio_1747810560
+2025-05-21 12:26:00,092 - INFO - Processing radio generation for artist: mark_ronson
+2025-05-21 12:26:00,092 - INFO - DJ transitions enabled: True
+2025-05-21 12:26:00,092 - INFO - Task generate_radio_1747810560 - fetching_songs: Fetching songs data...
+2025-05-21 12:26:00,123 - ERROR - Error in radio generation task generate_radio_1747810560: 'MusicManager' object has no attribute 'get_songs_for_artist'
+2025-05-21 12:26:00,123 - ERROR - Task generate_radio_1747810560 failed: 'MusicManager' object has no attribute 'get_songs_for_artist'

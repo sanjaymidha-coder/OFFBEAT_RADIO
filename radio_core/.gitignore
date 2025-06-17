@@ -1,0 +1,41 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+eggs/
+parts/
+bin/
+var/
+sdist/
+develop-eggs/
+.installed.cfg
+lib/
+lib64/
+venv/
+env/
+
+# Application specific
+backend/cache/
+backend/logs/
+backend/data/
+backend/output/
+backend/music_uploads/
+backend/data/cache/
+backend/data/progress/
+backend/services/__pycache__/
+backend/config/__pycache__/
+backend/__pycache__/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db

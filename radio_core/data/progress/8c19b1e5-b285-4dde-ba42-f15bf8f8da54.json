@@ -1,0 +1,117 @@
+{
+  "id": "8c19b1e5-b285-4dde-ba42-f15bf8f8da54",
+  "artist_name": "billie_eilish",
+  "enable_dj_transitions": false,
+  "dj_options": {
+    "style": "energetic",
+    "length": "medium",
+    "speed": 1.1
+  },
+  "created_at": "2025-05-15T17:15:09.603499",
+  "status": "created",
+  "current_step": "final_combination",
+  "steps": {
+    "script_generation": {
+      "status": "completed",
+      "data": {
+        "radio_intro_prompt": "You are a professional radio DJ host with a natural, poetic, and conversational voice — inspired by BBC Radio 1 and NPR.\n\n            Your task is to write a radio intro script (under 50 words) that sounds like a real DJ welcoming the listener and setting the mood for the track.\n\n            🎙️ Tone: Warm, reflective, poetic, and HUMAN — do not sound like an AI.\n            🎵 Style: Natural speech with emotional connection. Use metaphors, mood setting, or short storytelling.\n\n            Song Transcripts:\n            Song: Billie Eilish - bad guy\nTranscript:\n My invisible line has been I have taken out my invisible line and this is the album My blood is still sleeping, you're on your tip, be toes creeping Up around the black, no one knows, think you're so...\n\nSong: Billie Eilish - Ocean Eyes\nTranscript:\n I've been watching you for some time Can't stop staring at those ocean eyes Burning my cities and nape arms guys Fifteen flares inside those ocean eyes Your ocean eyes all fall You're the night that ...\n\n\n            Here are some example scripts to inspire your style (replace {artist} and {song_name} with actual values):\n            Script: Tonight, I need your company. We’re diving into the lineup for Saturday at Radio 1’s Big Weekend in Liverpool. No frills, just music. First up, Sam Fender—let’s go.\nScript: Welcome to Piano Room Chill with Joe Wiley. For the next two hours, relax with handpicked performances from legends and rising stars. Let’s begin with the beautiful 'Stay With Me' by Sam Smith and the BBC Concert Orchestra.\nScript: What’s up? What are you up to this weekend? Text me on 03700 100 100—I’ll give you a shoutout! Until then, it’s an hour of back-to-back anthems from Rudimental, DJ Fresh, and Red Light. Let’s get into it!\nScript: Big salute to the MOBOs! Best Video? Skepta – 'That’s Not Me.' From streets to the spotlight, this one's for the real ones. Only cost £80, and still changed the game. Salute to Stormzy and all the young MCs coming up!\nScript: You’re locked into Asian Network Certified Mixes with Meenakies Kanda. Kicking it off this morning with DJ Harps’ Anthem Mix. Get your shoutouts in—03459 440445. Let’s turn up the vibes and light up your morning.\n\n            Write a spoken-style intro that:\n            * Feels natural and unscripted\n            * Has a soft welcome\n            * Sets a mood that matches the songs\n            * Ends by naturally introducing the artist + track\n\n            Only write the final radio script — no extra explanations or markdown.",
+        "ai_radio_intro": "(Sound of gentle rain and distant, echoing chimes fade slightly)\n\nMmm, that feeling… that quiet space between thoughts. Sometimes the world feels a little too bright, a little too loud, doesn’t it? Let’s just… drift for a moment. Let the sound wash over you. This next one feels like a midnight swim, a secret whispered in the dark. It's Billie Eilish – and this is “bad guy.”"
+      }
+    },
+    "script_segmentation": {
+      "status": "completed",
+      "data": {
+        "segments": [
+          {
+            "audio": "Mmm, that feeling… that quiet space.",
+            "speed": 0.98,
+            "break_after": 1500
+          },
+          {
+            "audio": "Sometimes the world feels a little too bright, a little too loud, doesn’t it?",
+            "speed": 1.05,
+            "break_after": 1000
+          },
+          {
+            "audio": "Let’s just… drift for a moment.",
+            "speed": 0.95,
+            "break_after": 1200
+          },
+          {
+            "audio": "Let the sound wash over you.",
+            "speed": 1.0,
+            "break_after": 800
+          },
+          {
+            "audio": "This next one feels like a midnight swim.",
+            "speed": 0.97,
+            "break_after": 1100
+          },
+          {
+            "audio": "A secret whispered in the dark.",
+            "speed": 1.02,
+            "break_after": 900
+          },
+          {
+            "audio": "It's Billie Eilish –",
+            "speed": 1.0,
+            "break_after": 600
+          },
+          {
+            "audio": "and this is “bad guy.”",
+            "speed": 1.05,
+            "break_after": 0
+          }
+        ]
+      }
+    },
+    "audio_generation": {
+      "status": "pending",
+      "segments": [
+        {
+          "status": "completed",
+          "file_path": "billie_eilish_segment_4e2e2cbe.mp3"
+        },
+        {
+          "status": "completed",
+          "file_path": "billie_eilish_segment_2fbedf4a.mp3"
+        },
+        {
+          "status": "completed",
+          "file_path": "billie_eilish_segment_d4ebc138.mp3"
+        },
+        {
+          "status": "completed",
+          "file_path": "billie_eilish_segment_8a4bc26f.mp3"
+        },
+        {
+          "status": "completed",
+          "file_path": "billie_eilish_segment_8d2cdae5.mp3"
+        },
+        {
+          "status": "completed",
+          "file_path": "billie_eilish_segment_fd9b1362.mp3"
+        },
+        {
+          "status": "completed",
+          "file_path": "billie_eilish_segment_73e24519.mp3"
+        },
+        {
+          "status": "completed",
+          "file_path": "billie_eilish_segment_e1bb3352.mp3"
+        }
+      ]
+    },
+    "dj_transitions": {
+      "status": "pending",
+      "transitions": []
+    },
+    "final_combination": {
+      "status": "completed",
+      "output_files": null,
+      "data": {
+        "output_file": "billie_eilish_full_show.mp3"
+      }
+    }
+  }
+}
