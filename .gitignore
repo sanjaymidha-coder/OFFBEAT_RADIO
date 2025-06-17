@@ -1,41 +1,45 @@
-# Python
-__pycache__/
-*.py[cod]
-*.so
-*.egg
-*.egg-info/
-dist/
-build/
-eggs/
-parts/
-bin/
-var/
-sdist/
-develop-eggs/
-.installed.cfg
-lib/
-lib64/
-venv/
-env/
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
-# Application specific
-backend/cache/
-backend/logs/
-backend/data/
-backend/output/
-backend/music_uploads/
-backend/data/cache/
-backend/data/progress/
-backend/services/__pycache__/
-backend/config/__pycache__/
-backend/__pycache__/
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
 
-# IDE
-.idea/
-.vscode/
-*.swp
-*.swo
+# testing
+/coverage
 
-# OS
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# misc
 .DS_Store
-Thumbs.db
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# local env files
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# vercel
+.vercel
+.yarn
+.next
+.faust
+
+## Build artifacts for sitemaps
+/public/sitemap*.xml
+/public/robots.txt
+
+## code editors
+.idea
+.vscode
