@@ -10,7 +10,6 @@ import {
 	PopoverPanel,
 	Transition,
 } from '@headlessui/react'
-import SwitchDarkMode2 from '@/components/SwitchDarkMode/SwitchDarkMode2'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 import { IS_CHISNGHIAX_DEMO_SITE } from '@/contains/site-settings'
@@ -157,7 +156,6 @@ const ControlSettingsDemo = () => {
 												{renderRadioThemeDir()}
 												<div className="flex space-x-2 xl:space-x-4 rtl:space-x-reverse">
 													<span className="text-sm font-medium">Dark mode</span>
-													<SwitchDarkMode2 />
 												</div>
 
 												{renderRadioHomePages()}

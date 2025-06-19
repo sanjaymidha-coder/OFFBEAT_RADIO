@@ -13,7 +13,6 @@ import { useRouter } from 'next/router'
 import CircleLoading from '@/components/Loading/CircleLoading'
 import Alert from '@/components/Alert'
 import Logo from '@/components/Logo/Logo'
-import SwitchDarkMode from '@/components/SwitchDarkMode/SwitchDarkMode'
 import AvatarDropdown from '@/components/Header/AvatarDropdown'
 import CreateBtn from '@/components/Header/CreateBtn'
 import errorHandling from '@/utils/errorHandling'
@@ -141,7 +140,6 @@ const Page: FaustPage<{}> = (props) => {
 							{/* Profile dropdown */}
 							<div className="flex flex-1 items-center justify-end">
 								<CreateBtn />
-								<SwitchDarkMode />
 								<AvatarDropdown />
 							</div>
 						</div>

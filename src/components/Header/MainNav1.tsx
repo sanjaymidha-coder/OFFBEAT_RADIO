@@ -17,7 +17,7 @@ export interface MainNav1Props {
 
 const MainNav1: FC<MainNav1Props> = ({ menuItems, title, description }) => {
 	return (
-		<div className="nc-MainNav1 relative z-10 border-b border-neutral-200/70 bg-white dark:border-transparent dark:bg-neutral-900">
+		<div className="nc-MainNav1 relative z-10 border-b border-neutral-200/70 bg-white">
 			<div className="container">
 				<div className="flex h-16 items-center justify-between py-3 sm:h-20 sm:py-4">
 					<div className="flex flex-1 items-center lg:hidden">
@@ -30,7 +30,7 @@ const MainNav1: FC<MainNav1Props> = ({ menuItems, title, description }) => {
 						<Navigation menuItems={menuItems} className="hidden lg:flex" />
 					</div>
 
-					<div className="flex flex-1 items-center justify-end space-x-1 text-neutral-700 rtl:space-x-reverse dark:text-neutral-100">
+					<div className="flex flex-1 items-center justify-end space-x-1 text-neutral-700 rtl:space-x-reverse">
 						<div className="hidden items-center lg:flex">
 							{!NC_SITE_SETTINGS.site_header?.desktop_header
 								?.hide_create_button && <CreateBtn />}
