@@ -41,7 +41,7 @@ const CreateBtn: FC<Props> = ({ className = 'hidden md:block ' }) => {
 				}}
 			>
 				<PlusIcon className="-ms-1 h-5 w-5" />
-				<span className="ms-2">{T.Create}</span>
+				<span className="ms-2">Upload Your Music</span>
 			</Link>
 		</div>
 	)

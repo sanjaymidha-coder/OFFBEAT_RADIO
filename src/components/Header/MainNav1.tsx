@@ -1,3 +1,4 @@
+import React from 'react'
 import { FC } from 'react'
 import Navigation from '@/components/Navigation/Navigation'
 import MenuBar from '@/components/MenuBar/MenuBar'
@@ -17,23 +18,23 @@ export interface MainNav1Props {
 
 const MainNav1: FC<MainNav1Props> = ({ menuItems, title, description }) => {
 	return (
-		<div className="nc-MainNav1 relative z-10 border-b border-neutral-200/70 bg-white dark:border-transparent dark:bg-neutral-900">
+		<div className="nc-MainNav1 relative z-10 border-b border-neutral-200/70 bg-white dark:bg-white">
 			<div className="container">
-				<div className="flex h-16 items-center justify-between py-3 sm:h-20 sm:py-4">
-					<div className="flex flex-1 items-center lg:hidden">
-						<MenuBar menuItems={menuItems} />
-					</div>
-
-					<div className="flex flex-1 items-center justify-center space-x-4 sm:space-x-10 lg:justify-start 2xl:space-x-14 rtl:space-x-reverse">
+				<div className="flex h-16 items-center py-3 sm:h-20 sm:py-4">
+					{/* Left: Logo */}
+					<div className="flex flex-1 items-center min-w-[140px]">
 						<Brand title={title} description={description} />
-
-						<Navigation menuItems={menuItems} className="hidden lg:flex" />
 					</div>
 
-					<div className="flex flex-1 items-center justify-end space-x-1 text-neutral-700 rtl:space-x-reverse dark:text-neutral-100">
+					{/* Center: Navigation (perfectly centered) */}
+					<div className="flex flex-none items-center justify-center">
+						<Navigation menuItems={menuItems} className="flex justify-center" />
+					</div>
+
+					{/* Right: Actions */}
+					<div className="flex flex-1 items-center justify-end space-x-1 text-neutral-700 rtl:space-x-reverse dark:text-neutral-100 min-w-[140px]">
 						<div className="hidden items-center lg:flex">
-							{!NC_SITE_SETTINGS.site_header?.desktop_header
-								?.hide_create_button && <CreateBtn />}
+							{!NC_SITE_SETTINGS.site_header?.desktop_header?.hide_create_button && <CreateBtn />}
 							<SearchIconBtn className="flex" />
 							<AvatarDropdown />
 						</div>

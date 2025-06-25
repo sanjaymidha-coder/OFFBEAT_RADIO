@@ -1,3 +1,4 @@
+import React from 'react'
 import { NC_SITE_SETTINGS } from '@/contains/site-settings'
 import NextDocument, { Html, Head, Main, NextScript } from 'next/document'
 
@@ -96,7 +97,7 @@ export default class Document extends NextDocument {
 						}}
 					/>
 				</Head>
-				<body className="relative bg-white text-base text-neutral-900 dark:bg-neutral-900/95 dark:text-neutral-100">
+				<body className="relative bg-[#F6F8F9] text-base text-neutral-900 dark:bg-neutral-900/95 dark:text-neutral-100">
 					<Main />
 					<NextScript />
 				</body>

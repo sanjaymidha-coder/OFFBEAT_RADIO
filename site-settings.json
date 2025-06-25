@@ -18,7 +18,7 @@
 		"features_list": ["Create a free account.", "Write your stories."]
 	},
 	"top_banner": {
-		"enable": true,
+		"enable": false,
 		"description": "-50% Intro price for the next 72 hours only!.",
 		"end_link": {
 			"url": "https://themeforest.net/item/ncmaz-nextjs-headless-wordpress-blog-magazine/47815656",
@@ -44,8 +44,8 @@
 		"site_zip": "Your Zip",
 		"site_country": "Your Country",
 		"site_url": "https://www.yoursite.com",
-		"site_logo": "/logo.png",
-		"site_logo_light": "/logo-light.png",
+		"site_logo": "/logo.svg",
+		"site_logo_light": "/logo-light.svg",
 		"site_favicon": "/favicon.png"
 	},
 	"site_socials": [
@@ -76,7 +76,7 @@
 	],
 	"site_header": {
 		"desktop_header": {
-			"header_style": "style3",
+			"header_style": "style1",
 			"hide_create_button": false,
 			"hide_dark_mode_switch": false
 		}
