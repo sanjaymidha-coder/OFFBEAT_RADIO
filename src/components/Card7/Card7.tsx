@@ -35,7 +35,8 @@ const Card7: FC<Card7Props> = ({
 
 	return (
 		<div
-			className={`nc-Card7 group relative z-0 flex flex-col overflow-hidden rounded-3xl ${hoverClass} ${className}`}
+			className={`nc-Card7 group relative z-0 flex flex-col overflow-hidden rounded-3xl bg-white ${hoverClass} ${className}`}
+			style={{ boxShadow: '0px 1px 3px rgba(0, 0, 0, 0.15)' }}
 		>
 			<div className="absolute inset-x-0 top-0 z-[-1] flex items-center justify-between p-3 opacity-0 transition-all duration-300 group-hover:z-10 group-hover:opacity-100">
 				<PostCardLikeAndComment
@@ -58,7 +59,7 @@ const Card7: FC<Card7Props> = ({
 					fill
 					alt={title || ''}
 					sizes="(max-width: 600px) 480px,800px"
-					className="h-full w-full rounded-3xl object-cover"
+					className="h-full w-full rounded-3xl object-contain object-top object-center"
 					src={featuredImage?.sourceUrl || ''}
 				/>
 				<PostTypeFeaturedIcon

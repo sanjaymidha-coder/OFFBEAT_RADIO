@@ -49,8 +49,8 @@ const CardAuthor2: FC<CardAuthor2Props> = ({
 					{name}
 				</h2>
 				<span className="mt-1 flex flex-wrap items-center text-xs text-neutral-500 dark:text-neutral-400">
-					<span>{ncFormatDate(date || '')}</span>
-					{readingTime && (
+					<span>Since: {ncFormatDate(date || '', 'M Y')}</span>
+					{/* {readingTime && (
 						<>
 							<span
 								className={`mx-1 hidden transition-opacity lg:inline ${
@@ -67,7 +67,7 @@ const CardAuthor2: FC<CardAuthor2Props> = ({
 								{readingTime} {T['min read'] ?? 'min read'}
 							</span>
 						</>
-					)}
+					)} */}
 				</span>
 			</div>
 		</Link>

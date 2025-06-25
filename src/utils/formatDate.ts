@@ -5,10 +5,10 @@ type DateFormatter = (d: Date) => string | number
 interface DateFormatters {
 	[key: string]: DateFormatter
 }
-export default function ncFormatDate(date_string: string): string {
+export default function ncFormatDate(date_string: string, format?: string): string {
 	if (!date_string || typeof date_string !== 'string') return ''
 	const date = new Date(date_string)
-	let dateFormat = NC_SITE_SETTINGS?.general_settings?.dateFormat || 'F j, Y'
+	let dateFormat = format || NC_SITE_SETTINGS?.general_settings?.dateFormat || 'F j, Y'
 	if (typeof dateFormat !== 'string') {
 		dateFormat = 'F j, Y'
 	}

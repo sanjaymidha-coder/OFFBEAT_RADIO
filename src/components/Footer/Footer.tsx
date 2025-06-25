@@ -6,6 +6,7 @@ import MyImage from '../MyImage'
 import { flatListToHierarchical } from '@faustwp/core'
 import { NcFooterMenuFieldsFragmentFragment } from '@/__generated__/graphql'
 import Link from 'next/link'
+import Logo from '../Logo/Logo'
 
 interface Props {
 	menuItems: FragmentType<typeof NC_FOOTER_MENU_QUERY_FRAGMENT>[] | null
@@ -56,7 +57,8 @@ export default function Footer({ menuItems }: Props) {
 			</h2>
 			<div className="mx-auto max-w-7xl px-6 pb-8 pt-20 sm:pt-24 lg:px-8 lg:pt-28">
 				<div className="xl:grid xl:grid-cols-3 xl:gap-8">
-					<div className="grid grid-cols-2 gap-8 md:grid-cols-4 xl:col-span-2">
+					<div className="grid grid-cols-2 gap-8 md:grid-cols-3 xl:col-span-2">
+						<Logo />
 						{menus.map(renderMenuItem)}
 					</div>
 					<div className="mt-10 xl:mt-0">
