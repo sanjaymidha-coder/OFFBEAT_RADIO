@@ -1,5 +1,6 @@
 import { FC } from 'react'
 import AvatarDropdown from './AvatarDropdown'
+import SwitchDarkMode from '../SwitchDarkMode/SwitchDarkMode'
 import Navigation from '../Navigation/Navigation'
 import { MainNav1Props } from './MainNav1'
 import Brand from './Brand'
@@ -46,6 +47,10 @@ const MainNav2: FC<MainNav2Props> = ({ menuItems, description, title }) => {
 						{!NC_SITE_SETTINGS.site_header?.desktop_header
 							?.hide_create_button && (
 							<CreateBtn className="hidden self-center md:flex" />
+						)}
+						{!NC_SITE_SETTINGS.site_header?.desktop_header
+							?.hide_dark_mode_switch && (
+							<SwitchDarkMode className="hidden self-center md:flex" />
 						)}
 						<SearchIconBtn className="lg:hidden" />
 						<AvatarDropdown className="self-center" />

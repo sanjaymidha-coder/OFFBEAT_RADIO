@@ -3,6 +3,7 @@ import { FaustPage, getNextStaticProps } from '@faustwp/core'
 import CreateNewPostEditor from '@/components/PostSubmissionEditor/CreateNewPostEditor'
 import { useRouter } from 'next/router'
 import CircleLoading from '@/components/Loading/CircleLoading'
+import SwitchDarkMode from '@/components/SwitchDarkMode/SwitchDarkMode'
 import AvatarDropdown from '@/components/Header/AvatarDropdown'
 import Logo from '@/components/Logo/Logo'
 import CreateBtn from '@/components/Header/CreateBtn'
@@ -54,6 +55,7 @@ const Page: FaustPage<{}> = (props) => {
 							{/* Profile dropdown */}
 							<div className="flex flex-1 items-center justify-end">
 								<CreateBtn className="block" />
+								<SwitchDarkMode />
 								<AvatarDropdown />
 							</div>
 						</div>

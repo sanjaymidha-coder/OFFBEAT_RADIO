@@ -3,7 +3,7 @@
   "private": true,
   "version": "2.10.1",
   "scripts": {
-    "dev": "npm run generate && concurrently \"faust dev\" \"npm run watch-codegen\"",
+    "dev": "npm run generate && concurrently \"next dev\" \"npm run watch-codegen\"",
     "build": "faust build",
     "postbuild": "next-sitemap",
     "generate": "faust generatePossibleTypes",
@@ -17,7 +17,7 @@
   "dependencies": {
     "@apollo/client": "^3.11.10",
     "@faustwp/blocks": "^4.1.0",
-    "@faustwp/cli": "^3.1.1",
+    "@faustwp/cli": "^3.2.3",
     "@faustwp/core": "^3.1.0",
     "@headlessui/react": "^2.2.0",
     "@heroicons/react": "^2.2.0",

@@ -10209,8 +10209,16 @@ export type MenuItemToMenuItemLinkableConnectionEdge = Edge & MenuItemLinkableCo
 export enum MenuLocationEnum {
   /** Put the menu in the footer location */
   Footer = 'FOOTER',
+  /** Put the menu in the footer_menu location */
+  FooterMenu = 'FOOTER_MENU',
+  /** Put the menu in the loggedin_account_menu location */
+  LoggedinAccountMenu = 'LOGGEDIN_ACCOUNT_MENU',
+  /** Put the menu in the mobile_menu location */
+  MobileMenu = 'MOBILE_MENU',
   /** Put the menu in the primary location */
-  Primary = 'PRIMARY'
+  Primary = 'PRIMARY',
+  /** Put the menu in the secondary_menu location */
+  SecondaryMenu = 'SECONDARY_MENU'
 }
 
 /** Identifier types for retrieving a specific navigation menu. Specifies which property (ID, name, location) is used to locate a particular menu. */
@@ -10276,6 +10284,8 @@ export type MenuToMenuItemConnectionWhereArgs = {
 export enum MimeTypeEnum {
   /** application/java mime type. */
   ApplicationJava = 'APPLICATION_JAVA',
+  /** application/json mime type. */
+  ApplicationJson = 'APPLICATION_JSON',
   /** application/msword mime type. */
   ApplicationMsword = 'APPLICATION_MSWORD',
   /** application/octet-stream mime type. */
@@ -16391,15 +16401,22 @@ export type TaxonomyToTermNodeConnectionPageInfo = PageInfo & TermNodeConnection
 };
 
 /** The template assigned to the node */
-export type Template_Blank = ContentTemplate & {
-  __typename?: 'Template_Blank';
+export type Template_ElementorCanvas = ContentTemplate & {
+  __typename?: 'Template_ElementorCanvas';
   /** The name of the template */
   templateName?: Maybe<Scalars['String']['output']>;
 };
 
 /** The template assigned to the node */
-export type Template_BlogAlternative = ContentTemplate & {
-  __typename?: 'Template_BlogAlternative';
+export type Template_ElementorFullWidth = ContentTemplate & {
+  __typename?: 'Template_ElementorFullWidth';
+  /** The name of the template */
+  templateName?: Maybe<Scalars['String']['output']>;
+};
+
+/** The template assigned to the node */
+export type Template_Theme = ContentTemplate & {
+  __typename?: 'Template_Theme';
   /** The name of the template */
   templateName?: Maybe<Scalars['String']['output']>;
 };
@@ -16650,6 +16667,3906 @@ export type ThemeConnectionPageInfo = {
   hasPreviousPage: Scalars['Boolean']['output'];
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars['String']['output']>;
+};
+
+/** A block used for editing the site */
+export type UagbButtonsChild = EditorBlock & PageEditorBlock & PostEditorBlock & {
+  __typename?: 'UagbButtonsChild';
+  /** The API version of the Gutenberg Block */
+  apiVersion?: Maybe<Scalars['Int']['output']>;
+  /** Attributes of the UagbButtonsChild Block Type */
+  attributes?: Maybe<UagbButtonsChildAttributes>;
+  /** The name of the category the Block belongs to */
+  blockEditorCategoryName?: Maybe<Scalars['String']['output']>;
+  /** The id of the Block */
+  clientId?: Maybe<Scalars['String']['output']>;
+  /** CSS Classnames to apply to the block */
+  cssClassNames?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  /** The inner blocks of the Block */
+  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
+  /** Whether the block is Dynamic (server rendered) */
+  isDynamic: Scalars['Boolean']['output'];
+  /** The name of the block */
+  name?: Maybe<Scalars['String']['output']>;
+  /** The parent id of the Block */
+  parentClientId?: Maybe<Scalars['String']['output']>;
+  /** The rendered HTML for the block */
+  renderedHtml?: Maybe<Scalars['String']['output']>;
+  /** The (GraphQL) type of the block */
+  type?: Maybe<Scalars['String']['output']>;
+};
+
+/** Attributes of the UagbButtonsChild Block Type */
+export type UagbButtonsChildAttributes = {
+  __typename?: 'UagbButtonsChildAttributes';
+  /** The &quot;className&quot; field on the &quot;UagbButtonsChildAttributes&quot; block or block attributes */
+  className?: Maybe<Scalars['String']['output']>;
+  /** The &quot;lock&quot; field on the &quot;UagbButtonsChildAttributes&quot; block or block attributes */
+  lock?: Maybe<Scalars['BlockAttributesObject']['output']>;
+  /** The &quot;metadata&quot; field on the &quot;UagbButtonsChildAttributes&quot; block or block attributes */
+  metadata?: Maybe<Scalars['BlockAttributesObject']['output']>;
+};
+
+/** A block used for editing the site */
+export type UagbFaq = EditorBlock & PageEditorBlock & PostEditorBlock & {
+  __typename?: 'UagbFaq';
+  /** The API version of the Gutenberg Block */
+  apiVersion?: Maybe<Scalars['Int']['output']>;
+  /** Attributes of the UagbFaq Block Type */
+  attributes?: Maybe<UagbFaqAttributes>;
+  /** The name of the category the Block belongs to */
+  blockEditorCategoryName?: Maybe<Scalars['String']['output']>;
+  /** The id of the Block */
+  clientId?: Maybe<Scalars['String']['output']>;
+  /** CSS Classnames to apply to the block */
+  cssClassNames?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  /** The inner blocks of the Block */
+  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
+  /** Whether the block is Dynamic (server rendered) */
+  isDynamic: Scalars['Boolean']['output'];
+  /** The name of the block */
+  name?: Maybe<Scalars['String']['output']>;
+  /** The parent id of the Block */
+  parentClientId?: Maybe<Scalars['String']['output']>;
+  /** The rendered HTML for the block */
+  renderedHtml?: Maybe<Scalars['String']['output']>;
+  /** The (GraphQL) type of the block */
+  type?: Maybe<Scalars['String']['output']>;
+};
+
+/** Attributes of the UagbFaq Block Type */
+export type UagbFaqAttributes = {
+  __typename?: 'UagbFaqAttributes';
+  /** The &quot;align&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  align: Scalars['String']['output'];
+  /** The &quot;anchor&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  anchor: Scalars['String']['output'];
+  /** The &quot;answer&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  answer: Scalars['String']['output'];
+  /** The &quot;answerBottomPadding&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  answerBottomPadding: Scalars['Float']['output'];
+  /** The &quot;answerBottomPaddingMobile&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  answerBottomPaddingMobile: Scalars['Float']['output'];
+  /** The &quot;answerBottomPaddingTablet&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  answerBottomPaddingTablet: Scalars['Float']['output'];
+  /** The &quot;answerDecoration&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  answerDecoration?: Maybe<Scalars['String']['output']>;
+  /** The &quot;answerFontFamily&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  answerFontFamily: Scalars['String']['output'];
+  /** The &quot;answerFontSize&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  answerFontSize?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;answerFontSizeMobile&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  answerFontSizeMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;answerFontSizeTablet&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  answerFontSizeTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;answerFontSizeType&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  answerFontSizeType: Scalars['String']['output'];
+  /** The &quot;answerFontStyle&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  answerFontStyle: Scalars['String']['output'];
+  /** The &quot;answerFontWeight&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  answerFontWeight?: Maybe<Scalars['String']['output']>;
+  /** The &quot;answerLeftPadding&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  answerLeftPadding: Scalars['Float']['output'];
+  /** The &quot;answerLeftPaddingMobile&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  answerLeftPaddingMobile: Scalars['Float']['output'];
+  /** The &quot;answerLeftPaddingTablet&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  answerLeftPaddingTablet: Scalars['Float']['output'];
+  /** The &quot;answerLetterSpacing&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  answerLetterSpacing?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;answerLetterSpacingMobile&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  answerLetterSpacingMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;answerLetterSpacingTablet&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  answerLetterSpacingTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;answerLetterSpacingType&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  answerLetterSpacingType: Scalars['String']['output'];
+  /** The &quot;answerLineHeight&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  answerLineHeight?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;answerLineHeightMobile&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  answerLineHeightMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;answerLineHeightTablet&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  answerLineHeightTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;answerLineHeightType&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  answerLineHeightType: Scalars['String']['output'];
+  /** The &quot;answerPaddingTypeDesktop&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  answerPaddingTypeDesktop: Scalars['String']['output'];
+  /** The &quot;answerPaddingTypeMobile&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  answerPaddingTypeMobile: Scalars['String']['output'];
+  /** The &quot;answerPaddingTypeTablet&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  answerPaddingTypeTablet: Scalars['String']['output'];
+  /** The &quot;answerRightPadding&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  answerRightPadding: Scalars['Float']['output'];
+  /** The &quot;answerRightPaddingMobile&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  answerRightPaddingMobile: Scalars['Float']['output'];
+  /** The &quot;answerRightPaddingTablet&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  answerRightPaddingTablet: Scalars['Float']['output'];
+  /** The &quot;answerSpacingLink&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  answerSpacingLink: Scalars['Boolean']['output'];
+  /** The &quot;answerTextColor&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  answerTextColor?: Maybe<Scalars['String']['output']>;
+  /** The &quot;answerTopPadding&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  answerTopPadding: Scalars['Float']['output'];
+  /** The &quot;answerTopPaddingMobile&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  answerTopPaddingMobile: Scalars['Float']['output'];
+  /** The &quot;answerTopPaddingTablet&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  answerTopPaddingTablet: Scalars['Float']['output'];
+  /** The &quot;answerTransform&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  answerTransform?: Maybe<Scalars['String']['output']>;
+  /** The &quot;answerloadGoogleFonts&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  answerloadGoogleFonts: Scalars['Boolean']['output'];
+  /** The &quot;blockBottomMargin&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  blockBottomMargin?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;blockBottomMarginMobile&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  blockBottomMarginMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;blockBottomMarginTablet&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  blockBottomMarginTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;blockBottomPadding&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  blockBottomPadding?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;blockBottomPaddingMobile&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  blockBottomPaddingMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;blockBottomPaddingTablet&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  blockBottomPaddingTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;block_id&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  blockId?: Maybe<Scalars['String']['output']>;
+  /** The &quot;blockLeftMargin&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  blockLeftMargin?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;blockLeftMarginMobile&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  blockLeftMarginMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;blockLeftMarginTablet&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  blockLeftMarginTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;blockLeftPadding&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  blockLeftPadding?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;blockLeftPaddingMobile&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  blockLeftPaddingMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;blockLeftPaddingTablet&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  blockLeftPaddingTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;blockMarginLink&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  blockMarginLink: Scalars['Boolean']['output'];
+  /** The &quot;blockMarginUnit&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  blockMarginUnit: Scalars['String']['output'];
+  /** The &quot;blockMarginUnitMobile&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  blockMarginUnitMobile: Scalars['String']['output'];
+  /** The &quot;blockMarginUnitTablet&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  blockMarginUnitTablet: Scalars['String']['output'];
+  /** The &quot;blockPaddingLink&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  blockPaddingLink: Scalars['Boolean']['output'];
+  /** The &quot;blockPaddingUnit&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  blockPaddingUnit: Scalars['String']['output'];
+  /** The &quot;blockPaddingUnitMobile&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  blockPaddingUnitMobile: Scalars['String']['output'];
+  /** The &quot;blockPaddingUnitTablet&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  blockPaddingUnitTablet: Scalars['String']['output'];
+  /** The &quot;blockRightMargin&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  blockRightMargin?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;blockRightMarginMobile&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  blockRightMarginMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;blockRightMarginTablet&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  blockRightMarginTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;blockRightPadding&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  blockRightPadding?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;blockRightPaddingMobile&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  blockRightPaddingMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;blockRightPaddingTablet&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  blockRightPaddingTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;blockTopMargin&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  blockTopMargin?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;blockTopMarginMobile&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  blockTopMarginMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;blockTopMarginTablet&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  blockTopMarginTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;blockTopPadding&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  blockTopPadding?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;blockTopPaddingMobile&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  blockTopPaddingMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;blockTopPaddingTablet&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  blockTopPaddingTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;borderColor&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  borderColor: Scalars['String']['output'];
+  /** The &quot;borderHoverColor&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  borderHoverColor?: Maybe<Scalars['String']['output']>;
+  /** The &quot;borderRadius&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  borderRadius: Scalars['Float']['output'];
+  /** The &quot;borderStyle&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  borderStyle: Scalars['String']['output'];
+  /** The &quot;borderWidth&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  borderWidth: Scalars['Float']['output'];
+  /** The &quot;boxBgColor&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  boxBgColor: Scalars['String']['output'];
+  /** The &quot;boxBgHoverColor&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  boxBgHoverColor: Scalars['String']['output'];
+  /** The &quot;boxBgHoverType&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  boxBgHoverType: Scalars['String']['output'];
+  /** The &quot;boxBgType&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  boxBgType: Scalars['String']['output'];
+  /** The &quot;boxPaddingTypeDesktop&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  boxPaddingTypeDesktop: Scalars['String']['output'];
+  /** The &quot;boxPaddingTypeMobile&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  boxPaddingTypeMobile: Scalars['String']['output'];
+  /** The &quot;boxPaddingTypeTablet&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  boxPaddingTypeTablet: Scalars['String']['output'];
+  /** The &quot;className&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  className?: Maybe<Scalars['String']['output']>;
+  /** The &quot;columns&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  columns: Scalars['Float']['output'];
+  /** The &quot;columnsGap&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  columnsGap: Scalars['Float']['output'];
+  /** The &quot;columnsGapMobile&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  columnsGapMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;columnsGapTablet&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  columnsGapTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;columnsGapUnit&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  columnsGapUnit: Scalars['String']['output'];
+  /** The &quot;enableSchemaSupport&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  enableSchemaSupport: Scalars['Boolean']['output'];
+  /** The &quot;enableSeparator&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  enableSeparator: Scalars['Boolean']['output'];
+  /** The &quot;enableToggle&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  enableToggle: Scalars['Boolean']['output'];
+  /** The &quot;equalHeight&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  equalHeight: Scalars['Boolean']['output'];
+  /** The &quot;expandFirstItem&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  expandFirstItem: Scalars['Boolean']['output'];
+  /** The &quot;gapBtwIconQUestion&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  gapBtwIconQUestion: Scalars['Float']['output'];
+  /** The &quot;gapBtwIconQUestionMobile&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  gapBtwIconQUestionMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;gapBtwIconQUestionTablet&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  gapBtwIconQUestionTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;hBoxPaddingDesktop&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  hBoxPaddingDesktop: Scalars['Float']['output'];
+  /** The &quot;hBoxPaddingMobile&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  hBoxPaddingMobile: Scalars['Float']['output'];
+  /** The &quot;hBoxPaddingTablet&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  hBoxPaddingTablet: Scalars['Float']['output'];
+  /** The &quot;headingTag&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  headingTag: Scalars['String']['output'];
+  /** The &quot;hquestionPaddingDesktop&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  hquestionPaddingDesktop: Scalars['Float']['output'];
+  /** The &quot;hquestionPaddingMobile&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  hquestionPaddingMobile: Scalars['Float']['output'];
+  /** The &quot;hquestionPaddingTablet&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  hquestionPaddingTablet: Scalars['Float']['output'];
+  /** The &quot;icon&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  icon: Scalars['String']['output'];
+  /** The &quot;iconActive&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  iconActive: Scalars['String']['output'];
+  /** The &quot;iconActiveColor&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  iconActiveColor?: Maybe<Scalars['String']['output']>;
+  /** The &quot;iconAlign&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  iconAlign: Scalars['String']['output'];
+  /** The &quot;iconBgColor&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  iconBgColor?: Maybe<Scalars['String']['output']>;
+  /** The &quot;iconBgSize&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  iconBgSize?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;iconBgSizeMobile&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  iconBgSizeMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;iconBgSizeTablet&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  iconBgSizeTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;iconBgSizeType&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  iconBgSizeType: Scalars['String']['output'];
+  /** The &quot;iconColor&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  iconColor?: Maybe<Scalars['String']['output']>;
+  /** The &quot;iconSize&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  iconSize: Scalars['Float']['output'];
+  /** The &quot;iconSizeMobile&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  iconSizeMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;iconSizeTablet&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  iconSizeTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;iconSizeType&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  iconSizeType: Scalars['String']['output'];
+  /** The &quot;inactiveOtherItems&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  inactiveOtherItems: Scalars['Boolean']['output'];
+  /** The &quot;isPreview&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  isPreview: Scalars['Boolean']['output'];
+  /** The &quot;layout&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  layout: Scalars['String']['output'];
+  /** The &quot;lock&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  lock?: Maybe<Scalars['BlockAttributesObject']['output']>;
+  /** The &quot;mcolumns&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  mcolumns: Scalars['Float']['output'];
+  /** The &quot;metadata&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  metadata?: Maybe<Scalars['BlockAttributesObject']['output']>;
+  /** The &quot;question&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  question: Scalars['String']['output'];
+  /** The &quot;questionBottomPaddingDesktop&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  questionBottomPaddingDesktop: Scalars['Float']['output'];
+  /** The &quot;questionBottomPaddingMobile&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  questionBottomPaddingMobile: Scalars['Float']['output'];
+  /** The &quot;questionBottomPaddingTablet&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  questionBottomPaddingTablet: Scalars['Float']['output'];
+  /** The &quot;questionDecoration&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  questionDecoration?: Maybe<Scalars['String']['output']>;
+  /** The &quot;questionFontFamily&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  questionFontFamily: Scalars['String']['output'];
+  /** The &quot;questionFontSize&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  questionFontSize?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;questionFontSizeMobile&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  questionFontSizeMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;questionFontSizeTablet&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  questionFontSizeTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;questionFontSizeType&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  questionFontSizeType: Scalars['String']['output'];
+  /** The &quot;questionFontStyle&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  questionFontStyle: Scalars['String']['output'];
+  /** The &quot;questionFontWeight&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  questionFontWeight?: Maybe<Scalars['String']['output']>;
+  /** The &quot;questionLeftPaddingDesktop&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  questionLeftPaddingDesktop: Scalars['Float']['output'];
+  /** The &quot;questionLeftPaddingMobile&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  questionLeftPaddingMobile: Scalars['Float']['output'];
+  /** The &quot;questionLeftPaddingTablet&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  questionLeftPaddingTablet: Scalars['Float']['output'];
+  /** The &quot;questionLetterSpacing&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  questionLetterSpacing?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;questionLetterSpacingMobile&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  questionLetterSpacingMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;questionLetterSpacingTablet&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  questionLetterSpacingTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;questionLetterSpacingType&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  questionLetterSpacingType: Scalars['String']['output'];
+  /** The &quot;questionLineHeight&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  questionLineHeight?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;questionLineHeightMobile&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  questionLineHeightMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;questionLineHeightTablet&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  questionLineHeightTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;questionLineHeightType&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  questionLineHeightType: Scalars['String']['output'];
+  /** The &quot;questionPaddingTypeDesktop&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  questionPaddingTypeDesktop: Scalars['String']['output'];
+  /** The &quot;questionPaddingTypeMobile&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  questionPaddingTypeMobile: Scalars['String']['output'];
+  /** The &quot;questionPaddingTypeTablet&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  questionPaddingTypeTablet: Scalars['String']['output'];
+  /** The &quot;questionSpacingLink&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  questionSpacingLink: Scalars['Boolean']['output'];
+  /** The &quot;questionTextActiveBgColor&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  questionTextActiveBgColor?: Maybe<Scalars['String']['output']>;
+  /** The &quot;questionTextActiveColor&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  questionTextActiveColor?: Maybe<Scalars['String']['output']>;
+  /** The &quot;questionTextBgColor&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  questionTextBgColor?: Maybe<Scalars['String']['output']>;
+  /** The &quot;questionTextColor&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  questionTextColor?: Maybe<Scalars['String']['output']>;
+  /** The &quot;questionTransform&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  questionTransform?: Maybe<Scalars['String']['output']>;
+  /** The &quot;questionloadGoogleFonts&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  questionloadGoogleFonts: Scalars['Boolean']['output'];
+  /** The &quot;rowsGap&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  rowsGap: Scalars['Float']['output'];
+  /** The &quot;rowsGapMobile&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  rowsGapMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;rowsGapTablet&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  rowsGapTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;rowsGapUnit&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  rowsGapUnit: Scalars['String']['output'];
+  /** The &quot;schema&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  schema: Scalars['String']['output'];
+  /** The &quot;tcolumns&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  tcolumns: Scalars['Float']['output'];
+  /** The &quot;vBoxPaddingDesktop&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  vBoxPaddingDesktop: Scalars['Float']['output'];
+  /** The &quot;vBoxPaddingMobile&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  vBoxPaddingMobile: Scalars['Float']['output'];
+  /** The &quot;vBoxPaddingTablet&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  vBoxPaddingTablet: Scalars['Float']['output'];
+  /** The &quot;vanswerPaddingMobile&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  vanswerPaddingMobile: Scalars['Float']['output'];
+  /** The &quot;vanswerPaddingTablet&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  vanswerPaddingTablet: Scalars['Float']['output'];
+  /** The &quot;vquestionPaddingDesktop&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  vquestionPaddingDesktop: Scalars['Float']['output'];
+  /** The &quot;vquestionPaddingMobile&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  vquestionPaddingMobile: Scalars['Float']['output'];
+  /** The &quot;vquestionPaddingTablet&quot; field on the &quot;UagbFaqAttributes&quot; block or block attributes */
+  vquestionPaddingTablet: Scalars['Float']['output'];
+};
+
+/** A block used for editing the site */
+export type UagbFaqChild = EditorBlock & PageEditorBlock & PostEditorBlock & {
+  __typename?: 'UagbFaqChild';
+  /** The API version of the Gutenberg Block */
+  apiVersion?: Maybe<Scalars['Int']['output']>;
+  /** Attributes of the UagbFaqChild Block Type */
+  attributes?: Maybe<UagbFaqChildAttributes>;
+  /** The name of the category the Block belongs to */
+  blockEditorCategoryName?: Maybe<Scalars['String']['output']>;
+  /** The id of the Block */
+  clientId?: Maybe<Scalars['String']['output']>;
+  /** CSS Classnames to apply to the block */
+  cssClassNames?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  /** The inner blocks of the Block */
+  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
+  /** Whether the block is Dynamic (server rendered) */
+  isDynamic: Scalars['Boolean']['output'];
+  /** The name of the block */
+  name?: Maybe<Scalars['String']['output']>;
+  /** The parent id of the Block */
+  parentClientId?: Maybe<Scalars['String']['output']>;
+  /** The rendered HTML for the block */
+  renderedHtml?: Maybe<Scalars['String']['output']>;
+  /** The (GraphQL) type of the block */
+  type?: Maybe<Scalars['String']['output']>;
+};
+
+/** Attributes of the UagbFaqChild Block Type */
+export type UagbFaqChildAttributes = {
+  __typename?: 'UagbFaqChildAttributes';
+  /** The &quot;anchor&quot; field on the &quot;UagbFaqChildAttributes&quot; block or block attributes */
+  anchor: Scalars['String']['output'];
+  /** The &quot;answer&quot; field on the &quot;UagbFaqChildAttributes&quot; block or block attributes */
+  answer: Scalars['String']['output'];
+  /** The &quot;block_id&quot; field on the &quot;UagbFaqChildAttributes&quot; block or block attributes */
+  blockId?: Maybe<Scalars['String']['output']>;
+  /** The &quot;className&quot; field on the &quot;UagbFaqChildAttributes&quot; block or block attributes */
+  className?: Maybe<Scalars['String']['output']>;
+  /** The &quot;headingTag&quot; field on the &quot;UagbFaqChildAttributes&quot; block or block attributes */
+  headingTag: Scalars['String']['output'];
+  /** The &quot;icon&quot; field on the &quot;UagbFaqChildAttributes&quot; block or block attributes */
+  icon: Scalars['String']['output'];
+  /** The &quot;iconActive&quot; field on the &quot;UagbFaqChildAttributes&quot; block or block attributes */
+  iconActive: Scalars['String']['output'];
+  /** The &quot;isPreview&quot; field on the &quot;UagbFaqChildAttributes&quot; block or block attributes */
+  isPreview: Scalars['Boolean']['output'];
+  /** The &quot;layout&quot; field on the &quot;UagbFaqChildAttributes&quot; block or block attributes */
+  layout: Scalars['String']['output'];
+  /** The &quot;lock&quot; field on the &quot;UagbFaqChildAttributes&quot; block or block attributes */
+  lock?: Maybe<Scalars['BlockAttributesObject']['output']>;
+  /** The &quot;metadata&quot; field on the &quot;UagbFaqChildAttributes&quot; block or block attributes */
+  metadata?: Maybe<Scalars['BlockAttributesObject']['output']>;
+  /** The &quot;question&quot; field on the &quot;UagbFaqChildAttributes&quot; block or block attributes */
+  question: Scalars['String']['output'];
+};
+
+/** A block used for editing the site */
+export type UagbGoogleMap = EditorBlock & PageEditorBlock & PostEditorBlock & {
+  __typename?: 'UagbGoogleMap';
+  /** The API version of the Gutenberg Block */
+  apiVersion?: Maybe<Scalars['Int']['output']>;
+  /** Attributes of the UagbGoogleMap Block Type */
+  attributes?: Maybe<UagbGoogleMapAttributes>;
+  /** The name of the category the Block belongs to */
+  blockEditorCategoryName?: Maybe<Scalars['String']['output']>;
+  /** The id of the Block */
+  clientId?: Maybe<Scalars['String']['output']>;
+  /** CSS Classnames to apply to the block */
+  cssClassNames?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  /** The inner blocks of the Block */
+  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
+  /** Whether the block is Dynamic (server rendered) */
+  isDynamic: Scalars['Boolean']['output'];
+  /** The name of the block */
+  name?: Maybe<Scalars['String']['output']>;
+  /** The parent id of the Block */
+  parentClientId?: Maybe<Scalars['String']['output']>;
+  /** The rendered HTML for the block */
+  renderedHtml?: Maybe<Scalars['String']['output']>;
+  /** The (GraphQL) type of the block */
+  type?: Maybe<Scalars['String']['output']>;
+};
+
+/** Attributes of the UagbGoogleMap Block Type */
+export type UagbGoogleMapAttributes = {
+  __typename?: 'UagbGoogleMapAttributes';
+  /** The &quot;address&quot; field on the &quot;UagbGoogleMapAttributes&quot; block or block attributes */
+  address: Scalars['String']['output'];
+  /** The &quot;block_id&quot; field on the &quot;UagbGoogleMapAttributes&quot; block or block attributes */
+  blockId?: Maybe<Scalars['String']['output']>;
+  /** The &quot;className&quot; field on the &quot;UagbGoogleMapAttributes&quot; block or block attributes */
+  className?: Maybe<Scalars['String']['output']>;
+  /** The &quot;enableSatelliteView&quot; field on the &quot;UagbGoogleMapAttributes&quot; block or block attributes */
+  enableSatelliteView: Scalars['Boolean']['output'];
+  /** The &quot;height&quot; field on the &quot;UagbGoogleMapAttributes&quot; block or block attributes */
+  height: Scalars['Float']['output'];
+  /** The &quot;heightMobile&quot; field on the &quot;UagbGoogleMapAttributes&quot; block or block attributes */
+  heightMobile: Scalars['Float']['output'];
+  /** The &quot;heightTablet&quot; field on the &quot;UagbGoogleMapAttributes&quot; block or block attributes */
+  heightTablet: Scalars['Float']['output'];
+  /** The &quot;isPreview&quot; field on the &quot;UagbGoogleMapAttributes&quot; block or block attributes */
+  isPreview: Scalars['Boolean']['output'];
+  /** The &quot;language&quot; field on the &quot;UagbGoogleMapAttributes&quot; block or block attributes */
+  language: Scalars['String']['output'];
+  /** The &quot;lock&quot; field on the &quot;UagbGoogleMapAttributes&quot; block or block attributes */
+  lock?: Maybe<Scalars['BlockAttributesObject']['output']>;
+  /** The &quot;metadata&quot; field on the &quot;UagbGoogleMapAttributes&quot; block or block attributes */
+  metadata?: Maybe<Scalars['BlockAttributesObject']['output']>;
+  /** The &quot;zoom&quot; field on the &quot;UagbGoogleMapAttributes&quot; block or block attributes */
+  zoom: Scalars['Float']['output'];
+};
+
+/** A block used for editing the site */
+export type UagbIcon = EditorBlock & PageEditorBlock & PostEditorBlock & {
+  __typename?: 'UagbIcon';
+  /** The API version of the Gutenberg Block */
+  apiVersion?: Maybe<Scalars['Int']['output']>;
+  /** Attributes of the UagbIcon Block Type */
+  attributes?: Maybe<UagbIconAttributes>;
+  /** The name of the category the Block belongs to */
+  blockEditorCategoryName?: Maybe<Scalars['String']['output']>;
+  /** The id of the Block */
+  clientId?: Maybe<Scalars['String']['output']>;
+  /** CSS Classnames to apply to the block */
+  cssClassNames?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  /** The inner blocks of the Block */
+  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
+  /** Whether the block is Dynamic (server rendered) */
+  isDynamic: Scalars['Boolean']['output'];
+  /** The name of the block */
+  name?: Maybe<Scalars['String']['output']>;
+  /** The parent id of the Block */
+  parentClientId?: Maybe<Scalars['String']['output']>;
+  /** The rendered HTML for the block */
+  renderedHtml?: Maybe<Scalars['String']['output']>;
+  /** The (GraphQL) type of the block */
+  type?: Maybe<Scalars['String']['output']>;
+};
+
+/** Attributes of the UagbIcon Block Type */
+export type UagbIconAttributes = {
+  __typename?: 'UagbIconAttributes';
+  /** The &quot;align&quot; field on the &quot;UagbIconAttributes&quot; block or block attributes */
+  align: Scalars['String']['output'];
+  /** The &quot;alignMobile&quot; field on the &quot;UagbIconAttributes&quot; block or block attributes */
+  alignMobile: Scalars['String']['output'];
+  /** The &quot;alignTablet&quot; field on the &quot;UagbIconAttributes&quot; block or block attributes */
+  alignTablet: Scalars['String']['output'];
+  /** The &quot;block_id&quot; field on the &quot;UagbIconAttributes&quot; block or block attributes */
+  blockId?: Maybe<Scalars['String']['output']>;
+  /** The &quot;className&quot; field on the &quot;UagbIconAttributes&quot; block or block attributes */
+  className?: Maybe<Scalars['String']['output']>;
+  /** The &quot;disableLink&quot; field on the &quot;UagbIconAttributes&quot; block or block attributes */
+  disableLink: Scalars['Boolean']['output'];
+  /** The &quot;icon&quot; field on the &quot;UagbIconAttributes&quot; block or block attributes */
+  icon: Scalars['String']['output'];
+  /** The &quot;iconAccessabilityDesc&quot; field on the &quot;UagbIconAttributes&quot; block or block attributes */
+  iconAccessabilityDesc: Scalars['String']['output'];
+  /** The &quot;iconAccessabilityMode&quot; field on the &quot;UagbIconAttributes&quot; block or block attributes */
+  iconAccessabilityMode: Scalars['String']['output'];
+  /** The &quot;iconBackgroundColor&quot; field on the &quot;UagbIconAttributes&quot; block or block attributes */
+  iconBackgroundColor: Scalars['String']['output'];
+  /** The &quot;iconBackgroundColorType&quot; field on the &quot;UagbIconAttributes&quot; block or block attributes */
+  iconBackgroundColorType: Scalars['String']['output'];
+  /** The &quot;iconBackgroundGradientColor&quot; field on the &quot;UagbIconAttributes&quot; block or block attributes */
+  iconBackgroundGradientColor: Scalars['String']['output'];
+  /** The &quot;iconBorderBottomLeftRadius&quot; field on the &quot;UagbIconAttributes&quot; block or block attributes */
+  iconBorderBottomLeftRadius?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;iconBorderBottomLeftRadiusMobile&quot; field on the &quot;UagbIconAttributes&quot; block or block attributes */
+  iconBorderBottomLeftRadiusMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;iconBorderBottomLeftRadiusTablet&quot; field on the &quot;UagbIconAttributes&quot; block or block attributes */
+  iconBorderBottomLeftRadiusTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;iconBorderBottomRightRadius&quot; field on the &quot;UagbIconAttributes&quot; block or block attributes */
+  iconBorderBottomRightRadius?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;iconBorderBottomRightRadiusMobile&quot; field on the &quot;UagbIconAttributes&quot; block or block attributes */
+  iconBorderBottomRightRadiusMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;iconBorderBottomRightRadiusTablet&quot; field on the &quot;UagbIconAttributes&quot; block or block attributes */
+  iconBorderBottomRightRadiusTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;iconBorderBottomWidth&quot; field on the &quot;UagbIconAttributes&quot; block or block attributes */
+  iconBorderBottomWidth?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;iconBorderBottomWidthMobile&quot; field on the &quot;UagbIconAttributes&quot; block or block attributes */
+  iconBorderBottomWidthMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;iconBorderBottomWidthTablet&quot; field on the &quot;UagbIconAttributes&quot; block or block attributes */
+  iconBorderBottomWidthTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;iconBorderColor&quot; field on the &quot;UagbIconAttributes&quot; block or block attributes */
+  iconBorderColor?: Maybe<Scalars['String']['output']>;
+  /** The &quot;iconBorderHColor&quot; field on the &quot;UagbIconAttributes&quot; block or block attributes */
+  iconBorderHColor?: Maybe<Scalars['String']['output']>;
+  /** The &quot;iconBorderLeftWidth&quot; field on the &quot;UagbIconAttributes&quot; block or block attributes */
+  iconBorderLeftWidth?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;iconBorderLeftWidthMobile&quot; field on the &quot;UagbIconAttributes&quot; block or block attributes */
+  iconBorderLeftWidthMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;iconBorderLeftWidthTablet&quot; field on the &quot;UagbIconAttributes&quot; block or block attributes */
+  iconBorderLeftWidthTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;iconBorderLink&quot; field on the &quot;UagbIconAttributes&quot; block or block attributes */
+  iconBorderLink: Scalars['Boolean']['output'];
+  /** The &quot;iconBorderRadiusLink&quot; field on the &quot;UagbIconAttributes&quot; block or block attributes */
+  iconBorderRadiusLink: Scalars['Boolean']['output'];
+  /** The &quot;iconBorderRadiusUnit&quot; field on the &quot;UagbIconAttributes&quot; block or block attributes */
+  iconBorderRadiusUnit?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;iconBorderRadiusUnitMobile&quot; field on the &quot;UagbIconAttributes&quot; block or block attributes */
+  iconBorderRadiusUnitMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;iconBorderRadiusUnitTablet&quot; field on the &quot;UagbIconAttributes&quot; block or block attributes */
+  iconBorderRadiusUnitTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;iconBorderRightWidth&quot; field on the &quot;UagbIconAttributes&quot; block or block attributes */
+  iconBorderRightWidth?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;iconBorderRightWidthMobile&quot; field on the &quot;UagbIconAttributes&quot; block or block attributes */
+  iconBorderRightWidthMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;iconBorderRightWidthTablet&quot; field on the &quot;UagbIconAttributes&quot; block or block attributes */
+  iconBorderRightWidthTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;iconBorderStyle&quot; field on the &quot;UagbIconAttributes&quot; block or block attributes */
+  iconBorderStyle?: Maybe<Scalars['String']['output']>;
+  /** The &quot;iconBorderTopLeftRadius&quot; field on the &quot;UagbIconAttributes&quot; block or block attributes */
+  iconBorderTopLeftRadius?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;iconBorderTopLeftRadiusMobile&quot; field on the &quot;UagbIconAttributes&quot; block or block attributes */
+  iconBorderTopLeftRadiusMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;iconBorderTopLeftRadiusTablet&quot; field on the &quot;UagbIconAttributes&quot; block or block attributes */
+  iconBorderTopLeftRadiusTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;iconBorderTopRightRadius&quot; field on the &quot;UagbIconAttributes&quot; block or block attributes */
+  iconBorderTopRightRadius?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;iconBorderTopRightRadiusMobile&quot; field on the &quot;UagbIconAttributes&quot; block or block attributes */
+  iconBorderTopRightRadiusMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;iconBorderTopRightRadiusTablet&quot; field on the &quot;UagbIconAttributes&quot; block or block attributes */
+  iconBorderTopRightRadiusTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;iconBorderTopWidth&quot; field on the &quot;UagbIconAttributes&quot; block or block attributes */
+  iconBorderTopWidth?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;iconBorderTopWidthMobile&quot; field on the &quot;UagbIconAttributes&quot; block or block attributes */
+  iconBorderTopWidthMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;iconBorderTopWidthTablet&quot; field on the &quot;UagbIconAttributes&quot; block or block attributes */
+  iconBorderTopWidthTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;iconBottomMargin&quot; field on the &quot;UagbIconAttributes&quot; block or block attributes */
+  iconBottomMargin?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;iconBottomMobileMargin&quot; field on the &quot;UagbIconAttributes&quot; block or block attributes */
+  iconBottomMobileMargin?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;iconBottomMobilePadding&quot; field on the &quot;UagbIconAttributes&quot; block or block attributes */
+  iconBottomMobilePadding?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;iconBottomPadding&quot; field on the &quot;UagbIconAttributes&quot; block or block attributes */
+  iconBottomPadding: Scalars['Float']['output'];
+  /** The &quot;iconBottomTabletMargin&quot; field on the &quot;UagbIconAttributes&quot; block or block attributes */
+  iconBottomTabletMargin?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;iconBottomTabletPadding&quot; field on the &quot;UagbIconAttributes&quot; block or block attributes */
+  iconBottomTabletPadding?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;iconBoxShadowBlur&quot; field on the &quot;UagbIconAttributes&quot; block or block attributes */
+  iconBoxShadowBlur?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;iconBoxShadowBlurHover&quot; field on the &quot;UagbIconAttributes&quot; block or block attributes */
+  iconBoxShadowBlurHover?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;iconBoxShadowColor&quot; field on the &quot;UagbIconAttributes&quot; block or block attributes */
+  iconBoxShadowColor: Scalars['String']['output'];
+  /** The &quot;iconBoxShadowColorHover&quot; field on the &quot;UagbIconAttributes&quot; block or block attributes */
+  iconBoxShadowColorHover?: Maybe<Scalars['String']['output']>;
+  /** The &quot;iconBoxShadowHOffset&quot; field on the &quot;UagbIconAttributes&quot; block or block attributes */
+  iconBoxShadowHOffset: Scalars['Float']['output'];
+  /** The &quot;iconBoxShadowHOffsetHover&quot; field on the &quot;UagbIconAttributes&quot; block or block attributes */
+  iconBoxShadowHOffsetHover: Scalars['Float']['output'];
+  /** The &quot;iconBoxShadowPosition&quot; field on the &quot;UagbIconAttributes&quot; block or block attributes */
+  iconBoxShadowPosition: Scalars['String']['output'];
+  /** The &quot;iconBoxShadowPositionHover&quot; field on the &quot;UagbIconAttributes&quot; block or block attributes */
+  iconBoxShadowPositionHover: Scalars['String']['output'];
+  /** The &quot;iconBoxShadowSpread&quot; field on the &quot;UagbIconAttributes&quot; block or block attributes */
+  iconBoxShadowSpread?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;iconBoxShadowSpreadHover&quot; field on the &quot;UagbIconAttributes&quot; block or block attributes */
+  iconBoxShadowSpreadHover?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;iconBoxShadowVOffset&quot; field on the &quot;UagbIconAttributes&quot; block or block attributes */
+  iconBoxShadowVOffset: Scalars['Float']['output'];
+  /** The &quot;iconBoxShadowVOffsetHover&quot; field on the &quot;UagbIconAttributes&quot; block or block attributes */
+  iconBoxShadowVOffsetHover: Scalars['Float']['output'];
+  /** The &quot;iconColor&quot; field on the &quot;UagbIconAttributes&quot; block or block attributes */
+  iconColor: Scalars['String']['output'];
+  /** The &quot;iconHoverBackgroundColor&quot; field on the &quot;UagbIconAttributes&quot; block or block attributes */
+  iconHoverBackgroundColor?: Maybe<Scalars['String']['output']>;
+  /** The &quot;iconHoverBackgroundColorType&quot; field on the &quot;UagbIconAttributes&quot; block or block attributes */
+  iconHoverBackgroundColorType: Scalars['String']['output'];
+  /** The &quot;iconHoverBackgroundGradientColor&quot; field on the &quot;UagbIconAttributes&quot; block or block attributes */
+  iconHoverBackgroundGradientColor: Scalars['String']['output'];
+  /** The &quot;iconHoverColor&quot; field on the &quot;UagbIconAttributes&quot; block or block attributes */
+  iconHoverColor: Scalars['String']['output'];
+  /** The &quot;iconLeftMargin&quot; field on the &quot;UagbIconAttributes&quot; block or block attributes */
+  iconLeftMargin?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;iconLeftMobileMargin&quot; field on the &quot;UagbIconAttributes&quot; block or block attributes */
+  iconLeftMobileMargin?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;iconLeftMobilePadding&quot; field on the &quot;UagbIconAttributes&quot; block or block attributes */
+  iconLeftMobilePadding?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;iconLeftPadding&quot; field on the &quot;UagbIconAttributes&quot; block or block attributes */
+  iconLeftPadding: Scalars['Float']['output'];
+  /** The &quot;iconLeftTabletMargin&quot; field on the &quot;UagbIconAttributes&quot; block or block attributes */
+  iconLeftTabletMargin?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;iconLeftTabletPadding&quot; field on the &quot;UagbIconAttributes&quot; block or block attributes */
+  iconLeftTabletPadding?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;iconMarginLink&quot; field on the &quot;UagbIconAttributes&quot; block or block attributes */
+  iconMarginLink: Scalars['Boolean']['output'];
+  /** The &quot;iconMarginUnit&quot; field on the &quot;UagbIconAttributes&quot; block or block attributes */
+  iconMarginUnit: Scalars['String']['output'];
+  /** The &quot;iconMobileMarginUnit&quot; field on the &quot;UagbIconAttributes&quot; block or block attributes */
+  iconMobileMarginUnit: Scalars['String']['output'];
+  /** The &quot;iconMobilePaddingUnit&quot; field on the &quot;UagbIconAttributes&quot; block or block attributes */
+  iconMobilePaddingUnit: Scalars['String']['output'];
+  /** The &quot;iconPaddingLink&quot; field on the &quot;UagbIconAttributes&quot; block or block attributes */
+  iconPaddingLink: Scalars['Boolean']['output'];
+  /** The &quot;iconPaddingUnit&quot; field on the &quot;UagbIconAttributes&quot; block or block attributes */
+  iconPaddingUnit: Scalars['String']['output'];
+  /** The &quot;iconRightMargin&quot; field on the &quot;UagbIconAttributes&quot; block or block attributes */
+  iconRightMargin?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;iconRightMobileMargin&quot; field on the &quot;UagbIconAttributes&quot; block or block attributes */
+  iconRightMobileMargin?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;iconRightMobilePadding&quot; field on the &quot;UagbIconAttributes&quot; block or block attributes */
+  iconRightMobilePadding?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;iconRightPadding&quot; field on the &quot;UagbIconAttributes&quot; block or block attributes */
+  iconRightPadding: Scalars['Float']['output'];
+  /** The &quot;iconRightTabletMargin&quot; field on the &quot;UagbIconAttributes&quot; block or block attributes */
+  iconRightTabletMargin?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;iconRightTabletPadding&quot; field on the &quot;UagbIconAttributes&quot; block or block attributes */
+  iconRightTabletPadding?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;iconShadowBlur&quot; field on the &quot;UagbIconAttributes&quot; block or block attributes */
+  iconShadowBlur: Scalars['Float']['output'];
+  /** The &quot;iconShadowBlurHover&quot; field on the &quot;UagbIconAttributes&quot; block or block attributes */
+  iconShadowBlurHover: Scalars['Float']['output'];
+  /** The &quot;iconShadowColor&quot; field on the &quot;UagbIconAttributes&quot; block or block attributes */
+  iconShadowColor: Scalars['String']['output'];
+  /** The &quot;iconShadowColorHover&quot; field on the &quot;UagbIconAttributes&quot; block or block attributes */
+  iconShadowColorHover: Scalars['String']['output'];
+  /** The &quot;iconShadowHOffset&quot; field on the &quot;UagbIconAttributes&quot; block or block attributes */
+  iconShadowHOffset: Scalars['Float']['output'];
+  /** The &quot;iconShadowHOffsetHover&quot; field on the &quot;UagbIconAttributes&quot; block or block attributes */
+  iconShadowHOffsetHover: Scalars['Float']['output'];
+  /** The &quot;iconShadowVOffset&quot; field on the &quot;UagbIconAttributes&quot; block or block attributes */
+  iconShadowVOffset: Scalars['Float']['output'];
+  /** The &quot;iconShadowVOffsetHover&quot; field on the &quot;UagbIconAttributes&quot; block or block attributes */
+  iconShadowVOffsetHover: Scalars['Float']['output'];
+  /** The &quot;iconSize&quot; field on the &quot;UagbIconAttributes&quot; block or block attributes */
+  iconSize: Scalars['Float']['output'];
+  /** The &quot;iconSizeMobile&quot; field on the &quot;UagbIconAttributes&quot; block or block attributes */
+  iconSizeMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;iconSizeTablet&quot; field on the &quot;UagbIconAttributes&quot; block or block attributes */
+  iconSizeTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;iconSizeUnit&quot; field on the &quot;UagbIconAttributes&quot; block or block attributes */
+  iconSizeUnit: Scalars['String']['output'];
+  /** The &quot;iconTabletMarginUnit&quot; field on the &quot;UagbIconAttributes&quot; block or block attributes */
+  iconTabletMarginUnit: Scalars['String']['output'];
+  /** The &quot;iconTabletPaddingUnit&quot; field on the &quot;UagbIconAttributes&quot; block or block attributes */
+  iconTabletPaddingUnit: Scalars['String']['output'];
+  /** The &quot;iconTopMargin&quot; field on the &quot;UagbIconAttributes&quot; block or block attributes */
+  iconTopMargin?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;iconTopMobileMargin&quot; field on the &quot;UagbIconAttributes&quot; block or block attributes */
+  iconTopMobileMargin?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;iconTopMobilePadding&quot; field on the &quot;UagbIconAttributes&quot; block or block attributes */
+  iconTopMobilePadding?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;iconTopPadding&quot; field on the &quot;UagbIconAttributes&quot; block or block attributes */
+  iconTopPadding: Scalars['Float']['output'];
+  /** The &quot;iconTopTabletMargin&quot; field on the &quot;UagbIconAttributes&quot; block or block attributes */
+  iconTopTabletMargin?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;iconTopTabletPadding&quot; field on the &quot;UagbIconAttributes&quot; block or block attributes */
+  iconTopTabletPadding?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;isPreview&quot; field on the &quot;UagbIconAttributes&quot; block or block attributes */
+  isPreview: Scalars['Boolean']['output'];
+  /** The &quot;link&quot; field on the &quot;UagbIconAttributes&quot; block or block attributes */
+  link: Scalars['String']['output'];
+  /** The &quot;lock&quot; field on the &quot;UagbIconAttributes&quot; block or block attributes */
+  lock?: Maybe<Scalars['BlockAttributesObject']['output']>;
+  /** The &quot;metadata&quot; field on the &quot;UagbIconAttributes&quot; block or block attributes */
+  metadata?: Maybe<Scalars['BlockAttributesObject']['output']>;
+  /** The &quot;rotation&quot; field on the &quot;UagbIconAttributes&quot; block or block attributes */
+  rotation: Scalars['Float']['output'];
+  /** The &quot;rotationUnit&quot; field on the &quot;UagbIconAttributes&quot; block or block attributes */
+  rotationUnit: Scalars['String']['output'];
+  /** The &quot;target&quot; field on the &quot;UagbIconAttributes&quot; block or block attributes */
+  target: Scalars['Boolean']['output'];
+  /** The &quot;useSeparateBoxShadows&quot; field on the &quot;UagbIconAttributes&quot; block or block attributes */
+  useSeparateBoxShadows: Scalars['Boolean']['output'];
+};
+
+/** A block used for editing the site */
+export type UagbImage = EditorBlock & PageEditorBlock & PostEditorBlock & {
+  __typename?: 'UagbImage';
+  /** The API version of the Gutenberg Block */
+  apiVersion?: Maybe<Scalars['Int']['output']>;
+  /** Attributes of the UagbImage Block Type */
+  attributes?: Maybe<UagbImageAttributes>;
+  /** The name of the category the Block belongs to */
+  blockEditorCategoryName?: Maybe<Scalars['String']['output']>;
+  /** The id of the Block */
+  clientId?: Maybe<Scalars['String']['output']>;
+  /** CSS Classnames to apply to the block */
+  cssClassNames?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  /** The inner blocks of the Block */
+  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
+  /** Whether the block is Dynamic (server rendered) */
+  isDynamic: Scalars['Boolean']['output'];
+  /** The name of the block */
+  name?: Maybe<Scalars['String']['output']>;
+  /** The parent id of the Block */
+  parentClientId?: Maybe<Scalars['String']['output']>;
+  /** The rendered HTML for the block */
+  renderedHtml?: Maybe<Scalars['String']['output']>;
+  /** The (GraphQL) type of the block */
+  type?: Maybe<Scalars['String']['output']>;
+};
+
+/** Attributes of the UagbImage Block Type */
+export type UagbImageAttributes = {
+  __typename?: 'UagbImageAttributes';
+  /** The &quot;className&quot; field on the &quot;UagbImageAttributes&quot; block or block attributes */
+  className?: Maybe<Scalars['String']['output']>;
+  /** The &quot;lock&quot; field on the &quot;UagbImageAttributes&quot; block or block attributes */
+  lock?: Maybe<Scalars['BlockAttributesObject']['output']>;
+  /** The &quot;metadata&quot; field on the &quot;UagbImageAttributes&quot; block or block attributes */
+  metadata?: Maybe<Scalars['BlockAttributesObject']['output']>;
+};
+
+/** A block used for editing the site */
+export type UagbImageGallery = EditorBlock & PageEditorBlock & PostEditorBlock & {
+  __typename?: 'UagbImageGallery';
+  /** The API version of the Gutenberg Block */
+  apiVersion?: Maybe<Scalars['Int']['output']>;
+  /** Attributes of the UagbImageGallery Block Type */
+  attributes?: Maybe<UagbImageGalleryAttributes>;
+  /** The name of the category the Block belongs to */
+  blockEditorCategoryName?: Maybe<Scalars['String']['output']>;
+  /** The id of the Block */
+  clientId?: Maybe<Scalars['String']['output']>;
+  /** CSS Classnames to apply to the block */
+  cssClassNames?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  /** The inner blocks of the Block */
+  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
+  /** Whether the block is Dynamic (server rendered) */
+  isDynamic: Scalars['Boolean']['output'];
+  /** The name of the block */
+  name?: Maybe<Scalars['String']['output']>;
+  /** The parent id of the Block */
+  parentClientId?: Maybe<Scalars['String']['output']>;
+  /** The rendered HTML for the block */
+  renderedHtml?: Maybe<Scalars['String']['output']>;
+  /** The (GraphQL) type of the block */
+  type?: Maybe<Scalars['String']['output']>;
+};
+
+/** Attributes of the UagbImageGallery Block Type */
+export type UagbImageGalleryAttributes = {
+  __typename?: 'UagbImageGalleryAttributes';
+  /** The &quot;arrowBorderBottomLeftRadius&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  arrowBorderBottomLeftRadius?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;arrowBorderBottomLeftRadiusMobile&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  arrowBorderBottomLeftRadiusMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;arrowBorderBottomLeftRadiusTablet&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  arrowBorderBottomLeftRadiusTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;arrowBorderBottomRightRadius&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  arrowBorderBottomRightRadius?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;arrowBorderBottomRightRadiusMobile&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  arrowBorderBottomRightRadiusMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;arrowBorderBottomRightRadiusTablet&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  arrowBorderBottomRightRadiusTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;arrowBorderBottomWidth&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  arrowBorderBottomWidth?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;arrowBorderBottomWidthMobile&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  arrowBorderBottomWidthMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;arrowBorderBottomWidthTablet&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  arrowBorderBottomWidthTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;arrowBorderColor&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  arrowBorderColor?: Maybe<Scalars['String']['output']>;
+  /** The &quot;arrowBorderHColor&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  arrowBorderHColor?: Maybe<Scalars['String']['output']>;
+  /** The &quot;arrowBorderLeftWidth&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  arrowBorderLeftWidth?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;arrowBorderLeftWidthMobile&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  arrowBorderLeftWidthMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;arrowBorderLeftWidthTablet&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  arrowBorderLeftWidthTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;arrowBorderLink&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  arrowBorderLink: Scalars['Boolean']['output'];
+  /** The &quot;arrowBorderRadiusLink&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  arrowBorderRadiusLink: Scalars['Boolean']['output'];
+  /** The &quot;arrowBorderRadiusUnit&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  arrowBorderRadiusUnit?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;arrowBorderRadiusUnitMobile&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  arrowBorderRadiusUnitMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;arrowBorderRadiusUnitTablet&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  arrowBorderRadiusUnitTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;arrowBorderRightWidth&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  arrowBorderRightWidth?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;arrowBorderRightWidthMobile&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  arrowBorderRightWidthMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;arrowBorderRightWidthTablet&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  arrowBorderRightWidthTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;arrowBorderStyle&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  arrowBorderStyle?: Maybe<Scalars['String']['output']>;
+  /** The &quot;arrowBorderTopLeftRadius&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  arrowBorderTopLeftRadius?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;arrowBorderTopLeftRadiusMobile&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  arrowBorderTopLeftRadiusMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;arrowBorderTopLeftRadiusTablet&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  arrowBorderTopLeftRadiusTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;arrowBorderTopRightRadius&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  arrowBorderTopRightRadius?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;arrowBorderTopRightRadiusMobile&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  arrowBorderTopRightRadiusMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;arrowBorderTopRightRadiusTablet&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  arrowBorderTopRightRadiusTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;arrowBorderTopWidth&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  arrowBorderTopWidth?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;arrowBorderTopWidthMobile&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  arrowBorderTopWidthMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;arrowBorderTopWidthTablet&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  arrowBorderTopWidthTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;block_id&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  blockId?: Maybe<Scalars['String']['output']>;
+  /** The &quot;btnBorderBottomLeftRadius&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  btnBorderBottomLeftRadius?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;btnBorderBottomLeftRadiusMobile&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  btnBorderBottomLeftRadiusMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;btnBorderBottomLeftRadiusTablet&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  btnBorderBottomLeftRadiusTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;btnBorderBottomRightRadius&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  btnBorderBottomRightRadius?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;btnBorderBottomRightRadiusMobile&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  btnBorderBottomRightRadiusMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;btnBorderBottomRightRadiusTablet&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  btnBorderBottomRightRadiusTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;btnBorderBottomWidth&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  btnBorderBottomWidth?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;btnBorderBottomWidthMobile&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  btnBorderBottomWidthMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;btnBorderBottomWidthTablet&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  btnBorderBottomWidthTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;btnBorderColor&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  btnBorderColor?: Maybe<Scalars['String']['output']>;
+  /** The &quot;btnBorderHColor&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  btnBorderHColor?: Maybe<Scalars['String']['output']>;
+  /** The &quot;btnBorderLeftWidth&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  btnBorderLeftWidth?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;btnBorderLeftWidthMobile&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  btnBorderLeftWidthMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;btnBorderLeftWidthTablet&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  btnBorderLeftWidthTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;btnBorderLink&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  btnBorderLink: Scalars['Boolean']['output'];
+  /** The &quot;btnBorderRadiusLink&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  btnBorderRadiusLink: Scalars['Boolean']['output'];
+  /** The &quot;btnBorderRadiusUnit&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  btnBorderRadiusUnit?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;btnBorderRadiusUnitMobile&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  btnBorderRadiusUnitMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;btnBorderRadiusUnitTablet&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  btnBorderRadiusUnitTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;btnBorderRightWidth&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  btnBorderRightWidth?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;btnBorderRightWidthMobile&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  btnBorderRightWidthMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;btnBorderRightWidthTablet&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  btnBorderRightWidthTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;btnBorderStyle&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  btnBorderStyle?: Maybe<Scalars['String']['output']>;
+  /** The &quot;btnBorderTopLeftRadius&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  btnBorderTopLeftRadius?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;btnBorderTopLeftRadiusMobile&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  btnBorderTopLeftRadiusMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;btnBorderTopLeftRadiusTablet&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  btnBorderTopLeftRadiusTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;btnBorderTopRightRadius&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  btnBorderTopRightRadius?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;btnBorderTopRightRadiusMobile&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  btnBorderTopRightRadiusMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;btnBorderTopRightRadiusTablet&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  btnBorderTopRightRadiusTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;btnBorderTopWidth&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  btnBorderTopWidth?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;btnBorderTopWidthMobile&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  btnBorderTopWidthMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;btnBorderTopWidthTablet&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  btnBorderTopWidthTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;captionBackgroundBlurAmount&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  captionBackgroundBlurAmount: Scalars['Float']['output'];
+  /** The &quot;captionBackgroundBlurAmountHover&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  captionBackgroundBlurAmountHover: Scalars['Float']['output'];
+  /** The &quot;captionBackgroundColor&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  captionBackgroundColor: Scalars['String']['output'];
+  /** The &quot;captionBackgroundColorHover&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  captionBackgroundColorHover: Scalars['String']['output'];
+  /** The &quot;captionBackgroundEffect&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  captionBackgroundEffect: Scalars['String']['output'];
+  /** The &quot;captionBackgroundEffectAmount&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  captionBackgroundEffectAmount: Scalars['Float']['output'];
+  /** The &quot;captionBackgroundEffectAmountHover&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  captionBackgroundEffectAmountHover: Scalars['Float']['output'];
+  /** The &quot;captionBackgroundEffectHover&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  captionBackgroundEffectHover: Scalars['String']['output'];
+  /** The &quot;captionBackgroundEnableBlur&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  captionBackgroundEnableBlur: Scalars['Boolean']['output'];
+  /** The &quot;captionColor&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  captionColor: Scalars['String']['output'];
+  /** The &quot;captionColorHover&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  captionColorHover: Scalars['String']['output'];
+  /** The &quot;captionDecoration&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  captionDecoration: Scalars['String']['output'];
+  /** The &quot;captionDisplayType&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  captionDisplayType: Scalars['String']['output'];
+  /** The &quot;captionFontFamily&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  captionFontFamily: Scalars['String']['output'];
+  /** The &quot;captionFontSize&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  captionFontSize?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;captionFontSizeMob&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  captionFontSizeMob?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;captionFontSizeTab&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  captionFontSizeTab?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;captionFontSizeType&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  captionFontSizeType: Scalars['String']['output'];
+  /** The &quot;captionFontStyle&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  captionFontStyle: Scalars['String']['output'];
+  /** The &quot;captionFontWeight&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  captionFontWeight?: Maybe<Scalars['String']['output']>;
+  /** The &quot;captionGap&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  captionGap: Scalars['Float']['output'];
+  /** The &quot;captionGapUnit&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  captionGapUnit: Scalars['String']['output'];
+  /** The &quot;captionLineHeight&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  captionLineHeight?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;captionLineHeightMob&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  captionLineHeightMob?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;captionLineHeightTab&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  captionLineHeightTab?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;captionLineHeightType&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  captionLineHeightType: Scalars['String']['output'];
+  /** The &quot;captionLoadGoogleFonts&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  captionLoadGoogleFonts: Scalars['Boolean']['output'];
+  /** The &quot;captionPaddingBottom&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  captionPaddingBottom: Scalars['Float']['output'];
+  /** The &quot;captionPaddingBottomMob&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  captionPaddingBottomMob: Scalars['Float']['output'];
+  /** The &quot;captionPaddingBottomTab&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  captionPaddingBottomTab: Scalars['Float']['output'];
+  /** The &quot;captionPaddingLeft&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  captionPaddingLeft: Scalars['Float']['output'];
+  /** The &quot;captionPaddingLeftMob&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  captionPaddingLeftMob: Scalars['Float']['output'];
+  /** The &quot;captionPaddingLeftTab&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  captionPaddingLeftTab: Scalars['Float']['output'];
+  /** The &quot;captionPaddingRight&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  captionPaddingRight: Scalars['Float']['output'];
+  /** The &quot;captionPaddingRightMob&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  captionPaddingRightMob: Scalars['Float']['output'];
+  /** The &quot;captionPaddingRightTab&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  captionPaddingRightTab: Scalars['Float']['output'];
+  /** The &quot;captionPaddingTop&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  captionPaddingTop: Scalars['Float']['output'];
+  /** The &quot;captionPaddingTopMob&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  captionPaddingTopMob: Scalars['Float']['output'];
+  /** The &quot;captionPaddingTopTab&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  captionPaddingTopTab: Scalars['Float']['output'];
+  /** The &quot;captionPaddingUnit&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  captionPaddingUnit: Scalars['String']['output'];
+  /** The &quot;captionPaddingUnitLink&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  captionPaddingUnitLink: Scalars['Boolean']['output'];
+  /** The &quot;captionPaddingUnitMob&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  captionPaddingUnitMob: Scalars['String']['output'];
+  /** The &quot;captionPaddingUnitTab&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  captionPaddingUnitTab: Scalars['String']['output'];
+  /** The &quot;captionSeparateColors&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  captionSeparateColors: Scalars['Boolean']['output'];
+  /** The &quot;captionTransform&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  captionTransform?: Maybe<Scalars['String']['output']>;
+  /** The &quot;captionVisibility&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  captionVisibility: Scalars['String']['output'];
+  /** The &quot;carouselAutoplay&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  carouselAutoplay: Scalars['Boolean']['output'];
+  /** The &quot;carouselAutoplaySpeed&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  carouselAutoplaySpeed: Scalars['Float']['output'];
+  /** The &quot;carouselLoop&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  carouselLoop: Scalars['Boolean']['output'];
+  /** The &quot;carouselPauseOnHover&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  carouselPauseOnHover: Scalars['Boolean']['output'];
+  /** The &quot;carouselSquares&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  carouselSquares: Scalars['Boolean']['output'];
+  /** The &quot;carouselStartAt&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  carouselStartAt: Scalars['Float']['output'];
+  /** The &quot;carouselTransitionSpeed&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  carouselTransitionSpeed: Scalars['Float']['output'];
+  /** The &quot;classMigrate&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  classMigrate: Scalars['Boolean']['output'];
+  /** The &quot;className&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  className?: Maybe<Scalars['String']['output']>;
+  /** The &quot;columnsDesk&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  columnsDesk: Scalars['Float']['output'];
+  /** The &quot;columnsMob&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  columnsMob: Scalars['Float']['output'];
+  /** The &quot;columnsTab&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  columnsTab: Scalars['Float']['output'];
+  /** The &quot;disableLazyLoad&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  disableLazyLoad: Scalars['Boolean']['output'];
+  /** The &quot;feedLayout&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  feedLayout: Scalars['String']['output'];
+  /** The &quot;feedMarginBottom&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  feedMarginBottom?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;feedMarginBottomMob&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  feedMarginBottomMob?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;feedMarginBottomTab&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  feedMarginBottomTab?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;feedMarginLeft&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  feedMarginLeft?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;feedMarginLeftMob&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  feedMarginLeftMob?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;feedMarginLeftTab&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  feedMarginLeftTab?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;feedMarginRight&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  feedMarginRight?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;feedMarginRightMob&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  feedMarginRightMob?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;feedMarginRightTab&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  feedMarginRightTab?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;feedMarginTop&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  feedMarginTop?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;feedMarginTopMob&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  feedMarginTopMob?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;feedMarginTopTab&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  feedMarginTopTab?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;feedMarginUnit&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  feedMarginUnit: Scalars['String']['output'];
+  /** The &quot;feedMarginUnitLink&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  feedMarginUnitLink: Scalars['Boolean']['output'];
+  /** The &quot;feedMarginUnitMob&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  feedMarginUnitMob: Scalars['String']['output'];
+  /** The &quot;feedMarginUnitTab&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  feedMarginUnitTab: Scalars['String']['output'];
+  /** The &quot;feedPagination&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  feedPagination: Scalars['Boolean']['output'];
+  /** The &quot;focusList&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  focusList: Scalars['BlockAttributesArray']['output'];
+  /** The &quot;focusListObject&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  focusListObject: Scalars['BlockAttributesObject']['output'];
+  /** The &quot;galleryImageSize&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  galleryImageSize: Scalars['String']['output'];
+  /** The &quot;galleryImageSizeMobile&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  galleryImageSizeMobile: Scalars['String']['output'];
+  /** The &quot;galleryImageSizeTablet&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  galleryImageSizeTablet: Scalars['String']['output'];
+  /** The &quot;gridImageGap&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  gridImageGap: Scalars['Float']['output'];
+  /** The &quot;gridImageGapMob&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  gridImageGapMob?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;gridImageGapTab&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  gridImageGapTab?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;gridImageGapUnit&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  gridImageGapUnit: Scalars['String']['output'];
+  /** The &quot;gridImageGapUnitMob&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  gridImageGapUnitMob: Scalars['String']['output'];
+  /** The &quot;gridImageGapUnitTab&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  gridImageGapUnitTab: Scalars['String']['output'];
+  /** The &quot;gridPageNumber&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  gridPageNumber: Scalars['Float']['output'];
+  /** The &quot;gridPages&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  gridPages: Scalars['Float']['output'];
+  /** The &quot;imageBorderBottomLeftRadius&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  imageBorderBottomLeftRadius?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;imageBorderBottomLeftRadiusMobile&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  imageBorderBottomLeftRadiusMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;imageBorderBottomLeftRadiusTablet&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  imageBorderBottomLeftRadiusTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;imageBorderBottomRightRadius&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  imageBorderBottomRightRadius?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;imageBorderBottomRightRadiusMobile&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  imageBorderBottomRightRadiusMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;imageBorderBottomRightRadiusTablet&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  imageBorderBottomRightRadiusTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;imageBorderBottomWidth&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  imageBorderBottomWidth?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;imageBorderBottomWidthMobile&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  imageBorderBottomWidthMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;imageBorderBottomWidthTablet&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  imageBorderBottomWidthTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;imageBorderColor&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  imageBorderColor?: Maybe<Scalars['String']['output']>;
+  /** The &quot;imageBorderHColor&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  imageBorderHColor?: Maybe<Scalars['String']['output']>;
+  /** The &quot;imageBorderLeftWidth&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  imageBorderLeftWidth?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;imageBorderLeftWidthMobile&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  imageBorderLeftWidthMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;imageBorderLeftWidthTablet&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  imageBorderLeftWidthTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;imageBorderLink&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  imageBorderLink: Scalars['Boolean']['output'];
+  /** The &quot;imageBorderRadiusLink&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  imageBorderRadiusLink: Scalars['Boolean']['output'];
+  /** The &quot;imageBorderRadiusUnit&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  imageBorderRadiusUnit?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;imageBorderRadiusUnitMobile&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  imageBorderRadiusUnitMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;imageBorderRadiusUnitTablet&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  imageBorderRadiusUnitTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;imageBorderRightWidth&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  imageBorderRightWidth?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;imageBorderRightWidthMobile&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  imageBorderRightWidthMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;imageBorderRightWidthTablet&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  imageBorderRightWidthTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;imageBorderStyle&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  imageBorderStyle?: Maybe<Scalars['String']['output']>;
+  /** The &quot;imageBorderTopLeftRadius&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  imageBorderTopLeftRadius?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;imageBorderTopLeftRadiusMobile&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  imageBorderTopLeftRadiusMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;imageBorderTopLeftRadiusTablet&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  imageBorderTopLeftRadiusTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;imageBorderTopRightRadius&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  imageBorderTopRightRadius?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;imageBorderTopRightRadiusMobile&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  imageBorderTopRightRadiusMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;imageBorderTopRightRadiusTablet&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  imageBorderTopRightRadiusTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;imageBorderTopWidth&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  imageBorderTopWidth?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;imageBorderTopWidthMobile&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  imageBorderTopWidthMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;imageBorderTopWidthTablet&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  imageBorderTopWidthTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;imageBoxShadowBlur&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  imageBoxShadowBlur?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;imageBoxShadowBlurHover&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  imageBoxShadowBlurHover?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;imageBoxShadowColor&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  imageBoxShadowColor?: Maybe<Scalars['String']['output']>;
+  /** The &quot;imageBoxShadowColorHover&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  imageBoxShadowColorHover?: Maybe<Scalars['String']['output']>;
+  /** The &quot;imageBoxShadowHOffset&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  imageBoxShadowHOffset: Scalars['Float']['output'];
+  /** The &quot;imageBoxShadowHOffsetHover&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  imageBoxShadowHOffsetHover: Scalars['Float']['output'];
+  /** The &quot;imageBoxShadowPosition&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  imageBoxShadowPosition: Scalars['String']['output'];
+  /** The &quot;imageBoxShadowPositionHover&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  imageBoxShadowPositionHover: Scalars['String']['output'];
+  /** The &quot;imageBoxShadowSpread&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  imageBoxShadowSpread?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;imageBoxShadowSpreadHover&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  imageBoxShadowSpreadHover?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;imageBoxShadowVOffset&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  imageBoxShadowVOffset: Scalars['Float']['output'];
+  /** The &quot;imageBoxShadowVOffsetHover&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  imageBoxShadowVOffsetHover: Scalars['Float']['output'];
+  /** The &quot;imageCaptionAlignment&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  imageCaptionAlignment: Scalars['String']['output'];
+  /** The &quot;imageCaptionAlignment01&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  imageCaptionAlignment01: Scalars['String']['output'];
+  /** The &quot;imageCaptionAlignment02&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  imageCaptionAlignment02: Scalars['String']['output'];
+  /** The &quot;imageClickEvent&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  imageClickEvent: Scalars['String']['output'];
+  /** The &quot;imageDefaultCaption&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  imageDefaultCaption: Scalars['String']['output'];
+  /** The &quot;imageDisplayCaption&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  imageDisplayCaption: Scalars['Boolean']['output'];
+  /** The &quot;imageEnableZoom&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  imageEnableZoom: Scalars['Boolean']['output'];
+  /** The &quot;imageZoomType&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  imageZoomType: Scalars['String']['output'];
+  /** The &quot;lightboxBackgroundBlurAmount&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  lightboxBackgroundBlurAmount: Scalars['Float']['output'];
+  /** The &quot;lightboxBackgroundColor&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  lightboxBackgroundColor: Scalars['String']['output'];
+  /** The &quot;lightboxBackgroundEnableBlur&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  lightboxBackgroundEnableBlur: Scalars['Boolean']['output'];
+  /** The &quot;lightboxCaptionBackgroundColor&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  lightboxCaptionBackgroundColor: Scalars['String']['output'];
+  /** The &quot;lightboxCaptionColor&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  lightboxCaptionColor: Scalars['String']['output'];
+  /** The &quot;lightboxCaptionHeight&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  lightboxCaptionHeight: Scalars['Float']['output'];
+  /** The &quot;lightboxCaptionHeightMobile&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  lightboxCaptionHeightMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;lightboxCaptionHeightTablet&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  lightboxCaptionHeightTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;lightboxCloseIcon&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  lightboxCloseIcon: Scalars['String']['output'];
+  /** The &quot;lightboxDecoration&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  lightboxDecoration: Scalars['String']['output'];
+  /** The &quot;lightboxDisplayCaptions&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  lightboxDisplayCaptions: Scalars['Boolean']['output'];
+  /** The &quot;lightboxDisplayCount&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  lightboxDisplayCount: Scalars['Boolean']['output'];
+  /** The &quot;lightboxEdgeDistance&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  lightboxEdgeDistance: Scalars['Float']['output'];
+  /** The &quot;lightboxEdgeDistanceMobile&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  lightboxEdgeDistanceMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;lightboxEdgeDistanceTablet&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  lightboxEdgeDistanceTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;lightboxFontFamily&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  lightboxFontFamily: Scalars['String']['output'];
+  /** The &quot;lightboxFontSize&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  lightboxFontSize?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;lightboxFontSizeMob&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  lightboxFontSizeMob?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;lightboxFontSizeTab&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  lightboxFontSizeTab?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;lightboxFontSizeType&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  lightboxFontSizeType: Scalars['String']['output'];
+  /** The &quot;lightboxFontStyle&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  lightboxFontStyle: Scalars['String']['output'];
+  /** The &quot;lightboxFontWeight&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  lightboxFontWeight?: Maybe<Scalars['String']['output']>;
+  /** The &quot;lightboxIconColor&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  lightboxIconColor: Scalars['String']['output'];
+  /** The &quot;lightboxIconSize&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  lightboxIconSize: Scalars['Float']['output'];
+  /** The &quot;lightboxIconSizeMobile&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  lightboxIconSizeMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;lightboxIconSizeTablet&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  lightboxIconSizeTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;lightboxLineHeight&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  lightboxLineHeight?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;lightboxLineHeightMob&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  lightboxLineHeightMob?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;lightboxLineHeightTab&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  lightboxLineHeightTab?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;lightboxLineHeightType&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  lightboxLineHeightType: Scalars['String']['output'];
+  /** The &quot;lightboxLoadGoogleFonts&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  lightboxLoadGoogleFonts: Scalars['Boolean']['output'];
+  /** The &quot;lightboxThumbnails&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  lightboxThumbnails: Scalars['Boolean']['output'];
+  /** The &quot;lightboxTransform&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  lightboxTransform?: Maybe<Scalars['String']['output']>;
+  /** The &quot;loadMoreDecoration&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  loadMoreDecoration: Scalars['String']['output'];
+  /** The &quot;loadMoreFontFamily&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  loadMoreFontFamily: Scalars['String']['output'];
+  /** The &quot;loadMoreFontSize&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  loadMoreFontSize?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;loadMoreFontSizeMob&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  loadMoreFontSizeMob?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;loadMoreFontSizeTab&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  loadMoreFontSizeTab?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;loadMoreFontSizeType&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  loadMoreFontSizeType: Scalars['String']['output'];
+  /** The &quot;loadMoreFontStyle&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  loadMoreFontStyle: Scalars['String']['output'];
+  /** The &quot;loadMoreFontWeight&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  loadMoreFontWeight?: Maybe<Scalars['String']['output']>;
+  /** The &quot;loadMoreLineHeight&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  loadMoreLineHeight?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;loadMoreLineHeightMob&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  loadMoreLineHeightMob?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;loadMoreLineHeightTab&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  loadMoreLineHeightTab?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;loadMoreLineHeightType&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  loadMoreLineHeightType: Scalars['String']['output'];
+  /** The &quot;loadMoreLoadGoogleFonts&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  loadMoreLoadGoogleFonts: Scalars['Boolean']['output'];
+  /** The &quot;loadMoreTransform&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  loadMoreTransform?: Maybe<Scalars['String']['output']>;
+  /** The &quot;lock&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  lock?: Maybe<Scalars['BlockAttributesObject']['output']>;
+  /** The &quot;mainTitleBorderBottomLeftRadius&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  mainTitleBorderBottomLeftRadius?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;mainTitleBorderBottomLeftRadiusMobile&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  mainTitleBorderBottomLeftRadiusMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;mainTitleBorderBottomLeftRadiusTablet&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  mainTitleBorderBottomLeftRadiusTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;mainTitleBorderBottomRightRadius&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  mainTitleBorderBottomRightRadius?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;mainTitleBorderBottomRightRadiusMobile&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  mainTitleBorderBottomRightRadiusMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;mainTitleBorderBottomRightRadiusTablet&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  mainTitleBorderBottomRightRadiusTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;mainTitleBorderBottomWidth&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  mainTitleBorderBottomWidth?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;mainTitleBorderBottomWidthMobile&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  mainTitleBorderBottomWidthMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;mainTitleBorderBottomWidthTablet&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  mainTitleBorderBottomWidthTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;mainTitleBorderColor&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  mainTitleBorderColor?: Maybe<Scalars['String']['output']>;
+  /** The &quot;mainTitleBorderHColor&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  mainTitleBorderHColor?: Maybe<Scalars['String']['output']>;
+  /** The &quot;mainTitleBorderLeftWidth&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  mainTitleBorderLeftWidth?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;mainTitleBorderLeftWidthMobile&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  mainTitleBorderLeftWidthMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;mainTitleBorderLeftWidthTablet&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  mainTitleBorderLeftWidthTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;mainTitleBorderLink&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  mainTitleBorderLink: Scalars['Boolean']['output'];
+  /** The &quot;mainTitleBorderRadiusLink&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  mainTitleBorderRadiusLink: Scalars['Boolean']['output'];
+  /** The &quot;mainTitleBorderRadiusUnit&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  mainTitleBorderRadiusUnit?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;mainTitleBorderRadiusUnitMobile&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  mainTitleBorderRadiusUnitMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;mainTitleBorderRadiusUnitTablet&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  mainTitleBorderRadiusUnitTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;mainTitleBorderRightWidth&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  mainTitleBorderRightWidth?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;mainTitleBorderRightWidthMobile&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  mainTitleBorderRightWidthMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;mainTitleBorderRightWidthTablet&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  mainTitleBorderRightWidthTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;mainTitleBorderStyle&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  mainTitleBorderStyle?: Maybe<Scalars['String']['output']>;
+  /** The &quot;mainTitleBorderTopLeftRadius&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  mainTitleBorderTopLeftRadius?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;mainTitleBorderTopLeftRadiusMobile&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  mainTitleBorderTopLeftRadiusMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;mainTitleBorderTopLeftRadiusTablet&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  mainTitleBorderTopLeftRadiusTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;mainTitleBorderTopRightRadius&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  mainTitleBorderTopRightRadius?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;mainTitleBorderTopRightRadiusMobile&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  mainTitleBorderTopRightRadiusMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;mainTitleBorderTopRightRadiusTablet&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  mainTitleBorderTopRightRadiusTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;mainTitleBorderTopWidth&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  mainTitleBorderTopWidth?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;mainTitleBorderTopWidthMobile&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  mainTitleBorderTopWidthMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;mainTitleBorderTopWidthTablet&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  mainTitleBorderTopWidthTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;mediaGallery&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  mediaGallery: Scalars['BlockAttributesArray']['output'];
+  /** The &quot;mediaIDs&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  mediaIDs: Scalars['BlockAttributesArray']['output'];
+  /** The &quot;metadata&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  metadata?: Maybe<Scalars['BlockAttributesObject']['output']>;
+  /** The &quot;overlayColor&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  overlayColor: Scalars['String']['output'];
+  /** The &quot;overlayColorHover&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  overlayColorHover: Scalars['String']['output'];
+  /** The &quot;paginateArrowDistance&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  paginateArrowDistance: Scalars['Float']['output'];
+  /** The &quot;paginateArrowDistanceUnit&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  paginateArrowDistanceUnit: Scalars['String']['output'];
+  /** The &quot;paginateArrowSize&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  paginateArrowSize: Scalars['Float']['output'];
+  /** The &quot;paginateButtonAlign&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  paginateButtonAlign: Scalars['String']['output'];
+  /** The &quot;paginateButtonPaddingBottom&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  paginateButtonPaddingBottom?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;paginateButtonPaddingBottomMob&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  paginateButtonPaddingBottomMob?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;paginateButtonPaddingBottomTab&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  paginateButtonPaddingBottomTab?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;paginateButtonPaddingLeft&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  paginateButtonPaddingLeft?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;paginateButtonPaddingLeftMob&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  paginateButtonPaddingLeftMob?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;paginateButtonPaddingLeftTab&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  paginateButtonPaddingLeftTab?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;paginateButtonPaddingRight&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  paginateButtonPaddingRight?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;paginateButtonPaddingRightMob&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  paginateButtonPaddingRightMob?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;paginateButtonPaddingRightTab&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  paginateButtonPaddingRightTab?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;paginateButtonPaddingTop&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  paginateButtonPaddingTop?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;paginateButtonPaddingTopMob&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  paginateButtonPaddingTopMob?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;paginateButtonPaddingTopTab&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  paginateButtonPaddingTopTab?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;paginateButtonPaddingUnit&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  paginateButtonPaddingUnit: Scalars['String']['output'];
+  /** The &quot;paginateButtonPaddingUnitLink&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  paginateButtonPaddingUnitLink: Scalars['Boolean']['output'];
+  /** The &quot;paginateButtonPaddingUnitMob&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  paginateButtonPaddingUnitMob: Scalars['String']['output'];
+  /** The &quot;paginateButtonPaddingUnitTab&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  paginateButtonPaddingUnitTab: Scalars['String']['output'];
+  /** The &quot;paginateButtonText&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  paginateButtonText: Scalars['String']['output'];
+  /** The &quot;paginateButtonTextColor&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  paginateButtonTextColor?: Maybe<Scalars['String']['output']>;
+  /** The &quot;paginateButtonTextColorHover&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  paginateButtonTextColorHover?: Maybe<Scalars['String']['output']>;
+  /** The &quot;paginateColor&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  paginateColor?: Maybe<Scalars['String']['output']>;
+  /** The &quot;paginateColorHover&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  paginateColorHover?: Maybe<Scalars['String']['output']>;
+  /** The &quot;paginateDotDistance&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  paginateDotDistance: Scalars['Float']['output'];
+  /** The &quot;paginateDotDistanceUnit&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  paginateDotDistanceUnit: Scalars['String']['output'];
+  /** The &quot;paginateLimit&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  paginateLimit: Scalars['Float']['output'];
+  /** The &quot;paginateLoaderSize&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  paginateLoaderSize: Scalars['Float']['output'];
+  /** The &quot;paginateUseArrows&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  paginateUseArrows: Scalars['Boolean']['output'];
+  /** The &quot;paginateUseDots&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  paginateUseDots: Scalars['Boolean']['output'];
+  /** The &quot;paginateUseLoader&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  paginateUseLoader: Scalars['Boolean']['output'];
+  /** The &quot;readyToRender&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  readyToRender: Scalars['Boolean']['output'];
+  /** The &quot;tileSize&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  tileSize: Scalars['Float']['output'];
+  /** The &quot;tileSizeFrontEnd&quot; field on the &quot;UagbImageGalleryAttributes&quot; block or block attributes */
+  tileSizeFrontEnd: Scalars['Float']['output'];
+};
+
+/** A block used for editing the site */
+export type UagbLottie = EditorBlock & PageEditorBlock & PostEditorBlock & {
+  __typename?: 'UagbLottie';
+  /** The API version of the Gutenberg Block */
+  apiVersion?: Maybe<Scalars['Int']['output']>;
+  /** Attributes of the UagbLottie Block Type */
+  attributes?: Maybe<UagbLottieAttributes>;
+  /** The name of the category the Block belongs to */
+  blockEditorCategoryName?: Maybe<Scalars['String']['output']>;
+  /** The id of the Block */
+  clientId?: Maybe<Scalars['String']['output']>;
+  /** CSS Classnames to apply to the block */
+  cssClassNames?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  /** The inner blocks of the Block */
+  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
+  /** Whether the block is Dynamic (server rendered) */
+  isDynamic: Scalars['Boolean']['output'];
+  /** The name of the block */
+  name?: Maybe<Scalars['String']['output']>;
+  /** The parent id of the Block */
+  parentClientId?: Maybe<Scalars['String']['output']>;
+  /** The rendered HTML for the block */
+  renderedHtml?: Maybe<Scalars['String']['output']>;
+  /** The (GraphQL) type of the block */
+  type?: Maybe<Scalars['String']['output']>;
+};
+
+/** Attributes of the UagbLottie Block Type */
+export type UagbLottieAttributes = {
+  __typename?: 'UagbLottieAttributes';
+  /** The &quot;align&quot; field on the &quot;UagbLottieAttributes&quot; block or block attributes */
+  align: Scalars['String']['output'];
+  /** The &quot;backgroundColor&quot; field on the &quot;UagbLottieAttributes&quot; block or block attributes */
+  backgroundColor: Scalars['String']['output'];
+  /** The &quot;backgroundHColor&quot; field on the &quot;UagbLottieAttributes&quot; block or block attributes */
+  backgroundHColor: Scalars['String']['output'];
+  /** The &quot;block_id&quot; field on the &quot;UagbLottieAttributes&quot; block or block attributes */
+  blockId?: Maybe<Scalars['String']['output']>;
+  /** The &quot;className&quot; field on the &quot;UagbLottieAttributes&quot; block or block attributes */
+  className?: Maybe<Scalars['String']['output']>;
+  /** The &quot;height&quot; field on the &quot;UagbLottieAttributes&quot; block or block attributes */
+  height?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;heightMob&quot; field on the &quot;UagbLottieAttributes&quot; block or block attributes */
+  heightMob?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;heightTablet&quot; field on the &quot;UagbLottieAttributes&quot; block or block attributes */
+  heightTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;isPreview&quot; field on the &quot;UagbLottieAttributes&quot; block or block attributes */
+  isPreview: Scalars['Boolean']['output'];
+  /** The &quot;jsonLottie&quot; field on the &quot;UagbLottieAttributes&quot; block or block attributes */
+  jsonLottie?: Maybe<Scalars['BlockAttributesObject']['output']>;
+  /** The &quot;lock&quot; field on the &quot;UagbLottieAttributes&quot; block or block attributes */
+  lock?: Maybe<Scalars['BlockAttributesObject']['output']>;
+  /** The &quot;loop&quot; field on the &quot;UagbLottieAttributes&quot; block or block attributes */
+  loop: Scalars['Boolean']['output'];
+  /** The &quot;lottieSource&quot; field on the &quot;UagbLottieAttributes&quot; block or block attributes */
+  lottieSource: Scalars['String']['output'];
+  /** The &quot;lottieURl&quot; field on the &quot;UagbLottieAttributes&quot; block or block attributes */
+  lottieURl: Scalars['String']['output'];
+  /** The &quot;metadata&quot; field on the &quot;UagbLottieAttributes&quot; block or block attributes */
+  metadata?: Maybe<Scalars['BlockAttributesObject']['output']>;
+  /** The &quot;playOn&quot; field on the &quot;UagbLottieAttributes&quot; block or block attributes */
+  playOn: Scalars['String']['output'];
+  /** The &quot;playOnHover&quot; field on the &quot;UagbLottieAttributes&quot; block or block attributes */
+  playOnHover: Scalars['Boolean']['output'];
+  /** The &quot;reverse&quot; field on the &quot;UagbLottieAttributes&quot; block or block attributes */
+  reverse: Scalars['Boolean']['output'];
+  /** The &quot;speed&quot; field on the &quot;UagbLottieAttributes&quot; block or block attributes */
+  speed: Scalars['Float']['output'];
+  /** The &quot;width&quot; field on the &quot;UagbLottieAttributes&quot; block or block attributes */
+  width?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;widthMob&quot; field on the &quot;UagbLottieAttributes&quot; block or block attributes */
+  widthMob?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;widthTablet&quot; field on the &quot;UagbLottieAttributes&quot; block or block attributes */
+  widthTablet?: Maybe<Scalars['Float']['output']>;
+};
+
+/** A block used for editing the site */
+export type UagbPostCarousel = EditorBlock & PageEditorBlock & PostEditorBlock & {
+  __typename?: 'UagbPostCarousel';
+  /** The API version of the Gutenberg Block */
+  apiVersion?: Maybe<Scalars['Int']['output']>;
+  /** Attributes of the UagbPostCarousel Block Type */
+  attributes?: Maybe<UagbPostCarouselAttributes>;
+  /** The name of the category the Block belongs to */
+  blockEditorCategoryName?: Maybe<Scalars['String']['output']>;
+  /** The id of the Block */
+  clientId?: Maybe<Scalars['String']['output']>;
+  /** CSS Classnames to apply to the block */
+  cssClassNames?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  /** The inner blocks of the Block */
+  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
+  /** Whether the block is Dynamic (server rendered) */
+  isDynamic: Scalars['Boolean']['output'];
+  /** The name of the block */
+  name?: Maybe<Scalars['String']['output']>;
+  /** The parent id of the Block */
+  parentClientId?: Maybe<Scalars['String']['output']>;
+  /** The rendered HTML for the block */
+  renderedHtml?: Maybe<Scalars['String']['output']>;
+  /** The (GraphQL) type of the block */
+  type?: Maybe<Scalars['String']['output']>;
+};
+
+/** Attributes of the UagbPostCarousel Block Type */
+export type UagbPostCarouselAttributes = {
+  __typename?: 'UagbPostCarouselAttributes';
+  /** The &quot;align&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  align: Scalars['String']['output'];
+  /** The &quot;arrowBorderRadius&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  arrowBorderRadius: Scalars['Float']['output'];
+  /** The &quot;arrowBorderSize&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  arrowBorderSize: Scalars['Float']['output'];
+  /** The &quot;arrowColor&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  arrowColor: Scalars['String']['output'];
+  /** The &quot;arrowDistance&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  arrowDistance?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;arrowDistanceMobile&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  arrowDistanceMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;arrowDistanceTablet&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  arrowDistanceTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;arrowDots&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  arrowDots: Scalars['String']['output'];
+  /** The &quot;arrowSize&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  arrowSize: Scalars['Float']['output'];
+  /** The &quot;autoplay&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  autoplay: Scalars['Boolean']['output'];
+  /** The &quot;autoplaySpeed&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  autoplaySpeed: Scalars['Float']['output'];
+  /** The &quot;bgColor&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  bgColor: Scalars['String']['output'];
+  /** The &quot;bgOverlayColor&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  bgOverlayColor: Scalars['String']['output'];
+  /** The &quot;bgType&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  bgType: Scalars['String']['output'];
+  /** The &quot;block_id&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  blockId: Scalars['String']['output'];
+  /** The &quot;blockName&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  blockName: Scalars['String']['output'];
+  /** The &quot;borderColor&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  borderColor: Scalars['String']['output'];
+  /** The &quot;borderHColor&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  borderHColor?: Maybe<Scalars['String']['output']>;
+  /** The &quot;borderRadius&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  borderRadius: Scalars['Float']['output'];
+  /** The &quot;borderStyle&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  borderStyle: Scalars['String']['output'];
+  /** The &quot;borderWidth&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  borderWidth: Scalars['Float']['output'];
+  /** The &quot;boxShadowBlur&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  boxShadowBlur: Scalars['Float']['output'];
+  /** The &quot;boxShadowBlurHover&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  boxShadowBlurHover: Scalars['Float']['output'];
+  /** The &quot;boxShadowColor&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  boxShadowColor: Scalars['String']['output'];
+  /** The &quot;boxShadowColorHover&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  boxShadowColorHover: Scalars['String']['output'];
+  /** The &quot;boxShadowHOffset&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  boxShadowHOffset: Scalars['Float']['output'];
+  /** The &quot;boxShadowHOffsetHover&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  boxShadowHOffsetHover: Scalars['Float']['output'];
+  /** The &quot;boxShadowPosition&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  boxShadowPosition: Scalars['String']['output'];
+  /** The &quot;boxShadowPositionHover&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  boxShadowPositionHover: Scalars['String']['output'];
+  /** The &quot;boxShadowSpread&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  boxShadowSpread: Scalars['Float']['output'];
+  /** The &quot;boxShadowSpreadHover&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  boxShadowSpreadHover: Scalars['Float']['output'];
+  /** The &quot;boxShadowVOffset&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  boxShadowVOffset: Scalars['Float']['output'];
+  /** The &quot;boxShadowVOffsetHover&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  boxShadowVOffsetHover: Scalars['Float']['output'];
+  /** The &quot;btnBorderBottomLeftRadius&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  btnBorderBottomLeftRadius?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;btnBorderBottomLeftRadiusMobile&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  btnBorderBottomLeftRadiusMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;btnBorderBottomLeftRadiusTablet&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  btnBorderBottomLeftRadiusTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;btnBorderBottomRightRadius&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  btnBorderBottomRightRadius?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;btnBorderBottomRightRadiusMobile&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  btnBorderBottomRightRadiusMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;btnBorderBottomRightRadiusTablet&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  btnBorderBottomRightRadiusTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;btnBorderBottomWidth&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  btnBorderBottomWidth?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;btnBorderBottomWidthMobile&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  btnBorderBottomWidthMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;btnBorderBottomWidthTablet&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  btnBorderBottomWidthTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;btnBorderColor&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  btnBorderColor?: Maybe<Scalars['String']['output']>;
+  /** The &quot;btnBorderHColor&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  btnBorderHColor?: Maybe<Scalars['String']['output']>;
+  /** The &quot;btnBorderLeftWidth&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  btnBorderLeftWidth?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;btnBorderLeftWidthMobile&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  btnBorderLeftWidthMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;btnBorderLeftWidthTablet&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  btnBorderLeftWidthTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;btnBorderLink&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  btnBorderLink: Scalars['Boolean']['output'];
+  /** The &quot;btnBorderRadiusLink&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  btnBorderRadiusLink: Scalars['Boolean']['output'];
+  /** The &quot;btnBorderRadiusUnit&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  btnBorderRadiusUnit?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;btnBorderRadiusUnitMobile&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  btnBorderRadiusUnitMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;btnBorderRadiusUnitTablet&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  btnBorderRadiusUnitTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;btnBorderRightWidth&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  btnBorderRightWidth?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;btnBorderRightWidthMobile&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  btnBorderRightWidthMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;btnBorderRightWidthTablet&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  btnBorderRightWidthTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;btnBorderStyle&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  btnBorderStyle?: Maybe<Scalars['String']['output']>;
+  /** The &quot;btnBorderTopLeftRadius&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  btnBorderTopLeftRadius?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;btnBorderTopLeftRadiusMobile&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  btnBorderTopLeftRadiusMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;btnBorderTopLeftRadiusTablet&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  btnBorderTopLeftRadiusTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;btnBorderTopRightRadius&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  btnBorderTopRightRadius?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;btnBorderTopRightRadiusMobile&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  btnBorderTopRightRadiusMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;btnBorderTopRightRadiusTablet&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  btnBorderTopRightRadiusTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;btnBorderTopWidth&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  btnBorderTopWidth?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;btnBorderTopWidthMobile&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  btnBorderTopWidthMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;btnBorderTopWidthTablet&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  btnBorderTopWidthTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;btnHPadding&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  btnHPadding: Scalars['Float']['output'];
+  /** The &quot;btnVPadding&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  btnVPadding: Scalars['Float']['output'];
+  /** The &quot;buttonType&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  buttonType: Scalars['String']['output'];
+  /** The &quot;categories&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  categories?: Maybe<Scalars['String']['output']>;
+  /** The &quot;className&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  className?: Maybe<Scalars['String']['output']>;
+  /** The &quot;columnGap&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  columnGap: Scalars['Float']['output'];
+  /** The &quot;columnGapMobile&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  columnGapMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;columnGapTablet&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  columnGapTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;columnGapUnit&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  columnGapUnit: Scalars['String']['output'];
+  /** The &quot;columns&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  columns: Scalars['Float']['output'];
+  /** The &quot;contentPadding&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  contentPadding: Scalars['Float']['output'];
+  /** The &quot;contentPaddingMobile&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  contentPaddingMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;contentPaddingUnit&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  contentPaddingUnit: Scalars['String']['output'];
+  /** The &quot;ctaBgColor&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  ctaBgColor?: Maybe<Scalars['String']['output']>;
+  /** The &quot;ctaBgHColor&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  ctaBgHColor?: Maybe<Scalars['String']['output']>;
+  /** The &quot;ctaBgHType&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  ctaBgHType: Scalars['String']['output'];
+  /** The &quot;ctaBgType&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  ctaBgType: Scalars['String']['output'];
+  /** The &quot;ctaBottomSpace&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  ctaBottomSpace: Scalars['Float']['output'];
+  /** The &quot;ctaBottomSpaceMobile&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  ctaBottomSpaceMobile: Scalars['Float']['output'];
+  /** The &quot;ctaBottomSpaceTablet&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  ctaBottomSpaceTablet: Scalars['Float']['output'];
+  /** The &quot;ctaBottomSpaceUnit&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  ctaBottomSpaceUnit: Scalars['String']['output'];
+  /** The &quot;ctaColor&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  ctaColor?: Maybe<Scalars['String']['output']>;
+  /** The &quot;ctaDecoration&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  ctaDecoration?: Maybe<Scalars['String']['output']>;
+  /** The &quot;ctaFontFamily&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  ctaFontFamily: Scalars['String']['output'];
+  /** The &quot;ctaFontSize&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  ctaFontSize: Scalars['Float']['output'];
+  /** The &quot;ctaFontSizeMobile&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  ctaFontSizeMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;ctaFontSizeTablet&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  ctaFontSizeTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;ctaFontSizeType&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  ctaFontSizeType: Scalars['String']['output'];
+  /** The &quot;ctaFontStyle&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  ctaFontStyle?: Maybe<Scalars['String']['output']>;
+  /** The &quot;ctaFontWeight&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  ctaFontWeight?: Maybe<Scalars['String']['output']>;
+  /** The &quot;ctaHColor&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  ctaHColor?: Maybe<Scalars['String']['output']>;
+  /** The &quot;ctaLetterSpacing&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  ctaLetterSpacing: Scalars['Float']['output'];
+  /** The &quot;ctaLetterSpacingMobile&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  ctaLetterSpacingMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;ctaLetterSpacingTablet&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  ctaLetterSpacingTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;ctaLetterSpacingType&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  ctaLetterSpacingType: Scalars['String']['output'];
+  /** The &quot;ctaLineHeight&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  ctaLineHeight?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;ctaLineHeightMobile&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  ctaLineHeightMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;ctaLineHeightTablet&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  ctaLineHeightTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;ctaLineHeightType&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  ctaLineHeightType: Scalars['String']['output'];
+  /** The &quot;ctaLoadGoogleFonts&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  ctaLoadGoogleFonts: Scalars['Boolean']['output'];
+  /** The &quot;ctaText&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  ctaText: Scalars['String']['output'];
+  /** The &quot;ctaTransform&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  ctaTransform?: Maybe<Scalars['String']['output']>;
+  /** The &quot;displayPostAuthor&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  displayPostAuthor: Scalars['Boolean']['output'];
+  /** The &quot;displayPostComment&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  displayPostComment: Scalars['Boolean']['output'];
+  /** The &quot;displayPostContentRadio&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  displayPostContentRadio: Scalars['String']['output'];
+  /** The &quot;displayPostDate&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  displayPostDate: Scalars['Boolean']['output'];
+  /** The &quot;displayPostExcerpt&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  displayPostExcerpt: Scalars['Boolean']['output'];
+  /** The &quot;displayPostImage&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  displayPostImage: Scalars['Boolean']['output'];
+  /** The &quot;displayPostLink&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  displayPostLink: Scalars['Boolean']['output'];
+  /** The &quot;displayPostTaxonomy&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  displayPostTaxonomy: Scalars['Boolean']['output'];
+  /** The &quot;displayPostTaxonomyAboveTitle&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  displayPostTaxonomyAboveTitle: Scalars['String']['output'];
+  /** The &quot;displayPostTitle&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  displayPostTitle: Scalars['Boolean']['output'];
+  /** The &quot;dotsMarginTop&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  dotsMarginTop: Scalars['Float']['output'];
+  /** The &quot;dotsMarginTopMobile&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  dotsMarginTopMobile: Scalars['Float']['output'];
+  /** The &quot;dotsMarginTopTablet&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  dotsMarginTopTablet: Scalars['Float']['output'];
+  /** The &quot;dotsMarginTopUnit&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  dotsMarginTopUnit: Scalars['String']['output'];
+  /** The &quot;enableOffset&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  enableOffset: Scalars['Boolean']['output'];
+  /** The &quot;equalHeight&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  equalHeight: Scalars['Boolean']['output'];
+  /** The &quot;excerptBottomSpace&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  excerptBottomSpace: Scalars['Float']['output'];
+  /** The &quot;excerptBottomSpaceMobile&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  excerptBottomSpaceMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;excerptBottomSpaceTablet&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  excerptBottomSpaceTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;excerptBottomSpaceUnit&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  excerptBottomSpaceUnit: Scalars['String']['output'];
+  /** The &quot;excerptColor&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  excerptColor: Scalars['String']['output'];
+  /** The &quot;excerptDecoration&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  excerptDecoration?: Maybe<Scalars['String']['output']>;
+  /** The &quot;excerptFontFamily&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  excerptFontFamily: Scalars['String']['output'];
+  /** The &quot;excerptFontSize&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  excerptFontSize: Scalars['Float']['output'];
+  /** The &quot;excerptFontSizeMobile&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  excerptFontSizeMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;excerptFontSizeTablet&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  excerptFontSizeTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;excerptFontSizeType&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  excerptFontSizeType: Scalars['String']['output'];
+  /** The &quot;excerptFontStyle&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  excerptFontStyle?: Maybe<Scalars['String']['output']>;
+  /** The &quot;excerptFontWeight&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  excerptFontWeight?: Maybe<Scalars['String']['output']>;
+  /** The &quot;excerptLength&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  excerptLength: Scalars['Float']['output'];
+  /** The &quot;excerptLetterSpacing&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  excerptLetterSpacing: Scalars['Float']['output'];
+  /** The &quot;excerptLetterSpacingMobile&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  excerptLetterSpacingMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;excerptLetterSpacingTablet&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  excerptLetterSpacingTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;excerptLetterSpacingType&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  excerptLetterSpacingType: Scalars['String']['output'];
+  /** The &quot;excerptLineHeight&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  excerptLineHeight?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;excerptLineHeightMobile&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  excerptLineHeightMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;excerptLineHeightTablet&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  excerptLineHeightTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;excerptLineHeightType&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  excerptLineHeightType: Scalars['String']['output'];
+  /** The &quot;excerptLoadGoogleFonts&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  excerptLoadGoogleFonts: Scalars['Boolean']['output'];
+  /** The &quot;excerptTransform&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  excerptTransform?: Maybe<Scalars['String']['output']>;
+  /** The &quot;excludeCurrentPost&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  excludeCurrentPost: Scalars['Boolean']['output'];
+  /** The &quot;hideTaxonomyIcon&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  hideTaxonomyIcon: Scalars['Boolean']['output'];
+  /** The &quot;highlightedTextBgColor&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  highlightedTextBgColor: Scalars['String']['output'];
+  /** The &quot;highlightedTextColor&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  highlightedTextColor: Scalars['String']['output'];
+  /** The &quot;imageBottomSpace&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  imageBottomSpace: Scalars['Float']['output'];
+  /** The &quot;imageBottomSpaceMobiile&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  imageBottomSpaceMobiile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;imageBottomSpaceTablet&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  imageBottomSpaceTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;imageBottomSpaceUnit&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  imageBottomSpaceUnit: Scalars['String']['output'];
+  /** The &quot;imgPosition&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  imgPosition: Scalars['String']['output'];
+  /** The &quot;imgSize&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  imgSize: Scalars['String']['output'];
+  /** The &quot;infiniteLoop&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  infiniteLoop: Scalars['Boolean']['output'];
+  /** The &quot;inheritFromTheme&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  inheritFromTheme: Scalars['Boolean']['output'];
+  /** The &quot;inheritFromThemeBtn&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  inheritFromThemeBtn: Scalars['Boolean']['output'];
+  /** The &quot;isPreview&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  isPreview: Scalars['Boolean']['output'];
+  /** The &quot;layoutConfig&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  layoutConfig: Scalars['BlockAttributesArray']['output'];
+  /** The &quot;linkBox&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  linkBox?: Maybe<Scalars['Boolean']['output']>;
+  /** The &quot;lock&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  lock?: Maybe<Scalars['BlockAttributesObject']['output']>;
+  /** The &quot;mcolumns&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  mcolumns: Scalars['Float']['output'];
+  /** The &quot;metaBottomSpace&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  metaBottomSpace: Scalars['Float']['output'];
+  /** The &quot;metaBottomSpaceMobile&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  metaBottomSpaceMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;metaBottomSpaceTablet&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  metaBottomSpaceTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;metaBottomSpaceUnit&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  metaBottomSpaceUnit: Scalars['String']['output'];
+  /** The &quot;metaColor&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  metaColor: Scalars['String']['output'];
+  /** The &quot;metaDecoration&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  metaDecoration?: Maybe<Scalars['String']['output']>;
+  /** The &quot;metaFontFamily&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  metaFontFamily: Scalars['String']['output'];
+  /** The &quot;metaFontSize&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  metaFontSize: Scalars['Float']['output'];
+  /** The &quot;metaFontSizeMobile&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  metaFontSizeMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;metaFontSizeTablet&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  metaFontSizeTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;metaFontSizeType&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  metaFontSizeType: Scalars['String']['output'];
+  /** The &quot;metaFontStyle&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  metaFontStyle?: Maybe<Scalars['String']['output']>;
+  /** The &quot;metaFontWeight&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  metaFontWeight?: Maybe<Scalars['String']['output']>;
+  /** The &quot;metaLetterSpacing&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  metaLetterSpacing: Scalars['Float']['output'];
+  /** The &quot;metaLetterSpacingMobile&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  metaLetterSpacingMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;metaLetterSpacingTablet&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  metaLetterSpacingTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;metaLetterSpacingType&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  metaLetterSpacingType: Scalars['String']['output'];
+  /** The &quot;metaLineHeight&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  metaLineHeight?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;metaLineHeightMobile&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  metaLineHeightMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;metaLineHeightTablet&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  metaLineHeightTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;metaLineHeightType&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  metaLineHeightType: Scalars['String']['output'];
+  /** The &quot;metaLoadGoogleFonts&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  metaLoadGoogleFonts: Scalars['Boolean']['output'];
+  /** The &quot;metaTransform&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  metaTransform?: Maybe<Scalars['String']['output']>;
+  /** The &quot;metadata&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  metadata?: Maybe<Scalars['BlockAttributesObject']['output']>;
+  /** The &quot;mobilePaddingBtnUnit&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  mobilePaddingBtnUnit: Scalars['String']['output'];
+  /** The &quot;mobilePaddingUnit&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  mobilePaddingUnit: Scalars['String']['output'];
+  /** The &quot;newTab&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  newTab: Scalars['Boolean']['output'];
+  /** The &quot;order&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  order: Scalars['String']['output'];
+  /** The &quot;orderBy&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  orderBy: Scalars['String']['output'];
+  /** The &quot;overallBorderBottomLeftRadius&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  overallBorderBottomLeftRadius?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;overallBorderBottomLeftRadiusMobile&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  overallBorderBottomLeftRadiusMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;overallBorderBottomLeftRadiusTablet&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  overallBorderBottomLeftRadiusTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;overallBorderBottomRightRadius&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  overallBorderBottomRightRadius?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;overallBorderBottomRightRadiusMobile&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  overallBorderBottomRightRadiusMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;overallBorderBottomRightRadiusTablet&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  overallBorderBottomRightRadiusTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;overallBorderBottomWidth&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  overallBorderBottomWidth?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;overallBorderBottomWidthMobile&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  overallBorderBottomWidthMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;overallBorderBottomWidthTablet&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  overallBorderBottomWidthTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;overallBorderColor&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  overallBorderColor?: Maybe<Scalars['String']['output']>;
+  /** The &quot;overallBorderHColor&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  overallBorderHColor?: Maybe<Scalars['String']['output']>;
+  /** The &quot;overallBorderLeftWidth&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  overallBorderLeftWidth?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;overallBorderLeftWidthMobile&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  overallBorderLeftWidthMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;overallBorderLeftWidthTablet&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  overallBorderLeftWidthTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;overallBorderLink&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  overallBorderLink: Scalars['Boolean']['output'];
+  /** The &quot;overallBorderRadiusLink&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  overallBorderRadiusLink: Scalars['Boolean']['output'];
+  /** The &quot;overallBorderRadiusUnit&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  overallBorderRadiusUnit?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;overallBorderRadiusUnitMobile&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  overallBorderRadiusUnitMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;overallBorderRadiusUnitTablet&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  overallBorderRadiusUnitTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;overallBorderRightWidth&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  overallBorderRightWidth?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;overallBorderRightWidthMobile&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  overallBorderRightWidthMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;overallBorderRightWidthTablet&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  overallBorderRightWidthTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;overallBorderStyle&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  overallBorderStyle?: Maybe<Scalars['String']['output']>;
+  /** The &quot;overallBorderTopLeftRadius&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  overallBorderTopLeftRadius?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;overallBorderTopLeftRadiusMobile&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  overallBorderTopLeftRadiusMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;overallBorderTopLeftRadiusTablet&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  overallBorderTopLeftRadiusTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;overallBorderTopRightRadius&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  overallBorderTopRightRadius?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;overallBorderTopRightRadiusMobile&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  overallBorderTopRightRadiusMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;overallBorderTopRightRadiusTablet&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  overallBorderTopRightRadiusTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;overallBorderTopWidth&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  overallBorderTopWidth?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;overallBorderTopWidthMobile&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  overallBorderTopWidthMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;overallBorderTopWidthTablet&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  overallBorderTopWidthTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;overlayOpacity&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  overlayOpacity: Scalars['Float']['output'];
+  /** The &quot;paddingBottom&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  paddingBottom: Scalars['Float']['output'];
+  /** The &quot;paddingBottomMobile&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  paddingBottomMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;paddingBottomTablet&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  paddingBottomTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;paddingBtnBottom&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  paddingBtnBottom?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;paddingBtnLeft&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  paddingBtnLeft?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;paddingBtnRight&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  paddingBtnRight?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;paddingBtnTop&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  paddingBtnTop?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;paddingBtnUnit&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  paddingBtnUnit: Scalars['String']['output'];
+  /** The &quot;paddingLeft&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  paddingLeft: Scalars['Float']['output'];
+  /** The &quot;paddingLeftMobile&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  paddingLeftMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;paddingLeftTablet&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  paddingLeftTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;paddingRight&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  paddingRight: Scalars['Float']['output'];
+  /** The &quot;paddingRightMobile&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  paddingRightMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;paddingRightTablet&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  paddingRightTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;paddingTop&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  paddingTop: Scalars['Float']['output'];
+  /** The &quot;paddingTopMobile&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  paddingTopMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;paddingTopTablet&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  paddingTopTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;paddingUnit&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  paddingUnit: Scalars['String']['output'];
+  /** The &quot;paginationSpacingUnit&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  paginationSpacingUnit: Scalars['String']['output'];
+  /** The &quot;pauseOnHover&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  pauseOnHover: Scalars['Boolean']['output'];
+  /** The &quot;postDisplaytext&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  postDisplaytext: Scalars['String']['output'];
+  /** The &quot;post_type&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  postType: Scalars['String']['output'];
+  /** The &quot;postsOffset&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  postsOffset: Scalars['Float']['output'];
+  /** The &quot;postsToShow&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  postsToShow: Scalars['Float']['output'];
+  /** The &quot;rowGap&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  rowGap: Scalars['Float']['output'];
+  /** The &quot;rowGapMobile&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  rowGapMobile: Scalars['Float']['output'];
+  /** The &quot;rowGapTablet&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  rowGapTablet: Scalars['Float']['output'];
+  /** The &quot;rowGapUnit&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  rowGapUnit: Scalars['String']['output'];
+  /** The &quot;tabletPaddingBtnUnit&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  tabletPaddingBtnUnit: Scalars['String']['output'];
+  /** The &quot;tabletPaddingUnit&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  tabletPaddingUnit: Scalars['String']['output'];
+  /** The &quot;taxDivider&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  taxDivider: Scalars['String']['output'];
+  /** The &quot;taxStyle&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  taxStyle: Scalars['String']['output'];
+  /** The &quot;taxonomyBottomSpace&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  taxonomyBottomSpace?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;taxonomyBottomSpaceMobile&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  taxonomyBottomSpaceMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;taxonomyBottomSpaceTablet&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  taxonomyBottomSpaceTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;taxonomyBottomSpaceUnit&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  taxonomyBottomSpaceUnit: Scalars['String']['output'];
+  /** The &quot;taxonomyType&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  taxonomyType: Scalars['String']['output'];
+  /** The &quot;tcolumns&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  tcolumns: Scalars['Float']['output'];
+  /** The &quot;titleBottomSpace&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  titleBottomSpace: Scalars['Float']['output'];
+  /** The &quot;titleBottomSpaceMobile&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  titleBottomSpaceMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;titleBottomSpaceTablet&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  titleBottomSpaceTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;titleBottomSpaceUnit&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  titleBottomSpaceUnit: Scalars['String']['output'];
+  /** The &quot;titleColor&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  titleColor?: Maybe<Scalars['String']['output']>;
+  /** The &quot;titleDecoration&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  titleDecoration?: Maybe<Scalars['String']['output']>;
+  /** The &quot;titleFontFamily&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  titleFontFamily: Scalars['String']['output'];
+  /** The &quot;titleFontSize&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  titleFontSize: Scalars['Float']['output'];
+  /** The &quot;titleFontSizeMobile&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  titleFontSizeMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;titleFontSizeTablet&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  titleFontSizeTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;titleFontSizeType&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  titleFontSizeType: Scalars['String']['output'];
+  /** The &quot;titleFontStyle&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  titleFontStyle?: Maybe<Scalars['String']['output']>;
+  /** The &quot;titleFontWeight&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  titleFontWeight?: Maybe<Scalars['String']['output']>;
+  /** The &quot;titleLetterSpacing&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  titleLetterSpacing: Scalars['Float']['output'];
+  /** The &quot;titleLetterSpacingMobile&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  titleLetterSpacingMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;titleLetterSpacingTablet&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  titleLetterSpacingTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;titleLetterSpacingType&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  titleLetterSpacingType: Scalars['String']['output'];
+  /** The &quot;titleLineHeight&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  titleLineHeight?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;titleLineHeightMobile&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  titleLineHeightMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;titleLineHeightTablet&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  titleLineHeightTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;titleLineHeightType&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  titleLineHeightType: Scalars['String']['output'];
+  /** The &quot;titleLoadGoogleFonts&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  titleLoadGoogleFonts: Scalars['Boolean']['output'];
+  /** The &quot;titleTag&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  titleTag: Scalars['String']['output'];
+  /** The &quot;titleTransform&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  titleTransform?: Maybe<Scalars['String']['output']>;
+  /** The &quot;transitionSpeed&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  transitionSpeed: Scalars['Float']['output'];
+  /** The &quot;useSeparateBoxShadows&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  useSeparateBoxShadows: Scalars['Boolean']['output'];
+  /** The &quot;width&quot; field on the &quot;UagbPostCarouselAttributes&quot; block or block attributes */
+  width: Scalars['String']['output'];
+};
+
+/** A block used for editing the site */
+export type UagbPostGrid = EditorBlock & PageEditorBlock & PostEditorBlock & {
+  __typename?: 'UagbPostGrid';
+  /** The API version of the Gutenberg Block */
+  apiVersion?: Maybe<Scalars['Int']['output']>;
+  /** Attributes of the UagbPostGrid Block Type */
+  attributes?: Maybe<UagbPostGridAttributes>;
+  /** The name of the category the Block belongs to */
+  blockEditorCategoryName?: Maybe<Scalars['String']['output']>;
+  /** The id of the Block */
+  clientId?: Maybe<Scalars['String']['output']>;
+  /** CSS Classnames to apply to the block */
+  cssClassNames?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  /** The inner blocks of the Block */
+  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
+  /** Whether the block is Dynamic (server rendered) */
+  isDynamic: Scalars['Boolean']['output'];
+  /** The name of the block */
+  name?: Maybe<Scalars['String']['output']>;
+  /** The parent id of the Block */
+  parentClientId?: Maybe<Scalars['String']['output']>;
+  /** The rendered HTML for the block */
+  renderedHtml?: Maybe<Scalars['String']['output']>;
+  /** The (GraphQL) type of the block */
+  type?: Maybe<Scalars['String']['output']>;
+};
+
+/** Attributes of the UagbPostGrid Block Type */
+export type UagbPostGridAttributes = {
+  __typename?: 'UagbPostGridAttributes';
+  /** The &quot;align&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  align: Scalars['String']['output'];
+  /** The &quot;bgColor&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  bgColor: Scalars['String']['output'];
+  /** The &quot;bgOverlayColor&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  bgOverlayColor: Scalars['String']['output'];
+  /** The &quot;bgType&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  bgType: Scalars['String']['output'];
+  /** The &quot;block_id&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  blockId: Scalars['String']['output'];
+  /** The &quot;blockName&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  blockName: Scalars['String']['output'];
+  /** The &quot;borderColor&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  borderColor: Scalars['String']['output'];
+  /** The &quot;borderHColor&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  borderHColor?: Maybe<Scalars['String']['output']>;
+  /** The &quot;borderRadius&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  borderRadius: Scalars['Float']['output'];
+  /** The &quot;borderStyle&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  borderStyle: Scalars['String']['output'];
+  /** The &quot;borderWidth&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  borderWidth: Scalars['Float']['output'];
+  /** The &quot;boxShadowBlur&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  boxShadowBlur: Scalars['Float']['output'];
+  /** The &quot;boxShadowBlurHover&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  boxShadowBlurHover: Scalars['Float']['output'];
+  /** The &quot;boxShadowColor&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  boxShadowColor: Scalars['String']['output'];
+  /** The &quot;boxShadowColorHover&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  boxShadowColorHover: Scalars['String']['output'];
+  /** The &quot;boxShadowHOffset&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  boxShadowHOffset: Scalars['Float']['output'];
+  /** The &quot;boxShadowHOffsetHover&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  boxShadowHOffsetHover: Scalars['Float']['output'];
+  /** The &quot;boxShadowPosition&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  boxShadowPosition: Scalars['String']['output'];
+  /** The &quot;boxShadowPositionHover&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  boxShadowPositionHover: Scalars['String']['output'];
+  /** The &quot;boxShadowSpread&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  boxShadowSpread: Scalars['Float']['output'];
+  /** The &quot;boxShadowSpreadHover&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  boxShadowSpreadHover: Scalars['Float']['output'];
+  /** The &quot;boxShadowVOffset&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  boxShadowVOffset: Scalars['Float']['output'];
+  /** The &quot;boxShadowVOffsetHover&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  boxShadowVOffsetHover: Scalars['Float']['output'];
+  /** The &quot;btnBorderBottomLeftRadius&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  btnBorderBottomLeftRadius?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;btnBorderBottomLeftRadiusMobile&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  btnBorderBottomLeftRadiusMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;btnBorderBottomLeftRadiusTablet&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  btnBorderBottomLeftRadiusTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;btnBorderBottomRightRadius&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  btnBorderBottomRightRadius?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;btnBorderBottomRightRadiusMobile&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  btnBorderBottomRightRadiusMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;btnBorderBottomRightRadiusTablet&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  btnBorderBottomRightRadiusTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;btnBorderBottomWidth&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  btnBorderBottomWidth?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;btnBorderBottomWidthMobile&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  btnBorderBottomWidthMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;btnBorderBottomWidthTablet&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  btnBorderBottomWidthTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;btnBorderColor&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  btnBorderColor?: Maybe<Scalars['String']['output']>;
+  /** The &quot;btnBorderHColor&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  btnBorderHColor?: Maybe<Scalars['String']['output']>;
+  /** The &quot;btnBorderLeftWidth&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  btnBorderLeftWidth?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;btnBorderLeftWidthMobile&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  btnBorderLeftWidthMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;btnBorderLeftWidthTablet&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  btnBorderLeftWidthTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;btnBorderLink&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  btnBorderLink: Scalars['Boolean']['output'];
+  /** The &quot;btnBorderRadiusLink&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  btnBorderRadiusLink: Scalars['Boolean']['output'];
+  /** The &quot;btnBorderRadiusUnit&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  btnBorderRadiusUnit?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;btnBorderRadiusUnitMobile&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  btnBorderRadiusUnitMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;btnBorderRadiusUnitTablet&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  btnBorderRadiusUnitTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;btnBorderRightWidth&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  btnBorderRightWidth?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;btnBorderRightWidthMobile&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  btnBorderRightWidthMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;btnBorderRightWidthTablet&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  btnBorderRightWidthTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;btnBorderStyle&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  btnBorderStyle?: Maybe<Scalars['String']['output']>;
+  /** The &quot;btnBorderTopLeftRadius&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  btnBorderTopLeftRadius?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;btnBorderTopLeftRadiusMobile&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  btnBorderTopLeftRadiusMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;btnBorderTopLeftRadiusTablet&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  btnBorderTopLeftRadiusTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;btnBorderTopRightRadius&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  btnBorderTopRightRadius?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;btnBorderTopRightRadiusMobile&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  btnBorderTopRightRadiusMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;btnBorderTopRightRadiusTablet&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  btnBorderTopRightRadiusTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;btnBorderTopWidth&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  btnBorderTopWidth?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;btnBorderTopWidthMobile&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  btnBorderTopWidthMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;btnBorderTopWidthTablet&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  btnBorderTopWidthTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;btnHPadding&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  btnHPadding: Scalars['Float']['output'];
+  /** The &quot;btnVPadding&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  btnVPadding: Scalars['Float']['output'];
+  /** The &quot;buttonType&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  buttonType: Scalars['String']['output'];
+  /** The &quot;categories&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  categories?: Maybe<Scalars['String']['output']>;
+  /** The &quot;className&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  className?: Maybe<Scalars['String']['output']>;
+  /** The &quot;columnGap&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  columnGap: Scalars['Float']['output'];
+  /** The &quot;columnGapMobile&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  columnGapMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;columnGapTablet&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  columnGapTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;columnGapUnit&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  columnGapUnit: Scalars['String']['output'];
+  /** The &quot;columns&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  columns: Scalars['Float']['output'];
+  /** The &quot;contentPadding&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  contentPadding: Scalars['Float']['output'];
+  /** The &quot;contentPaddingMobile&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  contentPaddingMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;contentPaddingUnit&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  contentPaddingUnit: Scalars['String']['output'];
+  /** The &quot;ctaBgColor&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  ctaBgColor?: Maybe<Scalars['String']['output']>;
+  /** The &quot;ctaBgHColor&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  ctaBgHColor?: Maybe<Scalars['String']['output']>;
+  /** The &quot;ctaBgHType&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  ctaBgHType: Scalars['String']['output'];
+  /** The &quot;ctaBgType&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  ctaBgType: Scalars['String']['output'];
+  /** The &quot;ctaBottomSpace&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  ctaBottomSpace: Scalars['Float']['output'];
+  /** The &quot;ctaBottomSpaceMobile&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  ctaBottomSpaceMobile: Scalars['Float']['output'];
+  /** The &quot;ctaBottomSpaceTablet&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  ctaBottomSpaceTablet: Scalars['Float']['output'];
+  /** The &quot;ctaBottomSpaceUnit&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  ctaBottomSpaceUnit: Scalars['String']['output'];
+  /** The &quot;ctaColor&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  ctaColor?: Maybe<Scalars['String']['output']>;
+  /** The &quot;ctaDecoration&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  ctaDecoration?: Maybe<Scalars['String']['output']>;
+  /** The &quot;ctaFontFamily&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  ctaFontFamily: Scalars['String']['output'];
+  /** The &quot;ctaFontSize&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  ctaFontSize: Scalars['Float']['output'];
+  /** The &quot;ctaFontSizeMobile&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  ctaFontSizeMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;ctaFontSizeTablet&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  ctaFontSizeTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;ctaFontSizeType&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  ctaFontSizeType: Scalars['String']['output'];
+  /** The &quot;ctaFontStyle&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  ctaFontStyle?: Maybe<Scalars['String']['output']>;
+  /** The &quot;ctaFontWeight&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  ctaFontWeight?: Maybe<Scalars['String']['output']>;
+  /** The &quot;ctaHColor&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  ctaHColor?: Maybe<Scalars['String']['output']>;
+  /** The &quot;ctaLetterSpacing&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  ctaLetterSpacing: Scalars['Float']['output'];
+  /** The &quot;ctaLetterSpacingMobile&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  ctaLetterSpacingMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;ctaLetterSpacingTablet&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  ctaLetterSpacingTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;ctaLetterSpacingType&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  ctaLetterSpacingType: Scalars['String']['output'];
+  /** The &quot;ctaLineHeight&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  ctaLineHeight?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;ctaLineHeightMobile&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  ctaLineHeightMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;ctaLineHeightTablet&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  ctaLineHeightTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;ctaLineHeightType&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  ctaLineHeightType: Scalars['String']['output'];
+  /** The &quot;ctaLoadGoogleFonts&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  ctaLoadGoogleFonts: Scalars['Boolean']['output'];
+  /** The &quot;ctaText&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  ctaText: Scalars['String']['output'];
+  /** The &quot;ctaTransform&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  ctaTransform?: Maybe<Scalars['String']['output']>;
+  /** The &quot;displayPostAuthor&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  displayPostAuthor: Scalars['Boolean']['output'];
+  /** The &quot;displayPostComment&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  displayPostComment: Scalars['Boolean']['output'];
+  /** The &quot;displayPostContentRadio&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  displayPostContentRadio: Scalars['String']['output'];
+  /** The &quot;displayPostDate&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  displayPostDate: Scalars['Boolean']['output'];
+  /** The &quot;displayPostExcerpt&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  displayPostExcerpt: Scalars['Boolean']['output'];
+  /** The &quot;displayPostImage&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  displayPostImage: Scalars['Boolean']['output'];
+  /** The &quot;displayPostLink&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  displayPostLink: Scalars['Boolean']['output'];
+  /** The &quot;displayPostTaxonomy&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  displayPostTaxonomy: Scalars['Boolean']['output'];
+  /** The &quot;displayPostTaxonomyAboveTitle&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  displayPostTaxonomyAboveTitle: Scalars['String']['output'];
+  /** The &quot;displayPostTitle&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  displayPostTitle: Scalars['Boolean']['output'];
+  /** The &quot;enableOffset&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  enableOffset: Scalars['Boolean']['output'];
+  /** The &quot;equalHeight&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  equalHeight: Scalars['Boolean']['output'];
+  /** The &quot;equalHeightInlineButtons&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  equalHeightInlineButtons: Scalars['Boolean']['output'];
+  /** The &quot;excerptBottomSpace&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  excerptBottomSpace: Scalars['Float']['output'];
+  /** The &quot;excerptBottomSpaceMobile&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  excerptBottomSpaceMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;excerptBottomSpaceTablet&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  excerptBottomSpaceTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;excerptBottomSpaceUnit&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  excerptBottomSpaceUnit: Scalars['String']['output'];
+  /** The &quot;excerptColor&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  excerptColor: Scalars['String']['output'];
+  /** The &quot;excerptDecoration&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  excerptDecoration?: Maybe<Scalars['String']['output']>;
+  /** The &quot;excerptFontFamily&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  excerptFontFamily: Scalars['String']['output'];
+  /** The &quot;excerptFontSize&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  excerptFontSize: Scalars['Float']['output'];
+  /** The &quot;excerptFontSizeMobile&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  excerptFontSizeMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;excerptFontSizeTablet&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  excerptFontSizeTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;excerptFontSizeType&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  excerptFontSizeType: Scalars['String']['output'];
+  /** The &quot;excerptFontStyle&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  excerptFontStyle?: Maybe<Scalars['String']['output']>;
+  /** The &quot;excerptFontWeight&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  excerptFontWeight?: Maybe<Scalars['String']['output']>;
+  /** The &quot;excerptLength&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  excerptLength: Scalars['Float']['output'];
+  /** The &quot;excerptLetterSpacing&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  excerptLetterSpacing: Scalars['Float']['output'];
+  /** The &quot;excerptLetterSpacingMobile&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  excerptLetterSpacingMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;excerptLetterSpacingTablet&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  excerptLetterSpacingTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;excerptLetterSpacingType&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  excerptLetterSpacingType: Scalars['String']['output'];
+  /** The &quot;excerptLineHeight&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  excerptLineHeight?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;excerptLineHeightMobile&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  excerptLineHeightMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;excerptLineHeightTablet&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  excerptLineHeightTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;excerptLineHeightType&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  excerptLineHeightType: Scalars['String']['output'];
+  /** The &quot;excerptLoadGoogleFonts&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  excerptLoadGoogleFonts: Scalars['Boolean']['output'];
+  /** The &quot;excerptTransform&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  excerptTransform?: Maybe<Scalars['String']['output']>;
+  /** The &quot;excludeCurrentPost&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  excludeCurrentPost: Scalars['Boolean']['output'];
+  /** The &quot;hideTaxonomyIcon&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  hideTaxonomyIcon: Scalars['Boolean']['output'];
+  /** The &quot;highlightedTextBgColor&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  highlightedTextBgColor: Scalars['String']['output'];
+  /** The &quot;highlightedTextColor&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  highlightedTextColor: Scalars['String']['output'];
+  /** The &quot;imageBottomSpace&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  imageBottomSpace: Scalars['Float']['output'];
+  /** The &quot;imageBottomSpaceMobiile&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  imageBottomSpaceMobiile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;imageBottomSpaceTablet&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  imageBottomSpaceTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;imageBottomSpaceUnit&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  imageBottomSpaceUnit: Scalars['String']['output'];
+  /** The &quot;imageRatio&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  imageRatio: Scalars['String']['output'];
+  /** The &quot;imgEqualHeight&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  imgEqualHeight: Scalars['Boolean']['output'];
+  /** The &quot;imgPosition&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  imgPosition: Scalars['String']['output'];
+  /** The &quot;imgSize&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  imgSize: Scalars['String']['output'];
+  /** The &quot;inheritFromTheme&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  inheritFromTheme: Scalars['Boolean']['output'];
+  /** The &quot;inheritFromThemeBtn&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  inheritFromThemeBtn: Scalars['Boolean']['output'];
+  /** The &quot;isLeftToRightLayout&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  isLeftToRightLayout: Scalars['Boolean']['output'];
+  /** The &quot;isPreview&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  isPreview: Scalars['Boolean']['output'];
+  /** The &quot;layoutConfig&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  layoutConfig: Scalars['BlockAttributesArray']['output'];
+  /** The &quot;linkBox&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  linkBox?: Maybe<Scalars['Boolean']['output']>;
+  /** The &quot;lock&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  lock?: Maybe<Scalars['BlockAttributesObject']['output']>;
+  /** The &quot;mcolumns&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  mcolumns: Scalars['Float']['output'];
+  /** The &quot;metaBottomSpace&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  metaBottomSpace: Scalars['Float']['output'];
+  /** The &quot;metaBottomSpaceMobile&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  metaBottomSpaceMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;metaBottomSpaceTablet&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  metaBottomSpaceTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;metaBottomSpaceUnit&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  metaBottomSpaceUnit: Scalars['String']['output'];
+  /** The &quot;metaColor&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  metaColor: Scalars['String']['output'];
+  /** The &quot;metaDecoration&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  metaDecoration?: Maybe<Scalars['String']['output']>;
+  /** The &quot;metaFontFamily&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  metaFontFamily: Scalars['String']['output'];
+  /** The &quot;metaFontSize&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  metaFontSize: Scalars['Float']['output'];
+  /** The &quot;metaFontSizeMobile&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  metaFontSizeMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;metaFontSizeTablet&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  metaFontSizeTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;metaFontSizeType&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  metaFontSizeType: Scalars['String']['output'];
+  /** The &quot;metaFontStyle&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  metaFontStyle?: Maybe<Scalars['String']['output']>;
+  /** The &quot;metaFontWeight&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  metaFontWeight?: Maybe<Scalars['String']['output']>;
+  /** The &quot;metaLetterSpacing&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  metaLetterSpacing: Scalars['Float']['output'];
+  /** The &quot;metaLetterSpacingMobile&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  metaLetterSpacingMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;metaLetterSpacingTablet&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  metaLetterSpacingTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;metaLetterSpacingType&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  metaLetterSpacingType: Scalars['String']['output'];
+  /** The &quot;metaLineHeight&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  metaLineHeight?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;metaLineHeightMobile&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  metaLineHeightMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;metaLineHeightTablet&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  metaLineHeightTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;metaLineHeightType&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  metaLineHeightType: Scalars['String']['output'];
+  /** The &quot;metaLoadGoogleFonts&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  metaLoadGoogleFonts: Scalars['Boolean']['output'];
+  /** The &quot;metaTransform&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  metaTransform?: Maybe<Scalars['String']['output']>;
+  /** The &quot;metadata&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  metadata?: Maybe<Scalars['BlockAttributesObject']['output']>;
+  /** The &quot;mobilePaddingBtnUnit&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  mobilePaddingBtnUnit: Scalars['String']['output'];
+  /** The &quot;mobilePaddingUnit&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  mobilePaddingUnit: Scalars['String']['output'];
+  /** The &quot;newTab&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  newTab: Scalars['Boolean']['output'];
+  /** The &quot;order&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  order: Scalars['String']['output'];
+  /** The &quot;orderBy&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  orderBy: Scalars['String']['output'];
+  /** The &quot;overallBorderBottomLeftRadius&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  overallBorderBottomLeftRadius?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;overallBorderBottomLeftRadiusMobile&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  overallBorderBottomLeftRadiusMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;overallBorderBottomLeftRadiusTablet&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  overallBorderBottomLeftRadiusTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;overallBorderBottomRightRadius&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  overallBorderBottomRightRadius?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;overallBorderBottomRightRadiusMobile&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  overallBorderBottomRightRadiusMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;overallBorderBottomRightRadiusTablet&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  overallBorderBottomRightRadiusTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;overallBorderBottomWidth&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  overallBorderBottomWidth?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;overallBorderBottomWidthMobile&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  overallBorderBottomWidthMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;overallBorderBottomWidthTablet&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  overallBorderBottomWidthTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;overallBorderColor&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  overallBorderColor?: Maybe<Scalars['String']['output']>;
+  /** The &quot;overallBorderHColor&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  overallBorderHColor?: Maybe<Scalars['String']['output']>;
+  /** The &quot;overallBorderLeftWidth&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  overallBorderLeftWidth?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;overallBorderLeftWidthMobile&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  overallBorderLeftWidthMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;overallBorderLeftWidthTablet&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  overallBorderLeftWidthTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;overallBorderLink&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  overallBorderLink: Scalars['Boolean']['output'];
+  /** The &quot;overallBorderRadiusLink&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  overallBorderRadiusLink: Scalars['Boolean']['output'];
+  /** The &quot;overallBorderRadiusUnit&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  overallBorderRadiusUnit?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;overallBorderRadiusUnitMobile&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  overallBorderRadiusUnitMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;overallBorderRadiusUnitTablet&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  overallBorderRadiusUnitTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;overallBorderRightWidth&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  overallBorderRightWidth?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;overallBorderRightWidthMobile&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  overallBorderRightWidthMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;overallBorderRightWidthTablet&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  overallBorderRightWidthTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;overallBorderStyle&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  overallBorderStyle?: Maybe<Scalars['String']['output']>;
+  /** The &quot;overallBorderTopLeftRadius&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  overallBorderTopLeftRadius?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;overallBorderTopLeftRadiusMobile&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  overallBorderTopLeftRadiusMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;overallBorderTopLeftRadiusTablet&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  overallBorderTopLeftRadiusTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;overallBorderTopRightRadius&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  overallBorderTopRightRadius?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;overallBorderTopRightRadiusMobile&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  overallBorderTopRightRadiusMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;overallBorderTopRightRadiusTablet&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  overallBorderTopRightRadiusTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;overallBorderTopWidth&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  overallBorderTopWidth?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;overallBorderTopWidthMobile&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  overallBorderTopWidthMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;overallBorderTopWidthTablet&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  overallBorderTopWidthTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;overlayOpacity&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  overlayOpacity: Scalars['Float']['output'];
+  /** The &quot;paddingBottom&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  paddingBottom: Scalars['Float']['output'];
+  /** The &quot;paddingBottomMobile&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  paddingBottomMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;paddingBottomTablet&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  paddingBottomTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;paddingBtnBottom&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  paddingBtnBottom?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;paddingBtnLeft&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  paddingBtnLeft?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;paddingBtnRight&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  paddingBtnRight?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;paddingBtnTop&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  paddingBtnTop?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;paddingBtnUnit&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  paddingBtnUnit: Scalars['String']['output'];
+  /** The &quot;paddingLeft&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  paddingLeft: Scalars['Float']['output'];
+  /** The &quot;paddingLeftMobile&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  paddingLeftMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;paddingLeftTablet&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  paddingLeftTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;paddingRight&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  paddingRight: Scalars['Float']['output'];
+  /** The &quot;paddingRightMobile&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  paddingRightMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;paddingRightTablet&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  paddingRightTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;paddingTop&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  paddingTop: Scalars['Float']['output'];
+  /** The &quot;paddingTopMobile&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  paddingTopMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;paddingTopTablet&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  paddingTopTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;paddingUnit&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  paddingUnit: Scalars['String']['output'];
+  /** The &quot;pageLimit&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  pageLimit: Scalars['Float']['output'];
+  /** The &quot;paginationActiveColor&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  paginationActiveColor: Scalars['String']['output'];
+  /** The &quot;paginationAlignment&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  paginationAlignment: Scalars['String']['output'];
+  /** The &quot;paginationBgActiveColor&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  paginationBgActiveColor: Scalars['String']['output'];
+  /** The &quot;paginationBgColor&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  paginationBgColor: Scalars['String']['output'];
+  /** The &quot;paginationBorderActiveColor&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  paginationBorderActiveColor?: Maybe<Scalars['String']['output']>;
+  /** The &quot;paginationBorderColor&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  paginationBorderColor: Scalars['String']['output'];
+  /** The &quot;paginationBorderRadius&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  paginationBorderRadius?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;paginationBorderSize&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  paginationBorderSize: Scalars['Float']['output'];
+  /** The &quot;paginationColor&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  paginationColor: Scalars['String']['output'];
+  /** The &quot;paginationLayout&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  paginationLayout: Scalars['String']['output'];
+  /** The &quot;paginationMarkup&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  paginationMarkup: Scalars['String']['output'];
+  /** The &quot;paginationNextText&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  paginationNextText: Scalars['String']['output'];
+  /** The &quot;paginationPrevText&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  paginationPrevText: Scalars['String']['output'];
+  /** The &quot;paginationSpacing&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  paginationSpacing: Scalars['Float']['output'];
+  /** The &quot;paginationSpacingUnit&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  paginationSpacingUnit: Scalars['String']['output'];
+  /** The &quot;paginationType&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  paginationType: Scalars['String']['output'];
+  /** The &quot;postDisplaytext&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  postDisplaytext: Scalars['String']['output'];
+  /** The &quot;postPagination&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  postPagination: Scalars['Boolean']['output'];
+  /** The &quot;post_type&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  postType: Scalars['String']['output'];
+  /** The &quot;postsOffset&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  postsOffset: Scalars['Float']['output'];
+  /** The &quot;postsToShow&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  postsToShow: Scalars['Float']['output'];
+  /** The &quot;rowGap&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  rowGap: Scalars['Float']['output'];
+  /** The &quot;rowGapMobile&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  rowGapMobile: Scalars['Float']['output'];
+  /** The &quot;rowGapTablet&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  rowGapTablet: Scalars['Float']['output'];
+  /** The &quot;rowGapUnit&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  rowGapUnit: Scalars['String']['output'];
+  /** The &quot;tabletPaddingBtnUnit&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  tabletPaddingBtnUnit: Scalars['String']['output'];
+  /** The &quot;tabletPaddingUnit&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  tabletPaddingUnit: Scalars['String']['output'];
+  /** The &quot;taxDivider&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  taxDivider: Scalars['String']['output'];
+  /** The &quot;taxStyle&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  taxStyle: Scalars['String']['output'];
+  /** The &quot;taxonomyBottomSpace&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  taxonomyBottomSpace?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;taxonomyBottomSpaceMobile&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  taxonomyBottomSpaceMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;taxonomyBottomSpaceTablet&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  taxonomyBottomSpaceTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;taxonomyBottomSpaceUnit&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  taxonomyBottomSpaceUnit: Scalars['String']['output'];
+  /** The &quot;taxonomyType&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  taxonomyType: Scalars['String']['output'];
+  /** The &quot;tcolumns&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  tcolumns: Scalars['Float']['output'];
+  /** The &quot;titleBottomSpace&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  titleBottomSpace: Scalars['Float']['output'];
+  /** The &quot;titleBottomSpaceMobile&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  titleBottomSpaceMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;titleBottomSpaceTablet&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  titleBottomSpaceTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;titleBottomSpaceUnit&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  titleBottomSpaceUnit: Scalars['String']['output'];
+  /** The &quot;titleColor&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  titleColor?: Maybe<Scalars['String']['output']>;
+  /** The &quot;titleDecoration&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  titleDecoration?: Maybe<Scalars['String']['output']>;
+  /** The &quot;titleFontFamily&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  titleFontFamily: Scalars['String']['output'];
+  /** The &quot;titleFontSize&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  titleFontSize: Scalars['Float']['output'];
+  /** The &quot;titleFontSizeMobile&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  titleFontSizeMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;titleFontSizeTablet&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  titleFontSizeTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;titleFontSizeType&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  titleFontSizeType: Scalars['String']['output'];
+  /** The &quot;titleFontStyle&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  titleFontStyle?: Maybe<Scalars['String']['output']>;
+  /** The &quot;titleFontWeight&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  titleFontWeight?: Maybe<Scalars['String']['output']>;
+  /** The &quot;titleLetterSpacing&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  titleLetterSpacing: Scalars['Float']['output'];
+  /** The &quot;titleLetterSpacingMobile&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  titleLetterSpacingMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;titleLetterSpacingTablet&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  titleLetterSpacingTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;titleLetterSpacingType&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  titleLetterSpacingType: Scalars['String']['output'];
+  /** The &quot;titleLineHeight&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  titleLineHeight?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;titleLineHeightMobile&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  titleLineHeightMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;titleLineHeightTablet&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  titleLineHeightTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;titleLineHeightType&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  titleLineHeightType: Scalars['String']['output'];
+  /** The &quot;titleLoadGoogleFonts&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  titleLoadGoogleFonts: Scalars['Boolean']['output'];
+  /** The &quot;titleTag&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  titleTag: Scalars['String']['output'];
+  /** The &quot;titleTransform&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  titleTransform?: Maybe<Scalars['String']['output']>;
+  /** The &quot;useSeparateBoxShadows&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  useSeparateBoxShadows: Scalars['Boolean']['output'];
+  /** The &quot;width&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  width: Scalars['String']['output'];
+  /** The &quot;wrapperAlign&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  wrapperAlign: Scalars['String']['output'];
+  /** The &quot;wrapperAlignPosition&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  wrapperAlignPosition: Scalars['String']['output'];
+  /** The &quot;wrapperBottomPadding&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  wrapperBottomPadding: Scalars['Float']['output'];
+  /** The &quot;wrapperBottomPaddingMobile&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  wrapperBottomPaddingMobile: Scalars['Float']['output'];
+  /** The &quot;wrapperBottomPaddingTablet&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  wrapperBottomPaddingTablet: Scalars['Float']['output'];
+  /** The &quot;wrapperLeftPadding&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  wrapperLeftPadding: Scalars['Float']['output'];
+  /** The &quot;wrapperLeftPaddingMobile&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  wrapperLeftPaddingMobile: Scalars['Float']['output'];
+  /** The &quot;wrapperLeftPaddingTablet&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  wrapperLeftPaddingTablet: Scalars['Float']['output'];
+  /** The &quot;wrapperPaddingLink&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  wrapperPaddingLink: Scalars['Boolean']['output'];
+  /** The &quot;wrapperPaddingUnit&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  wrapperPaddingUnit: Scalars['String']['output'];
+  /** The &quot;wrapperPaddingUnitMobile&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  wrapperPaddingUnitMobile: Scalars['String']['output'];
+  /** The &quot;wrapperPaddingUnitTablet&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  wrapperPaddingUnitTablet: Scalars['String']['output'];
+  /** The &quot;wrapperRightPadding&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  wrapperRightPadding: Scalars['Float']['output'];
+  /** The &quot;wrapperRightPaddingMobile&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  wrapperRightPaddingMobile: Scalars['Float']['output'];
+  /** The &quot;wrapperRightPaddingTablet&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  wrapperRightPaddingTablet: Scalars['Float']['output'];
+  /** The &quot;wrapperTopPadding&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  wrapperTopPadding: Scalars['Float']['output'];
+  /** The &quot;wrapperTopPaddingMobile&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  wrapperTopPaddingMobile: Scalars['Float']['output'];
+  /** The &quot;wrapperTopPaddingTablet&quot; field on the &quot;UagbPostGridAttributes&quot; block or block attributes */
+  wrapperTopPaddingTablet: Scalars['Float']['output'];
+};
+
+/** A block used for editing the site */
+export type UagbPostTimeline = EditorBlock & PageEditorBlock & PostEditorBlock & {
+  __typename?: 'UagbPostTimeline';
+  /** The API version of the Gutenberg Block */
+  apiVersion?: Maybe<Scalars['Int']['output']>;
+  /** Attributes of the UagbPostTimeline Block Type */
+  attributes?: Maybe<UagbPostTimelineAttributes>;
+  /** The name of the category the Block belongs to */
+  blockEditorCategoryName?: Maybe<Scalars['String']['output']>;
+  /** The id of the Block */
+  clientId?: Maybe<Scalars['String']['output']>;
+  /** CSS Classnames to apply to the block */
+  cssClassNames?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  /** The inner blocks of the Block */
+  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
+  /** Whether the block is Dynamic (server rendered) */
+  isDynamic: Scalars['Boolean']['output'];
+  /** The name of the block */
+  name?: Maybe<Scalars['String']['output']>;
+  /** The parent id of the Block */
+  parentClientId?: Maybe<Scalars['String']['output']>;
+  /** The rendered HTML for the block */
+  renderedHtml?: Maybe<Scalars['String']['output']>;
+  /** The (GraphQL) type of the block */
+  type?: Maybe<Scalars['String']['output']>;
+};
+
+/** Attributes of the UagbPostTimeline Block Type */
+export type UagbPostTimelineAttributes = {
+  __typename?: 'UagbPostTimelineAttributes';
+  /** The &quot;align&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  align: Scalars['String']['output'];
+  /** The &quot;alignMobile&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  alignMobile: Scalars['String']['output'];
+  /** The &quot;alignTablet&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  alignTablet: Scalars['String']['output'];
+  /** The &quot;arrowlinAlignment&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  arrowlinAlignment: Scalars['String']['output'];
+  /** The &quot;authorColor&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  authorColor: Scalars['String']['output'];
+  /** The &quot;authorDecoration&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  authorDecoration?: Maybe<Scalars['String']['output']>;
+  /** The &quot;authorFontFamily&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  authorFontFamily: Scalars['String']['output'];
+  /** The &quot;authorFontSize&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  authorFontSize: Scalars['Float']['output'];
+  /** The &quot;authorFontSizeMobile&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  authorFontSizeMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;authorFontSizeTablet&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  authorFontSizeTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;authorFontSizeType&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  authorFontSizeType: Scalars['String']['output'];
+  /** The &quot;authorFontStyle&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  authorFontStyle?: Maybe<Scalars['String']['output']>;
+  /** The &quot;authorFontWeight&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  authorFontWeight?: Maybe<Scalars['String']['output']>;
+  /** The &quot;authorLetterSpacing&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  authorLetterSpacing: Scalars['Float']['output'];
+  /** The &quot;authorLetterSpacingMobile&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  authorLetterSpacingMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;authorLetterSpacingTablet&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  authorLetterSpacingTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;authorLetterSpacingType&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  authorLetterSpacingType: Scalars['String']['output'];
+  /** The &quot;authorLineHeight&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  authorLineHeight?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;authorLineHeightMobile&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  authorLineHeightMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;authorLineHeightTablet&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  authorLineHeightTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;authorLineHeightType&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  authorLineHeightType: Scalars['String']['output'];
+  /** The &quot;authorLoadGoogleFonts&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  authorLoadGoogleFonts: Scalars['Boolean']['output'];
+  /** The &quot;authorSpace&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  authorSpace: Scalars['Float']['output'];
+  /** The &quot;authorSpaceMobile&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  authorSpaceMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;authorSpaceTablet&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  authorSpaceTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;authorTransform&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  authorTransform?: Maybe<Scalars['String']['output']>;
+  /** The &quot;backgroundColor&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  backgroundColor: Scalars['String']['output'];
+  /** The &quot;bgPadding&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  bgPadding: Scalars['Float']['output'];
+  /** The &quot;block_id&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  blockId: Scalars['String']['output'];
+  /** The &quot;blockName&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  blockName: Scalars['String']['output'];
+  /** The &quot;borderFocus&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  borderFocus: Scalars['String']['output'];
+  /** The &quot;borderRadius&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  borderRadius: Scalars['Float']['output'];
+  /** The &quot;borderRadiusMobile&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  borderRadiusMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;borderRadiusTablet&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  borderRadiusTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;borderwidth&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  borderwidth: Scalars['Float']['output'];
+  /** The &quot;bottomMargin&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  bottomMargin?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;bottomMarginMobile&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  bottomMarginMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;bottomMarginTablet&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  bottomMarginTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;bottomPadding&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  bottomPadding?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;bottomPaddingMobile&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  bottomPaddingMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;bottomPaddingTablet&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  bottomPaddingTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;buttonType&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  buttonType: Scalars['String']['output'];
+  /** The &quot;categories&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  categories?: Maybe<Scalars['String']['output']>;
+  /** The &quot;className&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  className?: Maybe<Scalars['String']['output']>;
+  /** The &quot;columns&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  columns: Scalars['Float']['output'];
+  /** The &quot;connectorBgsize&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  connectorBgsize: Scalars['Float']['output'];
+  /** The &quot;contentPadding&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  contentPadding: Scalars['Float']['output'];
+  /** The &quot;contentSpace&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  contentSpace: Scalars['Float']['output'];
+  /** The &quot;ctaBackground&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  ctaBackground?: Maybe<Scalars['String']['output']>;
+  /** The &quot;ctaBottomSpacing&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  ctaBottomSpacing: Scalars['Float']['output'];
+  /** The &quot;ctaBottomSpacingMobile&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  ctaBottomSpacingMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;ctaBottomSpacingTablet&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  ctaBottomSpacingTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;ctaColor&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  ctaColor?: Maybe<Scalars['String']['output']>;
+  /** The &quot;ctaDecoration&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  ctaDecoration?: Maybe<Scalars['String']['output']>;
+  /** The &quot;ctaFontFamily&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  ctaFontFamily: Scalars['String']['output'];
+  /** The &quot;ctaFontSize&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  ctaFontSize: Scalars['Float']['output'];
+  /** The &quot;ctaFontSizeMobile&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  ctaFontSizeMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;ctaFontSizeTablet&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  ctaFontSizeTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;ctaFontSizeType&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  ctaFontSizeType: Scalars['String']['output'];
+  /** The &quot;ctaFontStyle&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  ctaFontStyle?: Maybe<Scalars['String']['output']>;
+  /** The &quot;ctaFontWeight&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  ctaFontWeight?: Maybe<Scalars['String']['output']>;
+  /** The &quot;ctaLetterSpacing&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  ctaLetterSpacing: Scalars['Float']['output'];
+  /** The &quot;ctaLetterSpacingMobile&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  ctaLetterSpacingMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;ctaLetterSpacingTablet&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  ctaLetterSpacingTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;ctaLetterSpacingType&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  ctaLetterSpacingType: Scalars['String']['output'];
+  /** The &quot;ctaLineHeight&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  ctaLineHeight?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;ctaLineHeightMobile&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  ctaLineHeightMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;ctaLineHeightTablet&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  ctaLineHeightTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;ctaLineHeightType&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  ctaLineHeightType: Scalars['String']['output'];
+  /** The &quot;ctaLoadGoogleFonts&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  ctaLoadGoogleFonts: Scalars['Boolean']['output'];
+  /** The &quot;ctaTransform&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  ctaTransform?: Maybe<Scalars['String']['output']>;
+  /** The &quot;dateBottomspace&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  dateBottomspace: Scalars['Float']['output'];
+  /** The &quot;dateBottomspaceMobile&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  dateBottomspaceMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;dateBottomspaceTablet&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  dateBottomspaceTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;dateColor&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  dateColor: Scalars['String']['output'];
+  /** The &quot;dateDecoration&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  dateDecoration?: Maybe<Scalars['String']['output']>;
+  /** The &quot;dateFontFamily&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  dateFontFamily: Scalars['String']['output'];
+  /** The &quot;dateFontStyle&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  dateFontStyle?: Maybe<Scalars['String']['output']>;
+  /** The &quot;dateFontWeight&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  dateFontWeight?: Maybe<Scalars['String']['output']>;
+  /** The &quot;dateFontsize&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  dateFontsize: Scalars['Float']['output'];
+  /** The &quot;dateFontsizeMobile&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  dateFontsizeMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;dateFontsizeTablet&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  dateFontsizeTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;dateFontsizeType&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  dateFontsizeType: Scalars['String']['output'];
+  /** The &quot;dateFormat&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  dateFormat: Scalars['String']['output'];
+  /** The &quot;dateLetterSpacing&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  dateLetterSpacing: Scalars['Float']['output'];
+  /** The &quot;dateLetterSpacingMobile&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  dateLetterSpacingMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;dateLetterSpacingTablet&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  dateLetterSpacingTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;dateLetterSpacingType&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  dateLetterSpacingType: Scalars['String']['output'];
+  /** The &quot;dateLineHeight&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  dateLineHeight?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;dateLineHeightMobile&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  dateLineHeightMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;dateLineHeightTablet&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  dateLineHeightTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;dateLineHeightType&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  dateLineHeightType: Scalars['String']['output'];
+  /** The &quot;dateLoadGoogleFonts&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  dateLoadGoogleFonts: Scalars['Boolean']['output'];
+  /** The &quot;dateTransform&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  dateTransform?: Maybe<Scalars['String']['output']>;
+  /** The &quot;displayPostAuthor&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  displayPostAuthor: Scalars['Boolean']['output'];
+  /** The &quot;displayPostDate&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  displayPostDate: Scalars['Boolean']['output'];
+  /** The &quot;displayPostExcerpt&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  displayPostExcerpt: Scalars['Boolean']['output'];
+  /** The &quot;displayPostImage&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  displayPostImage: Scalars['Boolean']['output'];
+  /** The &quot;displayPostLink&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  displayPostLink: Scalars['Boolean']['output'];
+  /** The &quot;excludeCurrentPost&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  excludeCurrentPost: Scalars['Boolean']['output'];
+  /** The &quot;exerptLength&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  exerptLength: Scalars['Float']['output'];
+  /** The &quot;headDecoration&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  headDecoration?: Maybe<Scalars['String']['output']>;
+  /** The &quot;headFontFamily&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  headFontFamily: Scalars['String']['output'];
+  /** The &quot;headFontSize&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  headFontSize?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;headFontSizeMobile&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  headFontSizeMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;headFontSizeTablet&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  headFontSizeTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;headFontSizeType&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  headFontSizeType: Scalars['String']['output'];
+  /** The &quot;headFontStyle&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  headFontStyle?: Maybe<Scalars['String']['output']>;
+  /** The &quot;headFontWeight&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  headFontWeight?: Maybe<Scalars['String']['output']>;
+  /** The &quot;headLetterSpacing&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  headLetterSpacing: Scalars['Float']['output'];
+  /** The &quot;headLetterSpacingMobile&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  headLetterSpacingMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;headLetterSpacingTablet&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  headLetterSpacingTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;headLetterSpacingType&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  headLetterSpacingType: Scalars['String']['output'];
+  /** The &quot;headLineHeight&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  headLineHeight?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;headLineHeightMobile&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  headLineHeightMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;headLineHeightTablet&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  headLineHeightTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;headLineHeightType&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  headLineHeightType: Scalars['String']['output'];
+  /** The &quot;headLoadGoogleFonts&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  headLoadGoogleFonts: Scalars['Boolean']['output'];
+  /** The &quot;headSpace&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  headSpace: Scalars['Float']['output'];
+  /** The &quot;headSpaceMobile&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  headSpaceMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;headSpaceTablet&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  headSpaceTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;headTopSpacing&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  headTopSpacing: Scalars['Float']['output'];
+  /** The &quot;headTopSpacingMobile&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  headTopSpacingMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;headTopSpacingTablet&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  headTopSpacingTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;headTransform&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  headTransform?: Maybe<Scalars['String']['output']>;
+  /** The &quot;headingColor&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  headingColor: Scalars['String']['output'];
+  /** The &quot;headingTag&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  headingTag: Scalars['String']['output'];
+  /** The &quot;horizontalSpace&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  horizontalSpace: Scalars['Float']['output'];
+  /** The &quot;horizontalSpaceMobile&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  horizontalSpaceMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;horizontalSpaceTablet&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  horizontalSpaceTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;horizontalSpaceUnit&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  horizontalSpaceUnit: Scalars['String']['output'];
+  /** The &quot;horizontalSpaceUnitMobile&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  horizontalSpaceUnitMobile: Scalars['String']['output'];
+  /** The &quot;horizontalSpaceUnitTablet&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  horizontalSpaceUnitTablet: Scalars['String']['output'];
+  /** The &quot;icon&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  icon: Scalars['String']['output'];
+  /** The &quot;iconBgFocus&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  iconBgFocus: Scalars['String']['output'];
+  /** The &quot;iconColor&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  iconColor: Scalars['String']['output'];
+  /** The &quot;iconFocus&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  iconFocus: Scalars['String']['output'];
+  /** The &quot;iconSize&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  iconSize: Scalars['Float']['output'];
+  /** The &quot;imageSize&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  imageSize: Scalars['String']['output'];
+  /** The &quot;inheritFromTheme&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  inheritFromTheme: Scalars['Boolean']['output'];
+  /** The &quot;isPreview&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  isPreview: Scalars['Boolean']['output'];
+  /** The &quot;leftMargin&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  leftMargin?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;leftMarginMobile&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  leftMarginMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;leftMarginTablet&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  leftMarginTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;leftPadding&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  leftPadding?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;leftPaddingMobile&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  leftPaddingMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;leftPaddingTablet&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  leftPaddingTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;linkTarget&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  linkTarget: Scalars['Boolean']['output'];
+  /** The &quot;lock&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  lock?: Maybe<Scalars['BlockAttributesObject']['output']>;
+  /** The &quot;marginLink&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  marginLink: Scalars['Boolean']['output'];
+  /** The &quot;marginUnit&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  marginUnit: Scalars['String']['output'];
+  /** The &quot;metadata&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  metadata?: Maybe<Scalars['BlockAttributesObject']['output']>;
+  /** The &quot;mobileMarginUnit&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  mobileMarginUnit: Scalars['String']['output'];
+  /** The &quot;mobilePaddingUnit&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  mobilePaddingUnit: Scalars['String']['output'];
+  /** The &quot;order&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  order: Scalars['String']['output'];
+  /** The &quot;orderBy&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  orderBy: Scalars['String']['output'];
+  /** The &quot;paddingLink&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  paddingLink: Scalars['Boolean']['output'];
+  /** The &quot;paddingUnit&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  paddingUnit: Scalars['String']['output'];
+  /** The &quot;postLayout&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  postLayout: Scalars['String']['output'];
+  /** The &quot;postType&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  postType: Scalars['String']['output'];
+  /** The &quot;postsOffset&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  postsOffset: Scalars['Float']['output'];
+  /** The &quot;postsToShow&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  postsToShow: Scalars['Float']['output'];
+  /** The &quot;readMoreText&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  readMoreText: Scalars['String']['output'];
+  /** The &quot;rightMargin&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  rightMargin?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;rightMarginMobile&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  rightMarginMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;rightMarginTablet&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  rightMarginTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;rightPadding&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  rightPadding?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;rightPaddingMobile&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  rightPaddingMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;rightPaddingTablet&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  rightPaddingTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;separatorBg&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  separatorBg: Scalars['String']['output'];
+  /** The &quot;separatorBorder&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  separatorBorder: Scalars['String']['output'];
+  /** The &quot;separatorColor&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  separatorColor: Scalars['String']['output'];
+  /** The &quot;separatorFillColor&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  separatorFillColor: Scalars['String']['output'];
+  /** The &quot;separatorwidth&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  separatorwidth: Scalars['Float']['output'];
+  /** The &quot;stack&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  stack: Scalars['String']['output'];
+  /** The &quot;subHeadDecoration&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  subHeadDecoration?: Maybe<Scalars['String']['output']>;
+  /** The &quot;subHeadFontFamily&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  subHeadFontFamily: Scalars['String']['output'];
+  /** The &quot;subHeadFontSize&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  subHeadFontSize?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;subHeadFontSizeMobile&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  subHeadFontSizeMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;subHeadFontSizeTablet&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  subHeadFontSizeTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;subHeadFontSizeType&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  subHeadFontSizeType: Scalars['String']['output'];
+  /** The &quot;subHeadFontStyle&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  subHeadFontStyle?: Maybe<Scalars['String']['output']>;
+  /** The &quot;subHeadFontWeight&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  subHeadFontWeight?: Maybe<Scalars['String']['output']>;
+  /** The &quot;subHeadLetterSpacing&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  subHeadLetterSpacing: Scalars['Float']['output'];
+  /** The &quot;subHeadLetterSpacingMobile&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  subHeadLetterSpacingMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;subHeadLetterSpacingTablet&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  subHeadLetterSpacingTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;subHeadLetterSpacingType&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  subHeadLetterSpacingType: Scalars['String']['output'];
+  /** The &quot;subHeadLineHeight&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  subHeadLineHeight?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;subHeadLineHeightMobile&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  subHeadLineHeightMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;subHeadLineHeightTablet&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  subHeadLineHeightTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;subHeadLineHeightType&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  subHeadLineHeightType: Scalars['String']['output'];
+  /** The &quot;subHeadLoadGoogleFonts&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  subHeadLoadGoogleFonts: Scalars['Boolean']['output'];
+  /** The &quot;subHeadTransform&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  subHeadTransform?: Maybe<Scalars['String']['output']>;
+  /** The &quot;subHeadingColor&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  subHeadingColor: Scalars['String']['output'];
+  /** The &quot;tabletMarginUnit&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  tabletMarginUnit: Scalars['String']['output'];
+  /** The &quot;tabletPaddingUnit&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  tabletPaddingUnit: Scalars['String']['output'];
+  /** The &quot;taxonomyType&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  taxonomyType: Scalars['String']['output'];
+  /** The &quot;timelinAlignment&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  timelinAlignment: Scalars['String']['output'];
+  /** The &quot;timelinAlignmentMobile&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  timelinAlignmentMobile?: Maybe<Scalars['String']['output']>;
+  /** The &quot;timelinAlignmentTablet&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  timelinAlignmentTablet?: Maybe<Scalars['String']['output']>;
+  /** The &quot;topMargin&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  topMargin?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;topMarginMobile&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  topMarginMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;topMarginTablet&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  topMarginTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;topPadding&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  topPadding?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;topPaddingMobile&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  topPaddingMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;topPaddingTablet&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  topPaddingTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;verticalSpace&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  verticalSpace: Scalars['Float']['output'];
+  /** The &quot;verticalSpaceMobile&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  verticalSpaceMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;verticalSpaceTablet&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  verticalSpaceTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;verticalSpaceUnit&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  verticalSpaceUnit: Scalars['String']['output'];
+  /** The &quot;verticalSpaceUnitMobile&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  verticalSpaceUnitMobile: Scalars['String']['output'];
+  /** The &quot;verticalSpaceUnitTablet&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  verticalSpaceUnitTablet: Scalars['String']['output'];
+  /** The &quot;width&quot; field on the &quot;UagbPostTimelineAttributes&quot; block or block attributes */
+  width: Scalars['String']['output'];
+};
+
+/** A block used for editing the site */
+export type UagbTableOfContents = EditorBlock & PageEditorBlock & PostEditorBlock & {
+  __typename?: 'UagbTableOfContents';
+  /** The API version of the Gutenberg Block */
+  apiVersion?: Maybe<Scalars['Int']['output']>;
+  /** Attributes of the UagbTableOfContents Block Type */
+  attributes?: Maybe<UagbTableOfContentsAttributes>;
+  /** The name of the category the Block belongs to */
+  blockEditorCategoryName?: Maybe<Scalars['String']['output']>;
+  /** The id of the Block */
+  clientId?: Maybe<Scalars['String']['output']>;
+  /** CSS Classnames to apply to the block */
+  cssClassNames?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  /** The inner blocks of the Block */
+  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
+  /** Whether the block is Dynamic (server rendered) */
+  isDynamic: Scalars['Boolean']['output'];
+  /** The name of the block */
+  name?: Maybe<Scalars['String']['output']>;
+  /** The parent id of the Block */
+  parentClientId?: Maybe<Scalars['String']['output']>;
+  /** The rendered HTML for the block */
+  renderedHtml?: Maybe<Scalars['String']['output']>;
+  /** The (GraphQL) type of the block */
+  type?: Maybe<Scalars['String']['output']>;
+};
+
+/** Attributes of the UagbTableOfContents Block Type */
+export type UagbTableOfContentsAttributes = {
+  __typename?: 'UagbTableOfContentsAttributes';
+  /** The &quot;align&quot; field on the &quot;UagbTableOfContentsAttributes&quot; block or block attributes */
+  align: Scalars['String']['output'];
+  /** The &quot;backgroundColor&quot; field on the &quot;UagbTableOfContentsAttributes&quot; block or block attributes */
+  backgroundColor: Scalars['String']['output'];
+  /** The &quot;block_id&quot; field on the &quot;UagbTableOfContentsAttributes&quot; block or block attributes */
+  blockId: Scalars['String']['output'];
+  /** The &quot;borderColor&quot; field on the &quot;UagbTableOfContentsAttributes&quot; block or block attributes */
+  borderColor: Scalars['String']['output'];
+  /** The &quot;borderRadius&quot; field on the &quot;UagbTableOfContentsAttributes&quot; block or block attributes */
+  borderRadius?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;borderStyle&quot; field on the &quot;UagbTableOfContentsAttributes&quot; block or block attributes */
+  borderStyle: Scalars['String']['output'];
+  /** The &quot;borderWidth&quot; field on the &quot;UagbTableOfContentsAttributes&quot; block or block attributes */
+  borderWidth: Scalars['Float']['output'];
+  /** The &quot;bottomPaddingMobile&quot; field on the &quot;UagbTableOfContentsAttributes&quot; block or block attributes */
+  bottomPaddingMobile: Scalars['Float']['output'];
+  /** The &quot;bottomPaddingTablet&quot; field on the &quot;UagbTableOfContentsAttributes&quot; block or block attributes */
+  bottomPaddingTablet: Scalars['Float']['output'];
+  /** The &quot;bulletColor&quot; field on the &quot;UagbTableOfContentsAttributes&quot; block or block attributes */
+  bulletColor?: Maybe<Scalars['String']['output']>;
+  /** The &quot;classMigrate&quot; field on the &quot;UagbTableOfContentsAttributes&quot; block or block attributes */
+  classMigrate: Scalars['Boolean']['output'];
+  /** The &quot;className&quot; field on the &quot;UagbTableOfContentsAttributes&quot; block or block attributes */
+  className?: Maybe<Scalars['String']['output']>;
+  /** The &quot;collapsibleListDepth&quot; field on the &quot;UagbTableOfContentsAttributes&quot; block or block attributes */
+  collapsibleListDepth: Scalars['Float']['output'];
+  /** The &quot;contentPaddingDesktop&quot; field on the &quot;UagbTableOfContentsAttributes&quot; block or block attributes */
+  contentPaddingDesktop?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;contentPaddingMobile&quot; field on the &quot;UagbTableOfContentsAttributes&quot; block or block attributes */
+  contentPaddingMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;contentPaddingTablet&quot; field on the &quot;UagbTableOfContentsAttributes&quot; block or block attributes */
+  contentPaddingTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;contentPaddingTypeDesktop&quot; field on the &quot;UagbTableOfContentsAttributes&quot; block or block attributes */
+  contentPaddingTypeDesktop: Scalars['String']['output'];
+  /** The &quot;contentPaddingTypeMobile&quot; field on the &quot;UagbTableOfContentsAttributes&quot; block or block attributes */
+  contentPaddingTypeMobile: Scalars['String']['output'];
+  /** The &quot;contentPaddingTypeTablet&quot; field on the &quot;UagbTableOfContentsAttributes&quot; block or block attributes */
+  contentPaddingTypeTablet: Scalars['String']['output'];
+  /** The &quot;disableBullets&quot; field on the &quot;UagbTableOfContentsAttributes&quot; block or block attributes */
+  disableBullets: Scalars['Boolean']['output'];
+  /** The &quot;emptyHeadingTeaxt&quot; field on the &quot;UagbTableOfContentsAttributes&quot; block or block attributes */
+  emptyHeadingTeaxt: Scalars['String']['output'];
+  /** The &quot;enableCollapsableList&quot; field on the &quot;UagbTableOfContentsAttributes&quot; block or block attributes */
+  enableCollapsableList: Scalars['Boolean']['output'];
+  /** The &quot;fontFamily&quot; field on the &quot;UagbTableOfContentsAttributes&quot; block or block attributes */
+  fontFamily: Scalars['String']['output'];
+  /** The &quot;fontSize&quot; field on the &quot;UagbTableOfContentsAttributes&quot; block or block attributes */
+  fontSize?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;fontSizeMobile&quot; field on the &quot;UagbTableOfContentsAttributes&quot; block or block attributes */
+  fontSizeMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;fontSizeTablet&quot; field on the &quot;UagbTableOfContentsAttributes&quot; block or block attributes */
+  fontSizeTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;fontSizeType&quot; field on the &quot;UagbTableOfContentsAttributes&quot; block or block attributes */
+  fontSizeType: Scalars['String']['output'];
+  /** The &quot;fontWeight&quot; field on the &quot;UagbTableOfContentsAttributes&quot; block or block attributes */
+  fontWeight?: Maybe<Scalars['String']['output']>;
+  /** The &quot;hMarginDesktop&quot; field on the &quot;UagbTableOfContentsAttributes&quot; block or block attributes */
+  hMarginDesktop?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;hMarginMobile&quot; field on the &quot;UagbTableOfContentsAttributes&quot; block or block attributes */
+  hMarginMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;hMarginTablet&quot; field on the &quot;UagbTableOfContentsAttributes&quot; block or block attributes */
+  hMarginTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;hPaddingDesktop&quot; field on the &quot;UagbTableOfContentsAttributes&quot; block or block attributes */
+  hPaddingDesktop: Scalars['Float']['output'];
+  /** The &quot;hPaddingMobile&quot; field on the &quot;UagbTableOfContentsAttributes&quot; block or block attributes */
+  hPaddingMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;hPaddingTablet&quot; field on the &quot;UagbTableOfContentsAttributes&quot; block or block attributes */
+  hPaddingTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;heading&quot; field on the &quot;UagbTableOfContentsAttributes&quot; block or block attributes */
+  heading: Scalars['String']['output'];
+  /** The &quot;headingAlignment&quot; field on the &quot;UagbTableOfContentsAttributes&quot; block or block attributes */
+  headingAlignment: Scalars['String']['output'];
+  /** The &quot;headingBottom&quot; field on the &quot;UagbTableOfContentsAttributes&quot; block or block attributes */
+  headingBottom?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;headingBottomMobile&quot; field on the &quot;UagbTableOfContentsAttributes&quot; block or block attributes */
+  headingBottomMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;headingBottomTablet&quot; field on the &quot;UagbTableOfContentsAttributes&quot; block or block attributes */
+  headingBottomTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;headingColor&quot; field on the &quot;UagbTableOfContentsAttributes&quot; block or block attributes */
+  headingColor?: Maybe<Scalars['String']['output']>;
+  /** The &quot;headingFontFamily&quot; field on the &quot;UagbTableOfContentsAttributes&quot; block or block attributes */
+  headingFontFamily: Scalars['String']['output'];
+  /** The &quot;headingFontSize&quot; field on the &quot;UagbTableOfContentsAttributes&quot; block or block attributes */
+  headingFontSize: Scalars['Float']['output'];
+  /** The &quot;headingFontSizeMobile&quot; field on the &quot;UagbTableOfContentsAttributes&quot; block or block attributes */
+  headingFontSizeMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;headingFontSizeTablet&quot; field on the &quot;UagbTableOfContentsAttributes&quot; block or block attributes */
+  headingFontSizeTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;headingFontSizeType&quot; field on the &quot;UagbTableOfContentsAttributes&quot; block or block attributes */
+  headingFontSizeType: Scalars['String']['output'];
+  /** The &quot;headingFontWeight&quot; field on the &quot;UagbTableOfContentsAttributes&quot; block or block attributes */
+  headingFontWeight: Scalars['String']['output'];
+  /** The &quot;headingLineHeight&quot; field on the &quot;UagbTableOfContentsAttributes&quot; block or block attributes */
+  headingLineHeight?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;headingLineHeightMobile&quot; field on the &quot;UagbTableOfContentsAttributes&quot; block or block attributes */
+  headingLineHeightMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;headingLineHeightTablet&quot; field on the &quot;UagbTableOfContentsAttributes&quot; block or block attributes */
+  headingLineHeightTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;headingLineHeightType&quot; field on the &quot;UagbTableOfContentsAttributes&quot; block or block attributes */
+  headingLineHeightType: Scalars['String']['output'];
+  /** The &quot;headingLoadGoogleFonts&quot; field on the &quot;UagbTableOfContentsAttributes&quot; block or block attributes */
+  headingLoadGoogleFonts: Scalars['Boolean']['output'];
+  /** The &quot;headingTitle&quot; field on the &quot;UagbTableOfContentsAttributes&quot; block or block attributes */
+  headingTitle: Scalars['String']['output'];
+  /** The &quot;headingTitleString&quot; field on the &quot;UagbTableOfContentsAttributes&quot; block or block attributes */
+  headingTitleString?: Maybe<Scalars['String']['output']>;
+  /** The &quot;icon&quot; field on the &quot;UagbTableOfContentsAttributes&quot; block or block attributes */
+  icon: Scalars['String']['output'];
+  /** The &quot;iconColor&quot; field on the &quot;UagbTableOfContentsAttributes&quot; block or block attributes */
+  iconColor?: Maybe<Scalars['String']['output']>;
+  /** The &quot;iconSize&quot; field on the &quot;UagbTableOfContentsAttributes&quot; block or block attributes */
+  iconSize?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;initialCollapse&quot; field on the &quot;UagbTableOfContentsAttributes&quot; block or block attributes */
+  initialCollapse: Scalars['Boolean']['output'];
+  /** The &quot;initiallyCollapseList&quot; field on the &quot;UagbTableOfContentsAttributes&quot; block or block attributes */
+  initiallyCollapseList: Scalars['Boolean']['output'];
+  /** The &quot;leftPaddingMobile&quot; field on the &quot;UagbTableOfContentsAttributes&quot; block or block attributes */
+  leftPaddingMobile: Scalars['Float']['output'];
+  /** The &quot;leftPaddingTablet&quot; field on the &quot;UagbTableOfContentsAttributes&quot; block or block attributes */
+  leftPaddingTablet: Scalars['Float']['output'];
+  /** The &quot;lineHeight&quot; field on the &quot;UagbTableOfContentsAttributes&quot; block or block attributes */
+  lineHeight?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;lineHeightMobile&quot; field on the &quot;UagbTableOfContentsAttributes&quot; block or block attributes */
+  lineHeightMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;lineHeightTablet&quot; field on the &quot;UagbTableOfContentsAttributes&quot; block or block attributes */
+  lineHeightTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;lineHeightType&quot; field on the &quot;UagbTableOfContentsAttributes&quot; block or block attributes */
+  lineHeightType: Scalars['String']['output'];
+  /** The &quot;linkColor&quot; field on the &quot;UagbTableOfContentsAttributes&quot; block or block attributes */
+  linkColor: Scalars['String']['output'];
+  /** The &quot;linkHoverColor&quot; field on the &quot;UagbTableOfContentsAttributes&quot; block or block attributes */
+  linkHoverColor?: Maybe<Scalars['String']['output']>;
+  /** The &quot;loadGoogleFonts&quot; field on the &quot;UagbTableOfContentsAttributes&quot; block or block attributes */
+  loadGoogleFonts: Scalars['Boolean']['output'];
+  /** The &quot;lock&quot; field on the &quot;UagbTableOfContentsAttributes&quot; block or block attributes */
+  lock?: Maybe<Scalars['BlockAttributesObject']['output']>;
+  /** The &quot;makeCollapsible&quot; field on the &quot;UagbTableOfContentsAttributes&quot; block or block attributes */
+  makeCollapsible: Scalars['Boolean']['output'];
+  /** The &quot;mappingHeaders&quot; field on the &quot;UagbTableOfContentsAttributes&quot; block or block attributes */
+  mappingHeaders: Scalars['BlockAttributesArray']['output'];
+  /** The &quot;marginTypeDesktop&quot; field on the &quot;UagbTableOfContentsAttributes&quot; block or block attributes */
+  marginTypeDesktop: Scalars['String']['output'];
+  /** The &quot;marginTypeMobile&quot; field on the &quot;UagbTableOfContentsAttributes&quot; block or block attributes */
+  marginTypeMobile: Scalars['String']['output'];
+  /** The &quot;marginTypeTablet&quot; field on the &quot;UagbTableOfContentsAttributes&quot; block or block attributes */
+  marginTypeTablet: Scalars['String']['output'];
+  /** The &quot;metadata&quot; field on the &quot;UagbTableOfContentsAttributes&quot; block or block attributes */
+  metadata?: Maybe<Scalars['BlockAttributesObject']['output']>;
+  /** The &quot;overallAlign&quot; field on the &quot;UagbTableOfContentsAttributes&quot; block or block attributes */
+  overallAlign: Scalars['String']['output'];
+  /** The &quot;paddingTypeDesktop&quot; field on the &quot;UagbTableOfContentsAttributes&quot; block or block attributes */
+  paddingTypeDesktop: Scalars['String']['output'];
+  /** The &quot;paddingTypeMobile&quot; field on the &quot;UagbTableOfContentsAttributes&quot; block or block attributes */
+  paddingTypeMobile: Scalars['String']['output'];
+  /** The &quot;paddingTypeTablet&quot; field on the &quot;UagbTableOfContentsAttributes&quot; block or block attributes */
+  paddingTypeTablet: Scalars['String']['output'];
+  /** The &quot;rightPaddingMobile&quot; field on the &quot;UagbTableOfContentsAttributes&quot; block or block attributes */
+  rightPaddingMobile: Scalars['Float']['output'];
+  /** The &quot;rightPaddingTablet&quot; field on the &quot;UagbTableOfContentsAttributes&quot; block or block attributes */
+  rightPaddingTablet: Scalars['Float']['output'];
+  /** The &quot;scrollToTop&quot; field on the &quot;UagbTableOfContentsAttributes&quot; block or block attributes */
+  scrollToTop: Scalars['Boolean']['output'];
+  /** The &quot;scrollToTopBgColor&quot; field on the &quot;UagbTableOfContentsAttributes&quot; block or block attributes */
+  scrollToTopBgColor?: Maybe<Scalars['String']['output']>;
+  /** The &quot;scrollToTopColor&quot; field on the &quot;UagbTableOfContentsAttributes&quot; block or block attributes */
+  scrollToTopColor?: Maybe<Scalars['String']['output']>;
+  /** The &quot;separatorColor&quot; field on the &quot;UagbTableOfContentsAttributes&quot; block or block attributes */
+  separatorColor: Scalars['String']['output'];
+  /** The &quot;separatorHColor&quot; field on the &quot;UagbTableOfContentsAttributes&quot; block or block attributes */
+  separatorHColor: Scalars['String']['output'];
+  /** The &quot;separatorHeight&quot; field on the &quot;UagbTableOfContentsAttributes&quot; block or block attributes */
+  separatorHeight: Scalars['Float']['output'];
+  /** The &quot;separatorHeightType&quot; field on the &quot;UagbTableOfContentsAttributes&quot; block or block attributes */
+  separatorHeightType: Scalars['String']['output'];
+  /** The &quot;separatorSpace&quot; field on the &quot;UagbTableOfContentsAttributes&quot; block or block attributes */
+  separatorSpace: Scalars['Float']['output'];
+  /** The &quot;separatorSpaceMobile&quot; field on the &quot;UagbTableOfContentsAttributes&quot; block or block attributes */
+  separatorSpaceMobile: Scalars['Float']['output'];
+  /** The &quot;separatorSpaceTablet&quot; field on the &quot;UagbTableOfContentsAttributes&quot; block or block attributes */
+  separatorSpaceTablet: Scalars['Float']['output'];
+  /** The &quot;separatorSpaceType&quot; field on the &quot;UagbTableOfContentsAttributes&quot; block or block attributes */
+  separatorSpaceType: Scalars['String']['output'];
+  /** The &quot;separatorStyle&quot; field on the &quot;UagbTableOfContentsAttributes&quot; block or block attributes */
+  separatorStyle: Scalars['String']['output'];
+  /** The &quot;smoothScroll&quot; field on the &quot;UagbTableOfContentsAttributes&quot; block or block attributes */
+  smoothScroll: Scalars['Boolean']['output'];
+  /** The &quot;smoothScrollOffset&quot; field on the &quot;UagbTableOfContentsAttributes&quot; block or block attributes */
+  smoothScrollOffset: Scalars['Float']['output'];
+  /** The &quot;tColumnsDesktop&quot; field on the &quot;UagbTableOfContentsAttributes&quot; block or block attributes */
+  tColumnsDesktop: Scalars['Float']['output'];
+  /** The &quot;tColumnsMobile&quot; field on the &quot;UagbTableOfContentsAttributes&quot; block or block attributes */
+  tColumnsMobile: Scalars['Float']['output'];
+  /** The &quot;tColumnsTablet&quot; field on the &quot;UagbTableOfContentsAttributes&quot; block or block attributes */
+  tColumnsTablet: Scalars['Float']['output'];
+  /** The &quot;topPaddingMobile&quot; field on the &quot;UagbTableOfContentsAttributes&quot; block or block attributes */
+  topPaddingMobile: Scalars['Float']['output'];
+  /** The &quot;topPaddingTablet&quot; field on the &quot;UagbTableOfContentsAttributes&quot; block or block attributes */
+  topPaddingTablet: Scalars['Float']['output'];
+  /** The &quot;vMarginDesktop&quot; field on the &quot;UagbTableOfContentsAttributes&quot; block or block attributes */
+  vMarginDesktop?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;vMarginMobile&quot; field on the &quot;UagbTableOfContentsAttributes&quot; block or block attributes */
+  vMarginMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;vMarginTablet&quot; field on the &quot;UagbTableOfContentsAttributes&quot; block or block attributes */
+  vMarginTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;vPaddingDesktop&quot; field on the &quot;UagbTableOfContentsAttributes&quot; block or block attributes */
+  vPaddingDesktop: Scalars['Float']['output'];
+  /** The &quot;vPaddingMobile&quot; field on the &quot;UagbTableOfContentsAttributes&quot; block or block attributes */
+  vPaddingMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;vPaddingTablet&quot; field on the &quot;UagbTableOfContentsAttributes&quot; block or block attributes */
+  vPaddingTablet?: Maybe<Scalars['Float']['output']>;
+};
+
+/** A block used for editing the site */
+export type UagbTaxonomyList = EditorBlock & PageEditorBlock & PostEditorBlock & {
+  __typename?: 'UagbTaxonomyList';
+  /** The API version of the Gutenberg Block */
+  apiVersion?: Maybe<Scalars['Int']['output']>;
+  /** Attributes of the UagbTaxonomyList Block Type */
+  attributes?: Maybe<UagbTaxonomyListAttributes>;
+  /** The name of the category the Block belongs to */
+  blockEditorCategoryName?: Maybe<Scalars['String']['output']>;
+  /** The id of the Block */
+  clientId?: Maybe<Scalars['String']['output']>;
+  /** CSS Classnames to apply to the block */
+  cssClassNames?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  /** The inner blocks of the Block */
+  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
+  /** Whether the block is Dynamic (server rendered) */
+  isDynamic: Scalars['Boolean']['output'];
+  /** The name of the block */
+  name?: Maybe<Scalars['String']['output']>;
+  /** The parent id of the Block */
+  parentClientId?: Maybe<Scalars['String']['output']>;
+  /** The rendered HTML for the block */
+  renderedHtml?: Maybe<Scalars['String']['output']>;
+  /** The (GraphQL) type of the block */
+  type?: Maybe<Scalars['String']['output']>;
+};
+
+/** Attributes of the UagbTaxonomyList Block Type */
+export type UagbTaxonomyListAttributes = {
+  __typename?: 'UagbTaxonomyListAttributes';
+  /** The &quot;alignment&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  alignment: Scalars['String']['output'];
+  /** The &quot;bgColor&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  bgColor: Scalars['String']['output'];
+  /** The &quot;block_id&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  blockId?: Maybe<Scalars['String']['output']>;
+  /** The &quot;borderColor&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  borderColor: Scalars['String']['output'];
+  /** The &quot;borderHoverColor&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  borderHoverColor: Scalars['String']['output'];
+  /** The &quot;borderRadius&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  borderRadius: Scalars['Float']['output'];
+  /** The &quot;borderStyle&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  borderStyle: Scalars['String']['output'];
+  /** The &quot;borderThickness&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  borderThickness: Scalars['Float']['output'];
+  /** The &quot;boxShadowBlur&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  boxShadowBlur?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;boxShadowColor&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  boxShadowColor: Scalars['String']['output'];
+  /** The &quot;boxShadowHOffset&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  boxShadowHOffset: Scalars['Float']['output'];
+  /** The &quot;boxShadowPosition&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  boxShadowPosition: Scalars['String']['output'];
+  /** The &quot;boxShadowSpread&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  boxShadowSpread?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;boxShadowVOffset&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  boxShadowVOffset: Scalars['Float']['output'];
+  /** The &quot;categories&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  categories?: Maybe<Scalars['String']['output']>;
+  /** The &quot;className&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  className?: Maybe<Scalars['String']['output']>;
+  /** The &quot;columnGap&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  columnGap: Scalars['Float']['output'];
+  /** The &quot;columns&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  columns: Scalars['Float']['output'];
+  /** The &quot;contentBottomPadding&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  contentBottomPadding?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;contentBottomPaddingMobile&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  contentBottomPaddingMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;contentBottomPaddingTablet&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  contentBottomPaddingTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;contentLeftPadding&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  contentLeftPadding?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;contentLeftPaddingMobile&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  contentLeftPaddingMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;contentLeftPaddingTablet&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  contentLeftPaddingTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;contentPadding&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  contentPadding: Scalars['Float']['output'];
+  /** The &quot;contentPaddingLink&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  contentPaddingLink: Scalars['Boolean']['output'];
+  /** The &quot;contentPaddingMobile&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  contentPaddingMobile: Scalars['Float']['output'];
+  /** The &quot;contentPaddingTablet&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  contentPaddingTablet: Scalars['Float']['output'];
+  /** The &quot;contentPaddingUnit&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  contentPaddingUnit: Scalars['String']['output'];
+  /** The &quot;contentRightPadding&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  contentRightPadding?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;contentRightPaddingMobile&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  contentRightPaddingMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;contentRightPaddingTablet&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  contentRightPaddingTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;contentTopPadding&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  contentTopPadding?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;contentTopPaddingMobile&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  contentTopPaddingMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;contentTopPaddingTablet&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  contentTopPaddingTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;countColor&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  countColor: Scalars['String']['output'];
+  /** The &quot;countDecoration&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  countDecoration?: Maybe<Scalars['String']['output']>;
+  /** The &quot;countFontFamily&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  countFontFamily: Scalars['String']['output'];
+  /** The &quot;countFontSize&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  countFontSize?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;countFontSizeMobile&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  countFontSizeMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;countFontSizeTablet&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  countFontSizeTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;countFontSizeType&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  countFontSizeType: Scalars['String']['output'];
+  /** The &quot;countFontStyle&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  countFontStyle?: Maybe<Scalars['String']['output']>;
+  /** The &quot;countFontWeight&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  countFontWeight?: Maybe<Scalars['String']['output']>;
+  /** The &quot;countLetterSpacing&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  countLetterSpacing?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;countLetterSpacingMobile&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  countLetterSpacingMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;countLetterSpacingTablet&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  countLetterSpacingTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;countLetterSpacingType&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  countLetterSpacingType: Scalars['String']['output'];
+  /** The &quot;countLineHeight&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  countLineHeight?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;countLineHeightMobile&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  countLineHeightMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;countLineHeightTablet&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  countLineHeightTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;countLineHeightType&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  countLineHeightType: Scalars['String']['output'];
+  /** The &quot;countLoadGoogleFonts&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  countLoadGoogleFonts: Scalars['Boolean']['output'];
+  /** The &quot;countTransform&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  countTransform?: Maybe<Scalars['String']['output']>;
+  /** The &quot;hoverlistStyleColor&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  hoverlistStyleColor: Scalars['String']['output'];
+  /** The &quot;hoverlistTextColor&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  hoverlistTextColor: Scalars['String']['output'];
+  /** The &quot;isPreview&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  isPreview: Scalars['Boolean']['output'];
+  /** The &quot;layout&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  layout: Scalars['String']['output'];
+  /** The &quot;listBottomMargin&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  listBottomMargin: Scalars['Float']['output'];
+  /** The &quot;listDecoration&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  listDecoration?: Maybe<Scalars['String']['output']>;
+  /** The &quot;listDisplayStyle&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  listDisplayStyle: Scalars['String']['output'];
+  /** The &quot;listFontFamily&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  listFontFamily: Scalars['String']['output'];
+  /** The &quot;listFontSize&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  listFontSize?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;listFontSizeMobile&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  listFontSizeMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;listFontSizeTablet&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  listFontSizeTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;listFontSizeType&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  listFontSizeType: Scalars['String']['output'];
+  /** The &quot;listFontStyle&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  listFontStyle?: Maybe<Scalars['String']['output']>;
+  /** The &quot;listFontWeight&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  listFontWeight?: Maybe<Scalars['String']['output']>;
+  /** The &quot;listLetterSpacing&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  listLetterSpacing?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;listLetterSpacingMobile&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  listLetterSpacingMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;listLetterSpacingTablet&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  listLetterSpacingTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;listLetterSpacingType&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  listLetterSpacingType: Scalars['String']['output'];
+  /** The &quot;listLineHeight&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  listLineHeight?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;listLineHeightMobile&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  listLineHeightMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;listLineHeightTablet&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  listLineHeightTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;listLineHeightType&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  listLineHeightType: Scalars['String']['output'];
+  /** The &quot;listLoadGoogleFonts&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  listLoadGoogleFonts: Scalars['Boolean']['output'];
+  /** The &quot;listStyle&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  listStyle: Scalars['String']['output'];
+  /** The &quot;listStyleColor&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  listStyleColor: Scalars['String']['output'];
+  /** The &quot;listTextColor&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  listTextColor: Scalars['String']['output'];
+  /** The &quot;listTransform&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  listTransform?: Maybe<Scalars['String']['output']>;
+  /** The &quot;lock&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  lock?: Maybe<Scalars['BlockAttributesObject']['output']>;
+  /** The &quot;mcolumns&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  mcolumns: Scalars['Float']['output'];
+  /** The &quot;metadata&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  metadata?: Maybe<Scalars['BlockAttributesObject']['output']>;
+  /** The &quot;mobileContentPaddingUnit&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  mobileContentPaddingUnit: Scalars['String']['output'];
+  /** The &quot;noTaxDisplaytext&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  noTaxDisplaytext: Scalars['String']['output'];
+  /** The &quot;order&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  order: Scalars['String']['output'];
+  /** The &quot;orderBy&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  orderBy: Scalars['String']['output'];
+  /** The &quot;overallBorderBottomLeftRadius&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  overallBorderBottomLeftRadius?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;overallBorderBottomLeftRadiusMobile&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  overallBorderBottomLeftRadiusMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;overallBorderBottomLeftRadiusTablet&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  overallBorderBottomLeftRadiusTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;overallBorderBottomRightRadius&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  overallBorderBottomRightRadius?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;overallBorderBottomRightRadiusMobile&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  overallBorderBottomRightRadiusMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;overallBorderBottomRightRadiusTablet&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  overallBorderBottomRightRadiusTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;overallBorderBottomWidth&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  overallBorderBottomWidth?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;overallBorderBottomWidthMobile&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  overallBorderBottomWidthMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;overallBorderBottomWidthTablet&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  overallBorderBottomWidthTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;overallBorderColor&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  overallBorderColor?: Maybe<Scalars['String']['output']>;
+  /** The &quot;overallBorderHColor&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  overallBorderHColor?: Maybe<Scalars['String']['output']>;
+  /** The &quot;overallBorderLeftWidth&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  overallBorderLeftWidth?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;overallBorderLeftWidthMobile&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  overallBorderLeftWidthMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;overallBorderLeftWidthTablet&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  overallBorderLeftWidthTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;overallBorderLink&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  overallBorderLink: Scalars['Boolean']['output'];
+  /** The &quot;overallBorderRadiusLink&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  overallBorderRadiusLink: Scalars['Boolean']['output'];
+  /** The &quot;overallBorderRadiusUnit&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  overallBorderRadiusUnit?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;overallBorderRadiusUnitMobile&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  overallBorderRadiusUnitMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;overallBorderRadiusUnitTablet&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  overallBorderRadiusUnitTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;overallBorderRightWidth&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  overallBorderRightWidth?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;overallBorderRightWidthMobile&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  overallBorderRightWidthMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;overallBorderRightWidthTablet&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  overallBorderRightWidthTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;overallBorderStyle&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  overallBorderStyle?: Maybe<Scalars['String']['output']>;
+  /** The &quot;overallBorderTopLeftRadius&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  overallBorderTopLeftRadius?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;overallBorderTopLeftRadiusMobile&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  overallBorderTopLeftRadiusMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;overallBorderTopLeftRadiusTablet&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  overallBorderTopLeftRadiusTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;overallBorderTopRightRadius&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  overallBorderTopRightRadius?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;overallBorderTopRightRadiusMobile&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  overallBorderTopRightRadiusMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;overallBorderTopRightRadiusTablet&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  overallBorderTopRightRadiusTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;overallBorderTopWidth&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  overallBorderTopWidth?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;overallBorderTopWidthMobile&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  overallBorderTopWidthMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;overallBorderTopWidthTablet&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  overallBorderTopWidthTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;postType&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  postType: Scalars['String']['output'];
+  /** The &quot;postsToShow&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  postsToShow: Scalars['Float']['output'];
+  /** The &quot;rowGap&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  rowGap: Scalars['Float']['output'];
+  /** The &quot;seperatorColor&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  seperatorColor: Scalars['String']['output'];
+  /** The &quot;seperatorHoverColor&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  seperatorHoverColor: Scalars['String']['output'];
+  /** The &quot;seperatorStyle&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  seperatorStyle: Scalars['String']['output'];
+  /** The &quot;seperatorThickness&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  seperatorThickness: Scalars['Float']['output'];
+  /** The &quot;seperatorWidth&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  seperatorWidth: Scalars['Float']['output'];
+  /** The &quot;showCount&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  showCount: Scalars['Boolean']['output'];
+  /** The &quot;showEmptyTaxonomy&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  showEmptyTaxonomy: Scalars['Boolean']['output'];
+  /** The &quot;showhierarchy&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  showhierarchy: Scalars['Boolean']['output'];
+  /** The &quot;tabletContentPaddingUnit&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  tabletContentPaddingUnit: Scalars['String']['output'];
+  /** The &quot;taxonomyType&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  taxonomyType: Scalars['String']['output'];
+  /** The &quot;tcolumns&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  tcolumns: Scalars['Float']['output'];
+  /** The &quot;titleBottomSpace&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  titleBottomSpace: Scalars['Float']['output'];
+  /** The &quot;titleColor&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  titleColor: Scalars['String']['output'];
+  /** The &quot;titleDecoration&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  titleDecoration?: Maybe<Scalars['String']['output']>;
+  /** The &quot;titleFontFamily&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  titleFontFamily: Scalars['String']['output'];
+  /** The &quot;titleFontSize&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  titleFontSize?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;titleFontSizeMobile&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  titleFontSizeMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;titleFontSizeTablet&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  titleFontSizeTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;titleFontSizeType&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  titleFontSizeType: Scalars['String']['output'];
+  /** The &quot;titleFontStyle&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  titleFontStyle?: Maybe<Scalars['String']['output']>;
+  /** The &quot;titleFontWeight&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  titleFontWeight?: Maybe<Scalars['String']['output']>;
+  /** The &quot;titleLetterSpacing&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  titleLetterSpacing: Scalars['Float']['output'];
+  /** The &quot;titleLetterSpacingMobile&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  titleLetterSpacingMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;titleLetterSpacingTablet&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  titleLetterSpacingTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;titleLetterSpacingType&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  titleLetterSpacingType: Scalars['String']['output'];
+  /** The &quot;titleLineHeight&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  titleLineHeight?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;titleLineHeightMobile&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  titleLineHeightMobile?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;titleLineHeightTablet&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  titleLineHeightTablet?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;titleLineHeightType&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  titleLineHeightType: Scalars['String']['output'];
+  /** The &quot;titleLoadGoogleFonts&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  titleLoadGoogleFonts: Scalars['Boolean']['output'];
+  /** The &quot;titleTag&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  titleTag: Scalars['String']['output'];
+  /** The &quot;titleTransform&quot; field on the &quot;UagbTaxonomyListAttributes&quot; block or block attributes */
+  titleTransform?: Maybe<Scalars['String']['output']>;
 };
 
 /** An interface for content that can be accessed via a unique URI/URL path. Implemented by content types that have their own permalinks. */
@@ -18546,7 +22463,7 @@ export type NcmazFcPostFullVsEditorBlocksNoContentFieldsFragment = { __typename:
   ) | (
     { __typename: 'NcmazFaustBlockTerms', renderedHtml?: string | null, clientId?: string | null, parentClientId?: string | null }
     & { ' $fragmentRefs'?: { 'NcmazFaustBlockTermsFragmentFragment': NcmazFaustBlockTermsFragmentFragment } }
-  ) | null> | null, author?: { __typename?: 'NodeWithAuthorToUserConnectionEdge', node: (
+  ) | { __typename: 'UagbButtonsChild', renderedHtml?: string | null, clientId?: string | null, parentClientId?: string | null } | { __typename: 'UagbFaq', renderedHtml?: string | null, clientId?: string | null, parentClientId?: string | null } | { __typename: 'UagbFaqChild', renderedHtml?: string | null, clientId?: string | null, parentClientId?: string | null } | { __typename: 'UagbGoogleMap', renderedHtml?: string | null, clientId?: string | null, parentClientId?: string | null } | { __typename: 'UagbIcon', renderedHtml?: string | null, clientId?: string | null, parentClientId?: string | null } | { __typename: 'UagbImage', renderedHtml?: string | null, clientId?: string | null, parentClientId?: string | null } | { __typename: 'UagbImageGallery', renderedHtml?: string | null, clientId?: string | null, parentClientId?: string | null } | { __typename: 'UagbLottie', renderedHtml?: string | null, clientId?: string | null, parentClientId?: string | null } | { __typename: 'UagbPostCarousel', renderedHtml?: string | null, clientId?: string | null, parentClientId?: string | null } | { __typename: 'UagbPostGrid', renderedHtml?: string | null, clientId?: string | null, parentClientId?: string | null } | { __typename: 'UagbPostTimeline', renderedHtml?: string | null, clientId?: string | null, parentClientId?: string | null } | { __typename: 'UagbTableOfContents', renderedHtml?: string | null, clientId?: string | null, parentClientId?: string | null } | { __typename: 'UagbTaxonomyList', renderedHtml?: string | null, clientId?: string | null, parentClientId?: string | null } | null> | null, author?: { __typename?: 'NodeWithAuthorToUserConnectionEdge', node: (
       { __typename?: 'User', description?: string | null }
       & { ' $fragmentRefs'?: { 'NcmazFcUserShortForPostCardFragmentFragment': NcmazFcUserShortForPostCardFragmentFragment } }
     ) } | null, categories?: { __typename?: 'PostToCategoryConnection', nodes: Array<(
@@ -19391,7 +23308,7 @@ export type GetPageQuery = { __typename?: 'RootQuery', page?: { __typename?: 'Pa
     ) | (
       { __typename: 'NcmazFaustBlockTerms', renderedHtml?: string | null, clientId?: string | null, parentClientId?: string | null }
       & { ' $fragmentRefs'?: { 'NcmazFaustBlockTermsFragmentFragment': NcmazFaustBlockTermsFragmentFragment } }
-    ) | null> | null } | null, generalSettings?: (
+    ) | { __typename: 'UagbButtonsChild', renderedHtml?: string | null, clientId?: string | null, parentClientId?: string | null } | { __typename: 'UagbFaq', renderedHtml?: string | null, clientId?: string | null, parentClientId?: string | null } | { __typename: 'UagbFaqChild', renderedHtml?: string | null, clientId?: string | null, parentClientId?: string | null } | { __typename: 'UagbGoogleMap', renderedHtml?: string | null, clientId?: string | null, parentClientId?: string | null } | { __typename: 'UagbIcon', renderedHtml?: string | null, clientId?: string | null, parentClientId?: string | null } | { __typename: 'UagbImage', renderedHtml?: string | null, clientId?: string | null, parentClientId?: string | null } | { __typename: 'UagbImageGallery', renderedHtml?: string | null, clientId?: string | null, parentClientId?: string | null } | { __typename: 'UagbLottie', renderedHtml?: string | null, clientId?: string | null, parentClientId?: string | null } | { __typename: 'UagbPostCarousel', renderedHtml?: string | null, clientId?: string | null, parentClientId?: string | null } | { __typename: 'UagbPostGrid', renderedHtml?: string | null, clientId?: string | null, parentClientId?: string | null } | { __typename: 'UagbPostTimeline', renderedHtml?: string | null, clientId?: string | null, parentClientId?: string | null } | { __typename: 'UagbTableOfContents', renderedHtml?: string | null, clientId?: string | null, parentClientId?: string | null } | { __typename: 'UagbTaxonomyList', renderedHtml?: string | null, clientId?: string | null, parentClientId?: string | null } | null> | null } | null, generalSettings?: (
     { __typename?: 'GeneralSettings' }
     & { ' $fragmentRefs'?: { 'NcgeneralSettingsFieldsFragmentFragment': NcgeneralSettingsFieldsFragmentFragment } }
   ) | null, primaryMenuItems?: { __typename?: 'RootQueryToMenuItemConnection', nodes: Array<(

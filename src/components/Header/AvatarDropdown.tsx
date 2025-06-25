@@ -8,6 +8,7 @@ import {
 } from '@headlessui/react'
 import { Fragment, useEffect } from 'react'
 import Avatar from '@/components/Avatar/Avatar'
+import SwitchDarkMode2 from '@/components/SwitchDarkMode/SwitchDarkMode2'
 import Link from 'next/link'
 import {
 	BookmarkIcon,
@@ -196,6 +197,22 @@ export default function AvatarDropdown({ className = '' }: Props) {
 		)
 	}
 
+	const renderSwitchDarkMode = () => {
+		return (
+			<div className="-m-3 flex items-center justify-between rounded-lg p-2 transition duration-150 ease-in-out hover:bg-neutral-100 focus:outline-none focus-visible:ring focus-visible:ring-orange-500 focus-visible:ring-opacity-50 dark:hover:bg-neutral-700">
+				<div className="flex items-center">
+					<div className="flex flex-shrink-0 items-center justify-center text-neutral-500 dark:text-neutral-300">
+						<LightBulbIcon className="h-6 w-6" />
+					</div>
+					<div className="ms-4">
+						<p className="text-sm font-medium">{T['Dark theme']}</p>
+					</div>
+				</div>
+				<SwitchDarkMode2 />
+			</div>
+		)
+	}
+
 	const renderMenuHelp = () => {
 		if (!NC_SITE_SETTINGS?.help_page?.uri) {
 			return null
@@ -340,9 +357,12 @@ export default function AvatarDropdown({ className = '' }: Props) {
 										<div className="w-full border-b border-neutral-200 dark:border-neutral-700" />
 
 										{/* ------------------ 5 --------------------- */}
-										{renderMenuHelp()}
+										{renderSwitchDarkMode()}
 
 										{/* ------------------ 6 --------------------- */}
+										{renderMenuHelp()}
+
+										{/* ------------------ 7 --------------------- */}
 										{isAuthenticated && renderMenuLogOut()}
 									</div>
 								</div>

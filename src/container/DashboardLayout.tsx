@@ -16,6 +16,7 @@ import {
 } from '@heroicons/react/24/outline'
 import { ChevronDownIcon, MagnifyingGlassIcon } from '@heroicons/react/20/solid'
 import Logo from '@/components/Logo/Logo'
+import SwitchDarkMode from '@/components/SwitchDarkMode/SwitchDarkMode'
 import AvatarDropdown from '@/components/Header/AvatarDropdown'
 import classNames from '@/utils/classNames'
 import Link from 'next/link'
@@ -387,6 +388,7 @@ export default function DashboardLayout({ children }: Props) {
 									{/* Profile dropdown */}
 									<div className="flex flex-1 items-center justify-end">
 										<CreateBtn />
+										<SwitchDarkMode className="hidden lg:flex" />
 										<SearchIconBtn className="flex lg:hidden" />
 										<AvatarDropdown />
 									</div>

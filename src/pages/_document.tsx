@@ -73,8 +73,11 @@ export default class Document extends NextDocument {
 						dangerouslySetInnerHTML={{
 							__html: `
 						try {
-							document.documentElement.classList.add('dark');
-							localStorage.theme = 'dark';
+							if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {Add commentMore actions
+							document.documentElement.classList.add('dark')
+							} else {
+							document.documentElement.classList.remove('dark')
+							}
 						} catch (_) {}
 						`,
 						}}
