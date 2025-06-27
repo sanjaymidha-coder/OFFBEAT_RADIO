@@ -200,21 +200,26 @@
 	"contact_page": {
 		"enable": true,
 		"title": "Get in touch",
-		"sub_title": "We’d love to hear from you. Fill out the form below to get in touch with us.",
+		"sub_title": "We'd love to hear from you. Fill out the form below to get in touch with us.",
 		"form": {
 			"success_message": "🎉 Thank you for your message. We will get back to you soon.",
-			"error_message": "Something went wrong. Please try again. If the problem persists, you can contact me."
+			"error_message": "Something went wrong. Please try again. If the problem persists, you can contact us directly."
 		},
 		"my_contact_info": [
 			{
-				"name": "address",
-				"title": "🚀 ADDRESS",
-				"desc": "123 Main Street, New York, NY 10001"
+			"name": "address",
+			"title": "🚀 ADDRESS",
+			"desc": "Wilmington, DE, United States"
 			},
 			{
-				"name": "email",
-				"title": "💌 EMAIL",
-				"desc": "example@example.com"
+			"name": "email",
+			"title": "💌 EMAIL",
+			"desc": "info@offbeatindieradio.com"
+			},
+			{
+			"name": "phone",
+			"title": "☎️ PHONE",
+			"desc": "+1 267-975-5938"
 			}
 		]
 	},

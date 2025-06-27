@@ -21,25 +21,23 @@ const MainNav1: FC<MainNav1Props> = ({ menuItems, title, description }) => {
 		<div className="nc-MainNav1 relative z-10 border-b border-neutral-200/70 bg-white dark:bg-white">
 			<div className="container">
 				<div className="flex h-16 items-center py-3 sm:h-20 sm:py-4">
-					{/* Left: Logo */}
-					<div className="flex flex-1 items-center min-w-[140px]">
-						<Brand title={title} description={description} />
+					<div className="flex flex-1 items-center lg:hidden">
+						<MenuBar menuItems={menuItems} />
 					</div>
 
-					{/* Center: Navigation (perfectly centered) */}
-					<div className="flex flex-none items-center justify-center">
-						<Navigation menuItems={menuItems} className="flex justify-center" />
+					{/* Left: Logo and Navigation (responsive) */}
+					<div className="flex flex-col items-center flex-1 min-w-[140px] space-y-2 sm:flex-row sm:justify-start sm:space-y-0 sm:space-x-4 lg:space-x-10 2xl:space-x-14 rtl:space-x-reverse">
+						<Brand title={title} description={description} />
+						<Navigation menuItems={menuItems} className="hidden lg:flex" />
 					</div>
 
 					{/* Right: Actions */}
 					<div className="flex flex-1 items-center justify-end space-x-1 text-neutral-700 rtl:space-x-reverse dark:text-neutral-100 min-w-[140px]">
 						<div className="hidden items-center lg:flex">
 							{!NC_SITE_SETTINGS.site_header?.desktop_header?.hide_create_button && <CreateBtn />}
-							<SearchIconBtn className="flex" />
 							<AvatarDropdown />
 						</div>
 						<div className="flex items-center lg:hidden">
-							<SearchIconBtn className="flex" />
 							<AvatarDropdown />
 						</div>
 					</div>

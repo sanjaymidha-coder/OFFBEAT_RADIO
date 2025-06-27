@@ -13,7 +13,7 @@
 	"newsletter_section": {
 		"enable": true,
 		"title": "Join our newsletter 🎉",
-		"description": "Read and share new perspectives on just about any topic. Everyone’s welcome.",
+		"description": "Read and share new perspectives on just about any topic. Everyone's welcome.",
 		"right_image": "/images/SVG-subcribe2.png",
 		"features_list": ["Create a free account.", "Write your stories."]
 	},
@@ -50,28 +50,34 @@
 	},
 	"site_socials": [
 		{
+			"name": "instagram",
+			"url": "https://www.instagram.com/offbeat_indie_radio?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+			"icon": "/images/socials/instagram.svg",
+			"description": "Follow us on Instagram"
+		},
+		{
+			"name": "x",
+			"url": "https://x.com/OFFBEAT_RADIO_",
+			"icon": "/images/socials/x-twitter.svg",
+			"description": "Follow us on X (Twitter)"
+		},
+		{
+			"name": "linkedin",
+			"url": "https://www.linkedin.com/in/useph-murray-offbeat/",
+			"icon": "/images/socials/linkedin-in.svg",
+			"description": "Connect with us on LinkedIn"
+		},
+		{
+			"name": "youtube",
+			"url": "https://www.youtube.com/@OFFBEATINDIERADIO",
+			"icon": "/images/socials/youtube.svg",
+			"description": "Subscribe to our YouTube channel"
+		},
+		{
 			"name": "facebook",
-			"url": "https://www.facebook.com/yourfacebookpage",
+			"url": "https://www.facebook.com/profile.php?id=61573400356665",
 			"icon": "/images/socials/facebook.svg",
 			"description": "Follow us on Facebook"
-		},
-		{
-			"name": "twitter",
-			"url": "https://twitter.com/yourtwitterpage",
-			"icon": "/images/socials/x-twitter.svg",
-			"description": "Follow us on Twitter"
-		},
-		{
-			"name": "github",
-			"url": "https://www.github.com/yourmediumpage",
-			"icon": "/images/socials/github.svg",
-			"description": "Follow us on Github"
-		},
-		{
-			"name": "tiktok",
-			"url": "https://www.tiktok.com/yourtiktokpage",
-			"icon": "/images/socials/tiktok.svg",
-			"description": "Follow us on Tiktok"
 		}
 	],
 	"site_header": {
@@ -213,36 +219,31 @@
 	"help_page": {
 		"uri": "/helps",
 		"title": "Helps",
-		"sub_title": "Read and share new perspectives on just about any topic. Everyone’s welcome."
+		"sub_title": "Read and share new perspectives on just about any topic. Everyone's welcome."
 	},
 	"contact_page": {
 		"enable": true,
 		"title": "Get in touch",
-		"sub_title": "We’d love to hear from you. Fill out the form below to get in touch with us.",
+		"sub_title": "We'd love to hear from you. Fill out the form below to get in touch with us.",
 		"form": {
 			"success_message": "🎉 Thank you for your message. We will get back to you soon.",
-			"error_message": "Something went wrong. Please try again. If the problem persists, you can contact me."
+			"error_message": "Something went wrong. Please try again. If the problem persists, you can contact us directly."
 		},
 		"my_contact_info": [
 			{
-				"name": "address",
-				"title": "🚀 ADDRESS",
-				"desc": "123 Main Street, New York, NY 10001"
+			"name": "address",
+			"title": "🚀 ADDRESS",
+			"desc": "Wilmington, DE, United States"
 			},
 			{
-				"name": "email",
-				"title": "💌 EMAIL",
-				"desc": "example@example.com"
+			"name": "email",
+			"title": "💌 EMAIL",
+			"desc": "info@offbeatindieradio.com"
 			},
 			{
-				"name": "phone",
-				"title": "☎️ PHONE",
-				"desc": "+88 123 456 789"
-			},
-			{
-				"name": "working_hours",
-				"title": "🕒 WORKING HOURS",
-				"desc": "Mon - Fri: 9:00 - 19:00"
+			"name": "phone",
+			"title": "☎️ PHONE",
+			"desc": "+1 267-975-5938"
 			},
 			{
 				"name": "socials",
@@ -254,7 +255,7 @@
 		"enable": true,
 		"uri": "/documents",
 		"title": "Documents",
-		"sub_title": "Read and share new perspectives on just about any topic. Everyone’s welcome."
+		"sub_title": "Read and share new perspectives on just about any topic. Everyone's welcome."
 	},
 	"cookies_policy_page": {
 		"uri": "#"
@@ -265,7 +266,7 @@
 	},
 	"empty_state": {
 		"title": "No results found.",
-		"description": "We couldn’t find any results. Try for something else."
+		"description": "We couldn't find any results. Try for something else."
 	},
 	"discussion_settings": {
 		"enable": true,

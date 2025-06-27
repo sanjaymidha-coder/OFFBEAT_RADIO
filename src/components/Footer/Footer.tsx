@@ -57,9 +57,11 @@ export default function Footer({ menuItems }: Props) {
 			</h2>
 			<div className="mx-auto max-w-7xl px-6 pb-8 pt-20 sm:pt-24 lg:px-8 lg:pt-28">
 				<div className="xl:grid xl:grid-cols-3 xl:gap-8">
-					<div className="grid grid-cols-2 gap-8 md:grid-cols-3 xl:col-span-2">
-						<Logo />
-						{menus.map(renderMenuItem)}
+					<div className="grid grid-cols-1 gap-8 md:grid-cols-3 xl:col-span-2 sm:grid-cols-2">
+						<Logo className="justify-self-start sm:justify-self-start" />
+						<div className="flex flex-wrap col-span-1 sm:col-span-1 md:col-span-2 gap-8">
+							{menus.map(renderMenuItem)}
+						</div>
 					</div>
 					<div className="mt-10 xl:mt-0">
 						<WidgetAddSubscriberForm />
