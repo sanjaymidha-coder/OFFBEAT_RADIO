@@ -18,11 +18,11 @@
 		"features_list": ["Create a free account.", "Write your stories."]
 	},
 	"top_banner": {
-		"enable": false,
-		"description": "-50% Intro price for the next 72 hours only!.",
+		"enable": true,
+		"description": "🎧 Built for Indie Artists. Streaming Worldwide in 2026 — No Labels. No Algorithms. Just Real Music.",
 		"end_link": {
-			"url": "https://themeforest.net/item/ncmaz-nextjs-headless-wordpress-blog-magazine/47815656",
-			"text": "Buy now  →",
+			"url": "/contact/",
+			"text": "Contact Us  →",
 			"new_tab": true
 		}
 	},

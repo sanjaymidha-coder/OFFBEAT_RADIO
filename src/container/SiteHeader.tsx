@@ -60,7 +60,6 @@ const SiteHeader: FC<Props> = ({ menuItems, siteDescription, siteTitle }) => {
 	return (
 		<>
 			<Banner />
-
 			<div className="sticky top-0 z-30 w-full">{renderHeader()}</div>
 		</>
 	)
