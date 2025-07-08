@@ -45,8 +45,6 @@ export const FILTERS_OPTIONS: {
 	{ name: T['Z to A'], value: 'TITLE/DESC' },
 	{ name: T['Most views'], value: 'VIEWS_COUNT/DESC' },
 	{ name: T['Most likes'], value: 'LIKES_COUNT/DESC' },
-	{ name: T['Most comments'], value: 'COMMENT_COUNT/DESC' },
-	{ name: T['Comments/asc'], value: 'COMMENT_COUNT/ASC' },
 ]
 
 export const GET_POSTS_FIRST_COMMON_FOR_DASHBOARD = 30

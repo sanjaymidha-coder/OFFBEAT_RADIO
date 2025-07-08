@@ -25,11 +25,6 @@ const PostCardSaveAction: FC<PostCardSaveActionProps> = ({
 		>
 			{!hidenReadingTime && !!readingTime && (
 				<>
-					<span className="hidden text-right sm:block">
-						<span className="line-clamp-1">
-							{readingTime} {T['min read'] ?? 'min read'}
-						</span>
-					</span>
 					<span className="line-clamp-1 block text-right sm:hidden">
 						<span className="line-clamp-1">
 							{readingTime}' {T['read'] ?? 'read'}

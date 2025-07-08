@@ -189,7 +189,7 @@ const NcmazFaustBlockMagazineClient: WordPressBlock<
 
 	const viewAllLinkHref: LinkProps['href'] | undefined = showViewAll
 		? {
-				pathname: '/posts',
+				pathname: '/radio-stations',
 				query: { ...(dataInitQueryVariable || {}), first: 12 },
 			}
 		: undefined

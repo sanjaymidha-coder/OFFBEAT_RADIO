@@ -15,6 +15,9 @@ interface Props {
 	initTagIds?: number[]
 	initAuthorIds?: number[]
 	initKeyword?: string
+	showCategories?: boolean
+	showAuthors?: boolean
+	keywordLabel?: string
 }
 //
 const TabFilters: FC<Props> = ({
@@ -26,6 +29,9 @@ const TabFilters: FC<Props> = ({
 	onTagsUpdated,
 	onAuthorsUpdated,
 	onKeywordUpdated,
+	showCategories = true,
+	showAuthors = true,
+	keywordLabel,
 }) => {
 	// OK
 	const renderTabsCategories = () => {
@@ -75,6 +81,7 @@ const TabFilters: FC<Props> = ({
 				onUpdated={(keyword) => {
 					onKeywordUpdated(keyword)
 				}}
+				label={keywordLabel}
 			/>
 		</div>
 	)
@@ -83,9 +90,9 @@ const TabFilters: FC<Props> = ({
 		<div className="hiddenScrollbar flex overflow-auto sm:overflow-visible">
 			<div className="flex flex-1 gap-2.5 p-1.5 sm:p-0 md:gap-4">
 				{renderTabsKeyword()}
-				{renderTabsCategories()}
+				{showCategories && renderTabsCategories()}
 				{renderTabsTags()}
-				{renderTabsAuthors()}
+				{showAuthors && renderTabsAuthors()}
 			</div>
 		</div>
 	)

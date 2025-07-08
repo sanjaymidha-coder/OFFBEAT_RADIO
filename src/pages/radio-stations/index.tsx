@@ -7,7 +7,7 @@ import {
 	PostsFilterPageQueryGetPostsQuery,
 } from '@/__generated__/graphql'
 import { FILTERS_OPTIONS } from '@/contains/contants'
-import React from 'react'
+import React, { useState } from 'react'
 import { useRouter } from 'next/router'
 import { FOOTER_LOCATION, PRIMARY_LOCATION } from '@/contains/menu'
 import PageLayout from '@/container/PageLayout'
@@ -20,9 +20,13 @@ import TabFilters from '@/components/TabFilters'
 import getTrans from '@/utils/getTrans'
 import { FireIcon } from '@/components/Icons/Icons'
 import ArchiveFilterListBox from '@/components/ArchiveFilterListBox/ArchiveFilterListBox'
+import { NC_SITE_SETTINGS } from '@/contains/site-settings'
 
 const T = getTrans()
 const GET_POSTS_FIRST_COMMON = 24
+
+// Hardcode the radio-stations category ID here
+const RADIO_STATIONS_CATEGORY_ID = 206; // <-- Replace 123 with your actual category ID
 
 interface ConTextQuery {
 	search: string | null
@@ -152,7 +156,8 @@ const Page: FaustPage<PostsFilterPageQueryGetPostsQuery> = (props) => {
 				headerMenuItems={props.data?.primaryMenuItems?.nodes || []}
 				footerMenuItems={props.data?.footerMenuItems?.nodes || []}
 				pageFeaturedImageUrl={null}
-				pageTitle={T.Posts}
+				pageTitle={NC_SITE_SETTINGS.radio_stations_page?.title}
+				pageDescription={NC_SITE_SETTINGS.radio_stations_page?.description}
 				generalSettings={
 					props.data?.generalSettings as NcgeneralSettingsFieldsFragmentFragment
 				}
@@ -161,13 +166,12 @@ const Page: FaustPage<PostsFilterPageQueryGetPostsQuery> = (props) => {
 					<div className="container space-y-16 py-10 sm:space-y-20 lg:space-y-28 lg:pb-28 lg:pt-20">
 						<div className="space-y-10">
 							<header>
-								<div className="mb-2 flex items-center gap-2 text-sm font-medium text-neutral-500">
-									<FireIcon className="h-6 w-6" />
-									<span className="">{T['Explore']}</span>
-								</div>
-								<h1 className="sblock text-2xl font-semibold capitalize sm:text-3xl lg:text-4xl">
-									{T['Posts']}
+								<h1 className="block text-2xl font-semibold capitalize sm:text-3xl lg:text-4xl flex items-center gap-2">
+									<span role="img" aria-label="microphone">🎙️</span> Live Radio Stations
 								</h1>
+								<div className="mt-2 flex items-center gap-2 text-sm font-medium text-neutral-500">
+									<span className="">Streaming curated indie music 24/7 – powered by artists</span>
+								</div>
 							</header>
 
 							<hr className="border-slate-200 dark:border-slate-700" />
@@ -176,14 +180,15 @@ const Page: FaustPage<PostsFilterPageQueryGetPostsQuery> = (props) => {
 								{/* TABS FILTER */}
 								<div className="flex flex-col lg:flex-row lg:justify-between">
 									<TabFilters
-										initCatIds={ctxQuery.categoryIn}
+										showCategories={false}
+										showAuthors={false}
 										initTagIds={ctxQuery.tagIn}
 										initAuthorIds={ctxQuery.authorIn || []}
 										initKeyword={ctxQuery.search || ''}
-										onCategoriesUpdated={onCategoriesUpdated}
 										onTagsUpdated={onTagsUpdated}
 										onAuthorsUpdated={onAuthorsUpdated}
 										onKeywordUpdated={onKeywordUpdated}
+										keywordLabel="Search Channel"
 									/>
 									<div className="my-4 block w-full border-b border-neutral-300 lg:hidden dark:border-neutral-500" />
 									<div className="flex justify-end">
@@ -224,6 +229,7 @@ const Page: FaustPage<PostsFilterPageQueryGetPostsQuery> = (props) => {
 									showPrevPagination={posts?.pageInfo.hasPreviousPage}
 									onClickNext={onClickNext}
 									onClickPrev={onClickPrev}
+									hideMeta={true}
 								/>
 							</main>
 						</div>
@@ -252,13 +258,9 @@ Page.variables = (context) => {
 				? [query.authorIn]
 				: []
 	).map((id) => parseInt(id))
-	const categoryIn = (
-		Array.isArray(query.categoryIn)
-			? query.categoryIn
-			: query.categoryIn
-				? [query.categoryIn]
-				: []
-	).map((id) => parseInt(id))
+
+	// Always use the radio-stations category ID
+	const categoryIn = [RADIO_STATIONS_CATEGORY_ID]
 
 	const field = typeof query.field === 'string' ? query.field : 'DATE'
 	const order = typeof query.order === 'string' ? query.order : 'DESC'
@@ -320,7 +322,8 @@ Page.query = gql(`
 	$field: PostObjectsConnectionOrderbyEnum = DATE
 	$order: OrderEnum = DESC
 	$headerLocation: MenuLocationEnum!
-	$footerLocation: MenuLocationEnum!) {
+	$footerLocation: MenuLocationEnum!
+  ) {
     posts(
       first: $first
       after: $after

@@ -13,6 +13,7 @@ import { getPostDataFromPostFragment } from '@/utils/getPostDataFromPostFragment
 export interface Card11Props extends CommonPostCardProps {
 	ratio?: string
 	hiddenAuthor?: boolean
+	hideMeta?: boolean
 }
 
 const Card11: FC<Card11Props> = ({
@@ -20,6 +21,7 @@ const Card11: FC<Card11Props> = ({
 	post,
 	hiddenAuthor = false,
 	ratio = 'aspect-w-4 aspect-h-3',
+	hideMeta = false,
 }) => {
 	const {
 		title,
@@ -39,6 +41,7 @@ const Card11: FC<Card11Props> = ({
 			className={`nc-Card11 group relative flex flex-col overflow-hidden rounded-3xl bg-white dark:bg-neutral-900 ${className}`}
 			onMouseEnter={() => setIsHover(true)}
 			onMouseLeave={() => setIsHover(false)}
+			style={{ boxShadow: '0px 1px 3px rgba(0, 0, 0, 0.15)' }}
 			//
 		>
 			<div
@@ -54,11 +57,12 @@ const Card11: FC<Card11Props> = ({
 			</span>
 
 			<div className="flex flex-1 flex-col space-y-3 rounded-b-3xl border border-t-0 border-neutral-100 px-3.5 py-4 dark:border-neutral-800">
-				{!hiddenAuthor ? (
+				{!hideMeta && (!hiddenAuthor ? (
 					<PostCardMeta meta={{ author, date }} />
 				) : (
 					<span className="text-xs text-neutral-500">{date}</span>
-				)}
+				))}
+				{hideMeta && null}
 				<h3 className="nc-card-title block text-base font-semibold text-neutral-900 dark:text-neutral-100">
 					<span
 						dangerouslySetInnerHTML={{ __html: title }}

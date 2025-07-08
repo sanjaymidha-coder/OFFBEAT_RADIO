@@ -14,9 +14,10 @@ const T = getTrans()
 interface Props {
 	onUpdated: (k: string) => void
 	initText?: string
+	label?: string
 }
 
-const ModalSelectKeyword: FC<Props> = ({ onUpdated, initText = '' }) => {
+const ModalSelectKeyword: FC<Props> = ({ onUpdated, initText = '', label }) => {
 	const [keyword, setKeyword] = useState<string>(initText)
 
 	useEffect(() => {
@@ -78,7 +79,7 @@ const ModalSelectKeyword: FC<Props> = ({ onUpdated, initText = '' }) => {
 
 						<SearchIcon className="-ms-1.5 me-2 h-5 w-5" />
 						<div>
-							<span>{T.Keyword}</span>
+							<span>{label || T.Keyword}</span>
 						</div>
 						<ChevronDownIcon
 							className="-me-1 ms-2 h-4 w-4"
@@ -88,7 +89,7 @@ const ModalSelectKeyword: FC<Props> = ({ onUpdated, initText = '' }) => {
 				)}
 				onOpenModal={() => setKeyword(initText)}
 				contentExtraClass="max-w-2xl"
-				modalTitle={T['Keyword']}
+				modalTitle={label || T['Keyword']}
 				renderContent={renderModalContent}
 				enableFooter={true}
 				renderFooter={(closeModal) => {

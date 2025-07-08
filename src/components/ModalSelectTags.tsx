@@ -129,8 +129,8 @@ const ModalSelectTags: FC<Props> = ({ onUpdated, initIds = [] }) => {
 												}
 											}}
 										>
-											#{getTagDataFromTagFragment(tag).name}
-											<span className="text-sm font-normal">
+											{getTagDataFromTagFragment(tag).name}
+											<span className="text-sm font-normal ml-1">
 												({getTagDataFromTagFragment(tag).count})
 											</span>
 										</div>
@@ -174,9 +174,8 @@ const ModalSelectTags: FC<Props> = ({ onUpdated, initIds = [] }) => {
 								{initIds.length}
 							</div>
 						)}
-						<TagIcon className="-ms-1.5 me-2 h-5 w-5" />
 						<div>
-							<span>{T['Tags']}</span>
+							<span>Genres</span>
 						</div>
 						<ChevronDownIcon
 							className="-me-1 ms-2 h-4 w-4"
@@ -185,7 +184,7 @@ const ModalSelectTags: FC<Props> = ({ onUpdated, initIds = [] }) => {
 					</Button>
 				)}
 				onOpenModal={() => setIdSlecteds(initIds)}
-				modalTitle={T['Tags']}
+				modalTitle='Genres'
 				renderContent={renderModalContent}
 				enableFooter={true}
 				renderFooter={(closeModal) => {

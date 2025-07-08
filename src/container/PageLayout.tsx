@@ -31,7 +31,15 @@ const PageLayout: FC<Props> = ({
   return (
     <>
       <SEO
-        title={(pageTitle || "") + " - " + (generalSettings?.title || "")}
+        title={
+          pageTitle && generalSettings?.title
+            ? `${pageTitle} - ${generalSettings.title} - OffBeat Radio`
+            : pageTitle
+              ? `${pageTitle} - OffBeat Radio`
+              : generalSettings?.title
+                ? `${generalSettings.title} - OffBeat Radio`
+                : 'OffBeat Radio'
+        }
         description={pageDescription || generalSettings?.description || ""}
         imageUrl={pageFeaturedImageUrl}
       />

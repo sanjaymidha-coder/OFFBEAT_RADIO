@@ -10,7 +10,7 @@ const MediaAudio: FC<MediaAudioProps> = ({ post }) => {
 	return (
 		<>
 			<ButtonPlayMusicPlayer
-				className="absolute inset-0 flex items-center justify-center bg-neutral-900/30"
+				className="absolute inset-0 flex items-center justify-center"
 				post={post}
 			/>
 		</>

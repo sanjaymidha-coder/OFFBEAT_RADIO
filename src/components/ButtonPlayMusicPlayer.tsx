@@ -1,9 +1,10 @@
 // ** Tat ca cac component nao goi truc tiep ButtonPlayMusicPlayer thi can phai co use client
+import * as React from 'react'
 import { FC, ReactNode } from 'react'
-import PostTypeFeaturedIcon from '@/components/PostTypeFeaturedIcon/PostTypeFeaturedIcon'
-import { useMusicPlayer } from '@/hooks/useMusicPlayer'
-import { PostDataFragmentType } from '@/data/types'
-import { getPostDataFromPostFragment } from '@/utils/getPostDataFromPostFragment'
+import PostTypeFeaturedIcon from './PostTypeFeaturedIcon/PostTypeFeaturedIcon'
+import { useMusicPlayer } from '../hooks/useMusicPlayer'
+import { PostDataFragmentType } from '../data/types'
+import { getPostDataFromPostFragment } from '../utils/getPostDataFromPostFragment'
 import MyImage from './MyImage'
 
 export interface ButtonPlayMusicPlayerProps {
@@ -63,10 +64,23 @@ const ButtonPlayMusicPlayer: FC<ButtonPlayMusicPlayerProps> = ({
 			return renderDefaultBtn()
 		}
 		return (
-			<PostTypeFeaturedIcon
-				className="z-20 transform cursor-pointer transition-transform hover:scale-105"
-				postType="audio"
-			/>
+			<>
+				<span
+					className="absolute inset-0 transition-all duration-300 opacity-0 group-hover:opacity-100 bg-[rgba(0,0,0,0.5)] pointer-events-none rounded-none"
+				/>
+				<span
+					className="z-20 flex h-16 w-16 items-center justify-center border-2 border-white transition-all duration-300 opacity-0 group-hover:opacity-100 cursor-pointer bg-[rgba(0,0,0,0.3)] rounded-full"
+				>
+					<svg
+						className="w-10 h-10 text-white"
+						fill="currentColor"
+						viewBox="0 0 24 24"
+						xmlns="http://www.w3.org/2000/svg"
+					>
+						<path d="M8 5v14l11-7z" />
+					</svg>
+				</span>
+			</>
 		)
 	}
 
@@ -82,13 +96,13 @@ const ButtonPlayMusicPlayer: FC<ButtonPlayMusicPlayerProps> = ({
 		}
 
 		return (
-			<span className="z-10 flex h-11 w-11 cursor-pointer items-center justify-center rounded-full border border-white bg-neutral-900 bg-opacity-60 text-xl text-white">
+			<span className="z-20 flex h-16 w-16 items-center justify-center border-2 border-white rounded-full transition-all duration-300 cursor-pointer bg-[rgb(0,0,0,.8)]">
 				<MyImage
-					className="w-5"
+					className="w-7 h-7"
 					src={'/images/icon-playing.gif'}
 					alt="paused"
-					width={20}
-					height={20}
+					width={30}
+					height={30}
 				/>
 			</span>
 		)
@@ -96,7 +110,7 @@ const ButtonPlayMusicPlayer: FC<ButtonPlayMusicPlayerProps> = ({
 
 	return (
 		<div
-			className={`nc-ButtonPlayMusicPlayer select-none ${className}`}
+			className={`nc-ButtonPlayMusicPlayer select-none absolute inset-0 items-center justify-center group ${className} hidden md:flex`}
 			onClick={handleClickButton}
 			aria-hidden
 		>

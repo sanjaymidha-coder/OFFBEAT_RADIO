@@ -19,6 +19,14 @@ const Badge: FC<BadgeProps> = ({
 	color = 'blue',
 	href,
 }) => {
+	// Do not display the badge if the name is 'Radio Stations'
+	if (
+		(typeof name === 'string' && name === 'Radio Stations') ||
+		// If name is a ReactNode that is a string (e.g., from JSX)
+		(Array.isArray(name) && name.join('') === 'Radio Stations')
+	) {
+		return null;
+	}
 	const CLASSES = `nc-Badge inline-flex px-2.5 py-1 font-medium text-xs ${roundedClassName} ${className}`
 	return !!href ? (
 		<Link
