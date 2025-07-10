@@ -9,6 +9,7 @@ import PostFeaturedMedia from '@/components/PostFeaturedMedia/PostFeaturedMedia'
 import Link from 'next/link'
 import { CommonPostCardProps } from '../Card2/Card2'
 import { getPostDataFromPostFragment } from '@/utils/getPostDataFromPostFragment'
+import { CategoryIcon } from '@/components/Icons/Icons'
 
 export interface Card11Props extends CommonPostCardProps {
 	ratio?: string
@@ -62,7 +63,18 @@ const Card11: FC<Card11Props> = ({
 				) : (
 					<span className="text-xs text-neutral-500">{date}</span>
 				))}
-				{hideMeta && null}
+				{hideMeta && (
+					<span className="text-xs text-neutral-500 flex items-center gap-1">
+						<CategoryIcon className="w-4 h-4 inline-block" />
+						{new Date(date).toLocaleString(undefined, {
+							year: 'numeric',
+							month: 'short',
+							day: 'numeric',
+							hour: '2-digit',
+							minute: '2-digit',
+						})}
+					</span>
+				)}
 				<h3 className="nc-card-title block text-base font-semibold text-neutral-900 dark:text-neutral-100">
 					<span
 						dangerouslySetInnerHTML={{ __html: title }}
