@@ -57,8 +57,7 @@ const Category: FaustTemplate<PageCategoryGetCategoryQuery> = (props) => {
 				initPostsPageInfo={initPostsPageInfo}
 				categoryDatabaseId={databaseId}
 				taxonomyType="category"
-				top10Categories={_top10Categories}
-			>
+				top10Categories={_top10Categories} children={undefined}			>
 				{/* HEADER */}
 			</ArchiveLayout>
 		</PageLayout>
