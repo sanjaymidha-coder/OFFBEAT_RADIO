@@ -229,6 +229,11 @@
 		"title": "Documents",
 		"sub_title": "Read and share new perspectives on just about any topic. Everyone’s welcome."
 	},
+	"radio_stations_page": {
+		"uri": "/radio-stations",
+		"title": "Live Radio Stations",
+		"description": "Discover and listen to curated indie music 24/7 on OffBeat Radio. Streaming live radio stations powered by independent artists from around the world."
+	},
 	"cookies_policy_page": {
 		"uri": "#"
 	},
