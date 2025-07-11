@@ -188,6 +188,7 @@ const Page: FaustPage<PostsFilterPageQueryGetPostsQuery> = (props) => {
 										onTagsUpdated={onTagsUpdated}
 										onAuthorsUpdated={onAuthorsUpdated}
 										onKeywordUpdated={onKeywordUpdated}
+										onCategoriesUpdated={onCategoriesUpdated}
 										keywordLabel="Search Channel"
 									/>
 									<div className="my-4 block w-full border-b border-neutral-300 lg:hidden dark:border-neutral-500" />
