@@ -35,7 +35,7 @@ const Page: FaustPage<PostsFilterPageQueryGetPostsQuery> = (props) => {
   const { posts } = props.data || {}
   const router = useRouter()
 
-  const initPosts = (posts?.nodes || [])
+  const initPosts = (posts?.nodes || []).filter((p) => !!p?.databaseId);
   const ctxQuery: ConTextQuery = props.__PAGE_VARIABLES__?.ctxQuery || {}
 
   const onTagsUpdated = (ids: number[]) => {
