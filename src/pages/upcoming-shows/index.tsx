@@ -14,7 +14,8 @@ import PageLayout from '@/container/PageLayout'
 import GridPostsArchive from '@/components/GridPostsArchive'
 import TabFilters from '@/components/TabFilters'
 import ArchiveFilterListBox from '@/components/ArchiveFilterListBox/ArchiveFilterListBox'
-
+import { GetServerSidePropsContext } from 'next'
+import { PostDataFragmentType } from '@/data/types'
 const UPCOMING_SHOWS_CATEGORY_ID = 222
 const GET_POSTS_FIRST_COMMON = 24
 
@@ -34,8 +35,8 @@ interface ConTextQuery {
 const Page: FaustPage<PostsFilterPageQueryGetPostsQuery> = (props) => {
   const { posts } = props.data || {}
   const router = useRouter()
-
-  const initPosts = (posts?.nodes || []).filter((p) => !!p?.databaseId);
+  
+	const initPosts = (posts?.nodes as PostDataFragmentType[]) || []
   const ctxQuery: ConTextQuery = props.__PAGE_VARIABLES__?.ctxQuery || {}
 
   const onTagsUpdated = (ids: number[]) => {
@@ -183,7 +184,7 @@ const Page: FaustPage<PostsFilterPageQueryGetPostsQuery> = (props) => {
 }
 
 Page.variables = (context) => {
-  const { params, query = {} } = context
+  const { params, query = {} } = context as GetServerSidePropsContext
   const search = typeof query.search === 'string' ? query.search || null : null
   const tagIn = (
     Array.isArray(query.tagIn) ? query.tagIn : query.tagIn ? [query.tagIn] : []
