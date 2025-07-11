@@ -8,12 +8,15 @@ import { PostDataFragmentType } from "@/data/types";
 
 interface Props extends SingleType1Props {}
 
+const UPCOMING_SHOWS_CATEGORY_ID = 222;
+
 const SingleTypeAudio: FC<Props> = ({ post }) => {
   //
-  const { title, featuredImage, postFormats } = getPostDataFromPostFragment(
+  const { title, featuredImage, postFormats, categories } = getPostDataFromPostFragment(
     post || {}
   );
   const isAudio = postFormats === "audio";
+  const isUpcomingShow = categories?.nodes?.some((cat: any) => cat?.databaseId === UPCOMING_SHOWS_CATEGORY_ID);
   //
 
   const renderIcon = (playing: boolean) => {
@@ -102,20 +105,22 @@ const SingleTypeAudio: FC<Props> = ({ post }) => {
               isAudio ? "items-center justify-center" : "items-start"
             }`}
           >
-            <div
-              className={`${
-                isAudio ? "w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/5" : "sm:max-w-xs"
-              } flex-shrink-0`}
-            >
-              {isAudio ? (
-                <ButtonPlayMusicPlayer
-                  renderChildren={renderButtonPlay}
-                  post={post as PostDataFragmentType}
-                />
-              ) : (
-                renderButtonPlay(false)
-              )}
-            </div>
+            {!isUpcomingShow && (
+              <div
+                className={`${
+                  isAudio ? "w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/5" : "sm:max-w-xs"
+                } flex-shrink-0`}
+              >
+                {isAudio ? (
+                  <ButtonPlayMusicPlayer
+                    renderChildren={renderButtonPlay}
+                    post={post as PostDataFragmentType}
+                  />
+                ) : (
+                  renderButtonPlay(false)
+                )}
+              </div>
+            )}
             <SingleHeader hiddenDesc className="flex-1" post={post} />
           </div>
         </header>
