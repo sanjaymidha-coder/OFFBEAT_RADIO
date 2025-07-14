@@ -174,6 +174,7 @@ const Page: FaustPage<PostsFilterPageQueryGetPostsQuery> = (props) => {
                 onClickNext={onClickNext}
                 onClickPrev={onClickPrev}
                 hideMeta={true}
+                hidePlayButton={true}
               />
             </main>
           </div>

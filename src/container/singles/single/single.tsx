@@ -20,6 +20,7 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
 		excerpt,
 		featuredImage,
 		ncPostMetaData,
+		categories,
 	} = getPostDataFromPostFragment(post || {})
 	//
 	const hasFeaturedImage = !!featuredImage?.sourceUrl

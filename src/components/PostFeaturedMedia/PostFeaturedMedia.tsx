@@ -14,12 +14,14 @@ export interface PostFeaturedMediaProps {
 	className?: string
 	post: PostDataFragmentType
 	isHover?: boolean
+	hidePlayButton?: boolean
 }
 
 const PostFeaturedMedia: FC<PostFeaturedMediaProps> = ({
 	className = 'w-full h-full',
 	post,
 	isHover = false,
+	hidePlayButton = false,
 }) => {
 	const {
 		title,
@@ -73,7 +75,7 @@ const PostFeaturedMedia: FC<PostFeaturedMediaProps> = ({
 
 		// AUDIO
 		if (postType === 'audio' && !!ncmazAudioUrl) {
-			return <MediaAudio post={post} />
+			return <MediaAudio post={post} hidePlayButton={hidePlayButton} />
 		}
 
 		// ICON

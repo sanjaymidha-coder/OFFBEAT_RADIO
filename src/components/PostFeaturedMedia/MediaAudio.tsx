@@ -4,9 +4,11 @@ import ButtonPlayMusicPlayer from '@/components/ButtonPlayMusicPlayer'
 
 export interface MediaAudioProps {
 	post: PostDataFragmentType
+	hidePlayButton?: boolean
 }
 
-const MediaAudio: FC<MediaAudioProps> = ({ post }) => {
+const MediaAudio: FC<MediaAudioProps> = ({ post, hidePlayButton = false }) => {
+	if (hidePlayButton) return null;
 	return (
 		<>
 			<ButtonPlayMusicPlayer

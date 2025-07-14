@@ -21,6 +21,7 @@ interface Props {
 	onClickNext?: () => void
 	onClickPrev?: () => void
 	hideMeta?: boolean
+	hidePlayButton?: boolean
 }
 
 const GridPostsArchive: FC<Props> = ({
@@ -34,6 +35,7 @@ const GridPostsArchive: FC<Props> = ({
 	onClickNext,
 	onClickPrev,
 	hideMeta = false,
+	hidePlayButton = false,
 }) => {
 	return (
 		<div className={className}>
@@ -45,7 +47,7 @@ const GridPostsArchive: FC<Props> = ({
 					{!currentPosts?.length && loading
 						? [1, 1, 1, 1, 1, 1, 1, 1].map((_, i) => <Card11Skeleton key={i} />)
 						: (currentPosts || []).map((post) => (
-							<Card11 key={post.databaseId} post={post} hideMeta={hideMeta} />
+							<Card11 key={post.databaseId} post={post} hideMeta={hideMeta} hidePlayButton={hidePlayButton} />
 						))}
 				</div>
 			)}
