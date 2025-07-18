@@ -89,49 +89,7 @@ const navigation: NavigationItem[] = [
 				href: '/dashboard/albums/trash',
 			},
 		],
-	},
-
-	// {
-	// 	name: 'edit profile',
-	// 	title: T['Edit profile'],
-	// 	href: '/dashboard/edit-profile/general',
-	// 	icon: UserCircleIcon,
-	// 	children: [
-	// 		{
-	// 			name: 'general',
-	// 			title: T['General'],
-	// 			href: '/dashboard/edit-profile/general',
-	// 		},
-	// 		{
-	// 			name: 'profile',
-	// 			title: T['Profile'],
-	// 			href: '/dashboard/edit-profile/profile',
-	// 		},
-	// 		{
-	// 			name: 'password',
-	// 			title: T['Password'],
-	// 			href: '/dashboard/edit-profile/password',
-	// 		},
-	// 		{
-	// 			name: 'socials',
-	// 			title: T['Socials'],
-	// 			href: '/dashboard/edit-profile/socials',
-	// 		},
-	// 		{
-	// 			name: 'delete-account',
-	// 			title: T['Delete account'],
-	// 			href: '/dashboard/edit-profile/delete-account',
-	// 		},
-	// 	],
-	// },
-	// {
-	// 	name: 'documents',
-	// 	title: T['Documents'],
-	// 	href: NC_SITE_SETTINGS.document_page?.enable
-	// 		? NC_SITE_SETTINGS.document_page?.uri || ''
-	// 		: '',
-	// 	icon: LightBulbIcon,
-	// },
+	}
 ]
 
 interface Props {
