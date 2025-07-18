@@ -155,10 +155,6 @@ const ControlSettingsDemo = () => {
 												<span className="text-xl font-semibold">Customize</span>
 												<div className="w-full border-b border-neutral-200 dark:border-neutral-700"></div>
 												{renderRadioThemeDir()}
-												<div className="flex space-x-2 xl:space-x-4 rtl:space-x-reverse">
-													<span className="text-sm font-medium">Dark mode</span>
-													<SwitchDarkMode2 />
-												</div>
 
 												{renderRadioHomePages()}
 												{renderHeaderStyle()}

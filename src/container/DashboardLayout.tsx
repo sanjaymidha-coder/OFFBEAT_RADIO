@@ -388,7 +388,6 @@ export default function DashboardLayout({ children }: Props) {
 									{/* Profile dropdown */}
 									<div className="flex flex-1 items-center justify-end">
 										<CreateBtn />
-										<SwitchDarkMode className="hidden lg:flex" />
 										<SearchIconBtn className="flex lg:hidden" />
 										<AvatarDropdown />
 									</div>

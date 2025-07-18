@@ -1,7 +1,9 @@
 import { GetStaticPropsContext } from 'next'
 import { FaustPage, getNextStaticProps } from '@faustwp/core'
+import CreateNewPostEditor from '@/components/PostSubmissionEditor/CreateNewPostEditor'
 import { useRouter } from 'next/router'
 import CircleLoading from '@/components/Loading/CircleLoading'
+import SwitchDarkMode from '@/components/SwitchDarkMode/SwitchDarkMode'
 import AvatarDropdown from '@/components/Header/AvatarDropdown'
 import Logo from '@/components/Logo/Logo'
 import CreateBtn from '@/components/Header/CreateBtn'
@@ -10,17 +12,6 @@ import { NC_SITE_SETTINGS } from '@/contains/site-settings'
 import Page404Content from '@/container/404Content'
 import { useSelector } from 'react-redux'
 import { RootState } from '@/stores/store'
-import Link from 'next/link'
-import { FolderIcon } from '@heroicons/react/24/outline'
-import { Album02Icon } from '@/components/Icons/Icons'
-import { MusicalNoteIcon } from '@heroicons/react/24/outline'
-
-const cardBase =
-	'flex flex-col items-center justify-center p-8 rounded-lg shadow-lg border border-neutral-200 dark:border-neutral-700 transition-all cursor-pointer bg-white dark:bg-neutral-900 text-center group';
-const cardHover =
-	'hover:shadow-2xl hover:border-blue-500 hover:bg-blue-50 dark:hover:bg-neutral-800';
-const cardDisabled =
-	'bg-gray-100 dark:bg-neutral-800 text-gray-400 cursor-not-allowed opacity-70';
 
 const Page: FaustPage<{}> = (props) => {
 	const { isReady, isAuthenticated } = useSelector(
@@ -77,20 +68,7 @@ const Page: FaustPage<{}> = (props) => {
 		<>
 			<div className="relative flex h-[100vh] w-full flex-col">
 				{renderHeader()}
-				<div className="flex flex-1 items-center justify-center px-4 sm:px-0">
-					<div className="grid grid-cols-1 sm:grid-cols-2 gap-8 w-full max-w-2xl">
-						<Link href="/submission/album" className={`${cardBase} ${cardHover}`}>
-							<Album02Icon className="h-12 w-12 mb-4 transition-colors" style={{ color: 'rgba(var(--c-primary-700), 1)' }} />
-							<h3 className="mt-2 text-lg font-semibold text-neutral-900 dark:text-neutral-100">Submit Album</h3>
-							<p className="mt-1.5 text-sm text-neutral-500 dark:text-neutral-400">Create a new album and add tracks to it.</p>
-						</Link>
-						<div className={`${cardBase} ${cardDisabled}`} tabIndex={-1} aria-disabled="true">
-							<MusicalNoteIcon className="h-12 w-12 mb-4" style={{ color: 'rgba(var(--c-primary-700), 0.5)' }} />
-							<h3 className="mt-2 text-lg font-semibold text-gray-500 dark:text-neutral-400">Submit Track</h3>
-							<p className="mt-1.5 text-sm text-gray-400 dark:text-neutral-500">Coming soon: submit individual tracks to an existing album.</p>
-						</div>
-					</div>
-				</div>
+				<CreateNewPostEditor isSubmittingPage />
 			</div>
 		</>
 	)
@@ -103,4 +81,4 @@ export function getStaticProps(ctx: GetStaticPropsContext) {
 	})
 }
 
-export default Page
+export default Page 

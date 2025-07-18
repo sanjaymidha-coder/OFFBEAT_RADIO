@@ -141,7 +141,6 @@ const Page: FaustPage<{}> = (props) => {
 							{/* Profile dropdown */}
 							<div className="flex flex-1 items-center justify-end">
 								<CreateBtn />
-								<SwitchDarkMode />
 								<AvatarDropdown />
 							</div>
 						</div>
