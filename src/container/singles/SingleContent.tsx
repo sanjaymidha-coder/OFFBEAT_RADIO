@@ -49,6 +49,7 @@ const SingleContent: FC<SingleContentProps> = ({ post }) => {
 		status,
 		date,
 		editorBlocks,
+		categories, // <-- add this line
 	} = getPostDataFromPostFragment(post || {})
 	let blocks: (ContentBlock | null)[] = []
 	if (editorBlocks) {
@@ -58,6 +59,11 @@ const SingleContent: FC<SingleContentProps> = ({ post }) => {
 		})
 	}
 	//
+
+	// Helper to check if this is an album
+	const isAlbum = categories?.nodes?.some(
+		(cat) => cat.databaseId === 233 || cat.name?.toLowerCase() === 'album'
+	)
 
 	useEffect(() => {
 		const handleProgressIndicator = () => {
@@ -100,15 +106,14 @@ const SingleContent: FC<SingleContentProps> = ({ post }) => {
 		if (status === 'future') {
 			return (
 				<Alert type="warning">
-					This post is scheduled. It will be published on {date}.
+					This {isAlbum ? 'album' : 'post'} is scheduled. It will be published on {date}.
 				</Alert>
 			)
 		}
 		return (
 			<>
 				<Alert type="warning">
-					This post is {status}. It will not be visible on the website until it
-					is published.
+					This {isAlbum ? 'album' : 'post'} is now under review by the <strong>Offbeat Team</strong> and will be published shortly.
 				</Alert>
 			</>
 		)
@@ -141,7 +146,7 @@ const SingleContent: FC<SingleContentProps> = ({ post }) => {
 							<Tag
 								hideCount
 								key={item.databaseId}
-								name={'#' + (item.name || '')}
+								name={'' + (item.name || '')}
 								uri={item.uri || ''}
 								className="mb-2 me-2 border border-neutral-200 dark:border-neutral-800"
 							/>
@@ -152,7 +157,7 @@ const SingleContent: FC<SingleContentProps> = ({ post }) => {
 				{/* AUTHOR */}
 				<div className="mx-auto max-w-screen-md border-b border-t border-neutral-100 dark:border-neutral-700"></div>
 				<div className="mx-auto max-w-screen-md">
-					<SingleAuthor author={author} />
+					<SingleAuthor author={author} isAlbum={isAlbum} />
 				</div>
 
 				{/* COMMENTS LIST - not delete comments id */}

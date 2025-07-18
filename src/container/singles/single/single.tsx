@@ -27,6 +27,9 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
 
 	const imgWidth = featuredImage?.mediaDetails?.width || 1000
 	const imgHeight = featuredImage?.mediaDetails?.height || 750
+	const isAlbum = categories?.nodes?.some(
+		(cat) => cat.databaseId === 233 || cat.name?.toLowerCase() === 'album'
+	);
 	return (
 		<>
 			<div className={`nc-PageSingle pt-8 lg:pt-16`}>
@@ -38,7 +41,7 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
 								: `mx-auto max-w-screen-md`
 						}
 					>
-						<SingleHeader post={{ ...post }} />
+						<SingleHeader post={{ ...post }} hiddenDesc={isAlbum} hideAvatar={isAlbum} />
 						{!hasFeaturedImage && (
 							<div className="my-5 border-b border-neutral-200 dark:border-neutral-800" />
 						)}

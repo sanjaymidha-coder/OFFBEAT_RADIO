@@ -7,19 +7,19 @@ import React, { FC } from 'react'
 export interface SidebarProps {
 	className?: string
 	categories: TCategoryCardFull[] | null
+	isAlbum?: boolean
 }
 
 export const Sidebar: FC<SidebarProps> = ({
 	className = 'space-y-6 ',
 	categories,
+	isAlbum = false,
 }) => {
 	return (
 		<div className={`nc-SingleSidebar lg:sticky lg:top-24 ${className}`}>
-			<WidgetAddSubscriberForm />
+			{!isAlbum && <WidgetAddSubscriberForm />}
 
 			<WidgetSocialsFollow />
-
-			<WidgetCategories categories={categories || []} />
 		</div>
 	)
 }

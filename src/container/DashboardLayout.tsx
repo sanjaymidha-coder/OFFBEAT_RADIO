@@ -33,6 +33,7 @@ interface NavigationItem {
 		| TDashBoardPostTab
 		| TDashBoardEditProfileTab
 		| 'posts'
+		| 'albums'
 		| 'edit profile'
 		| 'documents'
 	title: string
@@ -57,80 +58,80 @@ export type TDashBoardEditProfileTab =
 
 const navigation: NavigationItem[] = [
 	{
-		name: 'posts',
-		title: T['Posts'],
-		href: '/dashboard/posts/published',
+		name: 'albums',
+		title: 'Albums',
+		href: '/dashboard/albums/published',
 		icon: FolderIcon,
 		children: [
 			{
 				name: 'published',
 				title: T['Published'],
-				href: '/dashboard/posts/published',
+				href: '/dashboard/albums/published',
 			},
 			{
 				name: 'pending',
 				title: T['Pending'],
-				href: '/dashboard/posts/pending',
+				href: '/dashboard/albums/pending',
 			},
 			{
 				name: 'schedule',
 				title: T['Scheduled'],
-				href: '/dashboard/posts/schedule',
+				href: '/dashboard/albums/schedule',
 			},
 			{
 				name: 'draft',
 				title: T['Draft'],
-				href: '/dashboard/posts/draft',
+				href: '/dashboard/albums/draft',
 			},
 			{
 				name: 'trash',
 				title: T['Trash'],
-				href: '/dashboard/posts/trash',
+				href: '/dashboard/albums/trash',
 			},
 		],
 	},
 
-	{
-		name: 'edit profile',
-		title: T['Edit profile'],
-		href: '/dashboard/edit-profile/general',
-		icon: UserCircleIcon,
-		children: [
-			{
-				name: 'general',
-				title: T['General'],
-				href: '/dashboard/edit-profile/general',
-			},
-			{
-				name: 'profile',
-				title: T['Profile'],
-				href: '/dashboard/edit-profile/profile',
-			},
-			{
-				name: 'password',
-				title: T['Password'],
-				href: '/dashboard/edit-profile/password',
-			},
-			{
-				name: 'socials',
-				title: T['Socials'],
-				href: '/dashboard/edit-profile/socials',
-			},
-			{
-				name: 'delete-account',
-				title: T['Delete account'],
-				href: '/dashboard/edit-profile/delete-account',
-			},
-		],
-	},
-	{
-		name: 'documents',
-		title: T['Documents'],
-		href: NC_SITE_SETTINGS.document_page?.enable
-			? NC_SITE_SETTINGS.document_page?.uri || ''
-			: '',
-		icon: LightBulbIcon,
-	},
+	// {
+	// 	name: 'edit profile',
+	// 	title: T['Edit profile'],
+	// 	href: '/dashboard/edit-profile/general',
+	// 	icon: UserCircleIcon,
+	// 	children: [
+	// 		{
+	// 			name: 'general',
+	// 			title: T['General'],
+	// 			href: '/dashboard/edit-profile/general',
+	// 		},
+	// 		{
+	// 			name: 'profile',
+	// 			title: T['Profile'],
+	// 			href: '/dashboard/edit-profile/profile',
+	// 		},
+	// 		{
+	// 			name: 'password',
+	// 			title: T['Password'],
+	// 			href: '/dashboard/edit-profile/password',
+	// 		},
+	// 		{
+	// 			name: 'socials',
+	// 			title: T['Socials'],
+	// 			href: '/dashboard/edit-profile/socials',
+	// 		},
+	// 		{
+	// 			name: 'delete-account',
+	// 			title: T['Delete account'],
+	// 			href: '/dashboard/edit-profile/delete-account',
+	// 		},
+	// 	],
+	// },
+	// {
+	// 	name: 'documents',
+	// 	title: T['Documents'],
+	// 	href: NC_SITE_SETTINGS.document_page?.enable
+	// 		? NC_SITE_SETTINGS.document_page?.uri || ''
+	// 		: '',
+	// 	icon: LightBulbIcon,
+	// },
 ]
 
 interface Props {

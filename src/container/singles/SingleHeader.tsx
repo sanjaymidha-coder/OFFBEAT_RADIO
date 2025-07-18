@@ -11,6 +11,7 @@ export interface SingleHeaderProps {
 	titleMainClass?: string
 	className?: string
 	post: FragmentTypePostFullFields
+	hideAvatar?: boolean
 }
 
 const SingleHeader: FC<SingleHeaderProps> = ({
@@ -18,6 +19,7 @@ const SingleHeader: FC<SingleHeaderProps> = ({
 	hiddenDesc = false,
 	className = '',
 	post,
+	hideAvatar = false,
 }) => {
 	const {
 		title,
@@ -44,17 +46,21 @@ const SingleHeader: FC<SingleHeaderProps> = ({
 							className="max-w-screen-md break-words pb-1 text-base text-neutral-500 lg:text-lg dark:text-neutral-400"
 						></div>
 					)}
-					<div className="w-full border-b border-neutral-200 dark:border-neutral-700"></div>
-					<div className="flex flex-wrap justify-between gap-5 sm:items-end">
-						<PostMeta2
-							size="large"
-							className="flex-shrink-0 leading-none"
-							hiddenCategories
-							avatarRounded="rounded-full shadow-inner"
-							post={{ ...post }}
-						/>
-						<SingleMetaAction2 post={post} />
-					</div>
+					{!hideAvatar && (
+						<>
+							<div className="w-full border-b border-neutral-200 dark:border-neutral-700"></div>
+							<div className="flex flex-wrap justify-between gap-5 sm:items-end">
+									<PostMeta2
+										size="large"
+										className="flex-shrink-0 leading-none"
+										hiddenCategories
+										avatarRounded="rounded-full shadow-inner"
+										post={{ ...post }}
+									/>
+								<SingleMetaAction2 post={post} />
+							</div>
+					</>
+					)}
 				</div>
 			</div>
 		</>

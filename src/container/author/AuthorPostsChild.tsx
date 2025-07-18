@@ -92,14 +92,14 @@ const AuthorPostsChild: FaustPage<GetAuthorWithPostsQuery> = (props) => {
 						</main>
 
 						{/* === SECTION 5 === */}
-						{NC_SITE_SETTINGS.author_page?.show_top_categories && (
+						{/* {NC_SITE_SETTINGS.author_page?.show_top_categories && (
 							<SectionTrendingTopic categories={_top10Categories} />
-						)}
+						)} */}
 
 						{/* SUBCRIBES */}
-						{NC_SITE_SETTINGS.author_page?.show_newsletter_section && (
+						{/* {NC_SITE_SETTINGS.author_page?.show_newsletter_section && (
 							<SectionSubscribe2 />
-						)}
+						)} */}
 					</div>
 				</AuthorLayout>
 			</PageLayout>

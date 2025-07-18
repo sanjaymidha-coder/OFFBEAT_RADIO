@@ -326,21 +326,21 @@ export default function AvatarDropdown({ className = '' }: Props) {
 										{/* {isReady && NC_SITE_SETTINGS['submissions-settings']?.enable && renderCreatePost()} */}
 
 										{/* ------------------ 1 --------------------- */}
-										{isAuthenticated && renderMenuEditProfile()}
+										{/* {isAuthenticated && renderMenuEditProfile()} */}
 
 										{/* ------------------ 2 --------------------- */}
 										{isAuthenticated && renderMenuMyPosts()}
 
 										{/* ------------------ 3 --------------------- */}
-										{isAuthenticated && renderMenuWishlist()}
+										{/* {isAuthenticated && renderMenuWishlist()} */}
 
 										{/* ------------------ 4 --------------------- */}
-										{renderMenuBookmark()}
+										{/* {renderMenuBookmark()} */}
 
-										<div className="w-full border-b border-neutral-200 dark:border-neutral-700" />
+										{/* <div className="w-full border-b border-neutral-200 dark:border-neutral-700" /> */}
 
 										{/* ------------------ 5 --------------------- */}
-										{renderMenuHelp()}
+										{/* {renderMenuHelp()} */}
 
 										{/* ------------------ 6 --------------------- */}
 										{isAuthenticated && renderMenuLogOut()}
