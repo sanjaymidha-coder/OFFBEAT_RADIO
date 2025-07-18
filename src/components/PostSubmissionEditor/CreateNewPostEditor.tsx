@@ -45,6 +45,12 @@ interface Props {
 	defaultCategories?: NcmazFcCategoryFullFieldsFragmentFragment[]
 	defaultPostOptionsData?: PostOptionsData
 	//
+	labels?: {
+		title?: string
+		image?: string
+		tags?: string
+		description?: string
+	}
 }
 
 const CreateNewPostEditor: FC<Props> = ({
@@ -69,6 +75,7 @@ const CreateNewPostEditor: FC<Props> = ({
 		timeSchedulePublication: undefined,
 		showRightSidebar: true,
 	},
+	labels = {},
 }) => {
 	const { isReady, isAuthenticated } = useSelector(
 		(state: RootState) => state.viewer.authorizedUser,
@@ -440,24 +447,28 @@ const CreateNewPostEditor: FC<Props> = ({
 	const renderPostTitle = () => {
 		return (
 			<div className="w-full px-2.5 pb-10 pt-2.5 lg:py-10">
-				<div className="mx-auto w-full max-w-screen-md space-y-5">
-					<div className="">
-						<Label className="text-sm">
-							{T.pageSubmission['Featured image']}
-						</Label>
-						<ButtonInsertImage
-							defaultImage={featuredImage}
-							onChangeImage={handleChangeFeaturedImage}
-						/>
-					</div>
-					<CategoriesInput
-						defaultValue={categories}
-						onChange={handleChangeCategories}
-					/>
+				<div className="mx-auto w-full max-w-screen-md space-y-3">
+					{labels.title && <Label className="block text-sm mt-4">{labels.title}</Label>}
 					<TitleEditor
 						defaultTitle={titleContent}
 						onUpdate={debounceGetTitle}
 					/>
+					<div className="hidden">
+						<CategoriesInput
+							defaultValue={categories}
+							onChange={handleChangeCategories}
+						/>
+					</div>
+					<Label className="block text-sm mt-4">
+						{labels.image || T.pageSubmission['Featured image']}
+					</Label>
+					<ButtonInsertImage
+						defaultImage={featuredImage}
+						onChangeImage={handleChangeFeaturedImage}
+					/>
+					<Label className="block text-sm mt-4">
+						{labels.tags || T.pageSubmission['Add tags']}
+					</Label>
 					<TagsInput defaultValue={tags} onChange={handleChangeTags} />
 					{ERROR && (
 						<Alert containerClassName="text-sm" type="error">
@@ -480,6 +491,9 @@ const CreateNewPostEditor: FC<Props> = ({
 					<div className="hiddenScrollbar flex-1 overflow-y-auto">
 						{renderPostTitle()}
 
+						<Label className="block text-sm mt-4 mx-auto w-full max-w-screen-md my-4">
+							{labels.description || T.pageSubmission['Write your post content here…']}
+						</Label>
 						<TiptapEditor
 							defaultContent={contentHTML}
 							onUpdate={debounceGetContentHtml}
@@ -591,3 +605,4 @@ const CreateNewPostEditor: FC<Props> = ({
 }
 
 export default CreateNewPostEditor
+

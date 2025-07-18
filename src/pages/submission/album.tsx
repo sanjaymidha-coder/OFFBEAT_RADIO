@@ -68,7 +68,20 @@ const Page: FaustPage<{}> = (props) => {
 		<>
 			<div className="relative flex h-[100vh] w-full flex-col">
 				{renderHeader()}
-				<CreateNewPostEditor isSubmittingPage />
+				<CreateNewPostEditor 
+					isSubmittingPage 
+					labels={{
+						title: 'Album Title',
+						image: 'Cover Image',
+						tags: 'Genres',
+						description: 'Album Description',
+					}}
+					defaultCategories={[{
+						databaseId: 233,
+						name: 'Album',
+						__typename: 'Category',
+					}]}
+				/>
 			</div>
 		</>
 	)

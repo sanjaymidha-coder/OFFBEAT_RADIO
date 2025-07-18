@@ -91,7 +91,7 @@ const ModalUploadImage: FC<MenuItemImageProps> = ({
 							name="url"
 						/>
 					</div>
-					<div>
+					<div className="hidden">
 						<Label>{T.pageSubmission['Alt text (alternative text)']}</Label>
 						<Input
 							className="mt-1"
@@ -263,7 +263,7 @@ const ModalUploadImage: FC<MenuItemImageProps> = ({
 				</p>
 
 				{urlState && (
-					<div className="mt-6">
+					<div className="mt-6 hidden">
 						<Label>Alt text (alternative text)</Label>
 						<Input
 							className="mt-1"

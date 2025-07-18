@@ -89,12 +89,12 @@ const TiptapEditor: FC<Props> = ({ onUpdate, defaultContent = '' }) => {
 	})
 
 	return (
-		<div className="nc-TiptapEditor">
+		<div className="nc-TiptapEditor border border-neutral-300 dark:border-neutral-600 rounded-md bg-white dark:bg-neutral-900 overflow-hidden">
 			<div className="editor">
 				{editor && <MyBubbleMenu editor={editor} />}
 				{editor && <MenuBar editor={editor} />}
 				<EditorContent
-					className="editor__content focus:outline-none"
+					className="editor__content focus:outline-none px-3 py-2"
 					editor={editor}
 				/>
 			</div>

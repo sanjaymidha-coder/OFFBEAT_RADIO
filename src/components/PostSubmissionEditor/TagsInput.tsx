@@ -141,14 +141,14 @@ const TagsInput: FC<TagsInputProps> = ({ onChange, defaultValue }) => {
 	const isMax = tags.length >= MAX_TAGS_LENGTH
 
 	return (
-		<div className="relative w-full text-xs sm:text-sm">
+		<div className="relative w-full text-xs sm:text-sm border border-neutral-300 dark:border-neutral-600 rounded-md bg-white dark:bg-neutral-900 px-3 py-2">
 			<ul className="flex flex-wrap gap-1.5">
 				{tags.map((tag) => (
 					<li
 						className="flex items-center justify-center rounded-lg bg-neutral-100 px-3 py-2 dark:bg-neutral-800"
 						key={tag.databaseId}
 					>
-						# {tag.name}
+						{tag.name}
 						<button
 							className="ms-1 flex items-center justify-center px-1 text-base hover:text-neutral-900 dark:hover:text-neutral-50"
 							onClick={() => handleRemoveTag(tag)}
@@ -245,7 +245,6 @@ const TagsInput: FC<TagsInputProps> = ({ onChange, defaultValue }) => {
 												!isMax && setNewTags(tag)
 											}}
 										>
-											#{` `}
 											{tag.name} ({tag.count || 0})
 										</button>
 									</li>

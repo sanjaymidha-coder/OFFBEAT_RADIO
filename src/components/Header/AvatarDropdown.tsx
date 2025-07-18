@@ -160,7 +160,7 @@ export default function AvatarDropdown({ className = '' }: Props) {
 					</svg>
 				</div>
 				<div className="ms-4">
-					<p className="text-sm font-medium">{T['My Posts']}</p>
+					<p className="text-sm font-medium">My Dashboard</p>
 				</div>
 			</Link>
 		)

@@ -262,6 +262,16 @@ export default {
 		'Draft this post': 'Draft this post',
 		'Post will be changed to draft. You can publish it later.':
 			'Post will be changed to draft. You can publish it later.',
+
+		// Album-specific keys
+		'Update album successfully': 'Update album successfully',
+		'Created new album successfully': 'Created new album successfully',
+		'Congratulations! You have successfully updated the album!': 'Congratulations! You have successfully updated the album!',
+		'These changes will be applied to the album in about 15 minutes.': 'These changes will be applied to the album in about 15 minutes.',
+		'preview the album': 'preview the album',
+		'Preview album': 'Preview album',
+		'Draft this album': 'Draft this album',
+		'Album will be changed to draft. You can publish it later.': 'Album will be changed to draft. You can publish it later.',
 	},
 	pageSearch: {
 		'Type and press enter': 'Type and press enter',
