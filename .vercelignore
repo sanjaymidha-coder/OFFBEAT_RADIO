@@ -1,2 +1,4 @@
 dashboard/
 radio_core/
+.env.local
+node_modules
