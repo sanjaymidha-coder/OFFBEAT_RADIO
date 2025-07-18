@@ -4,6 +4,7 @@
   "version": "2.10.1",
   "scripts": {
     "dev": "npm run generate && concurrently \"next dev\" \"npm run watch-codegen\"",
+    "prebuild": "npm run generate",
     "build": "faust build",
     "postbuild": "next-sitemap",
     "generate": "faust generatePossibleTypes",
