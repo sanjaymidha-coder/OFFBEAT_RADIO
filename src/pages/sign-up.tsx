@@ -20,53 +20,20 @@ const T = getTrans()
 export default function SignUp() {
 	const [email, setEmail] = useState('')
 	const [userName, setUsername] = useState('')
+	const [password, setPassword] = useState('')
 	const { isReady, isAuthenticated } = useSelector(
 		(state: RootState) => state.viewer.authorizedUser,
 	)
 	const router = useRouter()
-
-	const [mutationsendPasswordResetEmail, mutationSendPasswordResetEmailResult] =
-		useMutation(
-			gql(/* GraphQL */ `
-				mutation mutationSendPasswordResetEmailOnSignUp(
-					$username: String = ""
-				) {
-					sendPasswordResetEmail(input: { username: $username }) {
-						clientMutationId
-						success
-					}
-				}
-			`),
-			{
-				onCompleted: data => {
-					if (data?.sendPasswordResetEmail?.success) {
-						toast.success(
-							T['A password reset link has been sent to your email'],
-							{
-								position: 'bottom-center',
-							},
-						)
-					} else {
-						toast.error(T['Something went wrong'], {
-							position: 'bottom-center',
-						})
-					}
-				},
-				onError: error => {
-					toast.error(error.message, {
-						position: 'bottom-center',
-					})
-				},
-			},
-		)
 
 	const [mutationRegisterUser, mutationRegisterUserResult] = useMutation(
 		gql(/* GraphQL */ `
 			mutation SignUpPageMutationRegisterUser(
 				$username: String! = ""
 				$email: String
+				$password: String!
 			) {
-				registerUser(input: { username: $username, email: $email }) {
+				registerUser(input: { username: $username, email: $email, password: $password }) {
 					clientMutationId
 					user {
 						id
@@ -84,11 +51,8 @@ export default function SignUp() {
 					toast.success('User created successfully!', {
 						position: 'bottom-center',
 					})
-					mutationsendPasswordResetEmail({
-						variables: {
-							username: userName,
-						},
-					})
+					// Optionally, redirect to login or home page
+					router.replace('/login')
 					return
 				}
 
@@ -119,8 +83,8 @@ export default function SignUp() {
 
 	const handleRegister = (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault()
-		if (!email || !userName) {
-			toast.error(T['Email and username are required!'], {
+		if (!email || !userName || !password) {
+			toast.error(T['Username and password are required!'], {
 				position: 'bottom-center',
 			})
 			return
@@ -129,20 +93,13 @@ export default function SignUp() {
 			variables: {
 				username: userName,
 				email: email,
+				password: password,
 			},
 		})
 	}
 
-	// const { loading, data, error, called } = mutationRegisterUserResult || mutationSendPasswordResetEmailResult;
-	const loading =
-		mutationRegisterUserResult.loading ||
-		mutationSendPasswordResetEmailResult.loading
-	const error =
-		mutationRegisterUserResult.error ||
-		mutationSendPasswordResetEmailResult.error
-
-	const sendPasswordResetEmailSuccess =
-		mutationSendPasswordResetEmailResult.data?.sendPasswordResetEmail?.success
+	const loading = mutationRegisterUserResult.loading
+	const error = mutationRegisterUserResult.error
 
 	const renderForm = () => {
 		return (
@@ -170,10 +127,19 @@ export default function SignUp() {
 							onChange={e => setEmail(e.target.value)}
 						/>
 					</div>
-
+					<div className="grid gap-1.5">
+						<Label htmlFor="password">{T.Password}</Label>
+						<Input
+							id="password"
+							type="password"
+							autoComplete="new-password"
+							required
+							minLength={6}
+							onChange={e => setPassword(e.target.value)}
+						/>
+					</div>
 					<div className="grid pt-2">
 						<ButtonPrimary loading={loading}>{T['Sign up']}</ButtonPrimary>
-
 						{!!error?.message && (
 							<Error className="mt-2 text-center" error={error.message} />
 						)}
@@ -193,38 +159,8 @@ export default function SignUp() {
 		>
 			<>
 				<div className="grid gap-6">
-					{!sendPasswordResetEmailSuccess ? (
-						renderForm()
-					) : (
-						<div className="rounded-xl border border-neutral-200 p-5 text-center text-sm leading-6 text-neutral-700 dark:border-neutral-700 dark:text-neutral-400">
-							<p className="">
-								{
-									T[
-										'Please check your email to complete the registration process'
-									]
-								}
-								!{' '}
-							</p>
-							<br />
-							<div>
-								<Link
-									href="/login"
-									className="text-primary-600 underline underline-offset-2 hover:text-primary-500 hover:underline dark:text-primary-500"
-								>
-									{T['Sign in']}
-								</Link>
-								&nbsp; {T.or} &nbsp;
-								<Link
-									href="/"
-									className="text-primary-600 underline underline-offset-2 hover:text-primary-500 hover:underline dark:text-primary-500"
-								>
-									{T['Back to home']}
-								</Link>
-							</div>
-						</div>
-					)}
+					{renderForm()}
 				</div>
-
 				<div>
 					{NC_SITE_SETTINGS.privacy_policy_page ? (
 						<p className="mb-3 text-center text-xs text-neutral-500">
