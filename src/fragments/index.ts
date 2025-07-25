@@ -268,6 +268,13 @@ export const NC_POST_FULL_VS_EDITOR_BLOCK_NO_CONTENT_FRAGMENT = gql(
 					}
 				}
 			}
+			artistSubmissionFields {
+				artistName
+				trackTitle
+				isrc
+				proAffiliation
+				ipiNumber
+			}
 		}
 	`,
 )

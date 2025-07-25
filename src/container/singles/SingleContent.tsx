@@ -128,7 +128,16 @@ const SingleContent: FC<SingleContentProps> = ({ post }) => {
 			<div className="nc-SingleContent flex-1 space-y-10">
 				{/*    */}
 				{renderAlert()}
-
+				{post.artistSubmissionFields && (
+					<div className="mx-auto max-w-screen-md my-6 p-4 border border-neutral-200 rounded-lg bg-neutral-50">
+						<h3 className="text-lg font-semibold mb-2">Artist Submission Info</h3>
+						<p><strong>Artist Name:</strong> {post.artistSubmissionFields.artistName || '-'}</p>
+						<p><strong>Track Title:</strong> {post.artistSubmissionFields.trackTitle || '-'}</p>
+						<p><strong>ISRC:</strong> {post.artistSubmissionFields.isrc || '-'}</p>
+						<p><strong>PRO Affiliation:</strong> {post.artistSubmissionFields.proAffiliation || '-'}</p>
+						<p><strong>IPI Number:</strong> {post.artistSubmissionFields.ipiNumber || '-'}</p>
+					</div>
+				)}
 				{/* ENTRY CONTENT */}
 				<div
 					// not remove this id
