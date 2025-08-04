@@ -66,7 +66,6 @@ export const NC_MUTATION_CREATE_POST = gql(/* GraphQL */ `
     #
     $showRightSidebar: String = null
     $postStyle: String = null
-    $artistSubmissionFields: ArtistSubmissionFieldsInput
   ) {
     createPost(
       input: {
@@ -104,7 +103,6 @@ export const NC_MUTATION_CREATE_POST = gql(/* GraphQL */ `
         #
         showRightSidebar: $showRightSidebar
         postStyle: $postStyle
-        artistSubmissionFields: $artistSubmissionFields
       }
     ) {
       clientMutationId
@@ -162,7 +160,6 @@ export const NC_MUTATION_UPDATE_POST = gql(/* GraphQL */ `
     #
     $showRightSidebar: String = null
     $postStyle: String = null
-    $artistSubmissionFields: ArtistSubmissionFieldsInput
   ) {
     updatePost(
       input: {
@@ -201,7 +198,6 @@ export const NC_MUTATION_UPDATE_POST = gql(/* GraphQL */ `
         #
         showRightSidebar: $showRightSidebar
         postStyle: $postStyle
-        artistSubmissionFields: $artistSubmissionFields
       }
     ) {
       post {

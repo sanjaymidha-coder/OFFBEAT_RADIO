@@ -32,7 +32,6 @@ import errorHandling from '@/utils/errorHandling'
 import { useSelector } from 'react-redux'
 import { RootState } from '@/stores/store'
 import getTrans from '@/utils/getTrans'
-import { useRef } from 'react';
 
 interface Props {
 	isEditingPage?: boolean
@@ -52,17 +51,6 @@ interface Props {
 		tags?: string
 		description?: string
 	}
-	// New custom fields as props
-	defaultArtistName?: string
-	defaultTrackTitle?: string
-	defaultShortDescription?: string
-	defaultIsrc?: string
-	defaultProAffiliation?: string
-	defaultIpiNumber?: string
-	defaultLegalChecked?: boolean
-	defaultAudioFile?: File | null
-	defaultCoverArt?: File | null
-	defaultGenre?: string
 }
 
 const CreateNewPostEditor: FC<Props> = ({
@@ -88,17 +76,6 @@ const CreateNewPostEditor: FC<Props> = ({
 		showRightSidebar: true,
 	},
 	labels = {},
-	// New custom fields as props
-	defaultArtistName = '',
-	defaultTrackTitle = '',
-	defaultShortDescription = '',
-	defaultIsrc = '',
-	defaultProAffiliation = '',
-	defaultIpiNumber = '',
-	defaultLegalChecked = false,
-	defaultAudioFile = null,
-	defaultCoverArt = null,
-	defaultGenre = '',
 }) => {
 	const { isReady, isAuthenticated } = useSelector(
 		(state: RootState) => state.viewer.authorizedUser,
@@ -144,69 +121,11 @@ const CreateNewPostEditor: FC<Props> = ({
 			JSON.parse(localStorage.getItem(localStoragePath) || '{}')
 				.postOptionsData || defaultPostOptionsDataProp,
 	)
-	// Add at the top, after other imports
-	const [artistName, setArtistName] = useState<string>(
-		() => JSON.parse(localStorage.getItem(localStoragePath) || '{}').artistName || defaultArtistName
-	);
-	const [trackTitle, setTrackTitle] = useState<string>(
-		() => JSON.parse(localStorage.getItem(localStoragePath) || '{}').trackTitle || defaultTrackTitle
-	);
-	const [genre, setGenre] = useState<string>(
-		() => JSON.parse(localStorage.getItem(localStoragePath) || '{}').genre || defaultGenre
-	);
-	const [shortDescription, setShortDescription] = useState<string>(
-		() => JSON.parse(localStorage.getItem(localStoragePath) || '{}').shortDescription || defaultShortDescription
-	);
-	const [audioFile, setAudioFile] = useState<File | null>(
-		() => JSON.parse(localStorage.getItem(localStoragePath) || '{}').audioFile || defaultAudioFile
-	);
-	const [coverArt, setCoverArt] = useState<File | null>(
-		() => JSON.parse(localStorage.getItem(localStoragePath) || '{}').coverArt || defaultCoverArt
-	);
-	const [isrc, setIsrc] = useState<string>(
-		() => JSON.parse(localStorage.getItem(localStoragePath) || '{}').isrc || defaultIsrc
-	);
-	const [proAffiliation, setProAffiliation] = useState<string>(
-		() => JSON.parse(localStorage.getItem(localStoragePath) || '{}').proAffiliation || defaultProAffiliation
-	);
-	const [ipiNumber, setIpiNumber] = useState<string>(
-		() => JSON.parse(localStorage.getItem(localStoragePath) || '{}').ipiNumber || defaultIpiNumber
-	);
-	const [legalChecked, setLegalChecked] = useState<boolean>(
-		() => JSON.parse(localStorage.getItem(localStoragePath) || '{}').legalChecked || defaultLegalChecked
-	);
-	const [isSubmitSuccess, setIsSubmitSuccess] = useState(false);
-	const [newUpdatedUri, setNewUpdatedUri] = useState('');
+	//
+	const [newUpdatedUri, setNewUpdatedUri] = useState('')
+	const [isSubmitSuccess, setIsSubmitSuccess] = useState(false)
 
-	// Predefined genres/channels
-	const GENRES = [
-		'Pop', 'Rock', 'Hip-Hop', 'Jazz', 'Classical', 'Electronic', 'Country', 'Other'
-	];
-
-	// Update localStorage to include new fields
-	const updateToLocalStorageExtended = () => {
-		localStorage.setItem(
-			localStoragePath,
-			JSON.stringify({
-				titleContent,
-				contentHTML,
-				featuredImage,
-				tags,
-				categories,
-				postOptionsData,
-				artistName,
-				trackTitle,
-				shortDescription,
-				isrc,
-				proAffiliation,
-				ipiNumber,
-				legalChecked,
-				audioFile,
-				coverArt,
-				genre,
-			})
-		);
-	};
+	//
 
 	// all keys of states
 	const stateKeys = [
@@ -254,15 +173,6 @@ const CreateNewPostEditor: FC<Props> = ({
 			setTags(data.tags || defaultTagsProp)
 			setCategories(data.categories || defaultCategoriesProp)
 			setPostOptionsData(data.postOptionsData || defaultPostOptionsDataProp)
-			setAudioFile(data.audioFile || defaultAudioFile)
-			setCoverArt(data.coverArt || defaultCoverArt)
-			setArtistName(data.artistName || defaultArtistName)
-			setTrackTitle(data.trackTitle || defaultTrackTitle)
-			setShortDescription(data.shortDescription || defaultShortDescription)
-			setIsrc(data.isrc || defaultIsrc)
-			setProAffiliation(data.proAffiliation || defaultProAffiliation)
-			setIpiNumber(data.ipiNumber || defaultIpiNumber)
-			setLegalChecked(data.legalChecked || defaultLegalChecked)
 		}
 	}, [])
 	//
@@ -379,109 +289,73 @@ const CreateNewPostEditor: FC<Props> = ({
 		updateToLocalStorage('postOptionsData', data)
 	}
 
-	const onSubmmitMutation = async (status: PostStatusEnum) => {
+	const onSubmmitMutation = (status: PostStatusEnum) => {
 		// for site chisnghiax demo - please delete this code on your site
 		if (IS_CHISNGHIAX_DEMO_SITE) {
 			toast.error('Sorry, post submission is disabled on the demo site!')
 			return
 		}
 
-		// Validation
-		if (!artistName.trim()) {
-			toast.error('Artist Name is required')
-			return
-		}
-		if (!trackTitle.trim()) {
-			toast.error('Track Title is required')
-			return
-		}
-		if (tags.length === 0) {
-			toast.error('At least one genre is required')
-			return
-		}
-		if (!shortDescription.trim()) {
-			toast.error('Short Description is required')
-			return
-		}
-		if (!isrc.trim()) {
-			toast.error('ISRC is required')
-			return
-		}
-		if (!proAffiliation.trim()) {
-			toast.error('PRO Affiliation is required')
-			return
-		}
-		if (!legalChecked) {
-			toast.error('You must agree to the legal terms')
-			return
-		}
-
-		// Cover art dimension check (min 1400x1400)
-		if (coverArt) {
-			const coverArtUrl = URL.createObjectURL(coverArt);
-			const img = new window.Image();
-			const imgLoaded = await new Promise((resolve) => {
-				img.onload = () => resolve(true);
-				img.onerror = () => resolve(false);
-				img.src = coverArtUrl;
-			});
-			if (imgLoaded && (img.width < 1400 || img.height < 1400)) {
-				toast.error('Cover art must be at least 1400x1400px');
-				return;
-			}
-		}
-
-		// Upload audio file
-		let audioUrl = ''
-		if (audioFile) {
-			audioUrl = await uploadFileToWordPress(audioFile)
-			if (!audioUrl) {
-				toast.error('Audio upload failed')
-				return
-			}
-		}
-
-		// Upload cover art
-		let coverArtUploadedUrl = ''
-		if (coverArt) {
-			coverArtUploadedUrl = await uploadFileToWordPress(coverArt)
-			if (!coverArtUploadedUrl) {
-				toast.error('Cover art upload failed')
-				return
-			}
-		}
-
-		// Proceed with mutation
 		if (isSubmittingPage) {
 			mutationCreatePost({
 				variables: {
 					status,
-					title: trackTitle, // Use track title as post title
+					title: titleContent,
 					content: contentHTML,
-					categoryNodes: categories.map((item) => ({ id: item.databaseId.toString() })),
+					categoryNodes: categories.map((item) => ({
+						id: item.databaseId.toString(),
+					})),
 					ncTags: tags.map((item) => item.name).join(','),
-					featuredImg_alt: coverArt?.name ?? null,
-					featuredImg_url: coverArtUploadedUrl,
+					featuredImg_alt: featuredImage?.altText ?? null,
+					featuredImg_url: featuredImage?.sourceUrl ?? null,
 					date: postOptionsData.timeSchedulePublication || null,
+					//
+					img_1_alt:
+						postOptionsData.objGalleryImgs?.['image1']?.altText ?? null,
+					img_2_alt:
+						postOptionsData.objGalleryImgs?.['image2']?.altText ?? null,
+					img_3_alt:
+						postOptionsData.objGalleryImgs?.['image3']?.altText ?? null,
+					img_4_alt:
+						postOptionsData.objGalleryImgs?.['image4']?.altText ?? null,
+					img_5_alt:
+						postOptionsData.objGalleryImgs?.['image5']?.altText ?? null,
+					img_6_alt:
+						postOptionsData.objGalleryImgs?.['image6']?.altText ?? null,
+					img_7_alt:
+						postOptionsData.objGalleryImgs?.['image7']?.altText ?? null,
+					img_8_alt:
+						postOptionsData.objGalleryImgs?.['image8']?.altText ?? null,
+					//
+					img_1_url:
+						postOptionsData.objGalleryImgs?.['image1']?.sourceUrl ?? null,
+					img_2_url:
+						postOptionsData.objGalleryImgs?.['image2']?.sourceUrl ?? null,
+					img_3_url:
+						postOptionsData.objGalleryImgs?.['image3']?.sourceUrl ?? null,
+					img_4_url:
+						postOptionsData.objGalleryImgs?.['image4']?.sourceUrl ?? null,
+					img_5_url:
+						postOptionsData.objGalleryImgs?.['image5']?.sourceUrl ?? null,
+					img_6_url:
+						postOptionsData.objGalleryImgs?.['image6']?.sourceUrl ?? null,
+					img_7_url:
+						postOptionsData.objGalleryImgs?.['image7']?.sourceUrl ?? null,
+					img_8_url:
+						postOptionsData.objGalleryImgs?.['image8']?.sourceUrl ?? null,
+					//
 					commentStatus: postOptionsData.isAllowComments ? 'open' : 'closed',
-					excerpt: shortDescription,
-					ncmazAudioUrl: audioUrl,
-					// New fields as meta
-					artistSubmissionFields: {
-						artistName,
-						trackTitle,
-						isrc,
-						proAffiliation,
-						ipiNumber,
-					},
-					// Existing fields
+					excerpt: postOptionsData.excerptText ?? null,
+					ncmazAudioUrl: postOptionsData.audioUrl ?? null,
 					ncmazVideoUrl: postOptionsData.videoUrl ?? null,
 					postFormatName:
 						postOptionsData.postFormatsSelected !== ''
 							? postOptionsData.postFormatsSelected
 							: null,
+					//
 					showRightSidebar: postOptionsData.showRightSidebar ? '1' : '0',
 					postStyle: postOptionsData.postStyleSelected,
+					//
 				},
 			})
 		} else if (isEditingPage) {
@@ -489,32 +363,63 @@ const CreateNewPostEditor: FC<Props> = ({
 				variables: {
 					id: isEditingPostId || '',
 					status,
-					title: trackTitle,
+					title: titleContent,
 					content: contentHTML,
-					categoryNodes: categories.map((item) => ({ id: item.databaseId.toString() })),
+					categoryNodes: categories.map((item) => ({
+						id: item.databaseId.toString(),
+					})),
 					ncTags: tags.map((item) => item.name).join(','),
-					featuredImg_alt: coverArt?.name ?? null,
-					featuredImg_url: coverArtUploadedUrl,
+					featuredImg_alt: featuredImage?.altText ?? null,
+					featuredImg_url: featuredImage?.sourceUrl ?? null,
 					date: postOptionsData.timeSchedulePublication || null,
+					//
+					img_1_alt:
+						postOptionsData.objGalleryImgs?.['image1']?.altText ?? null,
+					img_2_alt:
+						postOptionsData.objGalleryImgs?.['image2']?.altText ?? null,
+					img_3_alt:
+						postOptionsData.objGalleryImgs?.['image3']?.altText ?? null,
+					img_4_alt:
+						postOptionsData.objGalleryImgs?.['image4']?.altText ?? null,
+					img_5_alt:
+						postOptionsData.objGalleryImgs?.['image5']?.altText ?? null,
+					img_6_alt:
+						postOptionsData.objGalleryImgs?.['image6']?.altText ?? null,
+					img_7_alt:
+						postOptionsData.objGalleryImgs?.['image7']?.altText ?? null,
+					img_8_alt:
+						postOptionsData.objGalleryImgs?.['image8']?.altText ?? null,
+					//
+					img_1_url:
+						postOptionsData.objGalleryImgs?.['image1']?.sourceUrl ?? null,
+					img_2_url:
+						postOptionsData.objGalleryImgs?.['image2']?.sourceUrl ?? null,
+					img_3_url:
+						postOptionsData.objGalleryImgs?.['image3']?.sourceUrl ?? null,
+					img_4_url:
+						postOptionsData.objGalleryImgs?.['image4']?.sourceUrl ?? null,
+					img_5_url:
+						postOptionsData.objGalleryImgs?.['image5']?.sourceUrl ?? null,
+					img_6_url:
+						postOptionsData.objGalleryImgs?.['image6']?.sourceUrl ?? null,
+					img_7_url:
+						postOptionsData.objGalleryImgs?.['image7']?.sourceUrl ?? null,
+					img_8_url:
+						postOptionsData.objGalleryImgs?.['image8']?.sourceUrl ?? null,
+					//
 					commentStatus: postOptionsData.isAllowComments ? 'open' : 'closed',
-					excerpt: shortDescription,
-					ncmazAudioUrl: audioUrl,
-					// New fields as meta
-					artistSubmissionFields: {
-						artistName,
-						trackTitle,
-						isrc,
-						proAffiliation,
-						ipiNumber,
-					},
-					// Existing fields
+					excerpt: postOptionsData.excerptText ?? null,
+					ncmazAudioUrl: postOptionsData.audioUrl ?? null,
 					ncmazVideoUrl: postOptionsData.videoUrl ?? null,
 					postFormatName:
 						postOptionsData.postFormatsSelected !== ''
 							? postOptionsData.postFormatsSelected
 							: null,
+
+					//
 					showRightSidebar: postOptionsData.showRightSidebar ? '1' : '0',
 					postStyle: postOptionsData.postStyleSelected,
+					//
 				},
 			})
 		}
@@ -543,129 +448,28 @@ const CreateNewPostEditor: FC<Props> = ({
 		return (
 			<div className="w-full px-2.5 pb-10 pt-2.5 lg:py-10">
 				<div className="mx-auto w-full max-w-screen-md space-y-3">
-					{/* New fields start */}
-					<div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-						<div>
-							<Label className="block text-sm mb-1">Artist Name</Label>
-							<input
-								type="text"
-								className="block w-full rounded-md border border-neutral-300 dark:border-neutral-600 px-3 py-2 bg-white dark:bg-neutral-900"
-								value={artistName}
-								onChange={e => { setArtistName(e.target.value); updateToLocalStorageExtended(); }}
-							/>
-						</div>
-						<div>
-							<Label className="block text-sm mb-1">Track Title</Label>
-							<input
-								type="text"
-								className="block w-full rounded-md border border-neutral-300 dark:border-neutral-600 px-3 py-2 bg-white dark:bg-neutral-900"
-								value={trackTitle}
-								onChange={e => { setTrackTitle(e.target.value); updateToLocalStorageExtended(); }}
-							/>
-						</div>
-					</div>
-					<div>
-						<Label className="block text-sm mb-1">
-							{labels.tags || T.pageSubmission['Add tags']}
-						</Label>
-						<TagsInput defaultValue={tags} onChange={handleChangeTags} />
-					</div>
-					<div>
-					<Label className="block text-sm mb-1">Short Description</Label>
-					<textarea
-						className="block w-full rounded-md border border-neutral-300 dark:border-neutral-600 px-3 py-2 bg-white dark:bg-neutral-900"
-						value={shortDescription}
-						onChange={e => { setShortDescription(e.target.value); updateToLocalStorageExtended(); }}
+					{labels.title && <Label className="block text-sm mt-4">{labels.title}</Label>}
+					<TitleEditor
+						defaultTitle={titleContent}
+						onUpdate={debounceGetTitle}
 					/>
-					</div>
-					<Label className="block text-sm mb-1">Upload Audio File (MP3/WAV)</Label>
-					<div className="w-full bg-white border border-dashed border-neutral-300 rounded-xl bg-neutral-50 dark:bg-neutral-900 flex flex-col items-center justify-center py-8 mb-4">
-						<input
-							type="file"
-							accept=".mp3,.wav"
-							className="hidden"
-							id="audio-upload-input"
-							onChange={e => {
-								const file = e.target.files?.[0] || null;
-								if (file && !['audio/mp3', 'audio/wav', 'audio/mpeg', 'audio/x-wav'].includes(file.type)) {
-									toast.error('Only MP3 or WAV files are allowed');
-									return;
-								}
-								setAudioFile(file);
-								updateToLocalStorageExtended();
-							}}
+					<div className="hidden">
+						<CategoriesInput
+							defaultValue={categories}
+							onChange={handleChangeCategories}
 						/>
-						{!audioFile ? (
-							<label htmlFor="audio-upload-input" className="cursor-pointer flex flex-col items-center">
-								<svg className="mx-auto h-12 w-12 text-neutral-400" fill="none" stroke="currentColor" viewBox="0 0 48 48" aria-hidden="true">
-									<path d="M24 4v40M4 24h40" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-								</svg>
-								<span className="mt-3 text-primary-600 font-medium">Upload audio file</span>
-								<span className="text-xs text-neutral-500">MP3, WAV only</span>
-							</label>
-						) : (
-							<div className="flex flex-col items-center">
-								<span className="text-sm text-neutral-700">{audioFile.name}</span>
-								<button
-									type="button"
-									className="mt-2 text-xs text-red-500 underline"
-									onClick={() => {
-										setAudioFile(null);
-										updateToLocalStorageExtended();
-									}}
-								>
-									Remove
-								</button>
-							</div>
-						)}
 					</div>
-					<Label className="block text-sm mb-1">Upload Cover Art (JPG/PNG)</Label>
+					<Label className="block text-sm mt-4">
+						{labels.image || T.pageSubmission['Featured image']}
+					</Label>
 					<ButtonInsertImage
-						defaultImage={coverArt ? { sourceUrl: URL.createObjectURL(coverArt), altText: coverArt.name, id: '' } : { sourceUrl: '', altText: '', id: '' }}
-						onChangeImage={img => {
-							setCoverArt(img.sourceUrl ? { name: img.altText, sourceUrl: img.sourceUrl } as any : null);
-							updateToLocalStorageExtended();
-						}}
-						contentClassName="px-3 py-8"
+						defaultImage={featuredImage}
+						onChangeImage={handleChangeFeaturedImage}
 					/>
-					<div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
-						<div>
-							<Label className="block text-sm mb-1">ISRC</Label>
-							<input
-								type="text"
-								className="block w-full rounded-md border border-neutral-300 dark:border-neutral-600 px-3 py-2 bg-white dark:bg-neutral-900"
-								value={isrc}
-								onChange={e => { setIsrc(e.target.value); updateToLocalStorageExtended(); }}
-							/>
-						</div>
-						<div>
-							<Label className="block text-sm mb-1">PRO Affiliation</Label>
-							<input
-								type="text"
-								className="block w-full rounded-md border border-neutral-300 dark:border-neutral-600 px-3 py-2 bg-white dark:bg-neutral-900"
-								value={proAffiliation}
-								onChange={e => { setProAffiliation(e.target.value); updateToLocalStorageExtended(); }}
-							/>
-						</div>
-					</div>
-					<Label className="block text-sm mb-1">IPI Number (optional)</Label>
-					<input
-						type="text"
-						className="block w-full rounded-md border border-neutral-300 dark:border-neutral-600 px-3 py-2 bg-white dark:bg-neutral-900"
-						value={ipiNumber}
-						onChange={e => { setIpiNumber(e.target.value); updateToLocalStorageExtended(); }}
-					/>
-
-					<div className="flex items-center mt-4">
-						<input
-							type="checkbox"
-							checked={legalChecked}
-							onChange={e => { setLegalChecked(e.target.checked); updateToLocalStorageExtended(); }}
-							className="h-4 w-4 text-primary-600 border-gray-300 rounded"
-						/>
-						<span className="ml-2 text-sm">I agree to the legal terms</span>
-					</div>
-					{/* New fields end */}
+					<Label className="block text-sm mt-4">
+						{labels.tags || T.pageSubmission['Add tags']}
+					</Label>
+					<TagsInput defaultValue={tags} onChange={handleChangeTags} />
 					{ERROR && (
 						<Alert containerClassName="text-sm" type="error">
 							{ERROR.message}
@@ -801,25 +605,4 @@ const CreateNewPostEditor: FC<Props> = ({
 }
 
 export default CreateNewPostEditor
-
-// Helper function for file upload
-async function uploadFileToWordPress(file: File): Promise<string> {
-	try {
-		const response = await fetch('/api/faust/auth/token', { method: 'GET' })
-		const { accessToken } = await response.json()
-		if (!accessToken) return ''
-		const formData = new FormData()
-		formData.append('file', file)
-		const wordPressUrl = process.env.NEXT_PUBLIC_WORDPRESS_URL?.replace(/\/$/, '')
-		const uploadFile = await fetch(`${wordPressUrl}/wp-json/wp/v2/media`, {
-			method: 'POST',
-			headers: { Authorization: `Bearer ${accessToken}` },
-			body: formData,
-		})
-		const uploadFileRes = await uploadFile.json()
-		return uploadFileRes.source_url || ''
-	} catch {
-		return ''
-	}
-}
 
