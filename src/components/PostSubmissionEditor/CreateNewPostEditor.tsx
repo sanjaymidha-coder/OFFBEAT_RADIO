@@ -1,6 +1,6 @@
 'use client'
 
-import { FC, useEffect, useState } from 'react'
+import { FC, useEffect, useState, Fragment } from 'react'
 import ButtonPrimary from '@/components/Button/ButtonPrimary'
 import TitleEditor from './TitleEditor'
 import { debounce } from 'lodash'
@@ -32,13 +32,21 @@ import errorHandling from '@/utils/errorHandling'
 import { useSelector } from 'react-redux'
 import { RootState } from '@/stores/store'
 import getTrans from '@/utils/getTrans'
-import { 
-	encodeCustomPostMeta, 
-	decodeCustomPostMeta, 
+import {
+	encodeCustomPostMeta,
+	decodeCustomPostMeta,
 	getArtistTrackData,
 	updateArtistTrackData,
-	ArtistTrackData 
+	ArtistTrackData
 } from '@/utils/artistTrackUtils'
+import {
+	Listbox,
+	ListboxButton,
+	ListboxOption,
+	ListboxOptions,
+	Transition,
+} from '@headlessui/react'
+import { CheckIcon, ChevronDownIcon } from '@heroicons/react/24/solid'
 
 interface Props {
 	isEditingPage?: boolean
@@ -530,140 +538,298 @@ const CreateNewPostEditor: FC<Props> = ({
 		return (
 			<div className="w-full px-2.5 pb-10 pt-2.5 lg:py-10">
 				<div className="mx-auto w-full max-w-screen-md space-y-3">
-					{labels.title && <Label className="block text-sm mt-4">{labels.title}</Label>}
-					<TitleEditor
-						defaultTitle={titleContent}
-						onUpdate={debounceGetTitle}
-					/>
-					{/* Artist Name Field */}
-					<div>
-						<Label className="block text-sm mt-4">Artist Name</Label>
-						<input
-							type="text"
-							className="mt-1 block w-full rounded-md border border-neutral-300 px-3 py-2 text-neutral-900 shadow-sm focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500 dark:border-neutral-600 dark:bg-neutral-800 dark:text-neutral-100"
-							value={artistName}
-							onChange={e => {
-								setArtistName(e.target.value)
-								updateToLocalStorage('artistName', e.target.value)
-							}}
-							placeholder="Enter artist name..."
-						/>
+
+
+					<div className="grid grid-cols-1 md:grid-cols-12 gap-4">
+						<div className="md:col-span-6">
+							{labels.title && <Label className="block text-sm mb-1">{labels.title}</Label>}
+							<TitleEditor
+								defaultTitle={titleContent}
+								onUpdate={debounceGetTitle}
+							/>
+						</div>
+						<div className="md:col-span-6">
+							<Label className="block text-sm mb-1">Artist Name</Label>
+							<input
+								type="text"
+								className="mt-1 block w-full rounded-md border border-neutral-300 px-3 py-2 text-neutral-900 shadow-sm focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500 dark:border-neutral-600 dark:bg-neutral-800 dark:text-neutral-100"
+								value={artistName}
+								onChange={e => {
+									setArtistName(e.target.value)
+									updateToLocalStorage('artistName', e.target.value)
+								}}
+								placeholder="Enter artist name..."
+							/>
+						</div>
 					</div>
-					<Label className="block text-sm mt-4">
+					<Label className="block text-sm mb-1">
 						{labels.image || T.pageSubmission['Featured image']}
 					</Label>
 					<ButtonInsertImage
 						defaultImage={featuredImage}
 						onChangeImage={handleChangeFeaturedImage}
 					/>
-					<div>
-						<Label className="block text-sm mt-4">Track Title</Label>
-						<input
-							type="text"
-							className="mt-1 block w-full rounded-md border border-neutral-300 px-3 py-2 text-neutral-900 shadow-sm focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500 dark:border-neutral-600 dark:bg-neutral-800 dark:text-neutral-100"
-							value={trackTitle}
-							onChange={e => {
-								setTrackTitle(e.target.value)
-								updateToLocalStorage('trackTitle', e.target.value)
-							}}
-							placeholder="Enter track title..."
-						/>
+					<div className="grid grid-cols-1 md:grid-cols-12 gap-4">
+						<div className="md:col-span-6">
+							<Label className="block text-sm mb-1">Track Title</Label>
+							<input
+								type="text"
+								className="mt-1 block w-full rounded-md border border-neutral-300 px-3 py-2 text-neutral-900 shadow-sm focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500 dark:border-neutral-600 dark:bg-neutral-800 dark:text-neutral-100"
+								value={trackTitle}
+								onChange={e => {
+									setTrackTitle(e.target.value)
+									updateToLocalStorage('trackTitle', e.target.value)
+								}}
+								placeholder="Enter track title..."
+							/>
+						</div>
+
+						<div className="md:col-span-6">
+							<Label className="block text-sm mb-1">Track File URL</Label>
+							<input
+								type="text"
+								className="mt-1 block w-full rounded-md border border-neutral-300 px-3 py-2 text-neutral-900 shadow-sm focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500 dark:border-neutral-600 dark:bg-neutral-800 dark:text-neutral-100"
+								value={trackFileUrl}
+								onChange={e => {
+									setTrackFileUrl(e.target.value)
+									updateToLocalStorage('trackFileUrl', e.target.value)
+								}}
+								placeholder="Enter track file URL..."
+							/>
+						</div>
 					</div>
-					<div>
-						<Label className="block text-sm mt-4">Track File URL</Label>
-						<input
-							type="text"
-							className="mt-1 block w-full rounded-md border border-neutral-300 px-3 py-2 text-neutral-900 shadow-sm focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500 dark:border-neutral-600 dark:bg-neutral-800 dark:text-neutral-100"
-							value={trackFileUrl}
-							onChange={e => {
-								setTrackFileUrl(e.target.value)
-								updateToLocalStorage('trackFileUrl', e.target.value)
-							}}
-							placeholder="Enter track file URL..."
-						/>
+
+					<div className="grid grid-cols-1 md:grid-cols-12 gap-4">
+						<div className="md:col-span-6">
+							<Label className="block text-sm mb-1">Track File Name</Label>
+							<input
+								type="text"
+								className="mt-1 block w-full rounded-md border border-neutral-300 px-3 py-2 text-neutral-900 shadow-sm focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500 dark:border-neutral-600 dark:bg-neutral-800 dark:text-neutral-100"
+								value={trackFileName}
+								onChange={e => {
+									setTrackFileName(e.target.value)
+									updateToLocalStorage('trackFileName', e.target.value)
+								}}
+								placeholder="Enter track file name..."
+							/>
+						</div>
+						<div className="md:col-span-6">
+							<Label className="block text-sm mb-1">ISRC</Label>
+							<input
+								type="text"
+								className="mt-1 block w-full rounded-md border border-neutral-300 px-3 py-2 text-neutral-900 shadow-sm focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500 dark:border-neutral-600 dark:bg-neutral-800 dark:text-neutral-100"
+								value={isrc}
+								onChange={e => {
+									setIsrc(e.target.value)
+									updateToLocalStorage('isrc', e.target.value)
+								}}
+								placeholder="Enter ISRC..."
+							/>
+						</div>
 					</div>
-					<div>
-						<Label className="block text-sm mt-4">Track File Name</Label>
-						<input
-							type="text"
-							className="mt-1 block w-full rounded-md border border-neutral-300 px-3 py-2 text-neutral-900 shadow-sm focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500 dark:border-neutral-600 dark:bg-neutral-800 dark:text-neutral-100"
-							value={trackFileName}
-							onChange={e => {
-								setTrackFileName(e.target.value)
-								updateToLocalStorage('trackFileName', e.target.value)
-							}}
-							placeholder="Enter track file name..."
-						/>
-					</div>
-					<Label className="block text-sm mt-4">
+					<Label className="block text-sm mb-1">
 						{labels.tags || T.pageSubmission['Add tags']}
 					</Label>
 					<TagsInput defaultValue={tags} onChange={handleChangeTags} />
-					<div>
-						<Label className="block text-sm mt-4">ISRC</Label>
-						<input
-							type="text"
-							className="mt-1 block w-full rounded-md border border-neutral-300 px-3 py-2 text-neutral-900 shadow-sm focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500 dark:border-neutral-600 dark:bg-neutral-800 dark:text-neutral-100"
-							value={isrc}
-							onChange={e => {
-								setIsrc(e.target.value)
-								updateToLocalStorage('isrc', e.target.value)
-							}}
-							placeholder="Enter ISRC..."
-						/>
+
+					<div className="grid grid-cols-12 gap-4">
+						<div className="col-span-6">
+							<Label className="block text-sm mb-1">PRO Affiliation</Label>
+							<Listbox value={proAffiliation} onChange={(value) => {
+								setProAffiliation(value)
+								updateToLocalStorage('proAffiliation', value)
+							}}>
+								<div className="relative mt-1">
+									<ListboxButton as="div">
+										<Button pattern="third" fontSize="text-sm font-medium" className="w-full rounded-md justify-between">
+											<span className="">
+												{proAffiliation || 'Select PRO Affiliation'}
+											</span>
+											<ChevronDownIcon
+												className="-me-1 ms-2 h-4 w-4"
+												aria-hidden="true"
+											/>
+										</Button>
+									</ListboxButton>
+									<Transition
+										as={Fragment}
+										leave="transition ease-in duration-100"
+										leaveFrom="opacity-100"
+										leaveTo="opacity-0"
+									>
+										<ListboxOptions
+											className="absolute top-full left-0 right-0 z-50 mt-1 max-h-96 overflow-auto rounded-md bg-white py-1 text-sm text-neutral-900 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-neutral-900 dark:text-neutral-200 dark:ring-neutral-700"
+										>
+											{[
+												{ value: '', label: 'Select PRO...' },
+												{ value: 'ASCAP', label: 'ASCAP' },
+												{ value: 'BMI', label: 'BMI' },
+												{ value: 'SESAC', label: 'SESAC' },
+												{ value: 'GMR', label: 'GMR' },
+												{ value: 'Other', label: 'Other' }
+											].map((option, optionIdx) => (
+												<ListboxOption
+													key={optionIdx}
+													className="relative cursor-default select-none py-2 pe-4 ps-10 data-[focus]:bg-primary-50 data-[focus]:text-primary-700 dark:data-[focus]:bg-neutral-700 dark:data-[focus]:text-neutral-200"
+													value={option.value}
+												>
+													{({ selected }) => (
+														<>
+															<span
+																className={`block truncate ${
+																	selected ? 'font-medium' : 'font-normal'
+																}`}
+															>
+																{option.label}
+															</span>
+															{selected ? (
+																<span className="absolute inset-y-0 start-0 flex items-center ps-3 text-primary-700 dark:text-neutral-200">
+																	<CheckIcon
+																		className="h-5 w-5"
+																		aria-hidden="true"
+																	/>
+																</span>
+															) : null}
+														</>
+													)}
+												</ListboxOption>
+											))}
+										</ListboxOptions>
+									</Transition>
+								</div>
+							</Listbox>
+						</div>
+						<div className="col-span-6">
+							<Label className="block text-sm mb-1">SoundExchange Registration</Label>
+							<Listbox value={soundExchangeRegistered ? 'registered' : 'not-registered'} onChange={(value) => {
+								const boolValue = value === 'registered'
+								setSoundExchangeRegistered(boolValue)
+								updateToLocalStorage('soundExchangeRegistered', boolValue)
+							}}>
+								<div className="relative mt-1">
+									<ListboxButton as="div">
+										<Button pattern="third" fontSize="text-sm font-medium" className="w-full rounded-md justify-between">
+											<span className="block truncate">
+												{soundExchangeRegistered ? 'Registered' : 'Not Registered'}
+											</span>
+											<ChevronDownIcon
+												className="-me-1 ms-2 h-4 w-4"
+												aria-hidden="true"
+											/>
+										</Button>
+									</ListboxButton>
+									<Transition
+										as={Fragment}
+										leave="transition ease-in duration-100"
+										leaveFrom="opacity-100"
+										leaveTo="opacity-0"
+									>
+										<ListboxOptions
+											className="absolute top-full left-0 right-0 z-50 mt-1 max-h-96 overflow-auto rounded-md bg-white py-1 text-sm text-neutral-900 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-neutral-900 dark:text-neutral-200 dark:ring-neutral-700"
+										>
+											{[
+												{ value: 'not-registered', label: 'Not Registered' },
+												{ value: 'registered', label: 'Registered' }
+											].map((option, optionIdx) => (
+												<ListboxOption
+													key={optionIdx}
+													className="relative cursor-default select-none py-2 pe-4 ps-10 data-[focus]:bg-primary-50 data-[focus]:text-primary-700 dark:data-[focus]:bg-neutral-700 dark:data-[focus]:text-neutral-200"
+													value={option.value}
+												>
+													{({ selected }) => (
+														<>
+															<span
+																className={`block truncate ${
+																	selected ? 'font-medium' : 'font-normal'
+																}`}
+															>
+																{option.label}
+															</span>
+															{selected ? (
+																<span className="absolute inset-y-0 start-0 flex items-center ps-3 text-primary-700 dark:text-neutral-200">
+																	<CheckIcon
+																		className="h-5 w-5"
+																		aria-hidden="true"
+																	/>
+																</span>
+															) : null}
+														</>
+													)}
+												</ListboxOption>
+											))}
+										</ListboxOptions>
+									</Transition>
+								</div>
+							</Listbox>
+						</div>
 					</div>
 					<div>
-						<Label className="block text-sm mt-4">PRO Affiliation</Label>
-						<select
-							className="mt-1 block w-full rounded-md border border-neutral-300 px-3 py-2 text-neutral-900 shadow-sm focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500 dark:border-neutral-600 dark:bg-neutral-800 dark:text-neutral-100"
-							value={proAffiliation}
-							onChange={e => {
-								setProAffiliation(e.target.value)
-								updateToLocalStorage('proAffiliation', e.target.value)
-							}}
-						>
-							<option value="">Select PRO...</option>
-							<option value="ASCAP">ASCAP</option>
-							<option value="BMI">BMI</option>
-							<option value="SESAC">SESAC</option>
-							<option value="GMR">GMR</option>
-							<option value="Other">Other</option>
-						</select>
-					</div>
-					<div>
-						<Label className="block text-sm mt-4">SoundExchange Registration</Label>
-						<select
-							className="mt-1 block w-full rounded-md border border-neutral-300 px-3 py-2 text-neutral-900 shadow-sm focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500 dark:border-neutral-600 dark:bg-neutral-800 dark:text-neutral-100"
-							value={soundExchangeRegistered ? 'registered' : 'not-registered'}
-							onChange={e => {
-								const value = e.target.value === 'registered'
-								setSoundExchangeRegistered(value)
-								updateToLocalStorage('soundExchangeRegistered', value)
-							}}
-						>
-							<option value="not-registered">Not Registered</option>
-							<option value="registered">Registered</option>
-						</select>
-					</div>
-					<div>
-						<Label className="block text-sm mt-4">Status</Label>
-						<select
-							className="mt-1 block w-full rounded-md border border-neutral-300 px-3 py-2 text-neutral-900 shadow-sm focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500 dark:border-neutral-600 dark:bg-neutral-800 dark:text-neutral-100"
-							value={status}
-							onChange={e => {
-								setStatus(e.target.value as 'pending'|'approved'|'live'|'rejected')
-								updateToLocalStorage('status', e.target.value)
-							}}
-						>
-							<option value="pending">Pending</option>
-							<option value="approved">Approved</option>
-							<option value="live">Live</option>
-							<option value="rejected">Rejected</option>
-						</select>
+						<Label className="block text-sm mb-1">Status</Label>
+						<Listbox value={status} onChange={(value) => {
+							setStatus(value as 'pending' | 'approved' | 'live' | 'rejected')
+							updateToLocalStorage('status', value)
+						}}>
+							<div className="relative mt-1">
+								<ListboxButton as="div">
+									<Button pattern="third" fontSize="text-sm font-medium" className="w-full rounded-md justify-between">
+										<span className="block truncate capitalize">
+											{status}
+										</span>
+										<ChevronDownIcon
+											className="-me-1 ms-2 h-4 w-4"
+											aria-hidden="true"
+										/>
+									</Button>
+								</ListboxButton>
+								<Transition
+									as={Fragment}
+									leave="transition ease-in duration-100"
+									leaveFrom="opacity-100"
+									leaveTo="opacity-0"
+								>
+									<ListboxOptions
+										className="absolute top-full left-0 right-0 z-50 mt-1 max-h-96 overflow-auto rounded-md bg-white py-1 text-sm text-neutral-900 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-neutral-900 dark:text-neutral-200 dark:ring-neutral-700"
+									>
+										{[
+											{ value: 'pending', label: 'Pending' },
+											{ value: 'approved', label: 'Approved' },
+											{ value: 'live', label: 'Live' },
+											{ value: 'rejected', label: 'Rejected' }
+										].map((option, optionIdx) => (
+											<ListboxOption
+												key={optionIdx}
+												className="relative cursor-default select-none py-2 pe-4 ps-10 data-[focus]:bg-primary-50 data-[focus]:text-primary-700 dark:data-[focus]:bg-neutral-700 dark:data-[focus]:text-neutral-200"
+												value={option.value}
+											>
+												{({ selected }) => (
+													<>
+														<span
+															className={`block truncate capitalize ${
+																selected ? 'font-medium' : 'font-normal'
+															}`}
+														>
+															{option.label}
+														</span>
+														{selected ? (
+															<span className="absolute inset-y-0 start-0 flex items-center ps-3 text-primary-700 dark:text-neutral-200">
+																<CheckIcon
+																	className="h-5 w-5"
+																	aria-hidden="true"
+																/>
+															</span>
+														) : null}
+													</>
+												)}
+											</ListboxOption>
+										))}
+									</ListboxOptions>
+								</Transition>
+							</div>
+						</Listbox>
 					</div>
 					<div className="grid grid-cols-12 gap-4">
 						<div className="col-span-6">
-							<Label className="block text-sm mt-4">Airplay Count</Label>
+							<Label className="block text-sm mb-1">Airplay Count</Label>
 							<input
 								type="number"
 								className="mt-1 block w-full rounded-md border border-neutral-300 px-3 py-2 text-neutral-900 shadow-sm focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500 dark:border-neutral-600 dark:bg-neutral-800 dark:text-neutral-100"
@@ -676,7 +842,7 @@ const CreateNewPostEditor: FC<Props> = ({
 							/>
 						</div>
 						<div className="col-span-6">
-							<Label className="block text-sm mt-4">Spin Count</Label>
+							<Label className="block text-sm mb-1">Spin Count</Label>
 							<input
 								type="number"
 								className="mt-1 block w-full rounded-md border border-neutral-300 px-3 py-2 text-neutral-900 shadow-sm focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500 dark:border-neutral-600 dark:bg-neutral-800 dark:text-neutral-100"
@@ -689,31 +855,33 @@ const CreateNewPostEditor: FC<Props> = ({
 							/>
 						</div>
 					</div>
-					<div>
-						<Label className="block text-sm mt-4">Target Channel</Label>
-						<input
-							type="text"
-							className="mt-1 block w-full rounded-md border border-neutral-300 px-3 py-2 text-neutral-900 shadow-sm focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500 dark:border-neutral-600 dark:bg-neutral-800 dark:text-neutral-100"
-							value={targetChannel}
-							onChange={e => {
-								setTargetChannel(e.target.value)
-								updateToLocalStorage('targetChannel', e.target.value)
-							}}
-							placeholder="Enter target channel..."
-						/>
-					</div>
-					<div>
-						<Label className="block text-sm mt-4">Target Playlist</Label>
-						<input
-							type="text"
-							className="mt-1 block w-full rounded-md border border-neutral-300 px-3 py-2 text-neutral-900 shadow-sm focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500 dark:border-neutral-600 dark:bg-neutral-800 dark:text-neutral-100"
-							value={targetPlaylist}
-							onChange={e => {
-								setTargetPlaylist(e.target.value)
-								updateToLocalStorage('targetPlaylist', e.target.value)
-							}}
-							placeholder="Enter target playlist..."
-						/>
+					<div className="grid grid-cols-12 gap-4">
+						<div className="col-span-6">
+							<Label className="block text-sm mb-1">Target Channel</Label>
+							<input
+								type="text"
+								className="mt-1 block w-full rounded-md border border-neutral-300 px-3 py-2 text-neutral-900 shadow-sm focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500 dark:border-neutral-600 dark:bg-neutral-800 dark:text-neutral-100"
+								value={targetChannel}
+								onChange={e => {
+									setTargetChannel(e.target.value)
+									updateToLocalStorage('targetChannel', e.target.value)
+								}}
+								placeholder="Enter target channel..."
+							/>
+						</div>
+						<div className="col-span-6">
+							<Label className="block text-sm mb-1">Target Playlist</Label>
+							<input
+								type="text"
+								className="mt-1 block w-full rounded-md border border-neutral-300 px-3 py-2 text-neutral-900 shadow-sm focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500 dark:border-neutral-600 dark:bg-neutral-800 dark:text-neutral-100"
+								value={targetPlaylist}
+								onChange={e => {
+									setTargetPlaylist(e.target.value)
+									updateToLocalStorage('targetPlaylist', e.target.value)
+								}}
+								placeholder="Enter target playlist..."
+							/>
+						</div>
 					</div>
 					<div className="hidden">
 						<CategoriesInput
@@ -804,14 +972,14 @@ const CreateNewPostEditor: FC<Props> = ({
 							<div className="font-medium">
 								{
 									T.pageSubmission[
-										'Congratulations! You have successfully updated the post!'
+									'Congratulations! You have successfully updated the post!'
 									]
 								}
 							</div>
 							<div className="mt-2.5 text-sm text-neutral-700">
 								{
 									T.pageSubmission[
-										'These changes will be applied to the post in about 15 minutes.'
+									'These changes will be applied to the post in about 15 minutes.'
 									]
 								}{' '}
 								<br />
