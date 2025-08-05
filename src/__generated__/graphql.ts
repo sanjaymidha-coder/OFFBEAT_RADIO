@@ -7578,6 +7578,8 @@ export type CreatePostInput = {
   ncmazGalleryImg7Url?: InputMaybe<Scalars['String']['input']>;
   ncmazGalleryImg8Alt?: InputMaybe<Scalars['String']['input']>;
   ncmazGalleryImg8Url?: InputMaybe<Scalars['String']['input']>;
+  /** Track Title field */
+  ncmazTrackTitle?: InputMaybe<Scalars['String']['input']>;
   ncmazVideoUrl?: InputMaybe<Scalars['String']['input']>;
   /** The password used to protect the content of the object */
   password?: InputMaybe<Scalars['String']['input']>;
@@ -12024,6 +12026,8 @@ export type Post = ContentNode & DatabaseIdentifier & MenuItemLinkable & Node & 
   ncmazAudioUrl?: Maybe<NcmazAudioUrl>;
   /** Fields of the NcmazGalleryImgs ACF Field Group */
   ncmazGalleryImgs?: Maybe<NcmazGalleryImgs>;
+  /** Track Title field */
+  ncmazTrackTitle?: Maybe<Scalars['String']['output']>;
   /** Fields of the NcmazVideoUrl ACF Field Group */
   ncmazVideoUrl?: Maybe<NcmazVideoUrl>;
   /**
@@ -20875,6 +20879,8 @@ export type UpdatePostInput = {
   ncmazGalleryImg7Url?: InputMaybe<Scalars['String']['input']>;
   ncmazGalleryImg8Alt?: InputMaybe<Scalars['String']['input']>;
   ncmazGalleryImg8Url?: InputMaybe<Scalars['String']['input']>;
+  /** Track Title field */
+  ncmazTrackTitle?: InputMaybe<Scalars['String']['input']>;
   ncmazVideoUrl?: InputMaybe<Scalars['String']['input']>;
   /** The password used to protect the content of the object */
   password?: InputMaybe<Scalars['String']['input']>;

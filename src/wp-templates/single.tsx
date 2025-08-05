@@ -25,6 +25,7 @@ import { TCategoryCardFull } from '@/components/CardCategory1/CardCategory1'
 import SingleTypeAudio from '@/container/singles/single-audio/single-audio'
 import SingleTypeVideo from '@/container/singles/single-video/single-video'
 import SingleTypeGallery from '@/container/singles/single-gallery/single-gallery'
+import ArtistTrackDisplayBlock from '@/components/ArtistTrackDisplay/ArtistTrackDisplayBlock'
 
 const DynamicSingleRelatedPosts = dynamic(
 	() => import('@/container/singles/SingleRelatedPosts'),
@@ -199,6 +200,7 @@ const Component: FaustTemplate<GetPostSiglePageQuery> = (props) => {
 
 							<div className="container my-10 flex flex-col lg:flex-row">
 								<div className="w-full lg:w-3/5 xl:w-2/3 xl:pe-20">
+									<ArtistTrackDisplayBlock ncmazVideoUrl={_post.ncmazVideoUrl} />
 									<SingleContent post={_post} />
 								</div>
 								<div className="mt-12 w-full lg:mt-0 lg:w-2/5 lg:ps-10 xl:w-1/3 xl:ps-0">
@@ -221,6 +223,7 @@ const Component: FaustTemplate<GetPostSiglePageQuery> = (props) => {
 
 						<div className="container mt-10">
 							{/* SINGLE MAIN CONTENT */}
+							<ArtistTrackDisplayBlock ncmazVideoUrl={_post.ncmazVideoUrl} />
 							<SingleContent post={_post} />
 						</div>
 

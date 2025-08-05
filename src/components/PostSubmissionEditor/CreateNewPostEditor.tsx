@@ -32,6 +32,13 @@ import errorHandling from '@/utils/errorHandling'
 import { useSelector } from 'react-redux'
 import { RootState } from '@/stores/store'
 import getTrans from '@/utils/getTrans'
+import { 
+	encodeCustomPostMeta, 
+	decodeCustomPostMeta, 
+	getArtistTrackData,
+	updateArtistTrackData,
+	ArtistTrackData 
+} from '@/utils/artistTrackUtils'
 
 interface Props {
 	isEditingPage?: boolean
@@ -74,6 +81,21 @@ const CreateNewPostEditor: FC<Props> = ({
 		isAllowComments: true,
 		timeSchedulePublication: undefined,
 		showRightSidebar: true,
+		artistTrackData: {
+			artistName: '',
+			trackTitle: '',
+			albumName: '',
+			releaseYear: '',
+			genre: '',
+			recordLabel: '',
+			producer: '',
+			featuredArtists: [],
+			spotifyUrl: '',
+			appleMusicUrl: '',
+			youtubeUrl: '',
+			soundcloudUrl: '',
+			bandcampUrl: '',
+		},
 	},
 	labels = {},
 }) => {
@@ -121,6 +143,20 @@ const CreateNewPostEditor: FC<Props> = ({
 			JSON.parse(localStorage.getItem(localStoragePath) || '{}')
 				.postOptionsData || defaultPostOptionsDataProp,
 	)
+	// Add state for artist track fields
+	const [artistName, setArtistName] = useState('')
+	const [trackTitle, setTrackTitle] = useState('')
+	// Remove albumTitle state
+	const [trackFileUrl, setTrackFileUrl] = useState('')
+	const [trackFileName, setTrackFileName] = useState('')
+	const [isrc, setIsrc] = useState('')
+	const [proAffiliation, setProAffiliation] = useState('')
+	const [soundExchangeRegistered, setSoundExchangeRegistered] = useState(false)
+	const [status, setStatus] = useState('pending')
+	const [airplayCount, setAirplayCount] = useState(0)
+	const [spinCount, setSpinCount] = useState(0)
+	const [targetChannel, setTargetChannel] = useState('')
+	const [targetPlaylist, setTargetPlaylist] = useState('')
 	//
 	const [newUpdatedUri, setNewUpdatedUri] = useState('')
 	const [isSubmitSuccess, setIsSubmitSuccess] = useState(false)
@@ -135,24 +171,27 @@ const CreateNewPostEditor: FC<Props> = ({
 		'tags',
 		'categories',
 		'postOptionsData',
+		'artistName',
+		'trackTitle',
+		'trackFileUrl',
+		'trackFileName',
+		'isrc',
+		'proAffiliation',
+		'soundExchangeRegistered',
+		'status',
+		'airplayCount',
+		'spinCount',
+		'targetChannel',
+		'targetPlaylist',
 	] as const
 
 	const updateToLocalStorage = (
 		name: (typeof stateKeys)[number],
 		value: unknown,
 	) => {
-		localStorage.setItem(
-			localStoragePath,
-			JSON.stringify({
-				titleContent,
-				contentHTML,
-				featuredImage,
-				tags,
-				categories,
-				postOptionsData,
-				...{ [name]: value },
-			}),
-		)
+		const currentData = JSON.parse(localStorage.getItem(localStoragePath) || '{}')
+		currentData[name] = value
+		localStorage.setItem(localStoragePath, JSON.stringify(currentData))
 	}
 	//
 
@@ -173,6 +212,18 @@ const CreateNewPostEditor: FC<Props> = ({
 			setTags(data.tags || defaultTagsProp)
 			setCategories(data.categories || defaultCategoriesProp)
 			setPostOptionsData(data.postOptionsData || defaultPostOptionsDataProp)
+			setArtistName(data.artistName || '')
+			setTrackTitle(data.trackTitle || '')
+			setTrackFileUrl(data.trackFileUrl || '')
+			setTrackFileName(data.trackFileName || '')
+			setIsrc(data.isrc || '')
+			setProAffiliation(data.proAffiliation || '')
+			setSoundExchangeRegistered(data.soundExchangeRegistered || false)
+			setStatus(data.status || 'pending')
+			setAirplayCount(data.airplayCount || 0)
+			setSpinCount(data.spinCount || 0)
+			setTargetChannel(data.targetChannel || '')
+			setTargetPlaylist(data.targetPlaylist || '')
 		}
 	}, [])
 	//
@@ -297,6 +348,22 @@ const CreateNewPostEditor: FC<Props> = ({
 		}
 
 		if (isSubmittingPage) {
+			// Encode artist track data into ncmazVideoUrl
+			const artistTrackData = {
+				artistName,
+				trackTitle,
+				trackFileUrl,
+				trackFileName,
+				isrc,
+				proAffiliation,
+				soundExchangeRegistered,
+				status,
+				airplayCount,
+				spinCount,
+				targetChannel,
+				targetPlaylist,
+			}
+			const encodedVideoUrl = JSON.stringify({ artistTrack: artistTrackData })
 			mutationCreatePost({
 				variables: {
 					status,
@@ -347,7 +414,7 @@ const CreateNewPostEditor: FC<Props> = ({
 					commentStatus: postOptionsData.isAllowComments ? 'open' : 'closed',
 					excerpt: postOptionsData.excerptText ?? null,
 					ncmazAudioUrl: postOptionsData.audioUrl ?? null,
-					ncmazVideoUrl: postOptionsData.videoUrl ?? null,
+					ncmazVideoUrl: encodedVideoUrl,
 					postFormatName:
 						postOptionsData.postFormatsSelected !== ''
 							? postOptionsData.postFormatsSelected
@@ -359,6 +426,22 @@ const CreateNewPostEditor: FC<Props> = ({
 				},
 			})
 		} else if (isEditingPage) {
+			// Encode artist track data into ncmazVideoUrl
+			const artistTrackData = {
+				artistName,
+				trackTitle,
+				trackFileUrl,
+				trackFileName,
+				isrc,
+				proAffiliation,
+				soundExchangeRegistered,
+				status,
+				airplayCount,
+				spinCount,
+				targetChannel,
+				targetPlaylist,
+			}
+			const encodedVideoUrl = JSON.stringify({ artistTrack: artistTrackData })
 			mutationUpdatePost({
 				variables: {
 					id: isEditingPostId || '',
@@ -410,12 +493,11 @@ const CreateNewPostEditor: FC<Props> = ({
 					commentStatus: postOptionsData.isAllowComments ? 'open' : 'closed',
 					excerpt: postOptionsData.excerptText ?? null,
 					ncmazAudioUrl: postOptionsData.audioUrl ?? null,
-					ncmazVideoUrl: postOptionsData.videoUrl ?? null,
+					ncmazVideoUrl: encodedVideoUrl,
 					postFormatName:
 						postOptionsData.postFormatsSelected !== ''
 							? postOptionsData.postFormatsSelected
 							: null,
-
 					//
 					showRightSidebar: postOptionsData.showRightSidebar ? '1' : '0',
 					postStyle: postOptionsData.postStyleSelected,
@@ -453,10 +535,18 @@ const CreateNewPostEditor: FC<Props> = ({
 						defaultTitle={titleContent}
 						onUpdate={debounceGetTitle}
 					/>
-					<div className="hidden">
-						<CategoriesInput
-							defaultValue={categories}
-							onChange={handleChangeCategories}
+					{/* Artist Name Field */}
+					<div>
+						<Label className="block text-sm mt-4">Artist Name</Label>
+						<input
+							type="text"
+							className="mt-1 block w-full rounded-md border border-neutral-300 px-3 py-2 text-neutral-900 shadow-sm focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500 dark:border-neutral-600 dark:bg-neutral-800 dark:text-neutral-100"
+							value={artistName}
+							onChange={e => {
+								setArtistName(e.target.value)
+								updateToLocalStorage('artistName', e.target.value)
+							}}
+							placeholder="Enter artist name..."
 						/>
 					</div>
 					<Label className="block text-sm mt-4">
@@ -466,10 +556,171 @@ const CreateNewPostEditor: FC<Props> = ({
 						defaultImage={featuredImage}
 						onChangeImage={handleChangeFeaturedImage}
 					/>
+					<div>
+						<Label className="block text-sm mt-4">Track Title</Label>
+						<input
+							type="text"
+							className="mt-1 block w-full rounded-md border border-neutral-300 px-3 py-2 text-neutral-900 shadow-sm focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500 dark:border-neutral-600 dark:bg-neutral-800 dark:text-neutral-100"
+							value={trackTitle}
+							onChange={e => {
+								setTrackTitle(e.target.value)
+								updateToLocalStorage('trackTitle', e.target.value)
+							}}
+							placeholder="Enter track title..."
+						/>
+					</div>
+					<div>
+						<Label className="block text-sm mt-4">Track File URL</Label>
+						<input
+							type="text"
+							className="mt-1 block w-full rounded-md border border-neutral-300 px-3 py-2 text-neutral-900 shadow-sm focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500 dark:border-neutral-600 dark:bg-neutral-800 dark:text-neutral-100"
+							value={trackFileUrl}
+							onChange={e => {
+								setTrackFileUrl(e.target.value)
+								updateToLocalStorage('trackFileUrl', e.target.value)
+							}}
+							placeholder="Enter track file URL..."
+						/>
+					</div>
+					<div>
+						<Label className="block text-sm mt-4">Track File Name</Label>
+						<input
+							type="text"
+							className="mt-1 block w-full rounded-md border border-neutral-300 px-3 py-2 text-neutral-900 shadow-sm focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500 dark:border-neutral-600 dark:bg-neutral-800 dark:text-neutral-100"
+							value={trackFileName}
+							onChange={e => {
+								setTrackFileName(e.target.value)
+								updateToLocalStorage('trackFileName', e.target.value)
+							}}
+							placeholder="Enter track file name..."
+						/>
+					</div>
 					<Label className="block text-sm mt-4">
 						{labels.tags || T.pageSubmission['Add tags']}
 					</Label>
 					<TagsInput defaultValue={tags} onChange={handleChangeTags} />
+					<div>
+						<Label className="block text-sm mt-4">ISRC</Label>
+						<input
+							type="text"
+							className="mt-1 block w-full rounded-md border border-neutral-300 px-3 py-2 text-neutral-900 shadow-sm focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500 dark:border-neutral-600 dark:bg-neutral-800 dark:text-neutral-100"
+							value={isrc}
+							onChange={e => {
+								setIsrc(e.target.value)
+								updateToLocalStorage('isrc', e.target.value)
+							}}
+							placeholder="Enter ISRC..."
+						/>
+					</div>
+					<div>
+						<Label className="block text-sm mt-4">PRO Affiliation</Label>
+						<select
+							className="mt-1 block w-full rounded-md border border-neutral-300 px-3 py-2 text-neutral-900 shadow-sm focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500 dark:border-neutral-600 dark:bg-neutral-800 dark:text-neutral-100"
+							value={proAffiliation}
+							onChange={e => {
+								setProAffiliation(e.target.value)
+								updateToLocalStorage('proAffiliation', e.target.value)
+							}}
+						>
+							<option value="">Select PRO...</option>
+							<option value="ASCAP">ASCAP</option>
+							<option value="BMI">BMI</option>
+							<option value="SESAC">SESAC</option>
+							<option value="GMR">GMR</option>
+							<option value="Other">Other</option>
+						</select>
+					</div>
+					<div>
+						<Label className="block text-sm mt-4">SoundExchange Registration</Label>
+						<select
+							className="mt-1 block w-full rounded-md border border-neutral-300 px-3 py-2 text-neutral-900 shadow-sm focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500 dark:border-neutral-600 dark:bg-neutral-800 dark:text-neutral-100"
+							value={soundExchangeRegistered ? 'registered' : 'not-registered'}
+							onChange={e => {
+								const value = e.target.value === 'registered'
+								setSoundExchangeRegistered(value)
+								updateToLocalStorage('soundExchangeRegistered', value)
+							}}
+						>
+							<option value="not-registered">Not Registered</option>
+							<option value="registered">Registered</option>
+						</select>
+					</div>
+					<div>
+						<Label className="block text-sm mt-4">Status</Label>
+						<select
+							className="mt-1 block w-full rounded-md border border-neutral-300 px-3 py-2 text-neutral-900 shadow-sm focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500 dark:border-neutral-600 dark:bg-neutral-800 dark:text-neutral-100"
+							value={status}
+							onChange={e => {
+								setStatus(e.target.value as 'pending'|'approved'|'live'|'rejected')
+								updateToLocalStorage('status', e.target.value)
+							}}
+						>
+							<option value="pending">Pending</option>
+							<option value="approved">Approved</option>
+							<option value="live">Live</option>
+							<option value="rejected">Rejected</option>
+						</select>
+					</div>
+					<div className="grid grid-cols-12 gap-4">
+						<div className="col-span-6">
+							<Label className="block text-sm mt-4">Airplay Count</Label>
+							<input
+								type="number"
+								className="mt-1 block w-full rounded-md border border-neutral-300 px-3 py-2 text-neutral-900 shadow-sm focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500 dark:border-neutral-600 dark:bg-neutral-800 dark:text-neutral-100"
+								value={airplayCount}
+								onChange={e => {
+									setAirplayCount(parseInt(e.target.value) || 0)
+									updateToLocalStorage('airplayCount', parseInt(e.target.value) || 0)
+								}}
+								placeholder="0"
+							/>
+						</div>
+						<div className="col-span-6">
+							<Label className="block text-sm mt-4">Spin Count</Label>
+							<input
+								type="number"
+								className="mt-1 block w-full rounded-md border border-neutral-300 px-3 py-2 text-neutral-900 shadow-sm focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500 dark:border-neutral-600 dark:bg-neutral-800 dark:text-neutral-100"
+								value={spinCount}
+								onChange={e => {
+									setSpinCount(parseInt(e.target.value) || 0)
+									updateToLocalStorage('spinCount', parseInt(e.target.value) || 0)
+								}}
+								placeholder="0"
+							/>
+						</div>
+					</div>
+					<div>
+						<Label className="block text-sm mt-4">Target Channel</Label>
+						<input
+							type="text"
+							className="mt-1 block w-full rounded-md border border-neutral-300 px-3 py-2 text-neutral-900 shadow-sm focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500 dark:border-neutral-600 dark:bg-neutral-800 dark:text-neutral-100"
+							value={targetChannel}
+							onChange={e => {
+								setTargetChannel(e.target.value)
+								updateToLocalStorage('targetChannel', e.target.value)
+							}}
+							placeholder="Enter target channel..."
+						/>
+					</div>
+					<div>
+						<Label className="block text-sm mt-4">Target Playlist</Label>
+						<input
+							type="text"
+							className="mt-1 block w-full rounded-md border border-neutral-300 px-3 py-2 text-neutral-900 shadow-sm focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500 dark:border-neutral-600 dark:bg-neutral-800 dark:text-neutral-100"
+							value={targetPlaylist}
+							onChange={e => {
+								setTargetPlaylist(e.target.value)
+								updateToLocalStorage('targetPlaylist', e.target.value)
+							}}
+							placeholder="Enter target playlist..."
+						/>
+					</div>
+					<div className="hidden">
+						<CategoriesInput
+							defaultValue={categories}
+							onChange={handleChangeCategories}
+						/>
+					</div>
 					{ERROR && (
 						<Alert containerClassName="text-sm" type="error">
 							{ERROR.message}
@@ -490,14 +741,6 @@ const CreateNewPostEditor: FC<Props> = ({
 				<div className="absolute inset-0 flex h-full flex-col">
 					<div className="hiddenScrollbar flex-1 overflow-y-auto">
 						{renderPostTitle()}
-
-						<Label className="block text-sm mt-4 mx-auto w-full max-w-screen-md my-4">
-							{labels.description || T.pageSubmission['Write your post content here…']}
-						</Label>
-						<TiptapEditor
-							defaultContent={contentHTML}
-							onUpdate={debounceGetContentHtml}
-						/>
 					</div>
 
 					<div className="w-full flex-shrink-0 border-t border-neutral-200 px-2.5 dark:border-neutral-600">

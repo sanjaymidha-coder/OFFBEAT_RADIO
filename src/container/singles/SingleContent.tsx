@@ -19,6 +19,7 @@ import { useMusicPlayer } from '@/hooks/useMusicPlayer'
 import { flatListToHierarchical } from '@faustwp/core'
 import MyWordPressBlockViewer from '@/components/MyWordPressBlockViewer'
 import { ContentBlock } from '@faustwp/blocks/dist/mjs/components/WordPressBlocksViewer'
+import ArtistTrackDisplayBlock from '@/components/ArtistTrackDisplay/ArtistTrackDisplayBlock'
 
 export interface SingleContentProps {
 	post: GetPostSiglePageQuery['post']
@@ -49,7 +50,8 @@ const SingleContent: FC<SingleContentProps> = ({ post }) => {
 		status,
 		date,
 		editorBlocks,
-		categories, // <-- add this line
+		categories,
+		ncmazVideoUrl, // <-- add this line
 	} = getPostDataFromPostFragment(post || {})
 	let blocks: (ContentBlock | null)[] = []
 	if (editorBlocks) {
@@ -128,7 +130,6 @@ const SingleContent: FC<SingleContentProps> = ({ post }) => {
 			<div className="nc-SingleContent flex-1 space-y-10">
 				{/*    */}
 				{renderAlert()}
-
 				{/* ENTRY CONTENT */}
 				<div
 					// not remove this id
@@ -136,6 +137,9 @@ const SingleContent: FC<SingleContentProps> = ({ post }) => {
 					className="prose mx-auto max-w-screen-md lg:prose-lg dark:prose-invert"
 					ref={contentRef}
 				>
+					{ncmazVideoUrl && ncmazVideoUrl.videoUrl && (
+						<ArtistTrackDisplayBlock ncmazVideoUrl={ncmazVideoUrl.videoUrl} />
+					)}
 					<MyWordPressBlockViewer blocks={blocks} />
 				</div>
 

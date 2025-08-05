@@ -21,6 +21,7 @@ import getTrans from '@/utils/getTrans'
 import { ChevronDownIcon } from '@heroicons/react/24/outline'
 import toast from 'react-hot-toast'
 import { NC_SITE_SETTINGS } from '@/contains/site-settings'
+import { ArtistTrackData } from '@/utils/artistTrackUtils'
 
 type GalleryImages = Record<string, ImageState>
 
@@ -42,6 +43,8 @@ export interface PostOptionsData {
 	timeSchedulePublication?: string
 	showRightSidebar: boolean
 	postStyleSelected?: PostStyleTemplate
+	// New artist track fields
+	artistTrackData?: ArtistTrackData
 }
 
 interface PostOptionsBtnProps {
@@ -88,6 +91,25 @@ const PostOptionsBtn: FC<PostOptionsBtnProps> = ({ onSubmit, defaultData }) => {
 		),
 	)
 
+	// Artist track data state
+	const [artistTrackData, setArtistTrackData] = useState<ArtistTrackData>(
+		defaultData.artistTrackData || {
+			artistName: '',
+			trackTitle: '',
+			albumTitle: '',
+			trackFileUrl: '',
+			trackFileName: '',
+			isrc: '',
+			proAffiliation: '',
+			soundExchangeRegistered: false,
+			status: 'pending',
+			airplayCount: 0,
+			spinCount: 0,
+			targetChannel: '',
+			targetPlaylist: '',
+		}
+	)
+
 	//
 
 	const debounceGetExcerpt = debounce(function (e: string) {
@@ -98,6 +120,43 @@ const PostOptionsBtn: FC<PostOptionsBtnProps> = ({ onSubmit, defaultData }) => {
 	}, 200)
 	const debounceAudioUrlChange = debounce(function (e: string) {
 		setAudioUrl(e)
+	}, 200)
+
+	// Debounced functions for artist track fields
+	const debounceArtistNameChange = debounce(function (value: string) {
+		setArtistTrackData(prev => ({ ...prev, artistName: value }))
+	}, 200)
+	
+	const debounceTrackTitleChange = debounce(function (value: string) {
+		setArtistTrackData(prev => ({ ...prev, trackTitle: value }))
+	}, 200)
+	
+	const debounceAlbumTitleChange = debounce(function (value: string) {
+		setArtistTrackData(prev => ({ ...prev, albumTitle: value }))
+	}, 200)
+	
+	const debounceTrackFileUrlChange = debounce(function (value: string) {
+		setArtistTrackData(prev => ({ ...prev, trackFileUrl: value }))
+	}, 200)
+	
+	const debounceTrackFileNameChange = debounce(function (value: string) {
+		setArtistTrackData(prev => ({ ...prev, trackFileName: value }))
+	}, 200)
+	
+	const debounceIsrcChange = debounce(function (value: string) {
+		setArtistTrackData(prev => ({ ...prev, isrc: value }))
+	}, 200)
+	
+	const debounceProAffiliationChange = debounce(function (value: string) {
+		setArtistTrackData(prev => ({ ...prev, proAffiliation: value }))
+	}, 200)
+	
+	const debounceTargetChannelChange = debounce(function (value: string) {
+		setArtistTrackData(prev => ({ ...prev, targetChannel: value }))
+	}, 200)
+	
+	const debounceTargetPlaylistChange = debounce(function (value: string) {
+		setArtistTrackData(prev => ({ ...prev, targetPlaylist: value }))
 	}, 200)
 
 	const handleClickApply = () => {
@@ -111,6 +170,7 @@ const PostOptionsBtn: FC<PostOptionsBtnProps> = ({ onSubmit, defaultData }) => {
 			timeSchedulePublication,
 			showRightSidebar: isShowSidebar,
 			postStyleSelected: postStyleSelected?.name || 'style1',
+			artistTrackData,
 		})
 		toast.success('Post options applied!')
 	}
@@ -367,6 +427,226 @@ const PostOptionsBtn: FC<PostOptionsBtnProps> = ({ onSubmit, defaultData }) => {
 		)
 	}
 
+	const renderArtistTrackInputs = () => {
+		return (
+			<div className="space-y-6">
+				<div className="border-t border-neutral-200 pt-4 dark:border-neutral-700">
+					<h3 className="text-lg font-medium text-neutral-900 dark:text-neutral-100 mb-4">
+						Track Information
+					</h3>
+				</div>
+				
+				<div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+					<div>
+						<Label htmlFor="artist-name" className="block capitalize">
+							Artist Name *
+						</Label>
+						<Input
+							onChange={(event) => {
+								debounceArtistNameChange(event.currentTarget.value)
+							}}
+							defaultValue={artistTrackData.artistName}
+							className="mt-1"
+							placeholder="Enter artist name..."
+							name="artist-name"
+							id="artist-name"
+						/>
+					</div>
+					
+					<div>
+						<Label htmlFor="track-title" className="block capitalize">
+							Track Title *
+						</Label>
+						<Input
+							onChange={(event) => {
+								debounceTrackTitleChange(event.currentTarget.value)
+							}}
+							defaultValue={artistTrackData.trackTitle}
+							className="mt-1"
+							placeholder="Enter track title..."
+							name="track-title"
+							id="track-title"
+						/>
+					</div>
+					
+					<div>
+						<Label htmlFor="album-title" className="block capitalize">
+							Album Title
+						</Label>
+						<Input
+							onChange={(event) => {
+								debounceAlbumTitleChange(event.currentTarget.value)
+							}}
+							defaultValue={artistTrackData.albumTitle}
+							className="mt-1"
+							placeholder="Enter album title..."
+							name="album-title"
+							id="album-title"
+						/>
+					</div>
+				</div>
+
+				{/* Track File Upload Section */}
+				<div className="border-t border-neutral-200 pt-4 dark:border-neutral-700">
+					<h4 className="text-md font-medium text-neutral-900 dark:text-neutral-100 mb-4">
+						Track File Upload
+					</h4>
+				</div>
+				
+				<div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+					<div>
+						<Label htmlFor="track-file-url" className="block capitalize">
+							Track File URL
+						</Label>
+						<Input
+							onChange={(event) => {
+								debounceTrackFileUrlChange(event.currentTarget.value)
+							}}
+							defaultValue={artistTrackData.trackFileUrl}
+							className="mt-1"
+							placeholder="https://example.com/track.mp3"
+							type="url"
+							name="track-file-url"
+							id="track-file-url"
+						/>
+					</div>
+					
+					<div>
+						<Label htmlFor="track-file-name" className="block capitalize">
+							Track File Name
+						</Label>
+						<Input
+							onChange={(event) => {
+								debounceTrackFileNameChange(event.currentTarget.value)
+							}}
+							defaultValue={artistTrackData.trackFileName}
+							className="mt-1"
+							placeholder="track-name.mp3"
+							name="track-file-name"
+							id="track-file-name"
+						/>
+					</div>
+				</div>
+
+				{/* Music Industry Fields Section */}
+				<div className="border-t border-neutral-200 pt-4 dark:border-neutral-700">
+					<h4 className="text-md font-medium text-neutral-900 dark:text-neutral-100 mb-4">
+						Music Industry Information
+					</h4>
+				</div>
+				
+				<div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+					<div>
+						<Label htmlFor="isrc" className="block capitalize">
+							ISRC (International Standard Recording Code)
+						</Label>
+						<Input
+							onChange={(event) => {
+								debounceIsrcChange(event.currentTarget.value)
+							}}
+							defaultValue={artistTrackData.isrc}
+							className="mt-1"
+							placeholder="US-ABC-12-34567"
+							name="isrc"
+							id="isrc"
+						/>
+					</div>
+					
+					<div>
+						<Label htmlFor="pro-affiliation" className="block capitalize">
+							PRO Affiliation
+						</Label>
+						<select
+							onChange={(event) => {
+								debounceProAffiliationChange(event.currentTarget.value)
+							}}
+							defaultValue={artistTrackData.proAffiliation}
+							className="mt-1 block w-full rounded-lg border-neutral-300 bg-white px-3 py-2 text-neutral-900 shadow-sm focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500 dark:border-neutral-600 dark:bg-neutral-800 dark:text-neutral-100"
+							name="pro-affiliation"
+							id="pro-affiliation"
+						>
+							<option value="">Select PRO</option>
+							<option value="ASCAP">ASCAP</option>
+							<option value="BMI">BMI</option>
+							<option value="SESAC">SESAC</option>
+							<option value="GMR">GMR</option>
+							<option value="Other">Other</option>
+						</select>
+					</div>
+					
+					<div className="flex items-center gap-3">
+						<Label htmlFor="sound-exchange-registered" className="block capitalize">
+							SoundExchange Registration
+						</Label>
+						<Switch
+							checked={artistTrackData.soundExchangeRegistered}
+							onChange={(checked) => {
+								setArtistTrackData(prev => ({ ...prev, soundExchangeRegistered: checked }))
+							}}
+							className={`${artistTrackData.soundExchangeRegistered ? 'bg-primary-700' : 'bg-gray-700'} relative inline-flex h-[38px] w-[74px] shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75`}
+							name="sound-exchange-registered"
+							id="sound-exchange-registered"
+						>
+							<span className="sr-only">SoundExchange Registration</span>
+							<span
+								aria-hidden="true"
+								className={`${
+									artistTrackData.soundExchangeRegistered
+										? 'translate-x-9 rtl:-translate-x-9'
+										: 'translate-x-0'
+								} pointer-events-none inline-block h-[34px] w-[34px] transform rounded-full bg-white shadow-lg ring-0 transition duration-200 ease-in-out`}
+							/>
+						</Switch>
+						<span className="text-sm text-neutral-500">
+							{artistTrackData.soundExchangeRegistered ? 'Registered' : 'Not Registered'}
+						</span>
+					</div>
+				</div>
+
+				{/* Channel/Playlist Selection Section */}
+				<div className="border-t border-neutral-200 pt-4 dark:border-neutral-700">
+					<h4 className="text-md font-medium text-neutral-900 dark:text-neutral-100 mb-4">
+						Channel/Playlist Selection
+					</h4>
+				</div>
+				
+				<div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+					<div>
+						<Label htmlFor="target-channel" className="block capitalize">
+							Target Channel
+						</Label>
+						<Input
+							onChange={(event) => {
+								debounceTargetChannelChange(event.currentTarget.value)
+							}}
+							defaultValue={artistTrackData.targetChannel}
+							className="mt-1"
+							placeholder="Enter target channel..."
+							name="target-channel"
+							id="target-channel"
+						/>
+					</div>
+					
+					<div>
+						<Label htmlFor="target-playlist" className="block capitalize">
+							Target Playlist
+						</Label>
+						<Input
+							onChange={(event) => {
+								debounceTargetPlaylistChange(event.currentTarget.value)
+							}}
+							defaultValue={artistTrackData.targetPlaylist}
+							className="mt-1"
+							placeholder="Enter target playlist..."
+							name="target-playlist"
+							id="target-playlist"
+						/>
+					</div>
+				</div>
+			</div>
+		)
+	}
+
 	const renderAllowCommentSwitch = () => {
 		return (
 			<div className="flex items-center gap-3 sm:gap-8">
@@ -527,6 +807,9 @@ const PostOptionsBtn: FC<PostOptionsBtnProps> = ({ onSubmit, defaultData }) => {
 					{postFormatsSelected === 'video' && renderInputVideoUrl()}
 
 					{postFormatsSelected === 'audio' && renderInputAudio()}
+
+					{/* Artist Track Fields - Show for all formats */}
+					{renderArtistTrackInputs()}
 
 					{postFormatsSelected === 'standard' &&
 						checkOptionEnabel('Post_Style') &&

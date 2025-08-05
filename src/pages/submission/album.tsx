@@ -7,11 +7,13 @@ import SwitchDarkMode from '@/components/SwitchDarkMode/SwitchDarkMode'
 import AvatarDropdown from '@/components/Header/AvatarDropdown'
 import Logo from '@/components/Logo/Logo'
 import CreateBtn from '@/components/Header/CreateBtn'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { NC_SITE_SETTINGS } from '@/contains/site-settings'
 import Page404Content from '@/container/404Content'
 import { useSelector } from 'react-redux'
 import { RootState } from '@/stores/store'
+import ArtistTrackFieldsForm from '@/components/PostSubmissionEditor/ArtistTrackFieldsForm'
+import { ArtistTrackData } from '@/utils/artistTrackUtils'
 
 const Page: FaustPage<{}> = (props) => {
 	const { isReady, isAuthenticated } = useSelector(
@@ -68,6 +70,8 @@ const Page: FaustPage<{}> = (props) => {
 		<>
 			<div className="relative flex h-[100vh] w-full flex-col">
 				{renderHeader()}
+				<div className="max-w-2xl mx-auto w-full p-4">
+				</div>
 				<CreateNewPostEditor 
 					isSubmittingPage 
 					labels={{
@@ -81,6 +85,16 @@ const Page: FaustPage<{}> = (props) => {
 						name: 'Album',
 						__typename: 'Category',
 					}]}
+					defaultPostOptionsData={{
+						audioUrl: '',
+						videoUrl: '',
+						excerptText: '',
+						postFormatsSelected: '',
+						objGalleryImgs: undefined,
+						isAllowComments: true,
+						timeSchedulePublication: undefined,
+						showRightSidebar: true,
+					}}
 				/>
 			</div>
 		</>
