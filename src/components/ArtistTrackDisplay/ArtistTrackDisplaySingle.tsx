@@ -12,6 +12,7 @@ import {
 interface ArtistTrackDisplaySingleProps {
 	videoUrlField: string | null
 	className?: string
+	albumTitle?: string
 }
 
 const ArtistTrackDisplaySingle: FC<ArtistTrackDisplaySingleProps> = ({ 
