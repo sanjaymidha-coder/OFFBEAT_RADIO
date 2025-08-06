@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { ArtistTrackData, getArtistTrackData } from '@/utils/artistTrackUtils'
+import { getArtistTrackData } from '@/utils/artistTrackUtils'
 import { 
 	MusicalNoteIcon, 
 	CalendarIcon, 
@@ -12,8 +12,9 @@ import {
 interface ArtistTrackDisplaySingleProps {
 	videoUrlField: string | null
 	className?: string
-	albumTitle?: string
 }
+
+
 
 const ArtistTrackDisplaySingle: FC<ArtistTrackDisplaySingleProps> = ({ 
 	videoUrlField, 
@@ -22,7 +23,7 @@ const ArtistTrackDisplaySingle: FC<ArtistTrackDisplaySingleProps> = ({
 	const artistTrackData = getArtistTrackData(videoUrlField ?? '');
 
 
-	if (!artistTrackData || (!artistTrackData.artistName && !artistTrackData.trackTitle)) {
+	if (!artistTrackData || (!artistTrackData.artistName && !artistTrackData.trackTitle )) {
 		return null
 	}
 
@@ -52,9 +53,9 @@ const ArtistTrackDisplaySingle: FC<ArtistTrackDisplaySingleProps> = ({
 										{artistTrackData.trackTitle}
 									</p>
 								)}
-								{artistTrackData.albumTitle && (
+								{artistTrackData.albumName && (
 									<p className="text-lg text-neutral-500 dark:text-neutral-500">
-										{artistTrackData.albumTitle}
+										{artistTrackData.albumName}
 									</p>
 								)}
 							</div>
