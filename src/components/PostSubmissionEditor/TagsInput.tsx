@@ -150,7 +150,7 @@ const TagsInput: FC<TagsInputProps> = ({ onChange, defaultValue }) => {
 					>
 						{tag.name}
 						<button
-							className="ms-1 flex items-center justify-center px-1 text-base hover:text-neutral-900 dark:hover:text-neutral-50"
+							className="ms-1 flex items-center justify-center px-1 text-sm hover:text-neutral-900 dark:hover:text-neutral-50"
 							onClick={() => handleRemoveTag(tag)}
 							title="Remove tag"
 						>

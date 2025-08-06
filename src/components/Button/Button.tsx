@@ -43,9 +43,9 @@ const Button: FC<ButtonProps> = ({
 	let colors =
 		'bg-neutral-900 hover:bg-neutral-800 text-white dark:bg-neutral-100 dark:hover:bg-neutral-50 dark:text-black'
 
-	let sizeClass = 'py-3 px-4 sm:py-3.5 sm:px-6'
+	let sizeClass = 'px-4 sm:py-2.5 sm:px-6'
 	if (pattern === 'link') {
-		sizeClass = 'py-3 px-3.5 sm:py-3.5 sm:px-4'
+		sizeClass = 'px-3.5 sm:py-2.5 sm:px-4'
 	}
 	if (!!sizeClassProp) {
 		sizeClass = sizeClassProp
