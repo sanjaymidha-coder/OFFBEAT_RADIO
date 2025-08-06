@@ -193,6 +193,7 @@ const Component: FaustTemplate<GetPostSiglePageQuery> = (props) => {
 					props.data?.generalSettings as NcgeneralSettingsFieldsFragmentFragment
 				}
 			>
+				{/* <ArtistTrackDisplayBlock ncmazVideoUrl={(_post as any)?.ncmazVideoUrl?.videoUrl ?? null} /> */}
 				{ncPostMetaData?.showRightSidebar ? (
 					<div>
 						<div className={`relative`}>
@@ -223,7 +224,7 @@ const Component: FaustTemplate<GetPostSiglePageQuery> = (props) => {
 
 						<div className="container mt-10">
 							{/* SINGLE MAIN CONTENT */}
-							<ArtistTrackDisplayBlock ncmazVideoUrl={(_post as any)?.ncmazVideoUrl?.videoUrl ?? null} />
+							{/* <ArtistTrackDisplayBlock ncmazVideoUrl={(_post as any)?.ncmazVideoUrl?.videoUrl ?? null} /> */}
 							<SingleContent post={_post} />
 						</div>
 
