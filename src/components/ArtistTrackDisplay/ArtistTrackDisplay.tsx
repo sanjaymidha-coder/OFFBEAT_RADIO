@@ -49,9 +49,9 @@ const ArtistTrackDisplay: FC<ArtistTrackDisplayProps> = ({
 										{artistTrackData.trackTitle}
 									</p>
 								)}
-								{artistTrackData.albumTitle && (
+								{artistTrackData.albumName && (
 									<p className="text-neutral-500 dark:text-neutral-500 text-sm">
-										{artistTrackData.albumTitle}
+										{artistTrackData.albumName}
 									</p>
 								)}
 							</div>
