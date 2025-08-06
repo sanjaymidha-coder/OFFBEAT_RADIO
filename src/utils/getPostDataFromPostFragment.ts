@@ -115,6 +115,7 @@ export function getPostDataFromPostFragment(
 		featuredImage,
 		ncPostMetaData,
 		ncmazGalleryImgs,
+		ncmazVideoUrl: query.ncmazVideoUrl,
 		categories: {
 			nodes: query.categories?.nodes?.map((term) =>
 				getCatgoryDataFromCategoryFragment(term),

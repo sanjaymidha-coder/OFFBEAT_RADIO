@@ -17,7 +17,7 @@ const ArtistTrackDisplay: FC<ArtistTrackDisplayProps> = ({
 	videoUrlField, 
 	className = '' 
 }) => {
-	const artistTrackData = videoUrlField ? getArtistTrackData(videoUrlField) : null
+	const artistTrackData = getArtistTrackData(videoUrlField)
 
 	if (!artistTrackData || (!artistTrackData.artistName && !artistTrackData.trackTitle)) {
 		return null
@@ -49,9 +49,9 @@ const ArtistTrackDisplay: FC<ArtistTrackDisplayProps> = ({
 										{artistTrackData.trackTitle}
 									</p>
 								)}
-								{artistTrackData.albumName && (
+								{artistTrackData.albumTitle && (
 									<p className="text-neutral-500 dark:text-neutral-500 text-sm">
-										{artistTrackData.albumName}
+										{artistTrackData.albumTitle}
 									</p>
 								)}
 							</div>

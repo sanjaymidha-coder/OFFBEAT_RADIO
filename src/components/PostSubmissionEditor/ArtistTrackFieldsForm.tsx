@@ -49,15 +49,15 @@ const ArtistTrackFieldsForm: FC<Props> = ({ value, onChange, disabled }) => {
           />
         </div>
         <div>
-          <Label htmlFor="album-name">Album Name</Label>
+          <Label htmlFor="album-title">Album Title</Label>
           <Input
-            id="album-name"
-            name="album-name"
+            id="album-title"
+            name="album-title"
             disabled={disabled}
-            value={value.albumName}
-            onChange={e => update('albumName', e.currentTarget.value)}
+            value={value.albumTitle}
+            onChange={e => update('albumTitle', e.currentTarget.value)}
             className="mt-1"
-            placeholder="Enter album name..."
+            placeholder="Enter album title..."
           />
         </div>
       </div>
