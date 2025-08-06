@@ -85,7 +85,6 @@ const Component: FaustTemplate<GetPostSiglePageQuery> = (props) => {
 		databaseId,
 		excerpt,
 		categories,
-		videoUrl,
 	} = getPostDataFromPostFragment(_post)
 
 	const isAlbum = categories?.nodes?.some(
@@ -201,7 +200,7 @@ const Component: FaustTemplate<GetPostSiglePageQuery> = (props) => {
 
 							<div className="container my-10 flex flex-col lg:flex-row">
 								<div className="w-full lg:w-3/5 xl:w-2/3 xl:pe-20">
-									<ArtistTrackDisplayBlock ncmazVideoUrl={videoUrl ?? ""} />
+									<ArtistTrackDisplayBlock ncmazVideoUrl={_post.ncmazVideoUrl} />
 									<SingleContent post={_post} />
 								</div>
 								<div className="mt-12 w-full lg:mt-0 lg:w-2/5 lg:ps-10 xl:w-1/3 xl:ps-0">
@@ -224,7 +223,7 @@ const Component: FaustTemplate<GetPostSiglePageQuery> = (props) => {
 
 						<div className="container mt-10">
 							{/* SINGLE MAIN CONTENT */}
-							<ArtistTrackDisplayBlock ncmazVideoUrl={videoUrl ?? ""} />
+							<ArtistTrackDisplayBlock ncmazVideoUrl={_post.ncmazVideoUrl} />
 							<SingleContent post={_post} />
 						</div>
 

@@ -126,6 +126,5 @@ export function getPostDataFromPostFragment(
 		author: getUserDataFromUserCardFragment({ ...query.author?.node }),
 		// @ts-ignore
 		editorBlocks: query.editorBlocks || undefined,
-		videoUrl: query.ncmazVideoUrl?.videoUrl || '',
 	}
 }
