@@ -96,7 +96,7 @@ const PostOptionsBtn: FC<PostOptionsBtnProps> = ({ onSubmit, defaultData }) => {
 		defaultData.artistTrackData || {
 			artistName: '',
 			trackTitle: '',
-			albumTitle: '',
+			albumName: '',
 			trackFileUrl: '',
 			trackFileName: '',
 			isrc: '',
@@ -131,8 +131,8 @@ const PostOptionsBtn: FC<PostOptionsBtnProps> = ({ onSubmit, defaultData }) => {
 		setArtistTrackData(prev => ({ ...prev, trackTitle: value }))
 	}, 200)
 	
-	const debounceAlbumTitleChange = debounce(function (value: string) {
-		setArtistTrackData(prev => ({ ...prev, albumTitle: value }))
+	const debounceAlbumNameChange = debounce(function (value: string) {
+		setArtistTrackData(prev => ({ ...prev, albumName: value }))
 	}, 200)
 	
 	const debounceTrackFileUrlChange = debounce(function (value: string) {
@@ -470,18 +470,18 @@ const PostOptionsBtn: FC<PostOptionsBtnProps> = ({ onSubmit, defaultData }) => {
 					</div>
 					
 					<div>
-						<Label htmlFor="album-title" className="block capitalize">
-							Album Title
+						<Label htmlFor="album-name" className="block capitalize">
+							Album Name
 						</Label>
 						<Input
 							onChange={(event) => {
-								debounceAlbumTitleChange(event.currentTarget.value)
+								debounceAlbumNameChange(event.currentTarget.value)
 							}}
-							defaultValue={artistTrackData.albumTitle}
+							defaultValue={artistTrackData.albumName}
 							className="mt-1"
-							placeholder="Enter album title..."
-							name="album-title"
-							id="album-title"
+							placeholder="Enter album name..."
+							name="album-name"
+							id="album-name"
 						/>
 					</div>
 				</div>
