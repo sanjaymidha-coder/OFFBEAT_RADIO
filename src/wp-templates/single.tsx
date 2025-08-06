@@ -91,8 +91,10 @@ const Component: FaustTemplate<GetPostSiglePageQuery> = (props) => {
 		(cat) => cat.databaseId === 233 || cat.name?.toLowerCase() === 'album'
 	)
 
-	// Destructure ncmazVideoUrl from getPostDataFromPostFragment
-	const { ncmazVideoUrl } = getPostDataFromPostFragment(_post);
+	//
+	const {} = useGetPostsNcmazMetaByIds({
+		posts: (IS_PREVIEW ? [] : [_post]) as TPostCard[],
+	})
 	//
 
 	// Query update post view count
@@ -198,7 +200,7 @@ const Component: FaustTemplate<GetPostSiglePageQuery> = (props) => {
 
 							<div className="container my-10 flex flex-col lg:flex-row">
 								<div className="w-full lg:w-3/5 xl:w-2/3 xl:pe-20">
-									<ArtistTrackDisplayBlock ncmazVideoUrl={ncmazVideoUrl?.videoUrl ?? null} />
+									{/* <ArtistTrackDisplayBlock ncmazVideoUrl={(_post as any)?.ncmazVideoUrl?.videoUrl ?? null} /> */}
 									<SingleContent post={_post} />
 								</div>
 								<div className="mt-12 w-full lg:mt-0 lg:w-2/5 lg:ps-10 xl:w-1/3 xl:ps-0">
@@ -221,7 +223,7 @@ const Component: FaustTemplate<GetPostSiglePageQuery> = (props) => {
 
 						<div className="container mt-10">
 							{/* SINGLE MAIN CONTENT */}
-							<ArtistTrackDisplayBlock ncmazVideoUrl={ncmazVideoUrl?.videoUrl ?? null} />
+							<ArtistTrackDisplayBlock ncmazVideoUrl={(_post as any)?.ncmazVideoUrl?.videoUrl ?? null} />
 							<SingleContent post={_post} />
 						</div>
 
