@@ -556,22 +556,69 @@ const PostOptionsBtn: FC<PostOptionsBtnProps> = ({ onSubmit, defaultData }) => {
 						<Label htmlFor="pro-affiliation" className="block capitalize">
 							PRO Affiliation
 						</Label>
-						<select
-							onChange={(event) => {
-								debounceProAffiliationChange(event.currentTarget.value)
-							}}
-							defaultValue={artistTrackData.proAffiliation}
-							className="mt-1 block w-full rounded-lg border-neutral-300 bg-white px-3 py-2 text-neutral-900 shadow-sm focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500 dark:border-neutral-600 dark:bg-neutral-800 dark:text-neutral-100"
-							name="pro-affiliation"
-							id="pro-affiliation"
-						>
-							<option value="">Select PRO</option>
-							<option value="ASCAP">ASCAP</option>
-							<option value="BMI">BMI</option>
-							<option value="SESAC">SESAC</option>
-							<option value="GMR">GMR</option>
-							<option value="Other">Other</option>
-						</select>
+						<Listbox value={artistTrackData.proAffiliation} onChange={(value) => {
+							debounceProAffiliationChange(value)
+						}}>
+							<div className="relative z-10 mt-1">
+								<ListboxButton as="div">
+									<Button pattern="third" fontSize="text-sm font-medium">
+										<span className="block truncate">
+											{artistTrackData.proAffiliation || 'Select PRO'}
+										</span>
+										<ChevronDownIcon
+											className="-me-1 ms-2 h-4 w-4"
+											aria-hidden="true"
+										/>
+									</Button>
+								</ListboxButton>
+								<Transition
+									as={Fragment}
+									leave="transition ease-in duration-100"
+									leaveFrom="opacity-100"
+									leaveTo="opacity-0"
+								>
+									<ListboxOptions
+										anchor={{ to: 'bottom start', gap: '4px' }}
+										className="absolute end-0 z-50 mt-2 max-h-96 w-52 overflow-auto rounded-xl bg-white py-1 text-sm text-neutral-900 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-neutral-900 dark:text-neutral-200 dark:ring-neutral-700"
+									>
+										{[
+											{ value: '', label: 'Select PRO' },
+											{ value: 'ASCAP', label: 'ASCAP' },
+											{ value: 'BMI', label: 'BMI' },
+											{ value: 'SESAC', label: 'SESAC' },
+											{ value: 'GMR', label: 'GMR' },
+											{ value: 'Other', label: 'Other' }
+										].map((option, optionIdx) => (
+											<ListboxOption
+												key={optionIdx}
+												className="relative cursor-default select-none py-2 pe-4 ps-10 data-[focus]:bg-primary-50 data-[focus]:text-primary-700 dark:data-[focus]:bg-neutral-700 dark:data-[focus]:text-neutral-200"
+												value={option.value}
+											>
+												{({ selected }) => (
+													<>
+														<span
+															className={`block truncate ${
+																selected ? 'font-medium' : 'font-normal'
+															}`}
+														>
+															{option.label}
+														</span>
+														{selected ? (
+															<span className="absolute inset-y-0 start-0 flex items-center ps-3 text-primary-700 dark:text-neutral-200">
+																<CheckIcon
+																	className="h-5 w-5"
+																	aria-hidden="true"
+																/>
+															</span>
+														) : null}
+													</>
+												)}
+											</ListboxOption>
+										))}
+									</ListboxOptions>
+								</Transition>
+							</div>
+						</Listbox>
 					</div>
 					
 					<div className="flex items-center gap-3">

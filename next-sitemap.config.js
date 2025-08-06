@@ -1,6 +1,6 @@
 /** @type {import('next-sitemap').IConfig} */
 
-const SITE_URL = process.env.NEXT_PUBLIC_URL // Update with your site URL if needed
+const SITE_URL = process.env.NEXT_PUBLIC_URL || 'https://offbeat-radio-testing.vercel.app' // Update with your site URL if needed
 
 module.exports = {
 	siteUrl: SITE_URL,

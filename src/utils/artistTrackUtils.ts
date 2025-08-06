@@ -1,6 +1,7 @@
 export interface ArtistTrackData {
 	artistName: string
 	trackTitle: string
+	albumName: string
 	trackFileUrl: string
 	trackFileName: string
 	isrc: string
@@ -84,6 +85,7 @@ export function createDefaultArtistTrackData(): ArtistTrackData {
 	return {
 		artistName: '',
 		trackTitle: '',
+		albumName: '',
 		trackFileUrl: '',
 		trackFileName: '',
 		isrc: '',
